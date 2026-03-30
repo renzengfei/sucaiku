@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "1042-视频拆解报告(7).md",
+    "analysis": {
+      "name": "咬披萨盘擦脏手",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "镜头前伸出一只布满黑色污垢的手，zoye正在啃热狗",
+      "video_tags": "搞笑, 感动",
+      "technique": "zoye喷番茄酱在脏手上→jinu喷可乐→rumi捧披萨出现→用牙咬住披萨盘腾出双手→用毛巾擦净→脏手拿走一角披萨",
+      "mechanism_name": "递进荒诞+正确解法",
+      "mechanism": "第一人用错误方式帮忙(喷酱)→第二人也用错误方式(喷可乐)→第三人用正确但荒诞的方式(咬盘擦手)解决问题",
+      "protagonist": "rumi",
+      "protagonist_goal": "腾出双手帮脏手擦干净",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "户外步行街咖啡位", "function": "黄金时刻暖色调的荒诞帮忙场"}],
+      "props": [
+        {"name": "披萨托盘", "type": "奇观道具", "function": "巨大圆形木质托盘被rumi用牙咬住"},
+        {"name": "白色毛巾", "type": "解决工具", "function": "隐藏在rumi身侧的清洁工具"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "咬盘清洁侠", "abilities": "惊人咬合力", "states": ""},
+        {"name": "zoye", "persona": "番茄酱喷射者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "可乐喷射者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1043-视频拆解报告(8).md",
+    "analysis": {
+      "name": "Mira栽赃rumi偷戒指",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "mira对着镜子露出阴冷微笑，边自语边在手臂上制造假伤痕",
+      "video_tags": "悬疑, 虐心",
+      "technique": "制造假伤痕→电话署名rumi订假蜘蛛→拥抱时偷塞戒指进口袋→快递送蜘蛛嫁祸→故意摔杯引jinu→假哭告状→rumi掏出戒指百口莫辩→jinu驱逐rumi→mira对镜头炫耀胜利",
+      "mechanism_name": "全链条栽赃陷害",
+      "mechanism": "伪造证据→栽植物证→制造事件→表演受害→引导发现物证→受害者百口莫辩→施害者对镜头炫耀",
+      "protagonist": "rumi",
+      "protagonist_goal": "来找mira对质了解真相",
+      "antagonist": "mira",
+      "antagonist_goal": "用全套栽赃计划让jinu赶走rumi",
+      "scenes": [{"name": "mira的现代公寓", "function": "阳光明媚反衬心机博弈的场"}],
+      "props": [
+        {"name": "钻戒", "type": "核心物证", "function": "被偷塞进rumi口袋的陷害证据"},
+        {"name": "假蜘蛛礼盒", "type": "栽赃道具", "function": "署名rumi的恐吓物"},
+        {"name": "假血伤痕", "type": "伪装道具", "function": "木板摩擦制造的手臂假伤"}
+      ],
+      "characters": [
+        {"name": "mira", "persona": "阴谋策划者/影后级表演者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "被陷害的无辜者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "被蒙蔽的保护者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1044-视频拆解报告(9).md",
+    "analysis": {
+      "name": "工地女总裁微服私访",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi戴着脏污安全帽穿工地服满身灰尘冲进奢华大堂猛灌水",
+      "video_tags": "爽文",
+      "technique": "脏兮兮rumi冲进大堂喝水→zoye温柔递水→mira经理怒斥赶人→jinu带随从冲来对rumi九十度鞠躬喊Boss→rumi摘安全帽揭示身份→开除mira→降级jinu→提拔zoye为总经理",
+      "mechanism_name": "身份伪装微服私访",
+      "mechanism": "高位者以底层身份出现→善人帮助→恶人欺辱→高位者揭示真身→恶人被惩罚→善人被奖励",
+      "protagonist": "rumi",
+      "protagonist_goal": "以工人身份测试公司员工的品格",
+      "antagonist": "mira",
+      "antagonist_goal": "赶走弄脏大堂的脏工人",
+      "scenes": [{"name": "顶级奢华大厦大堂", "function": "水晶灯白大理石的身份反转场"}],
+      "props": [
+        {"name": "黄色安全帽", "type": "身份掩护", "function": "摘下即完成从工人到总裁的切换"},
+        {"name": "玻璃水杯", "type": "冲突导火索", "function": "展示zoye善心和mira恶意的载体"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "隐藏身份的女总裁", "abilities": "", "states": "满身灰尘工地装"},
+        {"name": "mira", "persona": "势利经理", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "善良的普通员工", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "惶恐的高管", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1045-视频拆解报告.md",
+    "analysis": {
+      "name": "三轮竞赛卡丁车铁球",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "湖边jinu自信地拍着大型红色越野卡丁车宣布我选这个",
+      "video_tags": "搞笑",
+      "technique": "选大卡丁车过不了窄隧道→第二轮学聪明选小纸杯但要排干泳池→第三轮两个包都背跳水→包里全是铁球直接沉底",
+      "mechanism_name": "策略进化全败循环",
+      "mechanism": "选大失败→学聪明选小→又失败→索性全要→包里装铁球差点溺水→越努力越惨",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得三轮竞赛",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过策略选择赢过rumi但全败",
+      "scenes": [
+        {"name": "湖畔绿地", "function": "明亮的卡丁车赛场"},
+        {"name": "草坪水池区", "function": "舀水比赛的绝望场"},
+        {"name": "码头泳池", "function": "负重游泳的沉底场"}
+      ],
+      "props": [
+        {"name": "红色卡丁车", "type": "第一陷阱", "function": "大到过不了窄隧道"},
+        {"name": "红纸杯", "type": "第二陷阱", "function": "小到排不干水池"},
+        {"name": "绿色登山包", "type": "终极陷阱", "function": "内藏实心铁球"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "轻松获胜者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "策略全败者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "裁判", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1046-视频拆解报告：OMG Mira.md",
+    "analysis": {
+      "name": "紫色拖把头寻主记",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "mira在沙滩边弯腰捡起一捆编织质感的紫色假发一脸嫌弃",
+      "video_tags": "搞笑",
+      "technique": "捡到紫色发团→以为是rumi的被否认→以为是水母放生→人鱼abby扔回来→以为mystery秃头强行植发→mystery有头发→放弃→jinu跑来认领→原来是拖把头→jinu用它拖地跳舞",
+      "mechanism_name": "连续误判身份揭晓",
+      "mechanism": "捡到神秘物品→误判归属1被否认→误判物种被惩罚→误判归属2被否认→真正主人出现→揭示荒诞真相(拖把头)",
+      "protagonist": "mira",
+      "protagonist_goal": "找到紫色发团的主人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "热带度假海滩", "function": "高饱和阳光的无厘头寻物场"}],
+      "props": [
+        {"name": "紫色发团", "type": "麦格芬道具", "function": "50cm紫色编织纤维实为拖把头"},
+        {"name": "光秃木棍", "type": "揭秘道具", "function": "拖把杆等待发团回归"}
+      ],
+      "characters": [
+        {"name": "mira", "persona": "无厘头侦探", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "被误判的看书者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "愤怒的肌肉人鱼", "abilities": "", "states": "蓝色鱼尾"},
+        {"name": "mystery", "persona": "冥想纸袋人", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "拖把头的真正主人", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]

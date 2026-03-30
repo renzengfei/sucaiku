@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "1047-视频拆解报告：Wusdom Lab 短剧.md",
+    "analysis": {
+      "name": "婚纱店女总裁微服私访",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi穿着破旧补丁工装推开豪华婚纱店玻璃门乞求喝水",
+      "video_tags": "爽文",
+      "technique": "rumi脏兮兮闯入婚纱店求水→mira善良递水→zoye经理打飞水瓶怒斥→rumi撕开工装露出金色西装→揭示老板身份→开除zoye→提拔mira为总经理",
+      "mechanism_name": "身份伪装微服私访",
+      "mechanism": "高位者以底层身份出现→善人帮助→恶人欺辱→高位者揭示真身→恶人被惩罚→善人被奖励",
+      "protagonist": "rumi",
+      "protagonist_goal": "以乞丐身份测试婚纱店员工品格",
+      "antagonist": "zoye",
+      "antagonist_goal": "赶走弄脏店铺的穷人",
+      "scenes": [{"name": "高端婚纱精品店", "function": "水晶灯白婚纱的身份反转场"}],
+      "props": [
+        {"name": "矿泉水瓶", "type": "冲突导火索", "function": "被zoye打飞象征矛盾爆发"},
+        {"name": "金色西装", "type": "身份标识", "function": "藏在破工装下的权力象征"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "隐藏身份的女老板", "abilities": "", "states": "初期满身灰尘破工装"},
+        {"name": "mira", "persona": "善良的店员", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "势利的经理", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1048-视频拆解报告：二毛的辣椒与鸡腿(1).md",
+    "analysis": {
+      "name": "嗜辣者偷吃辣椒循环",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "灰衣男子双手捧着一大捆鲜红辣椒张大口猛烈啃咬表情狰狞",
+      "video_tags": "搞笑",
+      "technique": "偷吃辣椒→被壮汉发现收走→强塞鸡腿→展示肌肉威胁→偷偷喂猫丢掉鸡腿→壮汉又送辣椒回来→继续吃辣椒循环",
+      "mechanism_name": "禁忌执念宿命循环",
+      "mechanism": "角色偷做被禁止的事→被强者阻止并强塞替代品→想办法处理掉替代品→最终又回到偷做禁忌的循环",
+      "protagonist": "灰衣男子",
+      "protagonist_goal": "偷吃辣椒逃避壮汉监管",
+      "antagonist": "蓝衣壮汉",
+      "antagonist_goal": "强制灰衣男子吃鸡腿不吃辣椒",
+      "scenes": [{"name": "中式乡村屋顶", "function": "青山梯田背景的土味搞笑场"}],
+      "props": [
+        {"name": "红辣椒", "type": "执念道具", "function": "主角唯一的真爱"},
+        {"name": "金黄鸡腿", "type": "强制奖赏", "function": "被主角视为负担的替代品"},
+        {"name": "黑猫", "type": "帮手", "function": "帮忙处理鸡腿"}
+      ],
+      "characters": [
+        {"name": "灰衣男子", "persona": "极端嗜辣者", "abilities": "", "states": ""},
+        {"name": "蓝衣壮汉", "persona": "健康监督者", "abilities": "", "states": "棕色肌肉紧身衣"}
+      ]
+    }
+  },
+  {
+    "filename": "1050-视频拆解报告：魔力红盆与欲望的轮回.md",
+    "analysis": {
+      "name": "魔力红盆棒棒糖变钱",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "rumi递给正在哭泣的mira一支棒棒糖，mira挥手推开棒棒糖飞入红陶花盆",
+      "video_tags": "搞笑, 感动",
+      "technique": "递棒棒糖→被推开掉入红盆→盆中涌出大量棒棒糖→mira贪心投入20美元→钞票疯狂翻倍→mira抢盆抛弃rumi→jinu谄媚讨好→贪婪升级",
+      "mechanism_name": "魔力容器欲望吞噬",
+      "mechanism": "偶然发现魔力道具→小物品复制验证→投入更大价值→贪婪吞噬善良→抛弃朋友独占→欲望失控",
+      "protagonist": "rumi",
+      "protagonist_goal": "用棒棒糖安慰哭泣的mira",
+      "antagonist": "mira",
+      "antagonist_goal": "独占魔力红盆疯狂复制金钱",
+      "scenes": [{"name": "户外灰色石墙下", "function": "斑驳墙面的魔力发现场"}],
+      "props": [
+        {"name": "红陶花盆", "type": "魔力道具", "function": "投入物品自动复制的破旧容器"},
+        {"name": "彩虹棒棒糖", "type": "触发道具", "function": "首次验证魔力的甜食"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "善良的安慰者/被抛弃者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "被贪婪吞噬的哭泣者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "谄媚讨好者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1051-视频拆解：Jinu is Clown Miracle Doctor.md",
+    "analysis": {
+      "name": "小丑神医黑洞取子弹",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu在手术室哼歌抛玩粉色糖果，糖果掉入病患腹部的黑洞中",
+      "video_tags": "热血",
+      "technique": "抛糖果失误掉入黑洞→伸手捞出滴黑液的金色小子弹→鬼祟偷看确认无人→再次捞出糖果→清洗后吃掉→拒绝护士团队的常规器械→徒手猛扎黑洞→拔出巨大金色子弹→病人满血复活",
+      "mechanism_name": "非常规天才手术",
+      "mechanism": "搞笑意外触发→发现异常病灶→常规医疗无效→天才以非常规极端方式(徒手)解决→奇迹康复",
+      "protagonist": "jinu",
+      "protagonist_goal": "用非常规方式取出黑洞中的异物治愈病人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "超现实黑洞手术室", "function": "深蓝帘布无影灯的赛博医疗场"}],
+      "props": [
+        {"name": "粉色糖果", "type": "触发道具", "function": "引发进入黑洞的失误"},
+        {"name": "金色小子弹", "type": "病灶表现", "function": "底端滴落黑色液体的初级病灶"},
+        {"name": "超大金子弹", "type": "终极治愈物", "function": "人头大的纯金终极异物"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "小丑神医/非常规天才", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "黑洞病患", "abilities": "", "states": "腹部有黑洞"},
+        {"name": "rumi", "persona": "护士", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "护士", "abilities": "", "states": ""},
+        {"name": "mystery", "persona": "护士", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1052-视频拆解：Rumi怎么了？.md",
+    "analysis": {
+      "name": "万圣节丧尸追逐噩梦",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "海滩上rumi捧着贝壳，一艘白色小船突然冲向岸边",
+      "video_tags": "惊悚, 搞笑",
+      "technique": "海滩被丧尸从船上追→沙滩奔跑→丛林躲藏被发现→室内白布遮盖被掀开→浴室角落被围堵→猛然惊醒是噩梦→朋友穿同样服装提南瓜桶说Trick or Treat",
+      "mechanism_name": "噩梦追逐+现实反转",
+      "mechanism": "恐怖追逐不断升级→被围堵绝望→猛然醒来是梦→现实中追逐者以友好身份出现→恐怖变温馨",
+      "protagonist": "rumi",
+      "protagonist_goal": "逃脱丧尸追逐",
+      "antagonist": "jinu",
+      "antagonist_goal": "带领丧尸团队追逐rumi",
+      "scenes": [
+        {"name": "阳光海滩", "function": "高饱和的艳阳恐怖追逐场"},
+        {"name": "斑驳丛林", "function": "光影交错的捉迷藏场"},
+        {"name": "温馨卧室", "function": "暖色调的梦境觉醒场"}
+      ],
+      "props": [
+        {"name": "白色小船", "type": "追逐起点", "function": "丧尸登陆的载体"},
+        {"name": "南瓜糖果桶", "type": "反转道具", "function": "点明万圣节的橙色桶"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被追逐的恐惧者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "丧尸领队/万圣节朋友", "abilities": "", "states": "丧尸妆容"},
+        {"name": "mira", "persona": "丧尸追逐者/万圣节朋友", "abilities": "", "states": "小丑丧尸妆"},
+        {"name": "mystery", "persona": "丧尸追逐者/万圣节朋友", "abilities": "", "states": "青灰色丧尸妆"},
+        {"name": "zoye", "persona": "丧尸追逐者/万圣节朋友", "abilities": "", "states": "黑白小丑妆"}
+      ]
+    }
+  }
+]

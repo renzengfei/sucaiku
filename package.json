@@ -1,0 +1,16 @@
+{
+  "name": "video-material-library",
+  "version": "1.0.0",
+  "description": "爆款视频素材库",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "ali-oss": "^6.23.0",
+    "better-sqlite3": "^11.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^4.21.0"
+  }
+}

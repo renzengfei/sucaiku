@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "1032-视频影视拆解报告.md",
+    "analysis": {
+      "name": "水泵作弊喝饮料比赛",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "jinu和rumi并排站在巨大高脚杯前，倒计时3-2-1-Drink开始喝红色饮料",
+      "video_tags": "搞笑",
+      "technique": "喝饮料比赛→rumi拼命吸液面不动→jinu轻松液面骤降→揭露桌下romance操控工业水泵抽水→rumi崩溃质疑→jinu庆祝",
+      "mechanism_name": "隐藏帮手作弊",
+      "mechanism": "公平比赛假象→一方轻松获胜→揭示隐藏在视觉盲区的第三方帮手→被骗者崩溃→作弊者庆祝",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得喝饮料比赛",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过桌底romance操控水泵作弊获胜",
+      "scenes": [{"name": "现代简约厨房", "function": "高调照明的作弊竞技场"}],
+      "props": [
+        {"name": "超大号高脚杯", "type": "比赛道具", "function": "透明玻璃杯装满红色液体"},
+        {"name": "蓝色工业水泵", "type": "作弊工具", "function": "桌底抽水的核心设备"},
+        {"name": "透明软管", "type": "作弊通道", "function": "连接杯底到桌下的管路"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被骗的拼命吸者", "abilities": "", "states": "脸部涨红"},
+        {"name": "jinu", "persona": "作弊获胜者", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "桌底水泵操控者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1033-视频拆解分析报告.md",
+    "analysis": {
+      "name": "三轮竞技冰块叉子石头",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "舞台背景下jinu和rumi站在悬挂的银色金属桶下，jinu自信地要选小桶",
+      "video_tags": "搞笑",
+      "technique": "选小桶被冰块砸→rumi得玫瑰花瓣→第二轮选大叉子砸烂草莓→第三轮背两个包爬楼梯→包里全是石头",
+      "mechanism_name": "策略进化全败循环",
+      "mechanism": "选大失败→选小又失败→两个都要→背了一楼道石头→贪心越重惩罚越大",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得三轮竞技挑战",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过策略选择赢过rumi但全部选错",
+      "scenes": [
+        {"name": "霓虹舞台", "function": "高调照明的竞技主场"},
+        {"name": "白色楼梯间", "function": "冷色调的负重爬行场"}
+      ],
+      "props": [
+        {"name": "悬挂金属桶", "type": "奖惩容器", "function": "分别装冰块和玫瑰花瓣"},
+        {"name": "巨型钢叉", "type": "陷阱道具", "function": "1.5米不锈钢叉砸碎草莓"},
+        {"name": "双肩背包", "type": "负重陷阱", "function": "内部装满建筑石块"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "轻松获胜者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "贪心全败者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "裁判主持人", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1034-视频拆解报告(1).md",
+    "analysis": {
+      "name": "僵尸整蛊洗碗惩罚",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu和rumi牵手走在高空玻璃栈桥上，脚下出现密集碎裂纹路",
+      "video_tags": "搞笑",
+      "technique": "玻璃栈桥吓rumi→jinu公主抱踩踏证明是假的→泳池边rumi吃鸡变僵尸脸→jinu跳水→mira递账单没钱→打破第四面墙求订阅→后厨洗碗惩罚",
+      "mechanism_name": "多段整蛊+第四面墙求助",
+      "mechanism": "段落A整蛊→段落B反转整蛊→段落C现实惩罚→打破第四面墙将解决方案交给观众",
+      "protagonist": "rumi",
+      "protagonist_goal": "在各段整蛊中求生并最终向观众求助",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "高空玻璃栈桥", "function": "群山背景的恐高整蛊场"},
+        {"name": "度假村泳池边", "function": "明亮的僵尸反转场"},
+        {"name": "餐厅后厨", "function": "昏暗蒸汽的洗碗惩罚场"}
+      ],
+      "props": [
+        {"name": "碎裂纹路玻璃桥", "type": "整蛊装置", "function": "预设的固定裂纹图案"},
+        {"name": "整只烤鸡", "type": "触发道具", "function": "咬下后触发僵尸变脸"},
+        {"name": "账单", "type": "惩罚道具", "function": "黑色夹板上的天价账单"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被整蛊者/洗碗惩罚者", "abilities": "", "states": "僵尸绿脸(特效)"},
+        {"name": "jinu", "persona": "淡定揭秘者/跳水受害者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "冷酷女仆/账单递送者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1035-视频拆解报告(10).md",
+    "analysis": {
+      "name": "宠物诊所巨嘴示范",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi戴听诊器拿着压舌板对橘猫说张嘴说啊",
+      "video_tags": "搞笑",
+      "technique": "让猫张嘴→猫张得不够→rumi变急躁→换白大褂→夸张示范嘴巴超现实扩张→猫被吓到也猛张大嘴→rumi满意夸奖",
+      "mechanism_name": "极端示范引发模仿",
+      "mechanism": "要求对方做动作→对方做得不够→示范者用超现实的极端方式示范→对方被惊吓后做出同样极端的反应→目标达成",
+      "protagonist": "rumi",
+      "protagonist_goal": "让橘猫张大嘴巴接受检查",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "宠物诊所检查室", "function": "纯白高调照明的荒诞检查场"}],
+      "props": [
+        {"name": "压舌板", "type": "医疗工具", "function": "木质扁条诱导猫张嘴"},
+        {"name": "听诊器", "type": "身份标识", "function": "黑色医用听诊器"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "疯狂兽医/巨嘴示范者", "abilities": "", "states": ""},
+        {"name": "橘猫", "persona": "宠物患者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1036-视频拆解报告(11).md",
+    "analysis": {
+      "name": "柔术女王越狱挑战",
+      "video_type": "形式类",
+      "hook_tags": "异常行为",
+      "hook": "海滩上rumi在监狱栏杆后右腿180度竖直劈叉",
+      "video_tags": "热血",
+      "technique": "Level1普通栏杆侧身穿过→Level2网格四肢折叠钻出→Level3极限安全监狱10cm缝隙匍匐挤过→三关全通",
+      "mechanism_name": "递进难度极限挑战",
+      "mechanism": "简单关卡展示基础能力→中等关卡展示进阶技巧→极限关卡看似不可能→分步骤完成→观众惊叹",
+      "protagonist": "rumi",
+      "protagonist_goal": "通过三种不同难度的监狱围栏",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "热带海滩", "function": "阳光明媚的极限柔术挑战场"}],
+      "props": [
+        {"name": "Level1栏杆", "type": "初级障碍", "function": "木框镶嵌灰色金属圆管"},
+        {"name": "Level2网格", "type": "中级障碍", "function": "生锈方形网格金属架"},
+        {"name": "Level3金属墙", "type": "终极障碍", "function": "底部仅10cm缝隙的蓝色金属门"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "极度柔韧的挑战者", "abilities": "超级柔韧性,180度劈叉", "states": ""},
+        {"name": "romance", "persona": "主持人/解说者", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]

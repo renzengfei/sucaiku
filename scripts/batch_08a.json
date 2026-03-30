@@ -1,0 +1,149 @@
+[
+  {
+    "filename": "1037-视频拆解报告(2).md",
+    "analysis": {
+      "name": "蓝色液体跨次元互喷",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "mira坐在电脑前，屏幕里的romance突然伸手穿透屏幕向她抓去",
+      "video_tags": "搞笑",
+      "technique": "romance从屏幕伸手要饮料→mira含满蓝色液体喷向屏幕→romance被喷满脸→反向喷回mira→rumi跑来误以为是鬼→一拳砸碎屏幕→尴尬大笑",
+      "mechanism_name": "跨次元互喷+误判暴力",
+      "mechanism": "屏幕内角色破维互动→屏幕外角色反击→双向喷射升级→第三方误判为恐怖→过激反应毁坏物品",
+      "protagonist": "mira",
+      "protagonist_goal": "阻止romance从屏幕伸手抢饮料",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "现代居家工作室", "function": "暖白木质的跨次元互动场"}],
+      "props": [
+        {"name": "巨型笔记本电脑", "type": "次元媒介", "function": "MacBook风格的跨次元互动入口"},
+        {"name": "深蓝色饮料", "type": "武器道具", "function": "高饱和蓝色粘稠液体"}
+      ],
+      "characters": [
+        {"name": "mira", "persona": "喷水反击者", "abilities": "", "states": "满脸蓝色液体"},
+        {"name": "romance", "persona": "屏幕内破维者", "abilities": "", "states": "满脸蓝色液体"},
+        {"name": "rumi", "persona": "误判暴力者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1038-视频拆解报告(3).md",
+    "analysis": {
+      "name": "僵尸整蛊披萨店揉面",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "秋季街道上rumi惊恐指向地面由枯叶拼成的张着血盆大口的mira巨大肖像",
+      "video_tags": "搞笑",
+      "technique": "落叶肖像吓rumi→jinu嘲笑→披萨店吃拉丝披萨→rumi变僵尸脸→jinu逃跑→mira递账单没钱→求订阅免单→厨房揉面惩罚",
+      "mechanism_name": "嘲笑者被反整+第四面墙求助",
+      "mechanism": "A嘲笑B胆小→B反过来整蛊A变僵尸→A落荒而逃→B赢了但面临新危机→打破第四面墙求观众帮忙",
+      "protagonist": "rumi",
+      "protagonist_goal": "用僵尸变身反击jinu的嘲笑然后逃脱账单",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "秋意纽约街道", "function": "暖橙深秋的落叶惊吓场"},
+        {"name": "复古披萨店", "function": "暖黄调的僵尸反转场"},
+        {"name": "商业厨房", "function": "冷白荧光的揉面惩罚场"}
+      ],
+      "props": [
+        {"name": "落叶肖像", "type": "惊吓道具", "function": "枫叶拼成的mira巨型脸部"},
+        {"name": "培根披萨", "type": "变身媒介", "function": "拉丝效果触发僵尸变身"},
+        {"name": "面团", "type": "惩罚道具", "function": "揉面团引导观众互动"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "僵尸整蛊者/揉面受罚者", "abilities": "", "states": "僵尸绿脸(特效)"},
+        {"name": "jinu", "persona": "嘲笑者/被吓逃跑者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "女仆服务员", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1039-视频拆解报告(4).md",
+    "analysis": {
+      "name": "冰封rumi化冰为金",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "冷色调病房里rumi全身被冰晶覆盖躺在病床上，mira在旁边痛哭",
+      "video_tags": "热血, 感动",
+      "technique": "医院冰封苏醒→海滩自带降温→触碰拉面瞬间冻结→脚伸入湖水冻住整个湖面→开溜冰场收费→暴富→SPA金色浴缸破冰重生→朋友排球大团圆",
+      "mechanism_name": "诅咒转化为商业价值",
+      "mechanism": "角色获得诅咒型能力→生活受阻→发现能力的商业价值→赚大钱→用钱解除诅咒→回归正常",
+      "protagonist": "rumi",
+      "protagonist_goal": "利用冰封能力赚钱并最终解除诅咒",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "未来感病房", "function": "冷紫色调的苏醒场"},
+        {"name": "夏日海滩/湖泊", "function": "高饱和的冰火碰撞场"},
+        {"name": "SPA会所", "function": "金色液态的重生场"}
+      ],
+      "props": [
+        {"name": "冰封拉面", "type": "能力展示", "function": "触碰瞬间冻成实心冰块"},
+        {"name": "$100/HR牌子", "type": "商业道具", "function": "木质手写字体的溜冰场收费牌"},
+        {"name": "金色浴缸", "type": "解咒工具", "function": "融化冰层恢复人形"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "冰封者/商业奇才", "abilities": "触碰任何物体使其冰冻", "states": "全身冰晶化"},
+        {"name": "mira", "persona": "痛哭的朋友", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "小伙伴/滑冰者", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "小伙伴/拉面递送者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1040-视频拆解报告(5).md",
+    "analysis": {
+      "name": "三扇小门老虎破墙",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "蓝发女孩蹲在浅蓝色墙壁前，墙上有三扇绿白紫微型门",
+      "video_tags": "惊悚",
+      "technique": "开绿门→怪手抓出→关门→开紫门→大蜘蛛爬出→关门→开白门→空的松口气→站起来→白门上方墙壁爆炸老虎破墙而出",
+      "mechanism_name": "递进恐惧+意外维度反转",
+      "mechanism": "左门危险→右门也危险→中间门安全→以为安全时→危险从意想不到的维度(上方)出现",
+      "protagonist": "rumi",
+      "protagonist_goal": "找到安全的门",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "极简室内角落", "function": "浅蓝色童话风的恐惧实验场"}],
+      "props": [
+        {"name": "三扇微型门", "type": "核心道具", "function": "30cm高的绿白紫异空间入口"},
+        {"name": "老虎", "type": "终极威胁", "function": "从墙壁上方破墙而出"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "好奇探索者/恐惧受害者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1041-视频拆解报告(6).md",
+    "analysis": {
+      "name": "爆米花触发八臂英雄",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi在厨房炸爆米花，jinu从背后搭肩试图吓唬她",
+      "video_tags": "热血",
+      "technique": "炸爆米花→jinu吓唬→爆米花落脚上→rumi捂嘴嘘→jinu面部充血变异→长出八臂坐轮椅→rumi推轮椅穿越各场景→飞出屏幕→八臂挡住倒塌广告牌保护小女孩",
+      "mechanism_name": "憋住能量+英雄释放",
+      "mechanism": "搞笑触发→被迫憋住→能量在体内变异→极速穿越积蓄→最终在危机时刻释放保护弱者",
+      "protagonist": "jinu",
+      "protagonist_goal": "在能量失控前找到释放方式保护他人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "现代厨房", "function": "高调照明的能量触发场"},
+        {"name": "赛博朋克街道", "function": "霓虹冷色的极速穿越场"},
+        {"name": "城市广场", "function": "正午强光的英雄降临场"}
+      ],
+      "props": [
+        {"name": "平底锅/爆米花", "type": "能量载体", "function": "红色100标志的百分百能量加载"},
+        {"name": "紫色轮椅", "type": "穿越工具", "function": "LED发光车轮的受限爆发载体"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "调皮者→八臂英雄", "abilities": "长出六只额外手臂,紫色闪电", "states": "面部充血变红紫色泪水"},
+        {"name": "rumi", "persona": "推轮椅的守护者", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]

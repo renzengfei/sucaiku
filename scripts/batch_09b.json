@@ -1,0 +1,130 @@
+[
+  {
+    "filename": "1053-视频拆解：Where did Jinu go_.md",
+    "analysis": {
+      "name": "憋笑到南极分贝挑战",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "mira端着玉米片走进客厅摔了一跤脸扣进盘子里满脸牛油果酱",
+      "video_tags": "搞笑",
+      "technique": "mira脸扣玉米片→捂住jinu嘴不让笑(rumi在备考)→jinu憋不住逃出门→举牌搭车→开G级去南极→被冻僵→登上科考船→rumi学完问jinu去哪了→电视上jinu参加分贝挑战爆发尖叫→飞机拉出HAHAHAHA",
+      "mechanism_name": "压抑积蓄→极端释放",
+      "mechanism": "因强力压制不许笑→压抑到极限→逃往地球最远处→找到释放场所→积攒的情绪以毁天灭地的方式爆发",
+      "protagonist": "jinu",
+      "protagonist_goal": "找到一个可以安全大笑的地方",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "现代豪宅客厅", "function": "高压不许出声的压抑场"},
+        {"name": "南极冰原", "function": "极致蓝白的逃离冻僵场"},
+        {"name": "分贝挑战舞台", "function": "霓虹爆炸的极致释放场"}
+      ],
+      "props": [
+        {"name": "骷髅警告牌", "type": "威胁道具", "function": "发出声音你就死定了的手绘警告"},
+        {"name": "红色奔驰G级", "type": "逃离工具", "function": "金属红烤漆的逃亡载体"},
+        {"name": "分贝计屏幕", "type": "释放量化", "function": "最高99999的情绪数字化"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "憋笑逃亡者/分贝挑战冠军", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "搞笑摔倒者/捂嘴压制者", "abilities": "", "states": "满脸牛油果酱"},
+        {"name": "rumi", "persona": "备考中的恐怖低气压制造者", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "酷酷的司机", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "极地向导", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1054-视频深度影视拆解报告.md",
+    "analysis": {
+      "name": "魔法火车许愿三连",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "暴风雪中jinu拉开带巨大齿轮的金属车门冲入蒸汽朋克火车",
+      "video_tags": "搞笑, 感动",
+      "technique": "jinu拉操纵杆→暴风雪变海滩换夏威夷衫→rumi许愿变有钱→水晶宫殿金钱雨公主裙→romance许愿梦中情人→mira出现互相嫌弃→强制婚礼拱门结婚",
+      "mechanism_name": "魔法许愿反转成真",
+      "mechanism": "发现魔法机制→第一愿物质满足→第二愿财富满足→第三愿感情→结果不如预期→但命运强制成真→嫌弃变甜蜜",
+      "protagonist": "jinu",
+      "protagonist_goal": "在暴风雪中寻找温暖",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "蒸汽朋克火车车厢", "function": "黄铜齿轮暖灯的魔法操控场"},
+        {"name": "碧海沙滩", "function": "高饱和的度假愿望场"},
+        {"name": "水晶宫殿", "function": "银白蓝紫折射的财富愿望场"},
+        {"name": "户外婚礼", "function": "玫瑰花廊的命运成真场"}
+      ],
+      "props": [
+        {"name": "黄铜操纵杆", "type": "魔法开关", "function": "三球手柄齿轮底座的现实-幻想切换器"},
+        {"name": "齿轮转门", "type": "能量可视化", "function": "三组啮合齿轮的火车能量运作展示"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "第一个许愿者(温暖)", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "第二个许愿者(财富)", "abilities": "", "states": "粉金公主裙"},
+        {"name": "romance", "persona": "第三个许愿者(真爱)", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "命运配对的不情愿新娘", "abilities": "", "states": "白色婚纱"},
+        {"name": "zoye", "persona": "加冕侍从", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1055-视频深度拆解报告(1).md",
+    "analysis": {
+      "name": "假蜘蛛英雄骗局揭穿",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi和jinu甜蜜对视飘着粉色爱心，abby单膝跪地献殷勤被rumi驱赶",
+      "video_tags": "搞笑",
+      "technique": "甜蜜对视→abby骚扰→地上出现蜘蛛→jinu吓到后空翻躲柜顶→abby淡定捏起蜘蛛当英雄→rumi踢走胆小jinu→jinu偷看发现abby裤兜有假蜘蛛包→冲进去扯掉帽子露出光头→踢屁股放绿色臭屁",
+      "mechanism_name": "自编自演英雄被揭穿",
+      "mechanism": "角色A自导自演危机→角色A英雄救美→受害者被骗→真相被第三方偶然发现→骗子被公开羞辱双重暴露(秃头+放屁)",
+      "protagonist": "jinu",
+      "protagonist_goal": "揭穿abby自导自演的假蜘蛛骗局",
+      "antagonist": "abby",
+      "antagonist_goal": "用假蜘蛛自编自演英雄救美骗取rumi好感",
+      "scenes": [{"name": "现代公寓客厅", "function": "明亮高调的搞笑揭穿场"}],
+      "props": [
+        {"name": "黑色假蜘蛛", "type": "整蛊工具", "function": "毛茸茸塑料材质的自编自演道具"},
+        {"name": "黄色针织帽", "type": "伪装工具", "function": "遮掩光头的证据"},
+        {"name": "绿色臭屁烟雾", "type": "惩罚特效", "function": "被踢后喷出的绿色粒子"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "胆小但聪明的揭穿者", "abilities": "后空翻", "states": ""},
+        {"name": "rumi", "persona": "被骗的甜蜜女生", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "自编自演的假英雄", "abilities": "", "states": "光头(帽下)"}
+      ]
+    }
+  },
+  {
+    "filename": "1056-视频深度拆解报告.md",
+    "analysis": {
+      "name": "触物成冰蝴蝶诅咒",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "深夜rumi熟睡时一只幽蓝色发光蝴蝶飞入她微张的口中",
+      "video_tags": "惊悚, 热血",
+      "technique": "蝴蝶入口获得冰冻诅咒→触碰水果冻成冰→炸鸡挂霜→水流凝固→壁炉火焰都被冻住→手机长冰刺→玻璃门炸裂→跑车冻白→举牌求救→医院jinu被碰后变冰雕→zoye实验室配药→喝下解药康复→握手时zoye手掌起火→诅咒从冰变成火",
+      "mechanism_name": "诅咒能力递进+反转升级",
+      "mechanism": "获得诅咒→从小物到大物到人体逐级验证→寻找解药→治愈假象→诅咒进化为更极端形态",
+      "protagonist": "rumi",
+      "protagonist_goal": "解除触物成冰的蝴蝶诅咒",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "奢华主卧", "function": "月光幽暗的诅咒起源场"},
+        {"name": "现代厨房", "function": "高调照明的触物成冰验证场"},
+        {"name": "医院走廊/实验室", "function": "冷白日光的求医解药场"}
+      ],
+      "props": [
+        {"name": "幽蓝蝴蝶", "type": "诅咒载体", "function": "半透明CG发光蝴蝶"},
+        {"name": "冰封火焰", "type": "能力极致展示", "function": "蓝白色玻璃质感的固态火"},
+        {"name": "橙色解药", "type": "虚假治愈", "function": "荧光液体只是让诅咒从冰变火"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "诅咒受害者", "abilities": "触物成冰", "states": "惨白肤色冰霜满脸"},
+        {"name": "jinu", "persona": "被冻成冰雕的医生", "abilities": "", "states": "全身冰封透明化"},
+        {"name": "zoye", "persona": "配药天才女医", "abilities": "", "states": "手掌起火(结尾)"}
+      ]
+    }
+  }
+]

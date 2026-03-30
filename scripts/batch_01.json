@@ -1,0 +1,327 @@
+[
+  {
+    "filename": "0967-影视拆解报告：Zombie Outbreak.md",
+    "analysis": {
+      "name": "丧尸爆发预言",
+      "video_type": "故事类",
+      "hook_tags": "惊险, 异常行为",
+      "hook": "rumi熟睡中被僵尸之手包围，猛然惊醒",
+      "video_tags": "恐怖, 感动",
+      "technique": "预言真相无人相信→逐级递增的社交拒绝（困惑→嘲讽→理性否定）→最终孤立崩溃",
+      "mechanism_name": "卡桑德拉困境",
+      "mechanism": "真相持有→逐级求助→每一级以不同方式否定→绝望累积→孤立爆发",
+      "protagonist": "rumi",
+      "protagonist_goal": "在2小时内说服所有人准备应对丧尸爆发",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "噩梦深渊", "function": "建立超自然恐惧感和梦境真实性"},
+        {"name": "公寓室内", "function": "提供生活化的社交拒绝场景（Zoye卧室、Mira玄关、Jinu游戏角）"},
+        {"name": "空旷街道", "function": "冷蓝色调呈现末日前的死寂，象征角色的绝对孤立"}
+      ],
+      "props": [
+        {"name": "游戏手柄", "type": "电子设备", "function": "象征安逸生活与对外界警告的漠视"},
+        {"name": "僵尸之手", "type": "超自然元素", "function": "噩梦中的关键视觉元素，植入原始恐惧"},
+        {"name": "房门", "type": "建筑结构", "function": "隔绝真相与偏见的物理屏障"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "预言持有者/孤立英雄", "abilities": "", "states": ""},
+        {"name": "先知rumi", "persona": "预言传递者/催化者", "abilities": "", "states": "黑色机能风战斗姿态"},
+        {"name": "zoye", "persona": "质疑者（困惑型）", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "质疑者（嘲讽型）", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "质疑者（理性否定型）", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0968-影视级深度拆解：Never feel sorry for a guy like Jinu!.md",
+    "analysis": {
+      "name": "抢座位忘恩负义",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "jinu和伙伴们端着面碗拼命冲向餐桌抢座位",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "善良被利用的即时反转→同情心被精准背叛→暴力正义收尾，反差极致",
+      "mechanism_name": "农夫与蛇",
+      "mechanism": "角色陷入困境→好心人出现施以援手→角色利用好心人→好心人愤怒惩罚",
+      "protagonist": "rumi",
+      "protagonist_goal": "出于善良陪伴孤独的jinu",
+      "antagonist": "jinu",
+      "antagonist_goal": "抢到餐桌座位",
+      "scenes": [
+        {"name": "现代公寓餐厅", "function": "明亮温馨的抢座竞技场"},
+        {"name": "走廊墙角", "function": "光线暗淡的孤独角落，衬托jinu的卑微感"}
+      ],
+      "props": [
+        {"name": "拉面碗", "type": "食物容器", "function": "既是日常食物载体，又是最终的惩罚道具"},
+        {"name": "拉面", "type": "食物", "function": "红油汤底的泼溅视觉冲击力制造喜剧高潮"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "虚荣的背叛者", "abilities": "", "states": "被拉面扣头"},
+        {"name": "rumi", "persona": "善良的惩罚者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "配角/抢座成功者", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "配角/抢座成功者", "abilities": "", "states": ""},
+        {"name": "mystery", "persona": "配角/抢座成功者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0969-视频专业影视拆解分析报告(1).md",
+    "analysis": {
+      "name": "蔬菜变异减肥记",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 异常元素",
+      "hook": "jinu咬下黄瓜后身体瞬间拉伸撞到天花板",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "每次尝试减肥都触发荒诞的基因变异（变高→变绿→爆炸头→变肌肉男），与初始目标完全背离",
+      "mechanism_name": "连环反效果",
+      "mechanism": "明确目标→尝试手段→结果与目标完全相反→更换手段→更离谱的反效果→循环升级",
+      "protagonist": "rumi",
+      "protagonist_goal": "帮jinu减肥",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "居家厨房", "function": "温馨的减肥实验起点"},
+        {"name": "专业工作室厨房", "function": "提升实验严肃感"},
+        {"name": "橙墙实验区", "function": "强调变异后的色彩对比"}
+      ],
+      "props": [
+        {"name": "变异蔬菜", "type": "食物/触发器", "function": "每种蔬菜对应一种夸张的物理形变"},
+        {"name": "科学甜甜圈", "type": "食物/触发器", "function": "终极变异触发器，导致jinu变成abby"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "被实验者/受害者", "abilities": "", "states": "变高, 变绿, 橙色爆炸头"},
+        {"name": "rumi", "persona": "疯狂实验者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "变异最终形态", "abilities": "", "states": "肌肉极度夸张"}
+      ]
+    }
+  },
+  {
+    "filename": "0970-视频专业影视拆解分析报告(2).md",
+    "analysis": {
+      "name": "长发公主爬塔选择",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "石砌塔楼上垂下紫蓝绿三条巨大发辫",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "颜色选择预设命运→一人获奖一人遭殃→选错颜色的人见到菲奥娜式怪物公主",
+      "mechanism_name": "盲选赌注",
+      "mechanism": "多选项呈现→角色基于错误假设选择→过程中暗示选错→揭晓结果天差地别",
+      "protagonist": "jinu",
+      "protagonist_goal": "爬上紫色发辫见到rumi",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "中世纪石塔", "function": "童话式挑战场景，三色发辫提供选择"},
+        {"name": "塔顶", "function": "揭晓奖励/惩罚的终点"}
+      ],
+      "props": [
+        {"name": "三色巨型发辫", "type": "攀爬工具", "function": "紫蓝绿三选一，颜色预示命运"},
+        {"name": "金砖", "type": "奖励", "function": "努力的实物化回报"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "成功挑战者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "奖励给予者", "abilities": "", "states": ""},
+        {"name": "Chuck", "persona": "失败挑战者/笑料制造者", "abilities": "", "states": ""},
+        {"name": "绿色公主", "persona": "惩罚揭晓者", "abilities": "", "states": "翠绿皮肤的菲奥娜形象"}
+      ]
+    }
+  },
+  {
+    "filename": "0971-视频专业影视拆解分析报告.md",
+    "analysis": {
+      "name": "丛林砸手大逃亡",
+      "video_type": "故事类",
+      "hook_tags": "惊险, 冲突",
+      "hook": "rumi高举岩石准备砸下，蝙蝠惊吓导致砸到jinu手指",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "真实痛苦被强制压制（塞嘴）→跨越荒诞场景（丛林→LV店→沙漠→海滩）→最终释放引发超现实奇观",
+      "mechanism_name": "痛苦压制与释放",
+      "mechanism": "痛苦触发→不能叫的理由→长距离压制→释放时的超现实爆发",
+      "protagonist": "jinu",
+      "protagonist_goal": "释放被压制的痛苦尖叫",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "热带丛林", "function": "制造意外伤害和猛兽威胁"},
+        {"name": "LV商业街", "function": "荒诞的时空穿越+展现rumi爱包的性格侧面"},
+        {"name": "荒漠", "function": "仙人掌补刀制造持续伤害"},
+        {"name": "海滩", "function": "痛苦释放的终点，巨浪奇观的舞台"}
+      ],
+      "props": [
+        {"name": "封口布", "type": "压制工具", "function": "压制jinu的尖叫，驱动'不能叫'的核心机制"},
+        {"name": "仙人掌", "type": "伤害道具", "function": "沙漠中的补刀道具"},
+        {"name": "手机", "type": "电子设备", "function": "结尾rumi自拍，体现社交媒体狂热属性"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "持续受害者", "abilities": "", "states": "手指被砸伤, 嘴被塞布"},
+        {"name": "rumi", "persona": "施救者/社交狂热者", "abilities": "超强体能", "states": "公主抱jinu狂奔"}
+      ]
+    }
+  },
+  {
+    "filename": "0972-视频专业影视拆解报告(1).md",
+    "analysis": {
+      "name": "甜甜圈葬礼",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi正在吃甜甜圈时被猫爪打掉",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "将日常小事（甜甜圈掉地）用极度庄严的仪式感处理（送医→葬礼→入土），荒诞反差制造笑点",
+      "mechanism_name": "小事大办",
+      "mechanism": "微不足道的损失→用极端庄严的仪式处理（医院→教堂→墓地）→悲剧感登峰造极→一键复活逆转",
+      "protagonist": "rumi",
+      "protagonist_goal": "悼念并安葬心爱的甜甜圈",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "室内客厅", "function": "日常温馨的事故发生地"},
+        {"name": "医院走廊/手术室", "function": "将甜甜圈掉落升格为生死一线"},
+        {"name": "教堂", "function": "宗教仪式化的肃穆悲伤"},
+        {"name": "雨中墓地", "function": "悲剧感的最高点"},
+        {"name": "神圣复活场景", "function": "金光升起的奇迹逆转"}
+      ],
+      "props": [
+        {"name": "粉色甜甜圈", "type": "食物/灵魂道具", "function": "贯穿全片，其死亡驱动所有情节"},
+        {"name": "黄金小棺材", "type": "仪式道具", "function": "金色镜面材质，极尽奢华的葬礼规格"},
+        {"name": "甜甜圈遗照", "type": "仪式道具", "function": "黑框相框，提升荒诞感"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "极度悲伤的失主", "abilities": "", "states": "坐轮椅大哭"},
+        {"name": "蓝猫", "persona": "事故触发者", "abilities": "", "states": ""},
+        {"name": "mystery", "persona": "神父/外卖员（双重身份）", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "陪伴者", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "陪伴者/轮椅推手", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "抬棺者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "抬棺者", "abilities": "", "states": ""},
+        {"name": "baby", "persona": "医生", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0973-视频专业影视拆解报告(2).md",
+    "analysis": {
+      "name": "不公平竞赛三连",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常元素",
+      "hook": "jinu自信抢走巨型钢叉，认为大的更好",
+      "video_tags": "搞笑, 竞赛",
+      "technique": "三轮竞赛每轮都因jinu的错误选择失败→大叉子叉不起葡萄、牙刷扫不了地、背红砖爬楼→递进式打脸",
+      "mechanism_name": "错误选择递进",
+      "mechanism": "多轮竞赛→每轮角色自信选错工具→工具反噬导致失败→最终揭晓被暗算的真相",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得竞赛",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过选择大/特殊工具赢得竞赛",
+      "scenes": [
+        {"name": "灰色背景棚", "function": "极简环境凸显工具对比"},
+        {"name": "现代办公室", "function": "第二轮清洁比赛的场地"},
+        {"name": "颁奖礼礼堂", "function": "宣布胜负的仪式感场景"},
+        {"name": "楼梯间", "function": "负重爬楼的折磨场景"}
+      ],
+      "props": [
+        {"name": "巨型钢叉", "type": "竞赛工具", "function": "大而不当的负累，叉不起葡萄"},
+        {"name": "牙刷", "type": "竞赛工具", "function": "精细但无效率的清洁工具"},
+        {"name": "负重背包", "type": "竞赛工具", "function": "内藏红砖的诡计道具"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "聪明的赢家", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "自信却总选错的输家", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "竞赛裁判", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0974-视频专业影视拆解报告(3).md",
+    "analysis": {
+      "name": "点石成金的诅咒",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 异常元素",
+      "hook": "jinu亲吻rumi手指后打喷嚏，金粉喷出将苹果变成纯金",
+      "video_tags": "荒诞, 感动",
+      "technique": "点石成金从惊喜到诅咒→能力从小件到大件再到身体→从狂喜到绝望的情绪翻转",
+      "mechanism_name": "迈达斯之触",
+      "mechanism": "获得超能力→小规模验证欣喜→能力失控扩大→侵蚀自身→美好变成诅咒",
+      "protagonist": "jinu",
+      "protagonist_goal": "控制住点石成金的能力",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "极简工作室", "function": "温馨浪漫的能力激活场景"},
+        {"name": "城市街道", "function": "能力失控的公共空间"},
+        {"name": "黄金街道", "function": "末世华丽感的终极视觉景观"}
+      ],
+      "props": [
+        {"name": "金苹果", "type": "变异产物", "function": "点石成金能力的第一个证据"},
+        {"name": "金色沙发", "type": "变异产物", "function": "能力升级的证据"},
+        {"name": "黄金街道", "type": "环境", "function": "能力失控的终极视觉表现"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "被诅咒的能力者", "abilities": "点石成金（喷嚏/咳嗽触发）", "states": "右手金属化, 口腔金光"},
+        {"name": "rumi", "persona": "焦急的旁观者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0975-视频专业影视拆解报告.md",
+    "analysis": {
+      "name": "邋遢变美被骗",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi满脸胡茬、腋毛外露地邋遢睡觉",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "极致的前后反差（邋遢→精致）+期待与现实的落差（以为是男神→其实是手机视频）",
+      "mechanism_name": "变美白忙活",
+      "mechanism": "邋遢态暴露→外部刺激触发变美→极速变装完成→开门揭晓刺激是假的→愤怒惩罚",
+      "protagonist": "rumi",
+      "protagonist_goal": "在男神到来前完成变美",
+      "antagonist": "romance",
+      "antagonist_goal": "用jinu的视频戏弄rumi",
+      "scenes": [
+        {"name": "北欧风卧室", "function": "展示邋遢初始态"},
+        {"name": "现代浴室", "function": "极速变装的战场"},
+        {"name": "走廊玄关", "function": "开门揭晓反转的场景"}
+      ],
+      "props": [
+        {"name": "手机", "type": "电子设备", "function": "播放jinu视频，揭示'男神到来'是骗局"},
+        {"name": "剃须刀", "type": "变装工具", "function": "极速变美的功能符号"},
+        {"name": "吹风机", "type": "变装工具", "function": "极速变美的功能符号"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "邋遢→精致的变装者", "abilities": "", "states": "满脸胡茬, 腋毛外露"},
+        {"name": "jinu", "persona": "猫眼中的虚幻男神", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "恶作剧者/被打者", "abilities": "", "states": "被rumi暴揍"}
+      ]
+    }
+  },
+  {
+    "filename": "0976-视频专业影视拆解：Rumi与Jinu的LEGO博弈.md",
+    "analysis": {
+      "name": "LEGO车人质博弈",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi在阳台悬空拎着jinu的LEGO车威胁要扔下楼",
+      "video_tags": "搞笑",
+      "technique": "互相用对方心爱之物作人质→口红被毁→车假装坠落实际有绳→信用卡止损达成和解",
+      "mechanism_name": "人质交换博弈",
+      "mechanism": "双方各持对方软肋→威胁升级→一方过激操作→另一方以更高筹码止损→达成新平衡",
+      "protagonist": "rumi",
+      "protagonist_goal": "用LEGO车要挟获取更大利益（信用卡）",
+      "antagonist": "jinu",
+      "antagonist_goal": "保住心爱的LEGO车",
+      "scenes": [
+        {"name": "高层阳台", "function": "制造坠落威胁的悬崖式博弈场景"},
+        {"name": "卧室", "function": "jinu疯狂搜寻补偿礼物的场所"}
+      ],
+      "props": [
+        {"name": "LEGO布加迪跑车", "type": "人质道具", "function": "jinu的软肋，系有隐藏细绳"},
+        {"name": "红色口红", "type": "人质道具", "function": "rumi的软肋，被jinu掰断"},
+        {"name": "金色信用卡", "type": "止损工具", "function": "终极补偿道具，瞬间转化rumi情绪"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "精明博弈者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "被算计的妥协者", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]

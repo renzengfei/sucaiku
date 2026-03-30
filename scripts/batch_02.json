@@ -1,0 +1,316 @@
+[
+  {
+    "filename": "0977-视频专业拆解报告(1).md",
+    "analysis": {
+      "name": "车内放错歌真香",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu急匆匆坐进副驾急系安全带，车内突然播出搞怪猫叫音乐",
+      "video_tags": "搞笑",
+      "technique": "尴尬氛围→全员石化→本人试图关闭→被阻止→音乐drop后全员真香狂欢",
+      "mechanism_name": "尴尬真香",
+      "mechanism": "公开出丑→极度尴尬→试图挽回→被阻止→意外发现好处→集体真香",
+      "protagonist": "jinu",
+      "protagonist_goal": "阻止关闭音乐，引爆全车嗨翻",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "SUV车内", "function": "封闭空间放大尴尬感和狂欢感"}
+      ],
+      "props": [
+        {"name": "车载中控屏", "type": "电子设备", "function": "触发误播和反转的媒介"},
+        {"name": "安全带", "type": "安全装置", "function": "从准备出发到投入派对的状态转变符号"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "反转引爆者", "abilities": "", "states": ""},
+        {"name": "蓝发女孩", "persona": "尴尬触发者/驾驶员", "abilities": "", "states": "脸红"},
+        {"name": "rumi", "persona": "后座反应者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "后座反应者", "abilities": "", "states": ""},
+        {"name": "黄帽子男生", "persona": "后座反应者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0978-视频专业拆解报告(10).md",
+    "analysis": {
+      "name": "木雕Mira生日礼物",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 疑问",
+      "hook": "rumi用锤子凿子在公园雕刻等身木偶，彩虹马尾女孩躲在树后偷看",
+      "video_tags": "治愈, 感动",
+      "technique": "手工制作过程展示→第三方视角引入悬念→揭晓是生日礼物→合作完成→温馨结局",
+      "mechanism_name": "手作惊喜揭晓",
+      "mechanism": "神秘制作过程→旁观者好奇→逐步揭晓意图→共同参与→成品展示",
+      "protagonist": "rumi",
+      "protagonist_goal": "为mira制作等身木雕生日礼物",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "户外公园", "function": "午后阳光下的手工创作场景"}
+      ],
+      "props": [
+        {"name": "木雕工具组", "type": "工具", "function": "展现手工制作的质感"},
+        {"name": "调色盘与画笔", "type": "工具", "function": "推动从半成品到成品的跨越"},
+        {"name": "LIKE/SUBSCRIBE牌子", "type": "互动道具", "function": "社交媒体互动符号"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "匠心创作者", "abilities": "", "states": ""},
+        {"name": "彩虹马尾女孩", "persona": "好奇旁观者/合作者", "abilities": "", "states": ""},
+        {"name": "mira木偶", "persona": "创作成品", "abilities": "", "states": "1:1木雕BJD风格"}
+      ]
+    }
+  },
+  {
+    "filename": "0979-视频专业拆解报告(11).md",
+    "analysis": {
+      "name": "人偶rumi被救赎",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "紫色发辫编织人偶rumi独自站在霓虹雨夜街头举着玫瑰花问路人做朋友",
+      "video_tags": "治愈, 感动",
+      "technique": "微小人偶vs巨大人类的视觉压迫→被踩踏激发同情→洗刷污垢的治愈过程→焕然一新的情感升华",
+      "mechanism_name": "弱者救赎",
+      "mechanism": "弱小角色求助→被冷漠伤害→英雄出现救助→修复创伤→重获新生",
+      "protagonist": "rumi(编织人偶)",
+      "protagonist_goal": "找到一个愿意做朋友的人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "霓虹雨夜街头", "function": "冷调压迫感，衬托人偶的渺小和孤独"},
+        {"name": "温馨洗手间", "function": "暖黄色调制造安全感和治愈感"},
+        {"name": "明亮客厅", "function": "高调照明展示重获新生的结局"}
+      ],
+      "props": [
+        {"name": "红色玫瑰", "type": "编织花", "function": "象征纯真与希望，被踩碎后象征希望破灭"},
+        {"name": "小刷子与肥皂", "type": "清洁工具", "function": "象征关怀与治愈的动作道具"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "弱小求助者/编织人偶", "abilities": "", "states": "沾满污泥"},
+        {"name": "jinu", "persona": "温柔救助者", "abilities": "", "states": ""},
+        {"name": "小jinu人偶", "persona": "迷你助手", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0980-视频专业拆解报告(2).md",
+    "analysis": {
+      "name": "巧克力轮胎肌肉男",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 异常元素",
+      "hook": "rumi蹲在草地上张大嘴狠咬一个巨大黑色轮胎",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "伪装食物设题→品尝揭真相→第三方误当器材→暴力使用→食物爆裂浇身→主人崩溃",
+      "mechanism_name": "伪装道具误用",
+      "mechanism": "A将食物伪装成日用品→留给B→C误认为本来用途→暴力使用导致爆裂→A回来发现崩溃",
+      "protagonist": "rumi",
+      "protagonist_goal": "把巧克力轮胎留给jinu",
+      "antagonist": "abby",
+      "antagonist_goal": "用轮胎健身",
+      "scenes": [
+        {"name": "美式后院", "function": "阳光明媚的喜剧舞台"}
+      ],
+      "props": [
+        {"name": "巧克力轮胎", "type": "伪装食物", "function": "外形像轮胎内部是巧克力浆，引发误会"},
+        {"name": "白色方布", "type": "铺垫布", "function": "暗示食物属性"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "甜品主人/崩溃者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "品尝验证者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "误用者/巧克力人", "abilities": "超强力量", "states": "全身浇满巧克力"}
+      ]
+    }
+  },
+  {
+    "filename": "0981-视频专业拆解报告(3).md",
+    "analysis": {
+      "name": "误会jinu画木偶",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常行为",
+      "hook": "rumi躲在树后惊恐地偷看jinu从背后紧贴一个金色礼服人影",
+      "video_tags": "搞笑",
+      "technique": "暧昧视角制造误会→愤怒冲突升级→扳过来揭晓是木头人→从暴怒到惊喜的即时情绪翻转",
+      "mechanism_name": "视角误导反转",
+      "mechanism": "观察者看到疑似出轨画面→愤怒行动→物理接触揭晓真相（是假人）→情绪180度反转",
+      "protagonist": "rumi",
+      "protagonist_goal": "阻止jinu的疑似出轨行为",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "别墅后花园", "function": "明亮的喜剧误会场景"}
+      ],
+      "props": [
+        {"name": "等身木头模特", "type": "核心反转道具", "function": "戴红色假发穿金色礼服，远看像mira近看是木头"},
+        {"name": "绿色水枪", "type": "伪武器", "function": "荧光绿塑料质感，强化荒诞的攻击感"},
+        {"name": "调色盘与画笔", "type": "工具", "function": "揭示jinu是在进行艺术创作（绘制彩虹）"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "误会者/冲动攻击者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "被误会的创作者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "真身（端蛋糕入场）", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0982-视频专业拆解报告(4).md",
+    "analysis": {
+      "name": "抢钥匙选错车",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "两把法拉利钥匙同时伸出，mira拍掉rumi的手抢先抓取",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "抢夺时自信选择→模特步离场强化优越感→打开车库发现三轮车→输家反转成兰博基尼车主",
+      "mechanism_name": "盲选反转",
+      "mechanism": "多选项呈现→贪心者抢先选择→过程中展示自信→结果揭晓完全反转→赢家变输家",
+      "protagonist": "rumi",
+      "protagonist_goal": "得到好车",
+      "antagonist": "mira",
+      "antagonist_goal": "抢到最好的钥匙",
+      "scenes": [
+        {"name": "豪宅客厅", "function": "温暖高级的选择场景"},
+        {"name": "豪宅走廊", "function": "大理石地板展示mira的模特步"},
+        {"name": "现代车库", "function": "冷蓝色荧光灯下的残酷揭晓"}
+      ],
+      "props": [
+        {"name": "法拉利标志钥匙", "type": "诱饵道具", "function": "视觉陷阱，误导选择"},
+        {"name": "亮绿色兰博基尼", "type": "奖励", "function": "真正的大奖"},
+        {"name": "破旧三轮车", "type": "惩罚", "function": "极致落差的笑料载体"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被欺负的幸运儿", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "贪心的输家", "abilities": "", "states": "骑三轮车追赶"}
+      ]
+    }
+  },
+  {
+    "filename": "0983-视频专业拆解报告(5).md",
+    "analysis": {
+      "name": "人偶rumi被霸凌的救赎",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常元素",
+      "hook": "紫色发辫玩偶rumi蜷缩在破纸箱里被老妇人踢飞",
+      "video_tags": "感动, 治愈",
+      "technique": "递进式霸凌（踢飞→再踢→涂鸦）→错误救助加深创伤→同类出现真正治愈→洗净重生",
+      "mechanism_name": "递进霸凌与救赎",
+      "mechanism": "弱者被A伤害→被B再伤害→被C错误救助（二次伤害）→被D真正理解并治愈→重生",
+      "protagonist": "rumi(编织人偶)",
+      "protagonist_goal": "找到真正理解自己的人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "贫民区巷弄", "function": "灰冷色调营造压抑凄凉感"},
+        {"name": "玩偶店门前", "function": "二次伤害的场景"},
+        {"name": "mira的房间", "function": "错误救助：用马克笔涂鸦"},
+        {"name": "紫发少女家", "function": "暖橙色调的真正治愈空间"}
+      ],
+      "props": [
+        {"name": "破纸箱", "type": "避难所", "function": "象征最卑微的庇护"},
+        {"name": "彩色马克笔", "type": "伤害工具", "function": "代表自以为是的救助造成二次伤害"},
+        {"name": "海绵与温水", "type": "治愈工具", "function": "象征真正的接纳与洗涤"},
+        {"name": "热茶", "type": "治愈道具", "function": "传递温暖与生命力"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被霸凌的弱者/编织人偶", "abilities": "", "states": "满脸涂鸦, 浑身湿透"},
+        {"name": "老妇人", "persona": "第一施暴者", "abilities": "", "states": ""},
+        {"name": "店主", "persona": "第二施暴者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "错误救助者", "abilities": "", "states": ""},
+        {"name": "紫发少女", "persona": "真正的救赎者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0984-视频专业拆解报告(6).md",
+    "analysis": {
+      "name": "Buy It三段递进",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 冲突",
+      "hook": "Mystery在卡皮巴拉店前疯狂跳跃嘶吼BUY IT",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "三段平行递进（玩偶→PS5→跑车），每段索要方式升级，最后一段反转为暴力惩罚",
+      "mechanism_name": "撒泼索要递进",
+      "mechanism": "角色A向B撒泼索要→方式从温和到疯狂→A以为成功→结果从满足到惩罚递进",
+      "protagonist": "",
+      "protagonist_goal": "",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "卡皮巴拉周边店", "function": "暖黄色温馨场景，萌系消费"},
+        {"name": "PS5数码店", "function": "冷蓝白科技感，潮流消费"},
+        {"name": "豪华车库", "function": "低调奢华，极致消费"}
+      ],
+      "props": [
+        {"name": "卡皮巴拉玩偶", "type": "消费品", "function": "萌系消费的代表"},
+        {"name": "PS5主机", "type": "电子产品", "function": "潮流科技消费的代表"},
+        {"name": "红色超跑", "type": "奢侈品", "function": "极致消费的代表"},
+        {"name": "拳击手套", "type": "惩罚工具", "function": "终止消费狂热的物理手段"}
+      ],
+      "characters": [
+        {"name": "mystery", "persona": "第一轮撒泼者", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "第一轮妥协者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "第二轮撒泼者/模仿升级", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "第二轮妥协者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "第三轮撒泼者/被揍", "abilities": "", "states": "双眼被打成黑青"},
+        {"name": "mira", "persona": "第三轮惩罚者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0985-视频专业拆解报告(7).md",
+    "analysis": {
+      "name": "秃头变男神骗rumi",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "秃顶啤酒肚的jinu瘫在脏乱沙发上吃薯片，门铃响起惊恐看向门口",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "极致丑态暴露→外部威胁来临→极限清理伪装（假发+健身）→华丽变身→女友被完美骗过",
+      "mechanism_name": "极限伪装变身",
+      "mechanism": "真实丑态暴露→突发访客→疯狂掩饰过程→不可思议的变身完成→对方完全被骗",
+      "protagonist": "jinu",
+      "protagonist_goal": "在rumi进门前完成从邋遢到男神的极限变身",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "现代公寓", "function": "从脏乱到整洁的变身舞台"}
+      ],
+      "props": [
+        {"name": "草莓蛋糕", "type": "触发器", "function": "rumi带来的惊喜，触发jinu的危机"},
+        {"name": "黑色假发", "type": "伪装道具", "function": "从垃圾桶翻出，掩盖秃头"},
+        {"name": "杠铃", "type": "健身器材", "function": "极限泵感瞬间改变体型的荒诞道具"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "极限伪装者", "abilities": "", "states": "秃顶, 啤酒肚, 满身污渍"},
+        {"name": "rumi", "persona": "被骗的访客", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0986-视频专业拆解报告(8).md",
+    "analysis": {
+      "name": "头发钓鱼扣锅",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 异常元素",
+      "hook": "rumi头顶扣着银色金属锅驾驶白色电动车急刹停在No Fishing告示牌前",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "禁止钓鱼规则→质疑他可以为什么我不行→用头发钓起巨鱼→顺手把锅扣在合法钓鱼者头上",
+      "mechanism_name": "规则漏洞碾压",
+      "mechanism": "规则限制→质疑不公平→用超常手段绕过规则→碾压式成功→顺手欺负正常人",
+      "protagonist": "rumi",
+      "protagonist_goal": "用自己的方式钓鱼",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "河滨长廊", "function": "阳光明媚的钓鱼对决场景"}
+      ],
+      "props": [
+        {"name": "银色金属锅", "type": "双用途道具", "function": "从rumi的防震头盔变为jinu的受难面具"},
+        {"name": "大鱼模型", "type": "成果道具", "function": "体型夸张的视觉反转证据"},
+        {"name": "No Fishing告示牌", "type": "规则符号", "function": "建立禁止钓鱼的规则前提"},
+        {"name": "白色电动车", "type": "交通工具", "function": "急刹车的酷炫开场"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "规则破坏者/碾压者", "abilities": "头发钓鱼", "states": "头顶扣锅"},
+        {"name": "romance", "persona": "规则执行者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "正常钓鱼者/受害者", "abilities": "", "states": "被锅扣头"}
+      ]
+    }
+  }
+]

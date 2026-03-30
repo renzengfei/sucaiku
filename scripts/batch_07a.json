@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "1027-视频专业级拆解报告.md",
+    "analysis": {
+      "name": "La Mer空瓶重塑奇迹",
+      "video_type": "形式类",
+      "hook_tags": "异常行为",
+      "hook": "mira贴着亮片泪痕绝望地要把La Mer空瓶扔进垃圾桶",
+      "video_tags": "搞笑",
+      "technique": "mira要扔贵价面霜空瓶→rumi冲出抢救→从瓶壁死角刮出大坨膏体→加精华油搅拌修复→涂脸验证效果",
+      "mechanism_name": "废弃贵物极限抢救",
+      "mechanism": "角色要丢弃贵重物品→另一角色阻止并展示隐藏价值→专业级修复过程→物品重生",
+      "protagonist": "rumi",
+      "protagonist_goal": "阻止mira丢弃空瓶并修复面霜",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "奢华化妆间", "function": "粉金白色高饱和的修复展示场"}],
+      "props": [
+        {"name": "La Mer瓶子", "type": "核心叙事媒介", "function": "代表高端资产的空瓶"},
+        {"name": "金色打蛋器", "type": "修复工具", "function": "增加专业感和解压属性"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "拯救者/修复专家", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "情绪化消费者", "abilities": "", "states": "亮片泪痕妆"},
+        {"name": "zoye", "persona": "助手/展示者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1028-视频专业级拆解报告（修正版）.md",
+    "analysis": {
+      "name": "街头小孩救赎冷漠jinu",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "jinu抓着rumi手腕在街道奔跑赶电影，rumi的靴子踢翻了路边乞讨小孩的碗硬币散落",
+      "video_tags": "感动",
+      "technique": "赶电影踢翻碗→rumi内疚回头→帮小孩捡硬币→小孩送玫瑰→jinu急躁催促→踩水坑摔倒→小孩贴创可贴捡本子→jinu心态转变邀请看电影",
+      "mechanism_name": "以德报怨心态转化",
+      "mechanism": "角色A冷漠忽视弱者→角色B主动帮助弱者→A因因果报应受伤→弱者反过来帮助A→A心态转变",
+      "protagonist": "rumi",
+      "protagonist_goal": "弥补踢翻碗的过失帮小孩捡硬币",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "现代城市商业街", "function": "午后斜射光的善恶转化场"}],
+      "props": [
+        {"name": "乞讨碗与硬币", "type": "冲突道具", "function": "被踢翻引发核心事件"},
+        {"name": "创可贴", "type": "治愈道具", "function": "小孩贴在jinu额头推动心态转变"},
+        {"name": "红玫瑰", "type": "感恩道具", "function": "小孩送给rumi的感谢"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "冷漠催促者/被治愈者", "abilities": "", "states": "额头红肿贴创可贴"},
+        {"name": "rumi", "persona": "善良的同理者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "乞讨小女孩", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "乞讨小女孩", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1029-视频分析报告：Jinu vs. Rumi 挑战赛.md",
+    "analysis": {
+      "name": "三轮挑战贪心全败",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "公园里jinu和rumi相对而坐，两只手递出一大一小两个叉子，jinu抢先夺走大叉子",
+      "video_tags": "搞笑",
+      "technique": "第一轮选大叉子叉不起樱桃→第二轮学聪明选小牙刷扫不了落叶→第三轮抢两个包全背→爬山负重石头全败",
+      "mechanism_name": "策略进化全败循环",
+      "mechanism": "选大失败→吸取教训选小→又失败→两个都要→背了一山石头→策略越精明结果越惨",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得三轮挑战赛",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过策略选择赢过rumi但每次都选错",
+      "scenes": [
+        {"name": "公园", "function": "高调照明的第一轮叉子赛场"},
+        {"name": "秋季森林", "function": "金黄色调的扫叶赛场"},
+        {"name": "高山山脉", "function": "宏大透视的登顶赛场"}
+      ],
+      "props": [
+        {"name": "巨型叉子", "type": "陷阱道具", "function": "60cm不锈钢叉子叉不起樱桃"},
+        {"name": "微型牙刷", "type": "陷阱道具", "function": "红色小牙刷扫不了落叶"},
+        {"name": "黄色登山包", "type": "终极陷阱", "function": "内部装满花岗岩石块"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "轻松获胜者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "自作聪明的全败者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "裁判/主持人", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1030-视频分析：妈咪？的荒诞喜剧.md",
+    "analysis": {
+      "name": "肌肉猛男妈咪来了",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "公园草地上jinu和三个小孩野餐，小孩们突然指向前方兴奋喊Mommy",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "温馨野餐→小孩喊妈咪→jinu困惑→镜头揭示粉裙围裙肌肉猛男romance端蛋糕狂奔→jinu惨叫崩溃",
+      "mechanism_name": "身份揭示极端反差",
+      "mechanism": "温馨铺垫→悬念提问(谁是妈咪)→揭示答案与预期极端相反→角色崩溃",
+      "protagonist": "jinu",
+      "protagonist_goal": "带孩子们野餐",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "城市公园草坪", "function": "阳光明媚的温馨反转场"}],
+      "props": [
+        {"name": "粉色围裙", "type": "身份道具", "function": "romance自称妈咪的核心冲突点"},
+        {"name": "小白蛋糕", "type": "庆祝道具", "function": "插蜡烛的生日蛋糕"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "震惊崩溃的爸爸", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "穿粉裙围裙的肌肉妈咪", "abilities": "", "states": "粉色围裙粉色短裙金色大耳环"},
+        {"name": "rumi", "persona": "童年版/成年版双角色", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "小女孩", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "小女孩", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1031-视频影视拆解报告(1).md",
+    "analysis": {
+      "name": "吃辣椒喷火救冰封jinu",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi用银色夹子夹起绿色糖果，jinu伸手抢走塞进嘴里，瞬间喷出大量白色寒气",
+      "video_tags": "搞笑, 热血",
+      "technique": "抢糖果→被冻成冰块→热水壶无效→喷火枪无效→吃辣椒变身→喷出龙息融化冰块→成功救人",
+      "mechanism_name": "递进尝试+超能力觉醒",
+      "mechanism": "常规方法1失败→升级方法2失败→极端方法(吃辣椒)→触发超能力变身→一击解决",
+      "protagonist": "rumi",
+      "protagonist_goal": "用各种方法融化冰块救出被冻住的jinu",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "现代简约厨房", "function": "白色系的超现实奇幻战场"}],
+      "props": [
+        {"name": "绿色琥珀糖", "type": "触发道具", "function": "强效冷冻媒介"},
+        {"name": "工业喷火枪", "type": "失败工具", "function": "金色枪身黑色枪柄的常规武器"},
+        {"name": "红色辣椒堆", "type": "觉醒媒介", "function": "50颗红指天椒触发火力觉醒"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "救援者/龙息觉醒者", "abilities": "吃辣椒后喷射龙息", "states": "全身充血变红蓝色冷光双眼"},
+        {"name": "jinu", "persona": "贪食受害者/被冻者", "abilities": "", "states": "被冻在巨型冰块中"}
+      ]
+    }
+  }
+]

@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+*.mp4
+*.mp3
+*.mov
+# 不要跟踪原生的二进制数据库，只跟踪 database_backup.sql
+database.db

@@ -1,0 +1,310 @@
+[
+  {
+    "filename": "0997-视频专业级影视拆解报告(12).md",
+    "analysis": {
+      "name": "婚礼蛋糕藏蛇英雄救美",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu全速冲入婚礼现场，猛推五层婚礼蛋糕使其崩塌碎裂",
+      "video_tags": "感动, 搞笑",
+      "technique": "破坏婚礼蛋糕→被保安制服→新娘愤怒质问→揭示蛋糕内藏毒蛇→斩蛇救美→财富情感对比回忆→选择真爱出逃",
+      "mechanism_name": "先抑后扬英雄叙事",
+      "mechanism": "英雄做出看似破坏的行为→被误解制服→揭示真正危险→英雄反杀→回忆对比强化选择→最终出逃",
+      "protagonist": "jinu",
+      "protagonist_goal": "毁掉蛋糕救rumi免于蛇毒",
+      "antagonist": "mystery",
+      "antagonist_goal": "用奢侈品财富诱惑rumi嫁给自己",
+      "scenes": [
+        {"name": "婚礼宴会厅", "function": "金碧辉煌的危机爆发场"},
+        {"name": "奢靡回忆", "function": "黑银色调的物质诱惑对比"},
+        {"name": "夕阳草坪", "function": "暖金色调的纯真爱情回忆"}
+      ],
+      "props": [
+        {"name": "五层婚礼蛋糕", "type": "危险容器", "function": "内部隐藏机械眼镜蛇"},
+        {"name": "切蛋糕长刀", "type": "武器", "function": "jinu斩蛇的关键工具"},
+        {"name": "草编戒指", "type": "爱情信物", "function": "象征真挚但贫穷的爱"},
+        {"name": "奢侈品组", "type": "物质诱惑", "function": "BMW钥匙/劳力士/LV包/钻石项链"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "新娘/被救者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "英雄/破坏者", "abilities": "", "states": "身上沾满奶油"},
+        {"name": "mystery", "persona": "富豪情敌", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0998-视频专业级影视拆解报告(13).md",
+    "analysis": {
+      "name": "Birkin包包葬礼",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi和mira激烈争夺一只枚红色Birkin手提包，mira将包扔进燃烧的壁炉",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "争夺包→烧包→犯罪调查式确认死亡→追思回忆→墓地葬礼→揭示包未烧是送去Spa→大团圆推婴儿车遛包",
+      "mechanism_name": "拟人化荒诞葬礼",
+      "mechanism": "核心物品被毁→将物品拟人化举办葬礼→极致悲伤→揭示物品完好→荒诞大团圆",
+      "protagonist": "rumi",
+      "protagonist_goal": "为被毁的爱包悲伤并找回",
+      "antagonist": "mira",
+      "antagonist_goal": "制造毁包假象实际送去美容",
+      "scenes": [
+        {"name": "奢华粉色客厅", "function": "暖粉色调的冲突爆发场"},
+        {"name": "雷雨墓地", "function": "灰暗色调的荒诞葬礼场"},
+        {"name": "阳光草坪", "function": "高饱和度的疯狂大团圆"}
+      ],
+      "props": [
+        {"name": "枚红色Birkin包", "type": "核心道具", "function": "鳄鱼皮金扣手提包引发全部冲突"},
+        {"name": "黄色警戒线", "type": "调查道具", "function": "DO NOT CROSS营造荒诞犯罪调查感"},
+        {"name": "奢侈品婴儿车", "type": "荒诞道具", "function": "粉色天鹅绒婴儿车用来装包包"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "包包痴迷者/受害者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "恶作剧策划者/隐藏好人", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "犯罪调查员/黄帽侦探", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "调查助手", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "调查助手", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0999-视频专业级影视拆解报告(14).md",
+    "analysis": {
+      "name": "救兔子求点赞",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "mira驾敞篷跑车在都市中心极速飞驰，abby惊恐喊叫要开慢点",
+      "video_tags": "搞笑, 感动",
+      "technique": "飙车撞兔→冷酷只带走一只→弃伤兔离开→rumi偶遇救助→送医手术→教堂祈祷→耶稣打破第四面墙求点赞",
+      "mechanism_name": "善恶对比+第四面墙",
+      "mechanism": "反派冷酷弃伤→正面角色善良救助→紧张医疗→宗教祈祷→突然打破第四面墙将剧情悬念转化为营销互动",
+      "protagonist": "rumi",
+      "protagonist_goal": "救助被mira丢弃的受伤白兔",
+      "antagonist": "mira",
+      "antagonist_goal": "肇事后只带走健康兔子逃跑",
+      "scenes": [
+        {"name": "都市街道", "function": "高饱和仿纽约风的飙车场"},
+        {"name": "医院病房", "function": "冷白色调的紧急救治"},
+        {"name": "教堂内部", "function": "哥特式神圣祈祷场"}
+      ],
+      "props": [
+        {"name": "受伤白兔", "type": "核心道具", "function": "背部有红色血迹推动角色道德选择"},
+        {"name": "LIKE & SUBSCRIBE牌子", "type": "营销道具", "function": "打破第四面墙的互动引导"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "善良救助者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "温柔同伴", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "冷酷肇事者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "惊恐副驾", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1000-视频专业级影视拆解报告(15).md",
+    "analysis": {
+      "name": "金色魔镜之战",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常元素",
+      "hook": "mira和rumi蹲在地上激烈争夺两面镜子，mira猛推rumi抢走金色魔镜",
+      "video_tags": "惊悚, 荒诞",
+      "technique": "争夺魔镜→强者抢走华丽金镜→弱者得到破碎黑镜→发现破镜有返老还青能力→摆摊卖青春→金镜反噬使用者→善恶终结",
+      "mechanism_name": "物质价值反转",
+      "mechanism": "华丽外表（金镜）导致坏结果→破碎外表（黑镜）带来好结果→抢夺者自食其果→失去者发现内在价值获救赎",
+      "protagonist": "rumi",
+      "protagonist_goal": "利用破碎黑镜返老还青能力改善生活",
+      "antagonist": "mira",
+      "antagonist_goal": "独占金色魔镜获取美貌",
+      "scenes": [
+        {"name": "欧洲石砖街道", "function": "暖黄怀旧的争夺场"},
+        {"name": "贫民窟", "function": "铁锈色调的绝境与逆袭"},
+        {"name": "豪华公寓", "function": "冰冷通透的反噬场"}
+      ],
+      "props": [
+        {"name": "金色魔镜", "type": "诅咒道具", "function": "巴洛克雕花金边，实际吸取使用者青春"},
+        {"name": "破碎黑镜", "type": "祝福道具", "function": "蛛网状裂纹镜面，能将衰老变青春、腐烂变新鲜"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "失败者/逆袭者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "抢夺者/受诅咒者", "abilities": "", "states": "变成苍老老太婆"},
+        {"name": "jinu", "persona": "贫困流浪者", "abilities": "", "states": "满脸灰尘"}
+      ]
+    }
+  },
+  {
+    "filename": "1001-视频专业级影视拆解报告(16).md",
+    "analysis": {
+      "name": "我要Rumi不要钱",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu坐在跑车内隔窗向abby炫耀薯条，abby贴着车窗双眼圆睁极度渴望",
+      "video_tags": "搞笑, 感动",
+      "technique": "薯条诱惑→汉堡加码→可乐加码→美钞终极诱惑→abby拒绝→指向副驾→揭晓rumi才是真正想要的→爱心爆发",
+      "mechanism_name": "递进诱惑反转",
+      "mechanism": "依次展示食物→展示金钱→全部被拒→指向真正目标→揭晓人比物质更有价值",
+      "protagonist": "abby",
+      "protagonist_goal": "获得rumi而不是物质",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "橙色跑车内", "function": "高饱和度的封闭展示空间"}
+      ],
+      "props": [
+        {"name": "快餐组合", "type": "诱惑道具", "function": "薯条汉堡可乐作为前期物质诱惑"},
+        {"name": "美钞扇面", "type": "终极诱惑", "function": "财富象征触发反转"},
+        {"name": "橙色跑车", "type": "封闭空间", "function": "划分阶级与位置的核心场景"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "炫耀者/测试者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "渴望者/真爱追求者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "真正的目标/惊喜", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1002-视频专业级影视拆解报告(17).md",
+    "analysis": {
+      "name": "Rumi电梯飞踢复仇",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi和mira慌张冲向电梯，rumi在门将关闭时闪身进入",
+      "video_tags": "搞笑, 热血",
+      "technique": "抢电梯→mira假哭博同情→rumi让位→mira翻脸嘲讽→rumi怒吼跑楼梯追→电梯门开飞踢击倒mira",
+      "mechanism_name": "假弱骗善→极速复仇",
+      "mechanism": "假弱者博取同情→善良者上当让位→假弱者翻脸嘲讽→愤怒追击→以超凡体能完成复仇",
+      "protagonist": "rumi",
+      "protagonist_goal": "追上电梯复仇mira的欺骗",
+      "antagonist": "mira",
+      "antagonist_goal": "用假哭骗取rumi的电梯位置",
+      "scenes": [
+        {"name": "办公楼走廊/电梯厅", "function": "冷白极简的竞速场"},
+        {"name": "安全楼梯间", "function": "灰色水泥的追击通道"},
+        {"name": "电梯内部", "function": "不锈钢反射的对决场"}
+      ],
+      "props": [
+        {"name": "电梯", "type": "叙事分隔器", "function": "象征机会与阶级转换"},
+        {"name": "红色EXIT门", "type": "转折道具", "function": "鲜红色代表愤怒与战斗开启"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "善良被骗者/复仇者", "abilities": "超凡体能, 飞踢", "states": ""},
+        {"name": "mira", "persona": "假哭欺骗者", "abilities": "", "states": "被飞踢击倒"}
+      ]
+    }
+  },
+  {
+    "filename": "1003-视频专业级影视拆解报告(18).md",
+    "analysis": {
+      "name": "人体颜料画笔",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi拿着嗡鸣的理发器逼近惊恐的jinu，宣布要画画让他帮忙",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "剃头做画笔→剪衣服挤紫色颜料→刮脸取黄色颜料→钻木取火搓黑色颜料→泼红色颜料→接眼泪当洗笔水→完成杰作",
+      "mechanism_name": "人体资源掠夺式创作",
+      "mechanism": "从受害者身上逐步提取各种材料（头发→衣服→脸部→手掌→眼泪）→每次提取都是一次新的荒诞升级→最终产出精美作品",
+      "protagonist": "rumi",
+      "protagonist_goal": "从jinu身上获取全部绘画材料并完成画作",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "热带海滩", "function": "高饱和度碧蓝的超现实创作场"}
+      ],
+      "props": [
+        {"name": "银色理发器", "type": "采集工具", "function": "剃头发做画笔"},
+        {"name": "透明玻璃杯", "type": "容器", "function": "接眼泪当洗笔水"},
+        {"name": "木质画架", "type": "最终载体", "function": "展示用人体材料完成的杰作"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "疯狂艺术家/掠夺者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "人体资源提供者/受害者", "abilities": "", "states": "秃头, 衣服破烂, 鼻子红肿"}
+      ]
+    }
+  },
+  {
+    "filename": "1004-视频专业级影视拆解报告(19).md",
+    "analysis": {
+      "name": "高空抉择善恶报应",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常元素",
+      "hook": "万米高空客机机翼上rumi左右手各抓着悬空的zoye和mira面临生死抉择",
+      "video_tags": "感动, 悬疑",
+      "technique": "高空生死困境→闪回zoye嘲笑摔倒不扶→闪回zoye打翻冰淇淋→闪回mira温柔扶起→闪回mira分享冰淇淋→回到现实松手放弃zoye→全力救mira",
+      "mechanism_name": "善恶闪回抉择",
+      "mechanism": "极端困境二选一→闪回负面记忆（伤害行为）→闪回正面记忆（善良行为）→基于过往善恶做出生死裁决",
+      "protagonist": "rumi",
+      "protagonist_goal": "在只能救一个人的困境中做出正确选择",
+      "antagonist": "zoye",
+      "antagonist_goal": "过去对rumi的恶行导致被抛弃",
+      "scenes": [
+        {"name": "客机机翼", "function": "平流层高空的极端抉择场"},
+        {"name": "午后公园", "function": "暖绿色调的性格测试场"},
+        {"name": "梦幻游乐场", "function": "粉蓝黄明亮的情感节点"}
+      ],
+      "props": [
+        {"name": "粉色冰淇淋", "type": "试金石", "function": "被打翻vs分享区分两段关系本质"},
+        {"name": "旱冰鞋", "type": "测试道具", "function": "摔倒时的反应展现角色关注度"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "裁决者", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "冷酷恶友", "abilities": "", "states": "坠落消失"},
+        {"name": "mira", "persona": "善良好友", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1005-视频专业级影视拆解报告(2).md",
+    "analysis": {
+      "name": "染发恶作剧意外惊喜",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi向后仰倒在沙发上，发梢浸入地板上的亮黄色液体中",
+      "video_tags": "搞笑",
+      "technique": "头发意外被染→焦急洗头→mira趁机偷涂蓝色染料→忐忑等待反应→脑内假想rumi崩溃尖叫→现实中rumi反而惊喜爱上新发色",
+      "mechanism_name": "恶作剧预期反转",
+      "mechanism": "恶作剧者偷偷实施→焦虑等待→脑内假想最坏结果（尖叫崩溃）→现实结果与假想完全相反（惊喜欢呼）→恶作剧者反而懵住",
+      "protagonist": "rumi",
+      "protagonist_goal": "修复被染脏的头发",
+      "antagonist": "mira",
+      "antagonist_goal": "趁rumi不注意偷偷涂蓝色染料",
+      "scenes": [
+        {"name": "客厅", "function": "明亮温馨的意外发生场"},
+        {"name": "洗手间", "function": "冷白光的染发实验场"}
+      ],
+      "props": [
+        {"name": "亮黄色液体", "type": "触发物", "function": "地板上的不明液体推动初始冲突"},
+        {"name": "蓝色染料瓶", "type": "恶作剧工具", "function": "高浓稠度蓝色染料"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "受害者/意外受益者", "abilities": "", "states": "头发从紫色变为克莱因蓝"},
+        {"name": "mira", "persona": "恶作剧者/被反转者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1006-视频专业级影视拆解报告(20).md",
+    "analysis": {
+      "name": "肥皂巧克力整蛊",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi站在浴室镜前拿起一块印有NIVEA字样的粉色肥皂直接咬了一口",
+      "video_tags": "搞笑",
+      "technique": "吃肥皂奇观→mira惊恐阻止→揭示是巧克力→mira品尝后惊喜→留一块给jinu→jinu误当肥皂洗手→巧克力融化崩溃",
+      "mechanism_name": "双重认知误差",
+      "mechanism": "第一层：观众+mira以为是肥皂（实际是巧克力）→第二层：jinu以为是肥皂去洗手（但它还是巧克力）→同一物品两次误认产生双重笑点",
+      "protagonist": "rumi",
+      "protagonist_goal": "整蛊jinu让他把巧克力当肥皂用",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "现代简约浴室", "function": "冷灰白色调的整蛊执行场"}
+      ],
+      "props": [
+        {"name": "NIVEA粉色巧克力", "type": "伪装道具", "function": "外形完美模仿NIVEA肥皂的顶级白巧克力"},
+        {"name": "黑色油渍", "type": "需求道具", "function": "jinu满手黑油创造清洁需求"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "整蛊策划者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "被骗后的共犯", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "终极受害者", "abilities": "", "states": "满手粉黑混合物"}
+      ]
+    }
+  }
+]

@@ -1,0 +1,310 @@
+[
+  {
+    "filename": "1007-视频专业级影视拆解报告(21).md",
+    "analysis": {
+      "name": "四轮竞技全败王",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "金色亮片纷飞的舞台上rumi和jinu登场，随后进入吹蜡烛对决jinu抢走工业风扇",
+      "video_tags": "搞笑",
+      "technique": "四轮竞技对决，jinu每轮更换策略（抢大→选小→全占→让利）但全部失败，反差递增",
+      "mechanism_name": "策略进化全败循环",
+      "mechanism": "选大失败→吸取教训选小→又失败→全部都要→再失败→反向让利→依然失败→策略越精明结果越惨",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得每轮竞技比赛",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过策略选择赢过rumi",
+      "scenes": [
+        {"name": "黑色棚拍区", "function": "金色顶框聚光灯的竞技选择场"},
+        {"name": "户外运动场", "function": "红蓝跑道的执行比赛场"},
+        {"name": "花园蜂场", "function": "秋季斑驳光影的终极考验场"}
+      ],
+      "props": [
+        {"name": "工业风扇", "type": "竞技道具", "function": "看似强力实际吹飞蛋糕反噬使用者"},
+        {"name": "火柴盒vs喷火枪", "type": "竞技道具", "function": "小道具反而导致爆炸"},
+        {"name": "防蜂服", "type": "防护装备", "function": "让出后jinu被蜜蜂围攻"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "永远赢的轻巧高手", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "策略不断进化但永远输的挑战者", "abilities": "", "states": "满脸红肿贴创可贴"}
+      ]
+    }
+  },
+  {
+    "filename": "1008-视频专业级影视拆解报告(22).md",
+    "analysis": {
+      "name": "粉色月亮猫爪枪",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "romance手持粉色猫爪枪射击正在作画的rumi背部，粉色星星吸附在白色毛衣上",
+      "video_tags": "浪漫, 搞笑",
+      "technique": "恶作剧射击→被怒吼驱逐→天台孤独→向夜空射出粉色星星→星星变成巨大粉色月亮→赛博童话入睡",
+      "mechanism_name": "恶作剧→驱逐→孤独创造奇迹",
+      "mechanism": "捣蛋行为→被惩罚驱逐→孤独场景→用捣蛋工具创造超现实奇迹→负面转正面",
+      "protagonist": "romance",
+      "protagonist_goal": "用猫爪枪逗rumi开心但被驱逐后创造粉色月亮",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "白昼画室", "function": "高调自然光的恶作剧爆发场"},
+        {"name": "霓虹天台", "function": "赛博朋克风夜景的孤独奇迹场"}
+      ],
+      "props": [
+        {"name": "粉色猫爪枪", "type": "魔法道具", "function": "白昼发射吸附贴纸/夜晚发射改变天体的魔法弹"},
+        {"name": "粉色月亮", "type": "奇迹产物", "function": "悬浮在摩天大楼间的超现实粉色月牙"}
+      ],
+      "characters": [
+        {"name": "romance", "persona": "顽皮恶作剧者/孤独创造者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "被骚扰的画家/暴怒驱逐者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1009-视频专业级影视拆解报告(23).md",
+    "analysis": {
+      "name": "疯狂牙医掏烤鸡",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "牙医rumi把棒棒糖抛向空中接嘴里却失手掉进romance被CGI拉大的巨嘴中",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "糖果掉入巨嘴→伸手掏出烤鸡→再掏出面条→掏出面条球→找回糖果吃掉→助手入场→黄金大牙跳出逃跑",
+      "mechanism_name": "口腔异次元掏取",
+      "mechanism": "物品意外落入→从口腔中逐步掏出越来越荒诞的物品→找到原始物品→以为结束→更荒诞的终极物品自行跳出",
+      "protagonist": "rumi",
+      "protagonist_goal": "从romance嘴里找回掉进去的棒棒糖",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "牙科诊所", "function": "冷白色高调照明的荒诞手术场"}
+      ],
+      "props": [
+        {"name": "蓝色棒棒糖", "type": "触发道具", "function": "意外掉入巨嘴引发全部探寻"},
+        {"name": "烤鸡和面条", "type": "荒诞产物", "function": "从口腔掏出的视觉错位物品"},
+        {"name": "黄金大牙CGI", "type": "终极反转", "function": "拟人化金牙跳出嘲笑医生"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "古怪牙医/糖果痴迷者", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "巨嘴患者", "abilities": "", "states": "CGI拉大的巨嘴"},
+        {"name": "mira", "persona": "医疗助手", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "医疗助手", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1010-视频专业级影视拆解报告(24).md",
+    "analysis": {
+      "name": "化妆复仇连环整",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi正在化妆，jinu突然探头嘲笑她，rumi露出计划通的微笑",
+      "video_tags": "搞笑",
+      "technique": "jinu嘲笑rumi化妆→被rumi涂成小丑→romance嘲笑jinu→romance也被涂成小丑→jinu复仇式嘲笑romance",
+      "mechanism_name": "嘲笑者连环被整",
+      "mechanism": "A嘲笑B→B整A→C嘲笑A→C也被整→A嘲笑C完成复仇闭环",
+      "protagonist": "rumi",
+      "protagonist_goal": "惩罚嘲笑她化妆的人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "现代客厅", "function": "明亮温馨的情景剧舞台"}
+      ],
+      "props": [
+        {"name": "化妆刷和粉扑", "type": "武器道具", "function": "涂抹夸张红色妆容的工具"},
+        {"name": "镜子", "type": "隐形道具", "function": "角色视线聚焦的成像面"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "复仇化妆师", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "嘲笑者/第一受害者", "abilities": "", "states": "被涂成小丑妆"},
+        {"name": "romance", "persona": "嘲笑者/第二受害者", "abilities": "", "states": "被涂成小丑妆"}
+      ]
+    }
+  },
+  {
+    "filename": "1011-视频专业级影视拆解报告(25).md",
+    "analysis": {
+      "name": "丧尸恶作剧反噬",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "末世避难所内rumi优雅坐沙发喝紫色发光液体，窗外真实丧尸疯狂拍打玻璃",
+      "video_tags": "搞笑, 惊悚",
+      "technique": "末世避难所安逸→逗弄窗外zoye→拉mystery炫耀→拿电锯要开门→jinu扮丧尸吓rumi→揭秘是恶作剧→真实丧尸暴动→恶作剧者被困集装箱",
+      "mechanism_name": "假恶作剧遇真危险",
+      "mechanism": "角色A在安全环境内嚣张→B和C用假危险吓A→假危险揭秘→真实危险降临→恶作剧策划者自食其果",
+      "protagonist": "rumi",
+      "protagonist_goal": "在避难所内享受安逸并逗弄外面的人",
+      "antagonist": "jinu",
+      "antagonist_goal": "扮丧尸联合zoye吓唬rumi",
+      "scenes": [
+        {"name": "末世避难所室内", "function": "复古紫色调的虚假安全区"},
+        {"name": "户外废墟", "function": "荒凉日光下的真实丧尸场"}
+      ],
+      "props": [
+        {"name": "紫色发光瓶子", "type": "能量道具", "function": "象征能量药水的透明瓶"},
+        {"name": "橘红色电锯", "type": "武器道具", "function": "带火花特效的仿真电锯"},
+        {"name": "红色集装箱", "type": "避难高地", "function": "恶作剧者最终逃避真实丧尸的唯一高地"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "嚣张的避难所主人/受害者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "丧尸扮演者/恶作剧策划者", "abilities": "", "states": "满脸丧尸油彩血浆"},
+        {"name": "zoye", "persona": "恶作剧共犯", "abilities": "", "states": ""},
+        {"name": "mystery", "persona": "被拉入炫耀的被动角色", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1012-视频专业级影视拆解报告(26).md",
+    "analysis": {
+      "name": "好人被冤枉井盖",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "mira蹲在街道中心搬起下水道井盖，露出狡黠笑容说要给rumi开个玩笑",
+      "video_tags": "搞笑",
+      "technique": "mira挪走井盖→jinu发现补救用单车挡住→mira抢走单车→jinu用垃圾桶堵→mira推开→jinu用纸板挡→mira反诬jinu在恶作剧→rumi误会jinu",
+      "mechanism_name": "恶人先告状误会链",
+      "mechanism": "反派制造危险→正派反复补救→反派反复破坏→正派最后一次补救时被反派反诬为施害者→受害者误会正派",
+      "protagonist": "jinu",
+      "protagonist_goal": "反复用各种物品堵住下水道口保护rumi",
+      "antagonist": "mira",
+      "antagonist_goal": "移走井盖陷害rumi并反诬jinu",
+      "scenes": [
+        {"name": "大都市繁华商业街", "function": "高饱和日光下的博弈战场"}
+      ],
+      "props": [
+        {"name": "下水道井盖", "type": "危险源", "function": "黑色铸铁井盖是所有冲突的起点"},
+        {"name": "黄色共享单车", "type": "补救工具", "function": "jinu第一次补救用的障碍物"},
+        {"name": "绿色垃圾桶", "type": "补救工具", "function": "jinu第二次补救的大型遮挡物"},
+        {"name": "厚纸板", "type": "冤案物证", "function": "导致误会的最终证据"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "好心补救者/被冤枉者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "恶作剧陷害者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "不知情受害者/误会者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1013-视频专业级影视拆解报告(3).md",
+    "analysis": {
+      "name": "可乐作弊比赛",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi和jinu并排站在巨大酒杯前，倒计时3-2-1-DRINK开始喝可乐比赛",
+      "video_tags": "搞笑",
+      "technique": "喝可乐比赛→rumi拼命喝液面不动→jinu轻松液面骤降→揭秘桌底romance通过软管帮jinu吸→rumi发现被骗愤怒→jinu嘲讽",
+      "mechanism_name": "隐藏帮手作弊",
+      "mechanism": "公平比赛假象→一方轻松获胜→揭示隐藏在视觉盲区的第三方帮手→被骗者愤怒→作弊者嘲讽",
+      "protagonist": "rumi",
+      "protagonist_goal": "赢得喝可乐比赛",
+      "antagonist": "jinu",
+      "antagonist_goal": "通过桌底romance帮忙作弊获胜",
+      "scenes": [
+        {"name": "现代厨房", "function": "白色高调照明的比赛场"}
+      ],
+      "props": [
+        {"name": "巨大酒杯", "type": "比赛道具", "function": "透明玻璃超大杯，jinu杯底有暗孔"},
+        {"name": "透明软管", "type": "作弊工具", "function": "连接杯底到桌下的核心作弊通道"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被骗的比赛对手", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "作弊获胜者", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "桌底隐藏帮手", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1014-视频专业级影视拆解报告(4).md",
+    "analysis": {
+      "name": "音响卡车逆袭复仇",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "纽约街头rumi弯腰哭着扶着粉色跑车门哀求zoye让她上车，zoye厌恶地呵斥她走开",
+      "video_tags": "感动, 热血",
+      "technique": "被拒绝羞辱→路边崩溃→愤怒觉醒→工厂改造音响卡车→华丽DJ逆袭→反派震惊冲上台拉扯→打破第四面墙求救",
+      "mechanism_name": "从卑微到逆袭",
+      "mechanism": "被羞辱拒绝→悲伤→觉醒宣言→硬核DIY改造→华丽登场碾压→反派嫉妒破坏→打破第四面墙求助观众",
+      "protagonist": "rumi",
+      "protagonist_goal": "创造属于自己的舞台逆袭",
+      "antagonist": "zoye",
+      "antagonist_goal": "嫌弃拒绝rumi并破坏她的成功",
+      "scenes": [
+        {"name": "纽约街头", "function": "冷蓝色调的羞辱与逆袭对比场"},
+        {"name": "秘密工厂", "function": "赛博朋克霓虹的DIY改造场"},
+        {"name": "繁华商圈", "function": "巨型音响卡车的华丽登场场"}
+      ],
+      "props": [
+        {"name": "粉色跑车", "type": "权力象征", "function": "代表排他性和权力的粉色敞篷车"},
+        {"name": "粉色镶钻望远镜", "type": "监视道具", "function": "象征嫉妒和监视"},
+        {"name": "音响卡车", "type": "逆袭武器", "function": "堆叠10个巨型音箱的改装皮卡移动舞台"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "被羞辱者/逆袭者/DJ", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "傲慢拒绝者/嫉妒破坏者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "zoye的跟班/共犯", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1015-视频专业级影视拆解报告(5).md",
+    "analysis": {
+      "name": "狮子头套整蛊jinu",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "rumi推门牵着一头巨大雄狮进入客厅，兴奋喊给jinu带了个宠物",
+      "video_tags": "搞笑",
+      "technique": "专注打游戏→突然牵狮子进门→jinu惊恐翻沙发逃跑→狮子扑咬舔脸→jinu学狗叫试探→揭示是戴头套的宠物狗→rumi嘲讽",
+      "mechanism_name": "伪装动物身份错位",
+      "mechanism": "用逼真头套把宠物伪装成猛兽→制造极端恐惧→异常细节暴露真相（舔舐行为）→摘下头套揭示真身→恐惧转为尴尬",
+      "protagonist": "rumi",
+      "protagonist_goal": "用戴狮子头套的宠物狗吓唬jinu",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "现代居家客厅", "function": "明亮温馨的宁静被打破场"}
+      ],
+      "props": [
+        {"name": "仿真狮子头套", "type": "伪装道具", "function": "棕黄色人造皮毛极具迷惑性的核心恐怖源"},
+        {"name": "PS5手柄", "type": "日常道具", "function": "白色手柄跌落标志宁静终结"},
+        {"name": "牵引绳", "type": "设定道具", "function": "棕色皮革绳建立宠物设定"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "恶作剧策划者/嘲讽者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "游戏宅/被吓者", "abilities": "", "states": "满头大汗"}
+      ]
+    }
+  },
+  {
+    "filename": "1016-视频专业级影视拆解报告(6).md",
+    "analysis": {
+      "name": "撒泼打滚买东西",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "zoye穿蓝色运动套装躺在玩偶店地板上疯狂蹬腿打滚尖叫要买兔子",
+      "video_tags": "搞笑",
+      "technique": "zoye撒泼→mystery妥协买兔子→mira模仿撒泼→abby妥协买包→rumi学会撒泼→jinu直播求点赞换承诺",
+      "mechanism_name": "行为模仿递进+第四面墙",
+      "mechanism": "角色A撒泼成功获奖励→角色B模仿A撒泼也成功→角色C模仿但将撒泼目标转向观众→打破第四面墙将需求转化为订阅/点赞",
+      "protagonist": "rumi",
+      "protagonist_goal": "学习撒泼技巧获取想要的东西",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "玩偶店", "function": "暖色木质的第一次撒泼场"},
+        {"name": "奢侈品店", "function": "金色大理石的升级撒泼场"},
+        {"name": "直播工作室", "function": "冷色调的元叙事互动场"}
+      ],
+      "props": [
+        {"name": "白色大兔子玩偶", "type": "奖励物", "function": "zoye撒泼的目标奖品"},
+        {"name": "金色手提包", "type": "奢侈品", "function": "mira在奢侈品店撒泼的目标"},
+        {"name": "直播界面", "type": "虚拟道具", "function": "连接观众互动的第四面墙媒介"}
+      ],
+      "characters": [
+        {"name": "zoye", "persona": "撒泼始作俑者", "abilities": "", "states": ""},
+        {"name": "mystery", "persona": "无奈妥协者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "模仿撒泼者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "强硬但宠溺者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "第三个模仿者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "直播求赞者", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]

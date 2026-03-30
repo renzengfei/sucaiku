@@ -1,0 +1,140 @@
+[
+  {
+    "filename": "1017-视频专业级影视拆解报告(7).md",
+    "analysis": {
+      "name": "牛油果汁魔法喷射",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu戴白手套站在rumi背后，rumi背上贴着巨大的绿色液体球，jinu兴奋低语准备挤爆",
+      "video_tags": "搞笑",
+      "technique": "挤爆背后绿球→液体穿越空间喷到zoye脸上→zoye尝味→惊喜好吃→jinu懵逼→rumi揭晓是牛油果汁",
+      "mechanism_name": "空间穿越液体反转",
+      "mechanism": "A对B做出动作→效果却魔法般传递到C身上→C从惊恐到品尝发现好吃→A困惑→B揭晓真相",
+      "protagonist": "rumi",
+      "protagonist_goal": "揭晓绿色液体其实是牛油果汁",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "现代豪华公寓", "function": "明亮高调照明的魔法喷射场"}],
+      "props": [
+        {"name": "绿色液体球", "type": "核心道具", "function": "20cm透明软胶球内装翠绿色牛油果泥"},
+        {"name": "半颗牛油果", "type": "解谜道具", "function": "最后揭示液体真相"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "恶作剧执行者/困惑者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "真相揭晓者", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "意外受害者/惊喜品尝者", "abilities": "", "states": "满脸绿色液体"}
+      ]
+    }
+  },
+  {
+    "filename": "1018-视频专业级影视拆解报告(8).md",
+    "analysis": {
+      "name": "扔掉布偶送玩偶盒",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi坐在楼梯旁缝补紫色布偶，zoye从上方指着她愤怒喊就是她",
+      "video_tags": "感动",
+      "technique": "底层员工缝布偶→上司发现呵斥→夺走布偶扔掉→rumi崩溃痛哭→mira推来精美玩偶盒→原来是更好的替代品→破涕为笑",
+      "mechanism_name": "先毁后赠升级替代",
+      "mechanism": "珍贵物品被权威夺走销毁→受害者崩溃→施害者送出远超原物品的高级替代品→揭示善意动机",
+      "protagonist": "rumi",
+      "protagonist_goal": "给女儿缝制生日礼物布偶",
+      "antagonist": "mira",
+      "antagonist_goal": "表面冷酷扔掉布偶实际准备更好的礼物",
+      "scenes": [{"name": "现代室内楼梯间", "function": "冷白高调照明的阶级冲突场"}],
+      "props": [
+        {"name": "破旧布偶", "type": "情感载体", "function": "紫色辫子灰色补丁衣代表贫穷的母爱"},
+        {"name": "高档玩偶盒", "type": "反转道具", "function": "亚克力展示盒内三个精美职场风玩偶"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "底层员工/慈母", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "冷酷上司/隐藏善人", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "告密者/执行者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1019-视频专业级影视拆解报告(9).md",
+    "analysis": {
+      "name": "吹气球扎针作弊",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "粉色走廊里两个女孩吹气球比赛，rumi斜眼观察对手露出神秘微笑",
+      "video_tags": "搞笑",
+      "technique": "吹气球比赛→rumi偷偷用针扎破对手气球→假装吹气→自己气球快速膨胀→气球炸裂的毁灭性胜利",
+      "mechanism_name": "隐秘作弊碾压",
+      "mechanism": "公平比赛假象→隐蔽破坏对手→自己轻松取胜→物理毁灭式收尾",
+      "protagonist": "rumi",
+      "protagonist_goal": "用作弊手段赢得吹气球比赛",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "粉色走廊", "function": "马卡龙色高调照明的病娇比赛场"}],
+      "props": [
+        {"name": "绿色细针", "type": "作弊工具", "function": "1.5秒闪现的破坏性暗线道具"},
+        {"name": "大脑纹理气球", "type": "比赛道具", "function": "粉色和紫色的诡异纹理气球"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "腹黑作弊者", "abilities": "", "states": ""},
+        {"name": "粉蓝发女孩", "persona": "不知情的受害对手", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1020-视频专业级影视拆解报告.md",
+    "analysis": {
+      "name": "番茄酱软糖反击战",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi躺沙发玩手机，mira突然拿番茄酱瓶对准她额头挤压",
+      "video_tags": "搞笑",
+      "technique": "mira用假酱(软糖)整蛊rumi→rumi惊恐尖叫→发现是软糖→jinu在旁大笑→rumi愤怒用真番茄酱喷jinu→rumi和mira结盟胜利",
+      "mechanism_name": "软硬恶作剧阶梯",
+      "mechanism": "A用假危险整B→B发现是假的→C嘲笑B→B用真危险反击C→A和B结盟",
+      "protagonist": "rumi",
+      "protagonist_goal": "用真番茄酱反击嘲笑她的jinu",
+      "antagonist": "jinu",
+      "antagonist_goal": "嘲笑被整蛊的rumi",
+      "scenes": [{"name": "现代居家客厅", "function": "明亮温馨的恶作剧与反击场"}],
+      "props": [
+        {"name": "番茄酱瓶", "type": "武器道具", "function": "红色塑料瓶白色喷嘴"},
+        {"name": "长条软糖", "type": "伪装道具", "function": "深红色弹性软糖模拟番茄酱"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "受害者/反击者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "恶作剧发起者/最终盟友", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "嘲笑者/被反击者", "abilities": "", "states": "满脸番茄酱"}
+      ]
+    }
+  },
+  {
+    "filename": "1021-视频专业级影视拆解：Lily Meow - Spicy Treat.md",
+    "analysis": {
+      "name": "辣椒三明治探病",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "戴粉色猫耳发箍的女孩在教室疯狂往嘴里塞大把鲜红辣椒双颊通红",
+      "video_tags": "感动",
+      "technique": "教室狂吃辣椒→拒绝水果→打包辣椒回家→父母收走换面包→偷做辣椒三明治→去精神病院探望哥哥→回忆哥哥当年做辣椒三明治→现实中哥哥重做→兄妹相视而笑",
+      "mechanism_name": "食物记忆治愈",
+      "mechanism": "角色执拗做异常行为→被反复阻止→揭示行为背后是为了重现与病中亲人的共同记忆→用味觉唤醒情感",
+      "protagonist": "Lily",
+      "protagonist_goal": "带辣椒去精神病院让哥哥重做辣椒三明治唤醒记忆",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "粉色教室", "function": "高饱和度的异常行为展示场"},
+        {"name": "家里餐桌", "function": "暖橙光的父母阻止场"},
+        {"name": "精神病院", "function": "冷灰色调的情感重建场"}
+      ],
+      "props": [
+        {"name": "辣椒三明治", "type": "情感载体", "function": "连接过去与现在的唯一味觉纽带"},
+        {"name": "透明保鲜盒", "type": "容器", "function": "装载家的味道"}
+      ],
+      "characters": [
+        {"name": "Lily", "persona": "执拗的妹妹", "abilities": "", "states": ""},
+        {"name": "baby", "persona": "精神病院中的哥哥", "abilities": "", "states": "灰蓝条纹病号服"},
+        {"name": "jinu", "persona": "父亲", "abilities": "", "states": "灰色假发黑色胡须"}
+      ]
+    }
+  }
+]

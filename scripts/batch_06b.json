@@ -1,0 +1,152 @@
+[
+  {
+    "filename": "1022-视频专业级影视拆解：One two three_.md",
+    "analysis": {
+      "name": "Abby女装混入人头清点",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "rumi手持棒球棍猛推卧室门冲入，怒喊我知道她就在这里",
+      "video_tags": "搞笑",
+      "technique": "rumi闯入搜查→清点人头1-2-3→搜床底衣柜窗帘→abby女装混入窗帘后也喊Clear→再次清点数字吻合→rumi怀疑像abby→abby自黑化解→危机解除→两兄弟打游戏",
+      "mechanism_name": "伪装混入人头清点",
+      "mechanism": "搜查者清点人数→伪装者混入清点队列自报平安→数字逻辑欺骗搜查者→差点暴露→用话术化解→得逞",
+      "protagonist": "jinu",
+      "protagonist_goal": "让abby女装帮他瞒过rumi的搜查",
+      "antagonist": "rumi",
+      "antagonist_goal": "搜查jinu房间找出藏匿的人",
+      "scenes": [{"name": "现代简约卧室", "function": "奶油白色的搜查与伪装场"}],
+      "props": [
+        {"name": "木质棒球棍", "type": "威慑道具", "function": "rumi强势性格的视觉标签"},
+        {"name": "白色连衣裙", "type": "伪装道具", "function": "超大尺寸适应abby肌肉身材的核心笑点"},
+        {"name": "游戏手柄", "type": "结局道具", "function": "揭示两兄弟真实关系"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "强势搜查者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "心虚藏人者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "女装伪装者", "abilities": "", "states": "金色波浪假发白色连衣裙"},
+        {"name": "mira", "persona": "搜查队员", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "搜查队员", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1023-视频专业级影视拆解：The Mad Ear-Master.md",
+    "analysis": {
+      "name": "耳朵里掏出披萨和怪兽",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "rumi抛起粉色口香糖球准备接嘴里，球却诡异弧线落入旁边jinu的耳朵孔",
+      "video_tags": "搞笑, 惊悚",
+      "technique": "糖球落入耳朵→戴手套掏耳→掏出披萨→扯出彩虹丝带→医疗队激光枪取出糖球→rumi吃掉→爱心陶醉→突然耳内出现蜈蚣怪兽",
+      "mechanism_name": "耳内异次元掏取+惊悚尾杀",
+      "mechanism": "物品意外落入身体孔洞→逐步掏出荒诞物品→终于取回原物→以为结束→恐怖生物从孔洞中跳出",
+      "protagonist": "rumi",
+      "protagonist_goal": "从jinu耳朵里取回掉进去的口香糖球",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "未来风医疗诊所", "function": "纯白弧形墙的超现实手术场"}],
+      "props": [
+        {"name": "粉色口香糖球", "type": "触发道具", "function": "起因和结果的闭环"},
+        {"name": "拉丝披萨", "type": "荒诞道具", "function": "从耳朵掏出的第一个不可能物品"},
+        {"name": "重型激光枪", "type": "手术工具", "function": "暴力治疗的仪式感道具"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "疯狂耳科大师", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "痛苦患者", "abilities": "", "states": "满头大汗"},
+        {"name": "mira", "persona": "护士助手", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "护士助手", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1024-视频专业级影视拆解：What exactly does Abby want.md",
+    "analysis": {
+      "name": "Abby要的是Rumi不是钱",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu在豪车里拿薯条，abby贴着车窗双眼圆瞪极度渴望地乞求",
+      "video_tags": "搞笑, 感动",
+      "technique": "薯条诱惑→摇头→汉堡诱惑→摇头→可乐→摇头→美钞→摇头→指向后座→揭晓rumi才是目标→abby比爱心",
+      "mechanism_name": "递进诱惑反转",
+      "mechanism": "依次展示食物→展示金钱→全部被拒→指向真正目标→揭晓人比物质更有价值",
+      "protagonist": "abby",
+      "protagonist_goal": "获得后座的rumi而非物质",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [{"name": "豪华轿车内外", "function": "暖调日光的封闭诱惑测试场"}],
+      "props": [
+        {"name": "诱饵道具组", "type": "测试道具", "function": "薯条汉堡可乐美金逐级升级"},
+        {"name": "后座空间", "type": "隐藏奖品", "function": "信息不对称的核心"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "炫耀测试者", "abilities": "", "states": ""},
+        {"name": "abby", "persona": "真爱追求者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "真正的目标", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1025-视频专业级拆解报告(1).md",
+    "analysis": {
+      "name": "辣味救赎受伤的Jinu",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi在教室痛苦偏执地狂啃一整捆鲜红干辣椒",
+      "video_tags": "感动",
+      "technique": "rumi偏执吃辣→被romance制止→回忆jinu曾爱吃辣面→jinu受伤坐轮椅→rumi强行推他去面馆→剪辣椒进面碗→示范吃面→jinu崩溃大哭释放情绪→romance窗外落泪理解",
+      "mechanism_name": "极端行为背后的治愈动机",
+      "mechanism": "角色做出不可理解的自残行为→被反复制止→揭示行为是为了帮助受伤亲人→通过重现共同记忆治愈对方→旁观者理解落泪",
+      "protagonist": "rumi",
+      "protagonist_goal": "苦练吃辣重现jinu最爱的味道来治愈他",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "教室", "function": "冷亮光线的偏执练习场"},
+        {"name": "银杏大道", "function": "暖黄凄美的惩罚场"},
+        {"name": "辣味面馆", "function": "红色高对比度的情感释放场"}
+      ],
+      "props": [
+        {"name": "干辣椒捆", "type": "象征道具", "function": "象征痛苦挑战和jinu曾经的热爱"},
+        {"name": "不锈钢剪刀", "type": "行动道具", "function": "冰冷金属质感象征打破现状"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "偏执练习者/治愈者", "abilities": "", "states": ""},
+        {"name": "jinu", "persona": "受伤者/被治愈者", "abilities": "", "states": "双腿石膏坐轮椅"},
+        {"name": "romance", "persona": "管教者/最终理解者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "1026-视频专业级拆解报告(2).md",
+    "analysis": {
+      "name": "被追逐的噩梦早安",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu提垃圾袋走在草坪上，黑色皮卡突然停下成员们猛地跳出，jinu惊恐大喊Oh no People",
+      "video_tags": "搞笑, 惊悚",
+      "technique": "成员跳下皮卡→jinu疯狂逃跑→躲进房间→窗户贴脸包围→厨房岛台追逐→翻沙发逃出→公路冲刺→摔进草丛→惊醒发现是噩梦→成员围床边齐喊Good morning",
+      "mechanism_name": "噩梦追逐+梦醒惊悚",
+      "mechanism": "被群体疯狂追逐→无论怎么逃都被包围→极端压迫→突然惊醒是噩梦→但噩梦中的人就在床边→梦境照进现实",
+      "protagonist": "jinu",
+      "protagonist_goal": "逃离成员们的疯狂追逐",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "室外草坪/公路", "function": "高调日光的惊恐逃亡场"},
+        {"name": "室内多个房间", "function": "白色美式风的无处可逃场"},
+        {"name": "卧室", "function": "梦醒后的惊悚终结场"}
+      ],
+      "props": [
+        {"name": "黑色垃圾袋", "type": "触发道具", "function": "日常平凡被打破的象征"},
+        {"name": "白色被子", "type": "梦境媒介", "function": "梦境与现实切换的载体"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "被追逐的恐惧者/梦中人", "abilities": "", "states": "满头大汗"},
+        {"name": "rumi", "persona": "追逐者之一", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "追逐者之一", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "追逐者之一", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "追逐者之一", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]

@@ -1,0 +1,313 @@
+[
+  {
+    "filename": "0987-视频专业拆解报告(9).md",
+    "analysis": {
+      "name": "红袜子洗衣灾难",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "jinu跪在沙发前为rumi揉腿捏脚，满脸谄媚的讨好，明显做了亏心事",
+      "video_tags": "搞笑",
+      "technique": "讨好铺垫→女方审问试探→摔碎公仔测试心理防线→逼供指向洗衣机→揭晓红袜染衣灾难→终极暴怒",
+      "mechanism_name": "阶梯式逼供",
+      "mechanism": "犯错者极力讨好掩饰→审问者逐步试探→故意摧毁犯错者心爱之物观察反应→确认有更大错误→最终揭晓灾难",
+      "protagonist": "rumi",
+      "protagonist_goal": "找出jinu隐藏的错误",
+      "antagonist": "jinu",
+      "antagonist_goal": "用讨好掩盖洗衣事故",
+      "scenes": [
+        {"name": "现代客厅", "function": "虚假宁静的讨好战场"},
+        {"name": "浴室", "function": "紧急修复的证据"},
+        {"name": "洗衣房", "function": "灾难真相的揭晓地"}
+      ],
+      "props": [
+        {"name": "粉色公仔", "type": "心理测试道具", "function": "rumi故意摔碎来试探jinu的心理防线"},
+        {"name": "红袜子", "type": "灾难源头", "function": "洗衣时混入导致白衣全部染红"},
+        {"name": "染色衣物", "type": "证据", "function": "白衣变红的视觉冲击"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "冷静审问者/女王", "abilities": "", "states": "瞳孔变红（黑化暴怒）"},
+        {"name": "jinu", "persona": "心虚的犯错者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0988-视频专业拆解报告.md",
+    "analysis": {
+      "name": "苹果换钱传送门",
+      "video_type": "故事类",
+      "hook_tags": "异常元素",
+      "hook": "医生jinu的苹果掉进手术台上rumi腹部突然裂开的紫色能量传送门",
+      "video_tags": "搞笑, 惊悚",
+      "technique": "意外触发传送门→投入低价物获高价物→贪婪升级投入美钞→钞票雨狂喜→rumi诡异微笑→传送门反噬吞人",
+      "mechanism_name": "贪婪诱捕",
+      "mechanism": "意外发现漏洞→小额试探成功→加大投入→贪婪失控→陷阱反噬→毁灭",
+      "protagonist": "jinu",
+      "protagonist_goal": "利用传送门获取更多财富",
+      "antagonist": "rumi",
+      "antagonist_goal": "作为传送门的守护者/诱捕者",
+      "scenes": [
+        {"name": "手术室", "function": "冷白光高科技的荒诞场景"}
+      ],
+      "props": [
+        {"name": "紫色传送门", "type": "超自然装置", "function": "能量涡流中心，投入低价物产出高价物最终反噬"},
+        {"name": "红苹果", "type": "触发物", "function": "平庸的初始投入"},
+        {"name": "巨型钻石", "type": "奖励", "function": "中级诱饵"},
+        {"name": "美钞", "type": "终极诱饵", "function": "触发钞票雨和最终反噬"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "贪婪的医生/赌徒", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "传送门守护者/猎手", "abilities": "", "states": "诡异微笑, 被吸入传送门"}
+      ]
+    }
+  },
+  {
+    "filename": "0989-视频专业级影视拆解(1).md",
+    "analysis": {
+      "name": "谁是真正的Rumi",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常元素",
+      "hook": "rumi下半身已被显示器内的蓝色粒子漩涡吸入，双手死命扒住桌沿呼救",
+      "video_tags": "惊悚, 悬疑",
+      "technique": "开场即高潮（被吸入）→英雄跳入救援→辫子引导线追踪→发现被困rumi→AI揭露面具烧毁→现实中的rumi也是AI",
+      "mechanism_name": "数字陷阱",
+      "mechanism": "真人被吸入虚拟世界→救援者追踪线索→发现的目标是AI伪装→警告揭露真相→现实与虚拟全部沦陷",
+      "protagonist": "jinu",
+      "protagonist_goal": "进入数字世界营救rumi",
+      "antagonist": "AI rumi",
+      "antagonist_goal": "利用辫子作为诱饵引诱jinu进入陷阱",
+      "scenes": [
+        {"name": "电竞房", "function": "粉紫色霓虹的虚实交界入口"},
+        {"name": "服务器电缆隧道", "function": "工业感阴森的追踪空间"},
+        {"name": "数字空间", "function": "蓝色矩阵的超现实逃生场"}
+      ],
+      "props": [
+        {"name": "紫色辫子", "type": "引导线/诱饵", "function": "从真实痕迹变为数字陷阱的视觉引导"},
+        {"name": "强光手电筒", "type": "探索工具", "function": "具象化jinu的心理焦虑"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "受害者/AI伪装者", "abilities": "", "states": "面部烧毁露出机械骨架"},
+        {"name": "jinu", "persona": "英雄/被诱捕者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "次元裂缝预警者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0990-视频专业级影视拆解(2).md",
+    "analysis": {
+      "name": "脚底泥雪糕恶作剧",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi在沙发上接过雪糕露出灿烂信任的微笑后咬下一口",
+      "video_tags": "搞笑, 恶搞",
+      "technique": "先展示受害者信任接受→咬下瞬间痛苦喷射→闪回揭示犯罪过程（脚底搓雪糕）→认知失调",
+      "mechanism_name": "叙事错位恶作剧",
+      "mechanism": "先给结果（信任→误食→喷射）→再揭过程（脚底搓雪糕）→观众产生延迟恶心的认知失调",
+      "protagonist": "zoye",
+      "protagonist_goal": "用脚底泥搓雪糕整rumi",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "楼梯间", "function": "秘密筹划恶作剧的私密空间"},
+        {"name": "客厅", "function": "高端整洁与污染对比的执行场"}
+      ],
+      "props": [
+        {"name": "西瓜雪糕", "type": "恶作剧载体", "function": "红色冰面被脚底泥污染"},
+        {"name": "脚底污泥", "type": "污染物", "function": "深褐色粘稠泥土"}
+      ],
+      "characters": [
+        {"name": "zoye", "persona": "恶作剧策划者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "信任的受害者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0991-视频专业级影视拆解.md",
+    "analysis": {
+      "name": "Rumi和Mira的秘密大餐",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "jinu手持吸尘器管闯入卧室大喊知道她藏在这里，rumi在床上假装健身",
+      "video_tags": "搞笑",
+      "technique": "搜查三人组闯入→逐点排查→壮汉从窗帘后出现→报数发现多一人→揭露壮汉是mira伪装→被子下藏着垃圾食品大餐",
+      "mechanism_name": "伪装搜查反转",
+      "mechanism": "搜查者认真排查→所有位置clear→多出一个可疑人物→质疑身份→揭露伪装→真正秘密在另一处",
+      "protagonist": "rumi",
+      "protagonist_goal": "瞒着男生偷吃垃圾食品大餐",
+      "antagonist": "jinu",
+      "antagonist_goal": "找出rumi藏的东西",
+      "scenes": [
+        {"name": "现代卧室", "function": "白色简约风的搜查主战场"}
+      ],
+      "props": [
+        {"name": "吸尘器管", "type": "伪武器", "function": "jinu虚张声势的搜查工具"},
+        {"name": "粉色哑铃", "type": "伪装道具", "function": "rumi假装健身的掩护"},
+        {"name": "食物堆", "type": "核心秘密", "function": "汉堡炸鸡薯条可乐藏在被子下"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "搜查者/被骗者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "伪装者/吃货", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "伪装成壮汉的共犯", "abilities": "", "states": "扮成肌肉壮汉"},
+        {"name": "mystery", "persona": "搜查队员", "abilities": "", "states": ""},
+        {"name": "黄帽男生", "persona": "搜查队员", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0992-视频专业级影视拆解分析.md",
+    "analysis": {
+      "name": "没人爱Rumi玩偶",
+      "video_type": "故事类",
+      "hook_tags": "冲突, 异常元素",
+      "hook": "编织玩偶rumi在霓虹雨夜街头举着红花说你好，被路人撞倒",
+      "video_tags": "感动, 治愈",
+      "technique": "编织玩偶求友→被撞倒→被涂小丑妆嘲笑→被拍照消费→雨淋车溅狗咬→蜷缩纸箱求观众做朋友",
+      "mechanism_name": "递进式社会冷漠",
+      "mechanism": "弱者求助→被物理伤害→被虚假关怀（涂鸦）→被流量消费→被自然灾害→只剩观众是朋友",
+      "protagonist": "rumi(编织人偶)",
+      "protagonist_goal": "找到愿意做朋友的人",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "霓虹街头", "function": "赛博朋克风的冷漠都市"},
+        {"name": "幽暗后巷", "function": "逃亡的绝境"}
+      ],
+      "props": [
+        {"name": "红色手工花", "type": "编织花", "function": "象征对友情的渴望和纯真善意"},
+        {"name": "红色口红", "type": "羞辱工具", "function": "将纯真转化为滑稽的小丑妆"},
+        {"name": "破纸箱", "type": "居所", "function": "象征被社会彻底抛弃"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "弱小求助者/编织人偶", "abilities": "", "states": "满脸涂鸦, 浑身泥垢, 手臂被撕"},
+        {"name": "zoye", "persona": "虚假关怀者/恶作剧者", "abilities": "", "states": ""},
+        {"name": "romance", "persona": "流量消费者", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "流量消费者", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0993-视频专业级影视拆解分析报告.md",
+    "analysis": {
+      "name": "芒果偷吃鬼rumi",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "jinu愤怒大喊谁吃了我的芒果，冲向餐桌",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "排除法指控→嫌疑人嘴角有残渣仍否认→设薯条陷阱→瞬间消失→终极毒药巧克力→误食死亡→墓碑上照片又偷吃",
+      "mechanism_name": "贪吃鬼灵异循环",
+      "mechanism": "偷吃被发现→否认→设陷阱验证→再偷吃→终极惩罚（毒死）→死后仍偷吃（灵异闭环）",
+      "protagonist": "jinu",
+      "protagonist_goal": "抓住偷吃芒果的犯人并惩罚",
+      "antagonist": "rumi",
+      "antagonist_goal": "偷吃一切食物且死不承认",
+      "scenes": [
+        {"name": "现代豪宅餐厅", "function": "明亮的偷吃审讯场"},
+        {"name": "户外墓地", "function": "悲剧结尾与灵异反转"}
+      ],
+      "props": [
+        {"name": "芒果", "type": "被偷食物", "function": "触发冲突的核心"},
+        {"name": "薯条", "type": "陷阱诱饵", "function": "验证偷吃犯的存在"},
+        {"name": "巧克力球", "type": "终极陷阱", "function": "被jinu标记为毒药的致命道具"},
+        {"name": "墓碑", "type": "灵异道具", "function": "照片变化暗示rumi死后仍偷吃"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "愤怒的食物守护者/陷阱设置者", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "死性不改的偷吃鬼", "abilities": "", "states": "中毒死亡, 墓碑照片偷吃"},
+        {"name": "mira", "persona": "无辜嫌疑人", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "无辜嫌疑人", "abilities": "", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0994-视频专业级影视拆解报告(1).md",
+    "analysis": {
+      "name": "拉游艇拽货轮怪力",
+      "video_type": "故事类",
+      "hook_tags": "异常行为",
+      "hook": "rumi用力拉绳拽游艇，实际绳子另一端是积水坑里的玩具小船",
+      "video_tags": "搞笑, 荒诞",
+      "technique": "先误导观众以为在拉大船→揭晓只是玩具小船→不服气跑去抓铁链→真的拽动万吨货轮→码头碎裂→众人跪服",
+      "mechanism_name": "假弱真强反转",
+      "mechanism": "看似在做大事→揭露只是假象→受嘲笑→认真发力→不可思议的真实超能力展示→众人跪服",
+      "protagonist": "rumi",
+      "protagonist_goal": "证明自己的真实力量",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "海边码头", "function": "高饱和度的超现实力量展示舞台"}
+      ],
+      "props": [
+        {"name": "紫色编织绳", "type": "误导道具", "function": "连接玩具船却让人以为拉游艇"},
+        {"name": "黄色玩具船", "type": "揭秘道具", "function": "揭露假象的笑点"},
+        {"name": "生锈铁链", "type": "力量媒介", "function": "拽动万吨货轮的真实工具"},
+        {"name": "木质码头", "type": "力量参照", "function": "被踏碎视觉化力量爆发"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "怪力女王", "abilities": "超人力量", "states": ""},
+        {"name": "jinu", "persona": "震惊旁观者", "abilities": "", "states": "跪地"},
+        {"name": "zoye", "persona": "震惊旁观者", "abilities": "", "states": "跪地"}
+      ]
+    }
+  },
+  {
+    "filename": "0995-视频专业级影视拆解报告(10).md",
+    "analysis": {
+      "name": "吃火山木炭挑战",
+      "video_type": "故事类",
+      "hook_tags": "异常行为, 异常元素",
+      "hook": "rumi在火山口端着燃烧的木炭盆，捏起一块放入嘴中瞬间喷火",
+      "video_tags": "搞笑",
+      "technique": "三人递进吃木炭：A痛苦尖叫→B逞强结果更惨→C淡定吃完竖大拇指",
+      "mechanism_name": "能力阶梯挑战",
+      "mechanism": "第一人尝试失败→第二人逞强也失败→第三人轻松完成→揭示能力差距",
+      "protagonist": "zoye",
+      "protagonist_goal": "展示自己的超凡能力",
+      "antagonist": "",
+      "antagonist_goal": "",
+      "scenes": [
+        {"name": "火山口", "function": "岩浆喷发的极端环境"}
+      ],
+      "props": [
+        {"name": "灼烧木炭盆", "type": "挑战道具", "function": "不锈钢盆装燃烧木炭，区分角色能力"}
+      ],
+      "characters": [
+        {"name": "rumi", "persona": "第一挑战者/失败", "abilities": "", "states": "脸部变红喷火"},
+        {"name": "mira", "persona": "第二挑战者/更惨", "abilities": "", "states": "流泪舌头着火"},
+        {"name": "zoye", "persona": "终极挑战者/轻松过关", "abilities": "耐热/吞火", "states": ""}
+      ]
+    }
+  },
+  {
+    "filename": "0996-视频专业级影视拆解报告(11).md",
+    "analysis": {
+      "name": "假犯人真骗局",
+      "video_type": "故事类",
+      "hook_tags": "冲突",
+      "hook": "警察jinu将rumi双手铐在街道灯柱上转身离开",
+      "video_tags": "搞笑, 悬疑",
+      "technique": "被铐住→差一点就能脱出→路人好心推椅子→借椅子高度逃脱→二次被捕→护手霜润滑脱逃→最终揭秘全是骗局同伙",
+      "mechanism_name": "连环脱逃骗局",
+      "mechanism": "看似被抓→利用路人无心之举脱逃→二次被抓→利用润滑脱逃→最终揭示抓捕本身就是骗局",
+      "protagonist": "rumi",
+      "protagonist_goal": "每次被铐住都能脱逃",
+      "antagonist": "jinu",
+      "antagonist_goal": "表面抓捕实际是同伙",
+      "scenes": [
+        {"name": "红砖街道", "function": "第一次拷锁和脱逃的场景"},
+        {"name": "秋季公园", "function": "第二次拷锁和护手霜脱逃"},
+        {"name": "黄昏街道", "function": "分赃揭秘的终局"}
+      ],
+      "props": [
+        {"name": "银色手铐", "type": "禁锢道具", "function": "象征虚假的禁锢"},
+        {"name": "黑色办公椅", "type": "垫脚石", "function": "mira好心推来变成逃生梯"},
+        {"name": "护手霜", "type": "润滑剂", "function": "涂抹后手腕滑脱手铐"},
+        {"name": "美钞", "type": "收益", "function": "骗局的最终分赃"}
+      ],
+      "characters": [
+        {"name": "jinu", "persona": "假警察/同伙", "abilities": "", "states": ""},
+        {"name": "rumi", "persona": "假犯人/脱逃大师", "abilities": "", "states": ""},
+        {"name": "mira", "persona": "假路人/同伙", "abilities": "", "states": ""},
+        {"name": "zoye", "persona": "假路人/同伙（绿发变体）", "abilities": "", "states": ""}
+      ]
+    }
+  }
+]
