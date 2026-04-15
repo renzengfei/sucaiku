@@ -6,3 +6,4 @@ node_modules/
 # 不要跟踪原生的二进制数据库，只跟踪 database_backup.sql
 database.db
 *.zip
+.env
