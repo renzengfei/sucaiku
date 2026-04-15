@@ -56,6 +56,14 @@ db.exec(`
     persona TEXT DEFAULT '',
     FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE
   );
+
+  CREATE TABLE IF NOT EXISTS video_tags_rel (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    video_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    technique TEXT DEFAULT '',
+    FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE
+  );
 `);
 
 // ==================== 数据库迁移 ====================
@@ -82,6 +90,7 @@ safeAddColumn('videos', 'video_tags', 'TEXT');
 safeAddColumn('videos', 'technique', 'TEXT');
 safeAddColumn('videos', 'mechanism_name', 'TEXT');
 safeAddColumn('videos', 'mechanism', 'TEXT');
+safeAddColumn('videos', 'story_structure', 'TEXT');
 safeAddColumn('videos', 'adapt_tags', 'TEXT');
 safeAddColumn('videos', 'adapt_brief', 'TEXT');
 safeAddColumn('videos', 'source_video_id', 'INTEGER');
@@ -94,7 +103,9 @@ safeAddColumn('videos', 'antagonist', 'TEXT');
 safeAddColumn('videos', 'antagonist_goal', 'TEXT');
 safeAddColumn('videos', 'video_path', 'TEXT');
 safeAddColumn('videos', 'thumb_url', 'TEXT');
+safeAddColumn('videos', 'preview_path', 'TEXT');
 safeAddColumn('videos', 'notes', 'TEXT');
+safeAddColumn('videos', 'is_marked', 'INTEGER');
 
 // 子表 scenes：新增 function 列（保留旧 description 列不删）
 safeAddColumn('scenes', 'function', 'TEXT');
@@ -116,11 +127,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 const VIDEO_FIELDS = [
   'name', 'video_title', 'duration', 'publish_date',
   'summary', 'hook', 'hook_tags', 'video_tags', 'technique',
-  'mechanism_name', 'mechanism',
+  'mechanism_name', 'mechanism', 'story_structure',
   'adapt_tags', 'adapt_brief', 'source_video_id',
   'date', 'video_link', 'views', 'likes', 'script_path', 'video_type',
   'protagonist', 'protagonist_goal', 'antagonist', 'antagonist_goal',
-  'video_path', 'thumb_url', 'notes'
+  'video_path', 'thumb_url', 'preview_path', 'notes', 'is_marked'
 ];
 
 // ==================== API ====================
@@ -132,13 +143,25 @@ app.get('/api/videos', (req, res) => {
     const getScenes = db.prepare('SELECT * FROM scenes WHERE video_id = ?');
     const getProps = db.prepare('SELECT * FROM props WHERE video_id = ?');
     const getCharacters = db.prepare('SELECT * FROM characters WHERE video_id = ?');
+    const getTags = db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ?');
 
-    const result = videos.map(v => ({
-      ...v,
-      scenes: getScenes.all(v.id),
-      props: getProps.all(v.id),
-      characters: getCharacters.all(v.id)
-    }));
+    const result = videos.map(v => {
+      let tags = getTags.all(v.id);
+      // 向下兼容：如果无关联表数据，但主表有数据，则强行平移
+      if (tags.length === 0 && v.video_tags) {
+         tags = v.video_tags.split(',').map(tag => ({
+           name: tag.trim(),
+           technique: v.technique || ''
+         })).filter(t => t.name);
+      }
+      return {
+        ...v,
+        scenes: getScenes.all(v.id),
+        props: getProps.all(v.id),
+        characters: getCharacters.all(v.id),
+        video_tags_rel: tags
+      };
+    });
 
     res.json(result);
   } catch (err) {
@@ -155,6 +178,15 @@ app.get('/api/videos/:id', (req, res) => {
     video.scenes = db.prepare('SELECT * FROM scenes WHERE video_id = ?').all(video.id);
     video.props = db.prepare('SELECT * FROM props WHERE video_id = ?').all(video.id);
     video.characters = db.prepare('SELECT * FROM characters WHERE video_id = ?').all(video.id);
+    
+    let tags = db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ?').all(video.id);
+    if (tags.length === 0 && video.video_tags) {
+       tags = video.video_tags.split(',').map(tag => ({
+         name: tag.trim(),
+         technique: video.technique || ''
+       })).filter(t => t.name);
+    }
+    video.video_tags_rel = tags;
 
     res.json(video);
   } catch (err) {
@@ -164,9 +196,15 @@ app.get('/api/videos/:id', (req, res) => {
 
 // 新增视频
 app.post('/api/videos', (req, res) => {
-  const { scenes, props, characters } = req.body;
+  const { scenes, props, characters, video_tags_rel } = req.body;
 
   try {
+    // 兼容：将第一条 tag 写回旧文本域便于搜索
+    if (video_tags_rel && video_tags_rel.length > 0) {
+      req.body.video_tags = video_tags_rel.map(t => t.name).join(', ');
+      req.body.technique = video_tags_rel[0].technique || '';
+    }
+
     const columns = VIDEO_FIELDS.join(', ');
     const placeholders = VIDEO_FIELDS.map(() => '?').join(', ');
     const insertVideo = db.prepare(`INSERT INTO videos (${columns}) VALUES (${placeholders})`);
@@ -174,6 +212,7 @@ app.post('/api/videos', (req, res) => {
     const insertScene = db.prepare('INSERT INTO scenes (video_id, name, function) VALUES (?, ?, ?)');
     const insertProp = db.prepare('INSERT INTO props (video_id, name, type, function) VALUES (?, ?, ?, ?)');
     const insertChar = db.prepare('INSERT INTO characters (video_id, name, persona, abilities, states) VALUES (?, ?, ?, ?, ?)');
+    const insertTag = db.prepare('INSERT INTO video_tags_rel (video_id, name, technique) VALUES (?, ?, ?)');
 
     const transaction = db.transaction(() => {
       const values = VIDEO_FIELDS.map(f => req.body[f] || '');
@@ -195,6 +234,11 @@ app.post('/api/videos', (req, res) => {
           if (c.name && c.name.trim()) insertChar.run(videoId, c.name.trim(), c.persona || '', c.abilities || '', c.states || '');
         }
       }
+      if (video_tags_rel && video_tags_rel.length > 0) {
+        for (const t of video_tags_rel) {
+          if (t.name && t.name.trim()) insertTag.run(videoId, t.name.trim(), t.technique || '');
+        }
+      }
 
       return videoId;
     });
@@ -204,6 +248,7 @@ app.post('/api/videos', (req, res) => {
     video.scenes = db.prepare('SELECT * FROM scenes WHERE video_id = ?').all(videoId);
     video.props = db.prepare('SELECT * FROM props WHERE video_id = ?').all(videoId);
     video.characters = db.prepare('SELECT * FROM characters WHERE video_id = ?').all(videoId);
+    video.video_tags_rel = db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ?').all(videoId);
 
     res.status(201).json(video);
   } catch (err) {
@@ -213,12 +258,23 @@ app.post('/api/videos', (req, res) => {
 
 // 更新视频（增量更新：只更新请求中传入的字段）
 app.put('/api/videos/:id', (req, res) => {
-  const { scenes, props, characters } = req.body;
+  const { scenes, props, characters, video_tags_rel } = req.body;
   const videoId = req.params.id;
 
   try {
     const existing = db.prepare('SELECT * FROM videos WHERE id = ?').get(videoId);
     if (!existing) return res.status(404).json({ error: '视频不存在' });
+
+    // 兼容：写回主表
+    if (req.body.hasOwnProperty('video_tags_rel')) {
+       if (video_tags_rel && video_tags_rel.length > 0) {
+         req.body.video_tags = video_tags_rel.map(t => t.name).join(', ');
+         req.body.technique = video_tags_rel[0].technique || '';
+       } else {
+         req.body.video_tags = '';
+         req.body.technique = '';
+       }
+    }
 
     // 只更新请求中明确传入的字段
     const fieldsToUpdate = VIDEO_FIELDS.filter(f => req.body.hasOwnProperty(f));
@@ -258,6 +314,15 @@ app.put('/api/videos/:id', (req, res) => {
           }
         }
       }
+      if (req.body.hasOwnProperty('video_tags_rel')) {
+        db.prepare('DELETE FROM video_tags_rel WHERE video_id = ?').run(videoId);
+        const insertTag = db.prepare('INSERT INTO video_tags_rel (video_id, name, technique) VALUES (?, ?, ?)');
+        if (video_tags_rel && video_tags_rel.length > 0) {
+          for (const t of video_tags_rel) {
+            if (t.name && t.name.trim()) insertTag.run(videoId, t.name.trim(), t.technique || '');
+          }
+        }
+      }
     });
 
     transaction();
@@ -266,6 +331,14 @@ app.put('/api/videos/:id', (req, res) => {
     video.scenes = db.prepare('SELECT * FROM scenes WHERE video_id = ?').all(videoId);
     video.props = db.prepare('SELECT * FROM props WHERE video_id = ?').all(videoId);
     video.characters = db.prepare('SELECT * FROM characters WHERE video_id = ?').all(videoId);
+    let tags = db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ?').all(video.id);
+    if (tags.length === 0 && video.video_tags) {
+       tags = video.video_tags.split(',').map(tag => ({
+         name: tag.trim(),
+         technique: video.technique || ''
+       })).filter(t => t.name);
+    }
+    video.video_tags_rel = tags;
 
     res.json(video);
   } catch (err) {
@@ -328,6 +401,25 @@ app.get('/api/characters', (req, res) => {
   }
 });
 
+// 开头标签汇总（倒排索引）
+app.get('/api/hooks', (req, res) => {
+  try {
+    const rows = db.prepare(`SELECT id, name, hook_tags FROM videos WHERE hook_tags IS NOT NULL AND hook_tags != ''`).all();
+    const tagMap = {};
+    rows.forEach(row => {
+      (row.hook_tags || '').split(',').map(t => t.trim()).filter(Boolean).forEach(tag => {
+        if (!tagMap[tag]) tagMap[tag] = { tag, count: 0, videos: [] };
+        tagMap[tag].count++;
+        tagMap[tag].videos.push({ id: row.id, name: row.name });
+      });
+    });
+    const result = Object.values(tagMap).sort((a, b) => b.count - a.count);
+    res.json({ tags: result, totalVideos: rows.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // 全局搜索
 app.get('/api/search', (req, res) => {
   const q = req.query.q;
@@ -365,6 +457,10 @@ app.get('/api/search', (req, res) => {
     db.prepare('SELECT video_id FROM characters WHERE name LIKE ? OR persona LIKE ? OR abilities LIKE ? OR states LIKE ?')
       .all(pattern, pattern, pattern, pattern).forEach(r => videoIds.add(r.video_id));
 
+    // 搜索新标签关系表
+    db.prepare('SELECT video_id FROM video_tags_rel WHERE name LIKE ? OR technique LIKE ?')
+      .all(pattern, pattern).forEach(r => videoIds.add(r.video_id));
+
     if (videoIds.size === 0) return res.json([]);
 
     const ids = [...videoIds];
@@ -374,13 +470,24 @@ app.get('/api/search', (req, res) => {
     const getScenes = db.prepare('SELECT * FROM scenes WHERE video_id = ?');
     const getProps = db.prepare('SELECT * FROM props WHERE video_id = ?');
     const getCharacters = db.prepare('SELECT * FROM characters WHERE video_id = ?');
+    const getTags = db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ?');
 
-    const result = videos.map(v => ({
-      ...v,
-      scenes: getScenes.all(v.id),
-      props: getProps.all(v.id),
-      characters: getCharacters.all(v.id)
-    }));
+    const result = videos.map(v => {
+      let tags = getTags.all(v.id);
+      if (tags.length === 0 && v.video_tags) {
+         tags = v.video_tags.split(',').map(tag => ({
+           name: tag.trim(),
+           technique: v.technique || ''
+         })).filter(t => t.name);
+      }
+      return {
+        ...v,
+        scenes: getScenes.all(v.id),
+        props: getProps.all(v.id),
+        characters: getCharacters.all(v.id),
+        video_tags_rel: tags
+      };
+    });
 
     res.json(result);
   } catch (err) {
