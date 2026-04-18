@@ -607,7 +607,6 @@ function renderTaskDetail(task, preserveInputs = false) {
   const analysisLabels = {
     queued: '排队中', analyzing: '分析中...', ready: '就绪 ✅', failed: '失败 ❌',
   };
-  const canSave = task.analysis_status === 'ready';
   const isShort = task.is_short === 1 ||
     (task.video_url && task.video_url.includes('/shorts/')) ||
     (task.source_video_id && Number(task.duration_seconds) > 0 && Number(task.duration_seconds) <= 60);
@@ -637,7 +636,7 @@ function renderTaskDetail(task, preserveInputs = false) {
         return `
           <div class="conv-msg conv-${c.role}">
             <div class="conv-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
-            ${isLast && canSave ? `
+            ${isLast ? `
               <div class="conv-save-toolbar">
                 <span class="saved-badge">当前脚本：最后一条 Gemini 回复</span>
                 <button class="btn-small" onclick="copyTaskLatestScript(${task.id})">复制脚本</button>
@@ -665,8 +664,6 @@ function renderTaskDetail(task, preserveInputs = false) {
     // 保留用户输入状态
     const ta = document.getElementById('chat-input');
     const savedChatInput = ta ? ta.value : '';
-    const ni = document.getElementById('save-name-input');
-    const savedNameInput = ni ? ni.value : '';
     const list = document.getElementById('conversation-list');
     const savedScrollTop = list ? list.scrollTop : 0;
 
@@ -677,8 +674,6 @@ function renderTaskDetail(task, preserveInputs = false) {
     // 恢复输入与滚动
     const ta2 = document.getElementById('chat-input');
     if (ta2 && savedChatInput) ta2.value = savedChatInput;
-    const ni2 = document.getElementById('save-name-input');
-    if (ni2 && savedNameInput) ni2.value = savedNameInput;
     const list2 = document.getElementById('conversation-list');
     if (list2) list2.scrollTop = savedScrollTop;
     return;
@@ -771,50 +766,6 @@ window.sendChatMessage = async function(id) {
     setTimeout(() => openImportTaskDetail(id), 500);
   } catch (err) {
     showToast('发送失败', 'error');
-  }
-};
-
-window.saveScriptFile = async function(id) {
-  const nameInput = document.getElementById('save-name-input');
-  const name = nameInput.value.trim();
-  if (!name) { showToast('请填写视频名称', 'error'); return; }
-  const toolbar = nameInput.closest('.conv-save-toolbar');
-  const saveButton = toolbar ? toolbar.querySelector('button') : null;
-  const originalButtonText = saveButton ? saveButton.textContent : '';
-
-  if (saveButton) {
-    saveButton.disabled = true;
-    saveButton.textContent = '保存中...';
-  }
-
-  try {
-    const res = await fetch(`/api/import/tasks/${id}/save-script`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error);
-
-    if (toolbar) {
-      let badge = toolbar.querySelector('.saved-badge');
-      if (!badge) {
-        badge = document.createElement('span');
-        toolbar.appendChild(badge);
-      }
-      badge.className = 'saved-badge saved-badge-new';
-      badge.textContent = `保存成功: ${data.path || data.filename}`;
-      badge.title = data.path || data.filename;
-    }
-
-    showToast(`保存成功：${data.path || data.filename}`, 'save-success', { duration: 6000 });
-    openImportTaskDetail(id);
-  } catch (err) {
-    showToast('保存失败: ' + err.message, 'error');
-    if (saveButton) {
-      saveButton.disabled = false;
-      saveButton.textContent = originalButtonText;
-    }
   }
 };
 

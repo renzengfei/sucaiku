@@ -10,3 +10,4 @@ database.db
 backups/
 transcripts/
 .tmp-downloads/
+scripts/*.md

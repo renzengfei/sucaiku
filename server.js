@@ -581,9 +581,6 @@ app.delete('/api/videos/:id', (req, res) => {
 
 // 辅助：为一个素材库 video 创建重写任务，返回新 task.id
 function createRewriteTask(videoId, video, youtubeId) {
-  const paddedId = String(videoId).padStart(3, '0');
-  const safeName = (video.name || '').replace(/[\/\\:*?"<>|]/g, '_');
-  const presetScriptPath = `scripts/${paddedId}-${safeName}.md`;
   const durationSeconds = parseInt(video.duration || 0) || 0;
   const isShort = video.video_link?.includes('/shorts/') || (durationSeconds > 0 && durationSeconds <= 60) ? 1 : 0;
   const result = db.prepare(`
@@ -607,7 +604,7 @@ function createRewriteTask(videoId, video, youtubeId) {
     isShort,
     video.video_path || '',
     videoId,
-    presetScriptPath
+    ''
   );
   return result.lastInsertRowid;
 }
@@ -2665,73 +2662,9 @@ app.post('/api/import/tasks/:id/chat', async (req, res) => {
   }
 });
 
-// 保存到 scripts 目录
+// 脚本文件存储已停用，统一使用数据库里的 AI 对话
 app.post('/api/import/tasks/:id/save-script', (req, res) => {
-  const { name } = req.body;
-  if (!name || !name.trim()) return res.status(400).json({ error: '请提供视频名称' });
-
-  try {
-    const task = db.prepare('SELECT * FROM import_tasks WHERE id = ?').get(req.params.id);
-    if (!task) return res.status(404).json({ error: '任务不存在' });
-
-    // 取最新的 assistant 输出
-    const lastTurn = db.prepare(
-      "SELECT * FROM import_conversations WHERE task_id = ? AND role = 'assistant' ORDER BY id DESC LIMIT 1"
-    ).get(req.params.id);
-    if (!lastTurn) return res.status(400).json({ error: '还没有分析结果' });
-
-    // 决定序号：如果之前保存过，沿用原序号；否则取下一个
-    let seqNum = null;
-    let oldFilepath = null;
-    if (task.script_path) {
-      const m = task.script_path.match(/(\d{3})-/);
-      if (m) {
-        seqNum = m[1];
-        oldFilepath = path.join(__dirname, task.script_path);
-      }
-    }
-    if (!seqNum) {
-      const files = fs.readdirSync(scriptsDir).filter(f => /^\d{3}-/.test(f));
-      const maxNum = files.reduce((max, f) => {
-        const n = parseInt(f.slice(0, 3));
-        return n > max ? n : max;
-      }, 0);
-      seqNum = String(maxNum + 1).padStart(3, '0');
-    }
-    const safeName = name.trim().replace(/[\/\\:*?"<>|]/g, '_');
-    const filename = `${seqNum}-${safeName}.md`;
-    const filepath = path.join(scriptsDir, filename);
-
-    // 清理输出：提取代码块内容，如果没有代码块就用原内容
-    let content = lastTurn.content;
-    const codeBlockMatch = content.match(/```[a-z]*\n([\s\S]*?)\n```/);
-    if (codeBlockMatch) content = codeBlockMatch[1];
-
-    // 如果老文件路径跟新路径不同（改了名），先删老文件；相同就直接覆盖写入
-    if (oldFilepath && oldFilepath !== filepath && fs.existsSync(oldFilepath)) {
-      try {
-        fs.unlinkSync(oldFilepath);
-        console.log(`  🗑  删除旧脚本: ${task.script_path}`);
-      } catch (e) { console.error('删除旧脚本失败:', e.message); }
-    }
-
-    fs.writeFileSync(filepath, content, 'utf8');
-
-    const relativePath = `scripts/${filename}`;
-    const overwritten = !!oldFilepath;
-    updateTaskStatus(req.params.id, task.status, { script_path: relativePath });
-
-    // 若此任务是"素材库重写脚本"场景，同步更新 videos.script_path
-    if (task.source_video_id) {
-      db.prepare("UPDATE videos SET script_path = ?, updated_at = datetime('now', 'localtime') WHERE id = ?")
-        .run(relativePath, task.source_video_id);
-      console.log(`  🔗 已同步素材库 video #${task.source_video_id} 的 script_path → ${relativePath}`);
-    }
-
-    res.json({ success: true, filename, path: relativePath, overwritten, sourceVideoId: task.source_video_id || null });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  res.status(410).json({ error: 'scripts 文件存储已停用，请直接使用数据库中的 AI 对话' });
 });
 
 // 删除任务
