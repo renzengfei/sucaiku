@@ -1,13 +1,33 @@
-// ==================== 状态管理 ====================
+// ==================== 顶级 Tab 状态 ====================
+let currentSection = 'youtube'; // youtube | import | library
+
+// ==================== 监控状态 ====================
+let monitorConfigs = [];
+let monitorVideos = [];
+let monitorPage = 1;
+let monitorTotal = 0;
+let monitorTotalPages = 0;
+let monitorFilterKeyword = '';
+let monitorFilterType = '1'; // 默认短视频
+let monitorFilterLink = '';
+let monitorLinkDebounceTimer = null;
+let isRefreshing = false;
+
+// ==================== 素材库状态 ====================
 let videos = [];
 let allVideos = []; // 完整列表（用于筛选）
 let currentView = 'all';
 let currentVideoId = null;
 let currentPage = window.sessionStorage ? parseInt(sessionStorage.getItem('currentPage')) || 1 : 1;
+let libraryDisplayMode = window.localStorage ? (localStorage.getItem('libraryDisplayMode') || 'latest') : 'latest';
+let seriesSortMode = window.localStorage ? (localStorage.getItem('seriesSortMode') || 'recent') : 'recent';
 let isInitialLoad = true;
 let allHookTags = new Set(); // 全局开头标签集合（供编辑器使用）
 let savedScrollY = 0; // 进入编辑页面前的滚动位置
+let inlineAiTaskId = null;
+let inlineAiPollTimer = null;
 const itemsPerPage = 10; // 每页显示系列组数量
+const videoItemsPerPage = 24; // 最新录入模式每页视频数量
 
 // ==================== DOM 元素 ====================
 const $videoList = document.getElementById('video-list');
@@ -27,17 +47,1119 @@ const $modalTitle = document.getElementById('modal-title');
 
 // ==================== 初始化 ====================
 document.addEventListener('DOMContentLoaded', () => {
+  // 顶级 Tab 切换
+  bindMainTabs();
+  // 恢复上次选中的 Tab
+  const savedSection = localStorage.getItem('currentSection');
+  if (savedSection && ['youtube', 'import', 'library'].includes(savedSection)) {
+    switchMainTab(savedSection);
+  }
+  // YouTube 监控初始化
+  initMonitor();
+  // 素材库初始化
   loadVideos().then(() => {
-    // 刷新时恢复编辑页面
     const hash = location.hash;
     if (hash.startsWith('#video/')) {
       const id = parseInt(hash.split('/')[1]);
-      if (id) showDetail(id);
+      if (id) {
+        switchMainTab('library');
+        showDetail(id);
+      }
     }
   });
   bindEvents();
 });
 
+// ==================== 顶级 Tab 切换 ====================
+function bindMainTabs() {
+  document.querySelectorAll('.main-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchMainTab(tab.dataset.section));
+  });
+}
+
+function switchMainTab(section) {
+  currentSection = section;
+  localStorage.setItem('currentSection', section);
+  document.querySelectorAll('.main-tab').forEach(t => t.classList.toggle('active', t.dataset.section === section));
+  document.querySelectorAll('.section-panel').forEach(p => p.style.display = 'none');
+  document.getElementById(`section-${section}`).style.display = '';
+
+  // 进入后台任务时加载数据，并每 3 秒轮询更新状态
+  if (importRefreshTimer) { clearInterval(importRefreshTimer); importRefreshTimer = null; }
+  if (section === 'import') {
+    loadImportTasks();
+    importRefreshTimer = setInterval(loadImportTasks, 3000);
+  }
+}
+
+// ==================== YouTube 监控 ====================
+function initMonitor() {
+  // 配置面板展开/折叠
+  document.getElementById('btn-toggle-config').addEventListener('click', () => {
+    const body = document.getElementById('monitor-config-body');
+    const btn = document.getElementById('btn-toggle-config');
+    if (body.style.display === 'none') {
+      body.style.display = '';
+      btn.textContent = '▾';
+    } else {
+      body.style.display = 'none';
+      btn.textContent = '▸';
+    }
+  });
+
+  // 添加监控条件
+  document.getElementById('btn-add-config').addEventListener('click', addMonitorConfig);
+  document.getElementById('config-keyword').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') e.preventDefault();
+  });
+
+  // 立即刷新
+  document.getElementById('btn-refresh-now').addEventListener('click', doManualRefresh);
+
+  // 筛选
+  document.getElementById('filter-monitor-type').addEventListener('change', () => {
+    monitorFilterType = document.getElementById('filter-monitor-type').value;
+    monitorPage = 1;
+    loadMonitorVideos();
+  });
+  document.getElementById('filter-monitor-keyword').addEventListener('change', () => {
+    monitorFilterKeyword = document.getElementById('filter-monitor-keyword').value;
+    monitorPage = 1;
+    loadMonitorVideos();
+  });
+
+  const $linkInput = document.getElementById('filter-monitor-link');
+  const $linkClear = document.getElementById('btn-clear-monitor-link');
+  const applyLinkFilter = () => {
+    const raw = $linkInput.value.trim();
+    const id = extractYouTubeIdFromInput(raw);
+    monitorFilterLink = id;
+    $linkClear.style.display = raw ? '' : 'none';
+    monitorPage = 1;
+    loadMonitorVideos();
+  };
+  $linkInput.addEventListener('input', () => {
+    clearTimeout(monitorLinkDebounceTimer);
+    monitorLinkDebounceTimer = setTimeout(applyLinkFilter, 300);
+  });
+  $linkInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      clearTimeout(monitorLinkDebounceTimer);
+      applyLinkFilter();
+    }
+  });
+  $linkClear.addEventListener('click', () => {
+    $linkInput.value = '';
+    clearTimeout(monitorLinkDebounceTimer);
+    applyLinkFilter();
+    $linkInput.focus();
+  });
+
+  // 播放浮层关闭
+  document.getElementById('btn-close-player').addEventListener('click', closeMonitorPlayer);
+  document.getElementById('monitor-player-overlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('monitor-player-overlay')) closeMonitorPlayer();
+  });
+
+  // 加载数据
+  loadMonitorConfigs();
+  loadMonitorStatus();
+  loadMonitorVideos();
+}
+
+async function loadMonitorConfigs() {
+  try {
+    const res = await fetch('/api/monitor/configs');
+    monitorConfigs = await res.json();
+
+    // 加载每个配置的频道
+    for (const c of monitorConfigs) {
+      const chRes = await fetch(`/api/monitor/configs/${c.id}/channels`);
+      c._channels = await chRes.json();
+    }
+
+    renderMonitorConfigs();
+    populateMonitorKeywordFilter();
+  } catch (err) {
+    console.error('加载监控条件失败:', err);
+  }
+}
+
+function renderMonitorConfigs() {
+  const $list = document.getElementById('config-list');
+  if (monitorConfigs.length === 0) {
+    $list.innerHTML = '<div class="config-empty">暂无监控条件，请在上方添加关键词</div>';
+    return;
+  }
+  $list.innerHTML = monitorConfigs.map(c => {
+    const durationLabels = { any: '全部', short: '<4分钟', medium: '4-20分钟', long: '>20分钟' };
+    const viewsLabel = c.min_views > 0 ? `${formatViewsNum(c.min_views)}+` : '不限';
+    const status = c.status || 'testing';
+    const statusLabel = status === 'ready' ? '就绪' : '测试中';
+    const statusClass = status === 'ready' ? 'status-ready' : 'status-testing';
+    const channels = c._channels || [];
+
+    // 月份选项
+    let monthOptions = '';
+    if (status === 'testing') {
+      const pulledSet = new Set((c.pulled_months || '').split(',').filter(Boolean));
+      const now = new Date();
+      for (let i = 0; i < 24; i++) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const y = d.getFullYear();
+        const m = d.getMonth() + 1;
+        const key = `${y}-${String(m).padStart(2, '0')}`;
+        const pulled = pulledSet.has(key);
+        monthOptions += `<option value="${y}-${m}" ${pulled ? 'disabled' : ''}>${y}年${m}月${pulled ? ' ✓' : ''}</option>`;
+      }
+    }
+
+    // 频道列表
+    const channelsHtml = channels.map(ch => `
+      <div class="channel-item">
+        ${ch.thumbnail_url ? `<img class="channel-avatar" src="${escapeHtml(ch.thumbnail_url)}" alt="">` : ''}
+        <span class="channel-name">${escapeHtml(ch.channel_title)}</span>
+        <button class="btn-icon btn-icon-danger" onclick="event.stopPropagation(); deleteChannel(${ch.id})" title="删除">×</button>
+      </div>
+    `).join('');
+
+    return `
+      <div class="config-block" data-id="${c.id}">
+        <div class="config-item ${c.enabled ? '' : 'disabled'}">
+          <div class="config-item-info">
+            <span class="config-keyword">${escapeHtml(c.keyword)}</span>
+            <span class="config-status-badge ${statusClass}">${statusLabel}</span>
+            <span class="config-meta">${durationLabels[c.duration] || '全部'} · 播放量${viewsLabel}</span>
+          </div>
+          <div class="config-item-actions">
+            ${status === 'testing' ? `
+              <select class="month-select" id="month-select-${c.id}">${monthOptions}</select>
+              <button class="btn-small btn-full-pull" onclick="monthPullConfig(${c.id})">拉取该月</button>
+              <button class="btn-small btn-set-ready" onclick="setConfigReady(${c.id})">设为就绪</button>
+            ` : ''}
+            <button class="btn-icon" onclick="toggleMonitorConfig(${c.id}, ${c.enabled ? 0 : 1})" title="${c.enabled ? '暂停' : '启用'}">
+              ${c.enabled ? '⏸' : '▶'}
+            </button>
+            <button class="btn-icon btn-icon-danger" onclick="deleteMonitorConfig(${c.id})" title="删除">×</button>
+          </div>
+        </div>
+        <div class="config-channels">
+          ${channelsHtml}
+          <div class="channel-add-row">
+            <input type="text" class="channel-add-input" id="channel-input-${c.id}" placeholder="添加频道: URL / @handle / ID">
+            <button class="btn-small btn-channel-add" onclick="addChannelToConfig(${c.id})">添加</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function populateMonitorKeywordFilter() {
+  const $select = document.getElementById('filter-monitor-keyword');
+  const current = $select.value;
+  const keywords = [...new Set(monitorConfigs.map(c => c.keyword))];
+  $select.innerHTML = '<option value="">全部关键词</option>' +
+    keywords.map(k => `<option value="${escapeHtml(k)}">${escapeHtml(k)}</option>`).join('');
+  $select.value = current;
+}
+
+async function addMonitorConfig() {
+  const keyword = document.getElementById('config-keyword').value.trim();
+  if (!keyword) return;
+  const duration = document.getElementById('config-duration').value;
+  const minViews = parseInt(document.getElementById('config-min-views').value) || 0;
+
+  const btn = document.getElementById('btn-add-config');
+  btn.disabled = true;
+  btn.textContent = '拉取中...';
+
+  try {
+    const res = await fetch('/api/monitor/configs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keyword, duration, min_views: minViews })
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.error); }
+    document.getElementById('config-keyword').value = '';
+    showToast('已添加');
+    loadMonitorConfigs();
+  } catch (err) {
+    showToast('添加失败: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '添加';
+  }
+}
+
+window.monthPullConfig = async function(id) {
+  const select = document.getElementById(`month-select-${id}`);
+  if (!select) return;
+  const [year, month] = select.value.split('-').map(Number);
+
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = '拉取中...';
+
+  try {
+    const res = await fetch(`/api/monitor/configs/${id}/month-pull`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ year, month })
+    });
+    const result = await res.json();
+    if (result.success) {
+      showToast(`${year}年${month}月: ${result.total} 个视频，新增 ${result.newCount} 个`);
+      loadMonitorConfigs();
+      loadMonitorVideos();
+    } else {
+      showToast(result.error || '拉取失败', 'error');
+    }
+  } catch (err) {
+    showToast('拉取失败: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '拉取该月';
+  }
+};
+
+window.setConfigReady = async function(id) {
+  try {
+    const res = await fetch(`/api/monitor/configs/${id}/set-ready`, { method: 'POST' });
+    if (res.ok) {
+      showToast('已设为就绪');
+      loadMonitorConfigs();
+    }
+  } catch (err) {
+    showToast('操作失败', 'error');
+  }
+};
+
+// ==================== 频道管理（绑定到关键词配置） ====================
+
+window.addChannelToConfig = async function(configId) {
+  const input = document.getElementById(`channel-input-${configId}`);
+  if (!input || !input.value.trim()) return;
+
+  const btn = input.nextElementSibling;
+  btn.disabled = true;
+  btn.textContent = '解析中...';
+
+  try {
+    const res = await fetch(`/api/monitor/configs/${configId}/channels`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ input: input.value.trim() })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    input.value = '';
+    showToast(`已添加频道: ${data.channel_title}`);
+    loadMonitorConfigs();
+  } catch (err) {
+    showToast('添加失败: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '添加';
+  }
+};
+
+window.deleteChannel = async function(id) {
+  try {
+    await fetch(`/api/monitor/channels/${id}`, { method: 'DELETE' });
+    showToast('已删除');
+    loadMonitorConfigs();
+  } catch (err) {
+    showToast('删除失败', 'error');
+  }
+};
+
+// ==================== 录入功能 ====================
+let importTasks = [];
+let importRefreshTimer = null;
+
+window.importVideo = async function(monitorVideoId, btn) {
+  if (btn) { btn.disabled = true; btn.textContent = '录入中...'; }
+  try {
+    const res = await fetch('/api/import/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ monitor_video_id: monitorVideoId })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    showToast(`已创建素材卡片 #${data.material_video_id || data.source_video_id || ''}，后台任务已启动`);
+    if (btn) { btn.textContent = '已录入'; btn.disabled = true; btn.classList.add('btn-import-done'); }
+    loadMonitorVideos();
+    loadVideos(true);
+  } catch (err) {
+    const msg = err.message || '';
+    showToast(msg.includes('重复') ? msg : ('录入失败: ' + msg), 'error', { duration: msg.includes('重复') ? 6000 : 3000 });
+    if (msg.includes('重复')) loadMonitorVideos();
+    if (btn) { btn.disabled = false; btn.textContent = '录入'; }
+  }
+};
+
+
+async function loadImportTasks() {
+  try {
+    const res = await fetch('/api/import/tasks');
+    importTasks = await res.json();
+    renderImportTasks();
+    loadQueueStatus();   // 任务列表刷新后立即拉一次队列状态
+  } catch (err) {
+    console.error('加载录入任务失败:', err);
+  }
+}
+
+async function loadQueueStatus() {
+  try {
+    const res = await fetch('/api/import/queue-status');
+    const s = await res.json();
+    const $bar = document.getElementById('queue-status-bar');
+    if (!$bar) return;
+
+    const fmtSec = (ms) => Math.round(ms / 1000);
+    const fmtMin = (ms) => (ms / 60000).toFixed(1);
+
+    let statusText = '', cls = 'queue-idle';
+    if (s.phase === 'idle') {
+      if (s.queuedCountInDb > 0) {
+        statusText = `⚠️ 队列空闲，但数据库里还有 ${s.queuedCountInDb} 个 queued 任务未处理（可能需重启恢复）`;
+        cls = 'queue-warn';
+      } else {
+        statusText = '✓ 队列空闲，无待处理任务';
+      }
+    } else if (s.phase === 'paused') {
+      statusText = `🚫 触发限流，暂停中 · 剩余 ${fmtMin(s.nextResumeInMs)} 分钟 · 队列还有 ${s.queueLength} 个任务`;
+      cls = 'queue-paused';
+    } else if (s.phase === 'cooling_down') {
+      statusText = `⏱ 冷却中（防限流）· ${fmtSec(s.nextResumeInMs)}s 后开始下一个 · 队列还有 ${s.queueLength} 个`;
+      cls = 'queue-cooling';
+    } else if (s.phase === 'downloading') {
+      const title = s.currentTask ? s.currentTask.title : `#${s.currentTask?.id || '?'}`;
+      statusText = `⬇️ 下载中 · <span class="queue-task-title" title="${escapeHtml(title)}">${escapeHtml(title.slice(0, 50))}${title.length > 50 ? '…' : ''}</span> · 已运行 ${fmtSec(s.phaseElapsedMs)}s · 队列还有 ${s.queueLength} 个`;
+      cls = 'queue-active';
+    }
+
+    // 若有失败任务，右侧加一个批量重试按钮
+    const retryBtn = s.failedCount > 0
+      ? `<button class="btn-small queue-retry-btn" onclick="retryAllFailed()">🔁 重试 ${s.failedCount} 个失败</button>`
+      : '';
+
+    $bar.className = `queue-status-bar ${cls}`;
+    $bar.innerHTML = `<span class="queue-status-text">${statusText}</span>${retryBtn}`;
+  } catch (err) {
+    console.error('加载队列状态失败:', err);
+  }
+}
+
+function renderImportTasks() {
+  const $section = document.getElementById('section-import');
+  if (importTasks.length === 0) {
+    $section.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <p>暂无录入任务</p>
+        <p class="empty-hint">在 YouTube 监控中点击「录入」按钮开始录入视频</p>
+      </div>`;
+    return;
+  }
+
+  $section.innerHTML = `
+    <div class="import-tasks-header">
+      <h2>后台录入队列</h2>
+      <span class="task-count">${importTasks.length} 个任务</span>
+    </div>
+    <div id="queue-status-bar" class="queue-status-bar queue-idle">正在查询队列状态…</div>
+    <div class="import-tasks-list">
+      ${importTasks.map(t => {
+        const ds = taskStatusPill('下载', t.download_status || t.backup_status);
+        const us = taskStatusPill('上传', t.upload_status);
+        const ts = taskStatusPill('字幕', t.transcript_status);
+        const ps = taskStatusPill('预览', t.preview_status);
+        const as = taskStatusPill('Gemini', t.analysis_status);
+        return `
+          <div class="import-task-item">
+            <img class="task-thumb" src="${escapeHtml(t.thumbnail_url)}" alt="" loading="lazy">
+            <div class="task-info">
+              <div class="task-title">${escapeHtml(t.title)}</div>
+              <div class="task-meta">
+                <span class="task-channel">${escapeHtml(t.channel_title)}</span>
+                <span>👁 ${formatViewsNum(t.views)}</span>
+                <span>${t.publish_date || ''}</span>
+                ${t.suggested_name ? `<span class="task-suggested">💡 ${escapeHtml(t.suggested_name)}</span>` : ''}
+              </div>
+              <div class="task-statuses">
+                ${ds}${us}${ts}${ps}${as}
+              </div>
+              ${renderTaskErrors(t)}
+            </div>
+            <div class="task-actions" onclick="event.stopPropagation()">
+              ${t.source_video_id ? `<button class="btn-small" onclick="switchMainTab('library'); showDetail(${t.source_video_id})">打开卡片</button>` : ''}
+              ${hasTaskFailure(t) ? `<button class="btn-small" onclick="retryBackup(${t.id})">重试</button>` : ''}
+              <button class="btn-icon btn-icon-danger" onclick="deleteImportTask(${t.id})" title="删除">×</button>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  // 确保详情弹层存在于 body 下，避免被列表轮询刷新时破坏
+  if (!document.getElementById('task-detail-overlay')) {
+    const overlay = document.createElement('div');
+    overlay.id = 'task-detail-overlay';
+    overlay.className = 'task-detail-overlay';
+    overlay.style.display = 'none';
+    document.body.appendChild(overlay);
+  }
+}
+
+function taskStatusPill(label, status) {
+  const map = {
+    queued: { label: '排队中', class: 'status-queued', active: true },
+    downloading: { label: '下载中', class: 'status-downloading', active: true },
+    downloaded: { label: '已下载', class: 'status-uploaded' },
+    uploading: { label: '上传中', class: 'status-uploading', active: true },
+    uploaded: { label: '已上传', class: 'status-uploaded' },
+    transcribing: { label: '转写中', class: 'status-downloading', active: true },
+    generating: { label: '生成中', class: 'status-downloading', active: true },
+    analyzing: { label: '分析中', class: 'status-downloading', active: true },
+    ready: { label: '就绪', class: 'status-uploaded' },
+    skipped: { label: '跳过', class: 'status-queued' },
+    failed: { label: '失败', class: 'status-failed' },
+  };
+  const s = map[status] || { label: status || '-', class: 'status-queued' };
+  if (label === '字幕' && status === 'skipped') {
+    s.label = '无语音';
+  }
+  return `<span class="task-status ${s.class}">${s.active ? '<span class="spinner-small"></span> ' : ''}${label}: ${s.label}</span>`;
+}
+
+function hasTaskFailure(t) {
+  return [t.download_status, t.upload_status, t.transcript_status, t.preview_status, t.analysis_status, t.backup_status].includes('failed');
+}
+
+function renderTaskErrors(t) {
+  const errors = [
+    t.download_error && `下载: ${t.download_error}`,
+    t.upload_error && `上传: ${t.upload_error}`,
+    t.transcript_error && `字幕: ${t.transcript_error}`,
+    t.preview_error && `预览: ${t.preview_error}`,
+    t.analysis_error && `Gemini: ${t.analysis_error}`,
+    t.backup_error && !t.download_error && !t.upload_error && `备份: ${t.backup_error}`,
+  ].filter(Boolean);
+  if (errors.length === 0) return '';
+  return `<div class="task-error task-error-inline">${escapeHtml(errors[0])}</div>`;
+}
+
+let taskDetailPollTimer = null;
+let currentDetailTaskId = null;
+
+window.openImportTaskDetail = async function(taskId) {
+  let overlay = document.getElementById('task-detail-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'task-detail-overlay';
+    overlay.className = 'task-detail-overlay';
+    document.body.appendChild(overlay);
+  }
+  overlay.style.display = 'flex';
+
+  // 首次打开时显示加载；后续轮询刷新不重置 innerHTML 避免输入框/滚动位置丢失
+  const isNewOpen = currentDetailTaskId !== taskId;
+  if (isNewOpen) {
+    overlay.innerHTML = '<div class="task-detail-loading">加载中...</div>';
+    currentDetailTaskId = taskId;
+  }
+
+  try {
+    const res = await fetch(`/api/import/tasks/${taskId}`);
+    const task = await res.json();
+    renderTaskDetail(task, !isNewOpen);
+
+    // 清除旧的轮询
+    if (taskDetailPollTimer) clearTimeout(taskDetailPollTimer);
+    // 如果还在进行中，继续轮询
+    const stillActive = ['queued', 'analyzing'].includes(task.analysis_status) ||
+                        ['queued', 'downloading', 'uploading'].includes(task.backup_status);
+    if (stillActive && overlay.style.display !== 'none') {
+      taskDetailPollTimer = setTimeout(() => {
+        if (currentDetailTaskId === taskId && overlay.style.display !== 'none') {
+          openImportTaskDetail(taskId);
+        }
+      }, 3000);
+    }
+  } catch (err) {
+    if (isNewOpen) overlay.innerHTML = '<div class="task-detail-loading">加载失败</div>';
+  }
+};
+
+function renderTaskDetail(task, preserveInputs = false) {
+  const overlay = document.getElementById('task-detail-overlay');
+
+  const backupLabels = {
+    queued: '排队中', downloading: '下载中', uploading: '上传中',
+    uploaded: '已上传 ✅', downloaded: '已下载 ✅', failed: '失败 ❌',
+  };
+  const analysisLabels = {
+    queued: '排队中', analyzing: '分析中...', ready: '就绪 ✅', failed: '失败 ❌',
+  };
+  const canSave = task.analysis_status === 'ready';
+  const isShort = task.is_short === 1 ||
+    (task.video_url && task.video_url.includes('/shorts/')) ||
+    (task.source_video_id && Number(task.duration_seconds) > 0 && Number(task.duration_seconds) <= 60);
+
+  const statusPanelHtml = `
+    <div class="status-row"><strong>备份:</strong> ${backupLabels[task.backup_status] || '-'}
+      ${task.backup_status === 'failed' ? `<button class="btn-small" onclick="retryBackup(${task.id})">重试</button>` : ''}
+    </div>
+    ${task.backup_error ? `<div class="task-error">${escapeHtml(task.backup_error)}</div>` : ''}
+    ${task.oss_video_url ? `<div class="task-url">☁️ <a href="${escapeHtml(task.oss_video_url)}" target="_blank">${escapeHtml(task.oss_video_url)}</a></div>` : ''}
+    ${task.analysis_status === 'failed' ? `
+      <div class="status-row"><strong>分析:</strong> ${analysisLabels[task.analysis_status]}
+        <button class="btn-small" onclick="retryAnalysis(${task.id})">重试</button>
+      </div>
+      ${task.analysis_error ? `<div class="task-error">${escapeHtml(task.analysis_error)}</div>` : ''}
+    ` : ''}
+  `;
+
+  const rightPanelHtml = `
+    <div class="conversation-header">
+      <span>💬 对话</span>
+      ${task.analysis_status === 'ready' || task.analysis_status === 'analyzing' ? `<button class="btn-small btn-restart" onclick="restartAnalysis(${task.id})">重启分析</button>` : ''}
+    </div>
+    <div class="conversation-list" id="conversation-list">
+      ${(task.conversations || []).map((c, idx) => {
+        const isLast = idx === task.conversations.length - 1 && c.role === 'assistant';
+        return `
+          <div class="conv-msg conv-${c.role}">
+            <div class="conv-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
+            ${isLast && canSave ? `
+              <div class="conv-save-toolbar">
+                <span class="saved-badge">当前脚本：最后一条 Gemini 回复</span>
+                <button class="btn-small" onclick="copyTaskLatestScript(${task.id})">复制脚本</button>
+              </div>
+            ` : ''}
+            <div class="conv-content">${escapeHtml(c.content)}</div>
+          </div>
+        `;
+      }).join('') || '<div class="conv-empty">对话将在分析开始后显示</div>'}
+      ${task.analysis_status === 'analyzing' ? '<div class="conv-thinking"><span class="spinner-small"></span> Gemini 思考中...</div>' : ''}
+    </div>
+    <div class="conversation-input">
+      <textarea id="chat-input" placeholder="指出哪里不对，让 Gemini 重新输出..."></textarea>
+      <button class="btn-primary" onclick="sendChatMessage(${task.id})" ${task.analysis_status !== 'ready' ? 'disabled' : ''}>发送</button>
+    </div>
+  `;
+
+  // 如果已经渲染过（preserveInputs=true 意味着轮询更新），只替换会变的部分，iframe 保持不动避免闪烁
+  const existingStatus = overlay.querySelector('.task-detail-status-panel');
+  const existingRight = overlay.querySelector('.task-detail-right');
+  const existingPlayer = overlay.querySelector('.task-detail-player iframe');
+  const sameVideo = existingPlayer && existingPlayer.src.includes(task.youtube_video_id);
+
+  if (preserveInputs && existingStatus && existingRight && sameVideo) {
+    // 保留用户输入状态
+    const ta = document.getElementById('chat-input');
+    const savedChatInput = ta ? ta.value : '';
+    const ni = document.getElementById('save-name-input');
+    const savedNameInput = ni ? ni.value : '';
+    const list = document.getElementById('conversation-list');
+    const savedScrollTop = list ? list.scrollTop : 0;
+
+    existingStatus.innerHTML = statusPanelHtml;
+    existingRight.innerHTML = rightPanelHtml;
+    existingPlayer.parentElement.classList.toggle('player-vertical', isShort);
+
+    // 恢复输入与滚动
+    const ta2 = document.getElementById('chat-input');
+    if (ta2 && savedChatInput) ta2.value = savedChatInput;
+    const ni2 = document.getElementById('save-name-input');
+    if (ni2 && savedNameInput) ni2.value = savedNameInput;
+    const list2 = document.getElementById('conversation-list');
+    if (list2) list2.scrollTop = savedScrollTop;
+    return;
+  }
+
+  // 首次渲染（或视频换了）— 全量重建
+  const ytEmbedUrl = `https://www.youtube.com/embed/${task.youtube_video_id}?rel=0`;
+
+  overlay.innerHTML = `
+    <div class="task-detail-container">
+      <button class="task-detail-close" onclick="closeImportTaskDetail()">&times;</button>
+      <div class="task-detail-layout">
+        <div class="task-detail-left">
+          <div class="task-detail-player ${isShort ? 'player-vertical' : ''}">
+            <iframe src="${ytEmbedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="task-detail-status-panel">${statusPanelHtml}</div>
+        </div>
+        <div class="task-detail-right">${rightPanelHtml}</div>
+      </div>
+    </div>
+  `;
+  // 首次打开滚到最后一条 AI 回复的顶部（没有则滚到底）
+  const list = document.getElementById('conversation-list');
+  if (list) {
+    requestAnimationFrame(() => {
+      const assistants = list.querySelectorAll('.conv-assistant');
+      const lastA = assistants[assistants.length - 1];
+      if (lastA) {
+        const listRect = list.getBoundingClientRect();
+        const lastRect = lastA.getBoundingClientRect();
+        list.scrollTop = list.scrollTop + (lastRect.top - listRect.top);
+      } else {
+        list.scrollTop = list.scrollHeight;
+      }
+    });
+  }
+}
+
+window.closeImportTaskDetail = function() {
+  document.getElementById('task-detail-overlay').style.display = 'none';
+  currentDetailTaskId = null;
+  if (taskDetailPollTimer) { clearTimeout(taskDetailPollTimer); taskDetailPollTimer = null; }
+};
+
+window.retryBackup = async function(id) {
+  await fetch(`/api/import/tasks/${id}/retry-backup`, { method: 'POST' });
+  showToast('已重试备份');
+  openImportTaskDetail(id);
+};
+
+window.retryAnalysis = async function(id) {
+  await fetch(`/api/import/tasks/${id}/retry-analysis`, { method: 'POST' });
+  showToast('已重试分析');
+  openImportTaskDetail(id);
+};
+
+window.retryAllFailed = async function() {
+  if (!confirm('确定重新入队所有失败的备份任务吗？它们会按新策略重新下载+上传。')) return;
+  try {
+    const res = await fetch('/api/import/retry-all-failed', { method: 'POST' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '失败');
+    showToast(`已重新入队 ${data.count} 个任务`);
+    loadImportTasks();
+    loadQueueStatus();
+  } catch (err) {
+    showToast('批量重试失败: ' + err.message, 'error');
+  }
+};
+
+window.restartAnalysis = async function(id) {
+  if (!confirm('确定要清空对话历史重新开始分析吗？')) return;
+  await fetch(`/api/import/tasks/${id}/restart-analysis`, { method: 'POST' });
+  showToast('已重启分析');
+  openImportTaskDetail(id);
+};
+
+window.sendChatMessage = async function(id) {
+  const ta = document.getElementById('chat-input');
+  const msg = ta.value.trim();
+  if (!msg) return;
+  ta.value = '';
+  try {
+    await fetch(`/api/import/tasks/${id}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+    setTimeout(() => openImportTaskDetail(id), 500);
+  } catch (err) {
+    showToast('发送失败', 'error');
+  }
+};
+
+window.saveScriptFile = async function(id) {
+  const nameInput = document.getElementById('save-name-input');
+  const name = nameInput.value.trim();
+  if (!name) { showToast('请填写视频名称', 'error'); return; }
+  const toolbar = nameInput.closest('.conv-save-toolbar');
+  const saveButton = toolbar ? toolbar.querySelector('button') : null;
+  const originalButtonText = saveButton ? saveButton.textContent : '';
+
+  if (saveButton) {
+    saveButton.disabled = true;
+    saveButton.textContent = '保存中...';
+  }
+
+  try {
+    const res = await fetch(`/api/import/tasks/${id}/save-script`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    if (toolbar) {
+      let badge = toolbar.querySelector('.saved-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        toolbar.appendChild(badge);
+      }
+      badge.className = 'saved-badge saved-badge-new';
+      badge.textContent = `保存成功: ${data.path || data.filename}`;
+      badge.title = data.path || data.filename;
+    }
+
+    showToast(`保存成功：${data.path || data.filename}`, 'save-success', { duration: 6000 });
+    openImportTaskDetail(id);
+  } catch (err) {
+    showToast('保存失败: ' + err.message, 'error');
+    if (saveButton) {
+      saveButton.disabled = false;
+      saveButton.textContent = originalButtonText;
+    }
+  }
+};
+
+window.copyTaskLatestScript = async function(id) {
+  try {
+    const res = await fetch(`/api/ai/tasks/${id}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '读取脚本失败');
+    if (!data.latestScript) {
+      showToast('暂无可复制的脚本', 'error');
+      return;
+    }
+    await navigator.clipboard.writeText(data.latestScript);
+    showToast('已复制脚本');
+  } catch (err) {
+    showToast('复制失败: ' + err.message, 'error');
+  }
+};
+
+window.deleteImportTask = async function(id) {
+  if (!confirm('确定要删除这个任务吗？本地文件也会被删除。')) return;
+  try {
+    await fetch(`/api/import/tasks/${id}`, { method: 'DELETE' });
+    showToast('已删除');
+    loadImportTasks();
+  } catch (err) {
+    showToast('删除失败', 'error');
+  }
+};
+
+window.toggleMonitorConfig = async function(id, enabled) {
+  try {
+    await fetch(`/api/monitor/configs/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ enabled })
+    });
+    loadMonitorConfigs();
+    showToast(enabled ? '已启用' : '已暂停');
+  } catch (err) {
+    showToast('操作失败', 'error');
+  }
+};
+
+window.deleteMonitorConfig = async function(id) {
+  if (!confirm('确定要删除这个监控条件吗？已发现的视频不会被删除。')) return;
+  try {
+    await fetch(`/api/monitor/configs/${id}`, { method: 'DELETE' });
+    loadMonitorConfigs();
+    showToast('已删除');
+  } catch (err) {
+    showToast('删除失败', 'error');
+  }
+};
+
+const REFRESH_BTN_ICON = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`;
+
+let refreshPollTimer = null;
+
+async function doManualRefresh() {
+  if (isRefreshing) return;
+  const btn = document.getElementById('btn-refresh-now');
+
+  try {
+    const res = await fetch('/api/monitor/refresh', { method: 'POST' });
+    const result = await res.json();
+    if (!result.success && !result.running) {
+      showToast(result.error || '刷新失败', 'error');
+      return;
+    }
+    // 进入轮询模式
+    isRefreshing = true;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> 刷新中...';
+    startRefreshPolling();
+  } catch (err) {
+    showToast('刷新失败: ' + err.message, 'error');
+  }
+}
+
+function startRefreshPolling() {
+  if (refreshPollTimer) clearInterval(refreshPollTimer);
+  const btn = document.getElementById('btn-refresh-now');
+
+  const tick = async () => {
+    try {
+      const res = await fetch('/api/monitor/status');
+      const status = await res.json();
+      updateMonitorStatusDisplay(status);
+
+      if (status.refreshing) {
+        // 更新按钮文案带进度
+        if (status.progress) {
+          btn.innerHTML = `<span class="spinner"></span> ${status.phase} ${status.progress.current}/${status.progress.total}`;
+        } else {
+          btn.innerHTML = `<span class="spinner"></span> ${status.phase || '刷新中...'}`;
+        }
+      } else {
+        // 完成
+        clearInterval(refreshPollTimer);
+        refreshPollTimer = null;
+        isRefreshing = false;
+        btn.disabled = false;
+        btn.innerHTML = `${REFRESH_BTN_ICON} 立即刷新`;
+        showToast(`刷新完成，新增 ${status.lastNewCount || 0} 个视频`);
+        loadMonitorVideos();
+      }
+    } catch (err) {
+      console.error('轮询刷新状态失败:', err);
+    }
+  };
+  tick(); // 立即跑一次
+  refreshPollTimer = setInterval(tick, 2500);
+}
+
+function updateMonitorStatusDisplay(status) {
+  const $time = document.getElementById('monitor-last-refresh');
+  const $status = document.getElementById('monitor-refresh-status');
+  if (!$time || !$status) return;
+
+  if (status.lastRefreshTime) {
+    const d = new Date(status.lastRefreshTime);
+    $time.textContent = `上次刷新: ${d.toLocaleString('zh-CN')}`;
+  } else {
+    $time.textContent = '上次刷新: 从未';
+  }
+
+  if (!status.apiKeyConfigured) {
+    $status.textContent = '⚠️ API Key 未配置';
+    $status.className = 'monitor-refresh-status status-error';
+  } else if (status.lastRefreshStatus === 'error:QUOTA_EXCEEDED') {
+    $status.textContent = '⚠️ 配额已用完';
+    $status.className = 'monitor-refresh-status status-error';
+  } else if (status.lastRefreshStatus && status.lastRefreshStatus.startsWith('error:')) {
+    $status.textContent = '⚠️ ' + status.lastRefreshStatus.slice(6);
+    $status.className = 'monitor-refresh-status status-error';
+  } else {
+    $status.textContent = '';
+  }
+}
+
+async function loadMonitorStatus() {
+  try {
+    const res = await fetch('/api/monitor/status');
+    const status = await res.json();
+    updateMonitorStatusDisplay(status);
+
+    // 如果后台正在刷新（页面刷新/另一个 tab 触发过），无缝接管轮询
+    if (status.refreshing && !isRefreshing) {
+      isRefreshing = true;
+      const btn = document.getElementById('btn-refresh-now');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> 刷新中...';
+      }
+      startRefreshPolling();
+    }
+  } catch (err) {
+    console.error('加载监控状态失败:', err);
+  }
+}
+
+async function loadMonitorVideos() {
+  try {
+    const params = new URLSearchParams({ page: monitorPage, limit: 50 });
+    if (monitorFilterType !== '') params.set('is_short', monitorFilterType);
+    if (monitorFilterKeyword) params.set('keyword', monitorFilterKeyword);
+    if (monitorFilterLink) params.set('youtube_id', monitorFilterLink);
+
+    const res = await fetch(`/api/monitor/videos?${params}`);
+    const data = await res.json();
+    monitorVideos = data.videos;
+    monitorTotal = data.total;
+    monitorTotalPages = data.totalPages;
+
+    document.getElementById('monitor-video-count').textContent = `${monitorTotal} 个视频`;
+    renderMonitorVideos();
+    renderMonitorPagination();
+  } catch (err) {
+    console.error('加载监控视频失败:', err);
+  }
+}
+
+function renderMonitorVideos() {
+  const $grid = document.getElementById('monitor-videos-grid');
+  const $empty = document.getElementById('monitor-empty');
+
+  if (monitorVideos.length === 0) {
+    $grid.innerHTML = '';
+    $empty.style.display = '';
+    return;
+  }
+  $empty.style.display = 'none';
+
+  $grid.innerHTML = monitorVideos.map(v => {
+    const discoveredDate = new Date(v.discovered_at);
+    const now = new Date();
+    const diffHours = Math.floor((now - discoveredDate) / (1000 * 60 * 60));
+    let discoveredLabel;
+    if (diffHours < 1) discoveredLabel = '刚刚发现';
+    else if (diffHours < 24) discoveredLabel = `${diffHours}小时前`;
+    else discoveredLabel = `${Math.floor(diffHours / 24)}天前`;
+
+    const isNew = diffHours < 24;
+    const isShort = v.is_short || (v.video_url && v.video_url.includes('/shorts/'));
+
+    return `
+      <div class="monitor-card ${isShort ? 'monitor-card-short' : ''}">
+        <div class="monitor-card-thumb ${isShort ? 'thumb-short' : ''}" id="monitor-thumb-${v.id}" onclick="playMonitorInline(${v.id}, '${v.youtube_video_id}')">
+          ${v.thumbnail_url ? `<img src="${escapeHtml(v.thumbnail_url)}" alt="" loading="lazy">` : '<div class="card-thumb-empty">无封面</div>'}
+          <span class="card-play">▶</span>
+          ${v.duration_seconds ? `<span class="card-duration">${formatDurationDisplay(v.duration_seconds)}</span>` : ''}
+        </div>
+        <div class="monitor-card-info">
+          <div class="monitor-card-title" title="${escapeHtml(v.title)}">${escapeHtml(v.title)}</div>
+          <div class="monitor-card-channel">${escapeHtml(v.channel_title)}</div>
+          <div class="monitor-card-meta">
+            <span>👁 ${formatViewsNum(v.views)}</span>
+            <span>${v.publish_date || ''}</span>
+          </div>
+          <div class="monitor-card-bottom">
+            <span class="discovered-badge ${isNew ? 'discovered-new' : ''}">${discoveredLabel}</span>
+            <span class="monitor-keyword-tag">${escapeHtml(v.keyword)}</span>
+          </div>
+          ${v.imported
+            ? `<button class="btn-import btn-import-done" disabled>已录入</button>`
+            : `<button class="btn-import" onclick="importVideo(${v.id}, this)">录入</button>`}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderMonitorPagination() {
+  const $pagination = document.getElementById('monitor-pagination');
+  if (monitorTotalPages <= 1) { $pagination.style.display = 'none'; return; }
+
+  $pagination.style.display = 'flex';
+  let html = `<button class="page-btn" ${monitorPage <= 1 ? 'disabled' : ''} onclick="changeMonitorPage(${monitorPage - 1})">上一页</button>`;
+  for (let i = 1; i <= monitorTotalPages; i++) {
+    if (i === 1 || i === monitorTotalPages || (i >= monitorPage - 2 && i <= monitorPage + 2)) {
+      html += `<button class="page-btn ${i === monitorPage ? 'active' : ''}" onclick="changeMonitorPage(${i})">${i}</button>`;
+    } else if (i === monitorPage - 3 || i === monitorPage + 3) {
+      html += `<span class="page-dot">...</span>`;
+    }
+  }
+  html += `<button class="page-btn" ${monitorPage >= monitorTotalPages ? 'disabled' : ''} onclick="changeMonitorPage(${monitorPage + 1})">下一页</button>`;
+  $pagination.innerHTML = html;
+}
+
+window.changeMonitorPage = function(p) {
+  monitorPage = p;
+  loadMonitorVideos();
+  document.getElementById('section-youtube').scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// 原位置播放（性能关键：同一时间只有 1 个 iframe）
+let currentlyPlayingMonitorId = null;
+
+window.playMonitorInline = function(cardId, youtubeVideoId) {
+  // 停止当前正在播放的视频
+  if (currentlyPlayingMonitorId && currentlyPlayingMonitorId !== cardId) {
+    stopMonitorInline(currentlyPlayingMonitorId);
+  }
+
+  const container = document.getElementById(`monitor-thumb-${cardId}`);
+  if (!container || container.classList.contains('is-playing')) return;
+
+  // 保留原始 HTML 和视频 ID
+  if (!container.dataset.originalHtml) {
+    container.dataset.originalHtml = container.innerHTML;
+    container.dataset.youtubeId = youtubeVideoId;
+  }
+
+  container.innerHTML = `
+    <div class="inline-player-wrapper">
+      <iframe src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <button class="inline-player-close" onclick="event.stopPropagation(); stopMonitorInline(${cardId})">✕</button>
+    </div>
+  `;
+  container.classList.add('is-playing');
+  // 阻止点击传播（已播放时再点不再触发播放）
+  container.onclick = (e) => e.stopPropagation();
+  currentlyPlayingMonitorId = cardId;
+};
+
+window.stopMonitorInline = function(cardId) {
+  const container = document.getElementById(`monitor-thumb-${cardId}`);
+  if (!container) return;
+  if (container.dataset.originalHtml) {
+    container.innerHTML = container.dataset.originalHtml;
+  }
+  container.classList.remove('is-playing');
+  // 恢复点击事件
+  container.onclick = () => playMonitorInline(cardId, container.dataset.youtubeId || '');
+  if (currentlyPlayingMonitorId === cardId) currentlyPlayingMonitorId = null;
+};
+
+// 保留旧的浮层播放函数用于后备（不再使用）
+function openMonitorPlayer(youtubeVideoId, isShort) {
+  const overlay = document.getElementById('monitor-player-overlay');
+  const container = document.querySelector('.player-container');
+  const content = document.getElementById('monitor-player-content');
+
+  if (isShort) {
+    container.classList.add('player-short');
+  } else {
+    container.classList.remove('player-short');
+  }
+
+  content.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:12px;"></iframe>`;
+  overlay.style.display = 'flex';
+}
+
+function closeMonitorPlayer() {
+  const overlay = document.getElementById('monitor-player-overlay');
+  const content = document.getElementById('monitor-player-content');
+  overlay.style.display = 'none';
+  content.innerHTML = '';
+}
+
+function formatViewsNum(n) {
+  if (!n) return '-';
+  const num = parseInt(n);
+  if (num >= 10000000) return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 10000) return (num / 10000).toFixed(1) + '万';
+  if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+  return num.toLocaleString();
+}
+
+function formatDurationDisplay(seconds) {
+  if (!seconds) return '';
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function closeModal() {
+  if ($modalOverlay) $modalOverlay.style.display = 'none';
+}
+
+// ==================== 素材库事件绑定 ====================
 function bindEvents() {
   // 新增按钮
   document.getElementById('btn-add-video').addEventListener('click', () => showDetail(null));
@@ -48,6 +1170,9 @@ function bindEvents() {
   // 保存 & 删除
   document.getElementById('btn-save-inline').addEventListener('click', saveVideo);
   document.getElementById('btn-delete-inline').addEventListener('click', deleteVideo);
+  document.getElementById('btn-ai-restart').addEventListener('click', startOrRestartInlineAi);
+  document.getElementById('btn-ai-send').addEventListener('click', sendInlineAiMessage);
+  document.getElementById('btn-copy-ai-script').addEventListener('click', copyInlineAiScript);
 
   // 标记
   document.getElementById('btn-toggle-mark').addEventListener('click', () => {
@@ -92,6 +1217,7 @@ function bindEvents() {
   document.getElementById('filter-video-tag').addEventListener('change', applyFilters);
   document.getElementById('filter-hook-tag').addEventListener('change', applyFilters);
   document.getElementById('filter-mechanism').addEventListener('change', applyFilters);
+  bindLibraryDisplayControls();
 
   // 动态添加行
   document.querySelectorAll('.btn-add-row').forEach(btn => {
@@ -99,17 +1225,61 @@ function bindEvents() {
   });
 
   // 点击蒙层关闭
-  $modalOverlay.addEventListener('click', (e) => {
-    if (e.target === $modalOverlay) closeModal();
-  });
+  if ($modalOverlay) {
+    $modalOverlay.addEventListener('click', (e) => {
+      if (e.target === $modalOverlay) closeModal();
+    });
+  }
 
   // ESC 关闭弹窗
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      closeMonitorPlayer();
       closeModal();
       closeDetail();
     }
   });
+}
+
+function bindLibraryDisplayControls() {
+  const modeWrap = document.getElementById('library-display-mode');
+  const seriesSort = document.getElementById('series-sort');
+  if (!modeWrap || !seriesSort) return;
+
+  modeWrap.querySelectorAll('.segmented-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      if (!mode || mode === libraryDisplayMode) return;
+      libraryDisplayMode = mode;
+      localStorage.setItem('libraryDisplayMode', mode);
+      currentPage = 1;
+      sessionStorage.setItem('currentPage', 1);
+      updateLibraryDisplayControls();
+      renderCurrentView();
+    });
+  });
+
+  seriesSort.value = seriesSortMode;
+  seriesSort.addEventListener('change', () => {
+    seriesSortMode = seriesSort.value;
+    localStorage.setItem('seriesSortMode', seriesSortMode);
+    currentPage = 1;
+    sessionStorage.setItem('currentPage', 1);
+    renderCurrentView();
+  });
+
+  updateLibraryDisplayControls();
+}
+
+function updateLibraryDisplayControls() {
+  document.querySelectorAll('#library-display-mode .segmented-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === libraryDisplayMode);
+  });
+  const seriesSort = document.getElementById('series-sort');
+  if (seriesSort) {
+    seriesSort.value = seriesSortMode;
+    seriesSort.style.display = libraryDisplayMode === 'series' ? '' : 'none';
+  }
 }
 
 // ==================== 数据加载 ====================
@@ -141,17 +1311,18 @@ function populateFilters() {
   const videoTags = new Set();
   const hookTags = new Set();
   allHookTags = new Set(); // 重置全局集合
-  const mechanisms = new Set();
+  const mechanisms = new Map();
 
   allVideos.forEach(v => {
     (v.video_tags || '').split(',').map(t => t.trim()).filter(Boolean).forEach(t => videoTags.add(t));
     (v.hook_tags || '').split(',').map(t => t.trim()).filter(Boolean).forEach(t => { hookTags.add(t); allHookTags.add(t); });
-    if (v.mechanism_name) mechanisms.add(v.mechanism_name);
+    const seriesName = window.getVideoSeriesName(v);
+    if (seriesName) mechanisms.set(seriesName, window.getVideoSeriesId(v));
   });
 
   fillSelect('filter-video-tag', '视频标签', videoTags);
   fillSelect('filter-hook-tag', '开头标签', hookTags);
-  fillSelect('filter-mechanism', '系列', mechanisms);
+  fillSeriesSelect('filter-mechanism', '系列', mechanisms);
 }
 
 function fillSelect(id, placeholder, items) {
@@ -160,6 +1331,21 @@ function fillSelect(id, placeholder, items) {
   el.innerHTML = `<option value="">${placeholder}</option>` +
     [...items].sort().map(i => `<option value="${escapeHtml(i)}">${escapeHtml(i)}</option>`).join('');
   el.value = current; // 保留当前选中
+}
+
+function fillSeriesSelect(id, placeholder, items) {
+  const el = document.getElementById(id);
+  const current = el.value;
+  const entries = [...items.entries()].sort((a, b) => {
+    const idA = a[1] || Number.MAX_SAFE_INTEGER;
+    const idB = b[1] || Number.MAX_SAFE_INTEGER;
+    return idA === idB ? a[0].localeCompare(b[0]) : idA - idB;
+  });
+  el.innerHTML = `<option value="">${placeholder}</option>` +
+    entries.map(([name, seriesId]) =>
+      `<option value="${escapeHtml(name)}">${escapeHtml(window.formatSeriesLabel(seriesId, name))}</option>`
+    ).join('');
+  el.value = current;
 }
 
 function applyFilters(keepPage = false) {
@@ -171,7 +1357,7 @@ function applyFilters(keepPage = false) {
   let filtered = allVideos.filter(v => {
     if (fVideoTag && !(v.video_tags || '').split(',').map(t => t.trim()).includes(fVideoTag)) return false;
     if (fHookTag && !(v.hook_tags || '').split(',').map(t => t.trim()).includes(fHookTag)) return false;
-    if (fMechanism && v.mechanism_name !== fMechanism) return false;
+    if (fMechanism && window.getVideoSeriesName(v) !== fMechanism) return false;
     return true;
   });
 
@@ -227,6 +1413,8 @@ function switchView() {
   } else {
     $videoList.style.display = 'none';
     $summaryView.style.display = '';
+    const $pagination = document.getElementById('pagination');
+    if ($pagination) $pagination.style.display = 'none';
     loadSummaryView(currentView);
   }
 }
@@ -236,28 +1424,114 @@ function renderCurrentView() {
   if (currentView === 'all') {
     renderVideoList();
   } else {
+    const $pagination = document.getElementById('pagination');
+    if ($pagination) $pagination.style.display = 'none';
     loadSummaryView(currentView);
   }
 }
 
 // ==================== 共享渲染组件 ====================
 window.padId = id => String(id).padStart(3, '0');
-window.formatVideoLabel = v => `${window.padId(v.id)}-${v.name}`;
+window.formatVideoLabel = v => `${window.padId(v.id)}-${v.name || v.video_title || '待命名'}`;
+window.getVideoSeriesId = v => {
+  const id = Number(v.series_id);
+  return Number.isFinite(id) && id > 0 ? id : null;
+};
+window.getVideoSeriesName = v => v.series_name || v.mechanism_name || '未分类';
+window.formatSeriesLabel = (seriesId, name) => {
+  const seriesName = name || '未分类';
+  return seriesId ? `系列${window.padId(seriesId)}-${seriesName}` : `系列未编号-${seriesName}`;
+};
+window.formatCreatedAt = value => {
+  if (!value) return '';
+  const text = String(value).trim().replace('T', ' ');
+  const match = text.match(/^(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})/);
+  if (match) return `${match[1]} ${match[2]}`;
+  return text.slice(0, 16);
+};
+window.compareCreatedDesc = (a, b) => {
+  const av = a.created_at || a.date || '';
+  const bv = b.created_at || b.date || '';
+  const byTime = String(bv).localeCompare(String(av));
+  return byTime || ((b.id || 0) - (a.id || 0));
+};
+
+window.buildSeriesGroups = function(videoList, sortMode = seriesSortMode) {
+  const groups = new Map();
+  const sortedById = [...videoList].sort((a, b) => b.id - a.id);
+
+  for (const v of sortedById) {
+    const seriesId = window.getVideoSeriesId(v);
+    const seriesName = window.getVideoSeriesName(v);
+    const key = seriesId ? `id:${seriesId}` : `name:${seriesName}`;
+    if (!groups.has(key)) {
+      groups.set(key, {
+        id: seriesId,
+        name: seriesName,
+        mechanism: v.series_mechanism || v.mechanism || '',
+        latestCreatedAt: v.created_at || v.date || '',
+        latestVideoId: v.id || 0,
+        vids: []
+      });
+    }
+    const group = groups.get(key);
+    if (!group.mechanism && (v.series_mechanism || v.mechanism)) {
+      group.mechanism = v.series_mechanism || v.mechanism;
+    }
+    const createdAt = v.created_at || v.date || '';
+    if (String(createdAt).localeCompare(String(group.latestCreatedAt)) > 0) {
+      group.latestCreatedAt = createdAt;
+      group.latestVideoId = v.id || group.latestVideoId;
+    }
+    group.vids.push(v);
+  }
+
+  const groupEntries = Array.from(groups.values());
+  for (const group of groupEntries) {
+    group.vids.sort(window.compareCreatedDesc);
+  }
+  groupEntries.sort((a, b) => {
+    if (sortMode === 'series_desc') {
+      return (b.id || 0) - (a.id || 0) || String(b.latestCreatedAt).localeCompare(String(a.latestCreatedAt));
+    }
+    if (sortMode === 'count_desc') {
+      return b.vids.length - a.vids.length || String(b.latestCreatedAt).localeCompare(String(a.latestCreatedAt));
+    }
+    return String(b.latestCreatedAt).localeCompare(String(a.latestCreatedAt)) || ((b.latestVideoId || 0) - (a.latestVideoId || 0));
+  });
+  return groupEntries;
+};
 
 window.tagsHtml = (str, cls) => (str || '').split(',').filter(t => t.trim())
   .map(t => `<span class="tag ${cls}">${escapeHtml(t.trim())}</span>`).join('');
 
-window.formatViewsNum = n => {
-  if (!n) return '-';
-  const num = parseInt(n);
-  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-  if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-  return num.toLocaleString();
-};
+window.formatViewsNum = formatViewsNum;
+
+function getVideoCardStatus(v) {
+  const task = v.ai_task;
+  if (!task) return null;
+  const failed = [
+    task.download_status, task.upload_status, task.transcript_status,
+    task.preview_status, task.analysis_status, task.backup_status
+  ].includes('failed');
+  if (failed) return { text: '任务失败', cls: 'card-status-failed' };
+
+  const download = task.download_status || task.backup_status;
+  if (['queued', 'downloading'].includes(download)) return { text: download === 'downloading' ? '下载中' : '排队中', cls: 'card-status-active' };
+  if (['queued', 'uploading'].includes(task.upload_status)) return { text: task.upload_status === 'uploading' ? '上传中' : '待上传', cls: 'card-status-active' };
+  if (['queued', 'transcribing'].includes(task.transcript_status)) return { text: task.transcript_status === 'transcribing' ? '字幕中' : '待字幕', cls: 'card-status-active' };
+  if (['queued', 'generating'].includes(task.preview_status)) return { text: task.preview_status === 'generating' ? '预览中' : '待预览', cls: 'card-status-active' };
+  if (['queued', 'analyzing'].includes(task.analysis_status)) return { text: task.analysis_status === 'analyzing' ? 'Gemini中' : '待分析', cls: 'card-status-active' };
+
+  const middleReady = !!(v.hook && v.mechanism_name && v.story_structure);
+  if (task.analysis_status === 'ready' && !middleReady) return { text: '待补全', cls: 'card-status-waiting' };
+  return null;
+}
 
 window.renderGlobalCard = v => {
   const thumbSrc = v.thumb_url || '';
   const thumbLink = v.preview_path ? ('/' + v.preview_path) : (v.video_link || v.video_path || '');
+  const cardStatus = getVideoCardStatus(v);
   return `
   <div class="video-card" data-id="${v.id}">
     <div class="card-thumb" id="thumb-container-${v.id}">
@@ -268,6 +1542,7 @@ window.renderGlobalCard = v => {
            </div>`
         : '<div class="card-thumb-empty">无封面</div>'}
       ${v.duration ? `<span class="card-duration">${v.duration}s</span>` : ''}
+      ${cardStatus ? `<span class="card-task-status ${cardStatus.cls}">${escapeHtml(cardStatus.text)}</span>` : ''}
     </div>
     <div class="card-info">
       <div class="card-header">
@@ -302,7 +1577,9 @@ window.renderGlobalCard = v => {
           <span class="card-views">👁 ${window.formatViewsNum(v.views)}</span>
           ${v.publish_date ? `<span class="card-date">${v.publish_date}</span>` : ''}
         </div>
-        <button class="btn-notes ${v.notes ? 'has-notes' : ''}" onclick="event.stopPropagation(); openNotes(${v.id})" title="${v.notes ? escapeHtml(v.notes).substring(0,50) : '添加备注'}">${v.notes ? '📝' : '➕'}</button>
+        <div class="card-actions">
+          <button class="btn-notes ${v.notes ? 'has-notes' : ''}" onclick="event.stopPropagation(); openNotes(${v.id})" title="${v.notes ? escapeHtml(v.notes).substring(0,50) : '添加备注'}">${v.notes ? '📝' : '➕'}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -310,32 +1587,26 @@ window.renderGlobalCard = v => {
 };
 
 window.generateGroupedCardsHtml = function(videoList) {
-  const groups = new Map();
-  const sortedById = [...videoList].sort((a, b) => b.id - a.id);
-  
-  for (const v of sortedById) {
-    const key = v.mechanism_name || '未分类';
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(v);
-  }
-  const groupEntries = Array.from(groups.entries());
-  for (const [, vids] of groupEntries) {
-    vids.sort((a, b) => (a.publish_date || '').localeCompare(b.publish_date || ''));
-  }
+  const groupEntries = window.buildSeriesGroups(videoList);
 
   let html = '';
-  for (const [mechanism, vids] of groupEntries) {
+  for (const group of groupEntries) {
+    const groupLabel = window.formatSeriesLabel(group.id, group.name);
+    const copyArg = escapeHtml(groupLabel).replace(/'/g, "\\'");
     html += `
       <div class="mechanism-group">
         <div class="mechanism-header">
           <div class="mechanism-header-left">
-            <span class="mechanism-name">🎬 系列：${escapeHtml(mechanism)}</span>
-            <span class="mechanism-count">${vids.length} 个视频</span>
+            <span class="mechanism-number">${escapeHtml(group.id ? `系列${window.padId(group.id)}` : '系列未编号')}</span>
+            <span class="mechanism-name">🎬 ${escapeHtml(group.name)}</span>
+            <span class="mechanism-count">${group.vids.length} 个视频</span>
+            <button class="btn-copy-mechanism" onclick="event.stopPropagation(); copyToClipboard('${copyArg}', '已复制系列')" title="复制系列号和名称">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
           </div>
-          ${vids[0].mechanism ? `<div class="mechanism-chain">🦴 骨架：${escapeHtml(vids[0].mechanism)}</div>` : ''}
         </div>
         <div class="card-grid">
-          ${vids.map(v => window.renderGlobalCard(v)).join('')}
+          ${group.vids.map(v => window.renderGlobalCard(v)).join('')}
         </div>
       </div>
     `;
@@ -347,6 +1618,7 @@ window.generateGroupedCardsHtml = function(videoList) {
 function renderVideoList() {
   $summaryView.style.display = 'none';
   $videoList.style.display = '';
+  updateLibraryDisplayControls();
 
   if (videos.length === 0) {
     $videoList.style.display = 'none';
@@ -355,20 +1627,22 @@ function renderVideoList() {
   }
   $emptyState.style.display = 'none';
 
-  // 按系列名称分组
-  const groups = new Map();
-  // 先按 ID 倒序排列（最新录入在前），确定组间顺序
-  const sortedById = [...videos].sort((a, b) => b.id - a.id);
-  
-  // 先全量按系列名称分组
-  for (const v of sortedById) {
-    const key = v.mechanism_name || '未分类';
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(v);
+  if (libraryDisplayMode === 'latest') {
+    const sortedVideos = [...videos].sort(window.compareCreatedDesc);
+    const totalPages = Math.ceil(sortedVideos.length / videoItemsPerPage);
+    if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+    else if (currentPage < 1) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * videoItemsPerPage;
+    const paginatedVideos = sortedVideos.slice(startIndex, startIndex + videoItemsPerPage);
+    $videoList.innerHTML = `<div class="latest-video-grid card-grid">${paginatedVideos.map(v => window.renderGlobalCard(v)).join('')}</div>`;
+    renderPagination(totalPages);
+    bindVideoCardClicks();
+    return;
   }
 
-  // 将 Map 转换为数组以便进行分页
-  const groupEntries = Array.from(groups.entries());
+  // 按固定系列编号分组
+  const groupEntries = window.buildSeriesGroups(videos, seriesSortMode);
 
   // 计算系列的分页
   const totalPages = Math.ceil(groupEntries.length / itemsPerPage);
@@ -380,8 +1654,8 @@ function renderVideoList() {
   
   // 提取需要渲染的视频组
   const videosToRender = [];
-  for (const [, vids] of paginatedGroups) {
-    videosToRender.push(...vids);
+  for (const group of paginatedGroups) {
+    videosToRender.push(...group.vids);
   }
 
   $videoList.innerHTML = window.generateGroupedCardsHtml(videosToRender);
@@ -390,6 +1664,10 @@ function renderVideoList() {
   renderPagination(totalPages);
 
   // 绑定卡片点击 → 详情
+  bindVideoCardClicks();
+}
+
+function bindVideoCardClicks() {
   document.querySelectorAll('.video-card').forEach(card => {
     card.addEventListener('click', () => {
       const id = parseInt(card.dataset.id);
@@ -427,6 +1705,13 @@ function renderPagination(totalPages) {
     </div>
   `;
   $pagination.innerHTML = html;
+}
+
+function getCurrentListTotalPages() {
+  if (libraryDisplayMode === 'latest') {
+    return Math.ceil(videos.length / videoItemsPerPage);
+  }
+  return Math.ceil(window.buildSeriesGroups(videos, seriesSortMode).length / itemsPerPage);
 }
 
 window.changePage = function(p) {
@@ -740,6 +2025,8 @@ function openInlineEditor(video = null) {
     btnDelete.style.display = video ? 'inline-flex' : 'none';
   }
 
+  loadInlineAiPanel(video);
+
   // 3. ===== 切换视图层次 =====
   // 隐藏主列表视图及所有导航/筛选
   $listViewContainer.style.display = 'none';
@@ -766,11 +2053,9 @@ const FORM_FIELDS = {
   'form-video-title': 'video_title',
   'form-duration': 'duration',
   'form-publish-date': 'publish_date',
-  'form-summary': 'summary',
   'form-hook': 'hook',
   'form-hook-tags': 'hook_tags',
   'form-mechanism-name': 'mechanism_name',
-  'form-mechanism': 'mechanism',
   'form-story-structure': 'story_structure',
   'form-adapt-tags': 'adapt_tags',
   'form-adapt-brief': 'adapt_brief',
@@ -778,7 +2063,6 @@ const FORM_FIELDS = {
   'form-video-link': 'video_link',
   'form-views': 'views',
   'form-likes': 'likes',
-  'form-script-path': 'script_path',
   'form-protagonist': 'protagonist',
   'form-protagonist-goal': 'protagonist_goal',
   'form-antagonist': 'antagonist',
@@ -828,6 +2112,7 @@ function addDynamicRow(type, data = null) {
 }
 
 function closeDetail() {
+  clearInlineAiPoll();
   // 清除 hash
   history.replaceState(null, '', location.pathname + location.search);
   // 隐藏详情
@@ -843,13 +2128,7 @@ function closeDetail() {
 
   const $pagination = document.getElementById('pagination');
   if ($pagination && currentView === 'all') {
-    const groupEntries = new Map();
-    for (const v of videos) {
-      const key = v.mechanism_name || '未分类';
-      if (!groupEntries.has(key)) groupEntries.set(key, []);
-      groupEntries.get(key).push(v);
-    }
-    const totalPages = Math.ceil(groupEntries.size / itemsPerPage);
+    const totalPages = getCurrentListTotalPages();
     if (totalPages > 1) {
        $pagination.style.display = 'flex';
     }
@@ -860,7 +2139,165 @@ function closeDetail() {
   setTimeout(() => window.scrollTo(0, savedScrollY), 0);
 }
 
-// ==================== 保存 ====================
+function clearInlineAiPoll() {
+  if (inlineAiPollTimer) {
+    clearTimeout(inlineAiPollTimer);
+    inlineAiPollTimer = null;
+  }
+}
+
+function resetInlineAiPanel(message = '保存视频后可启动 AI 分析') {
+  clearInlineAiPoll();
+  inlineAiTaskId = null;
+  const status = document.getElementById('ai-panel-status');
+  const list = document.getElementById('ai-conversation-list');
+  const input = document.getElementById('ai-chat-input');
+  const send = document.getElementById('btn-ai-send');
+  const restart = document.getElementById('btn-ai-restart');
+  if (status) status.textContent = message;
+  if (list) list.innerHTML = '<div class="conv-empty">暂无 AI 对话</div>';
+  if (input) input.value = '';
+  if (send) send.disabled = true;
+  if (restart) {
+    restart.disabled = !currentVideoId;
+    restart.textContent = currentVideoId ? '开始分析' : '开始分析';
+  }
+}
+
+async function loadInlineAiPanel(video, preserveScroll = false) {
+  if (!video?.id) {
+    resetInlineAiPanel();
+    return;
+  }
+
+  try {
+    const res = await fetch(`/api/videos/${video.id}/ai-script`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '加载 AI 对话失败');
+    renderInlineAiPanel(data, preserveScroll);
+  } catch (err) {
+    resetInlineAiPanel('AI 对话加载失败');
+    showToast('AI 对话加载失败: ' + err.message, 'error');
+  }
+}
+
+function renderInlineAiPanel(data, preserveScroll = false) {
+  clearInlineAiPoll();
+  const task = data.task;
+  inlineAiTaskId = task ? task.id : null;
+
+  const status = document.getElementById('ai-panel-status');
+  const list = document.getElementById('ai-conversation-list');
+  const input = document.getElementById('ai-chat-input');
+  const send = document.getElementById('btn-ai-send');
+  const restart = document.getElementById('btn-ai-restart');
+  const oldScrollTop = list ? list.scrollTop : 0;
+
+  const statusLabels = {
+    queued: '排队中',
+    analyzing: '分析中',
+    ready: '就绪',
+    failed: '失败',
+  };
+  if (status) {
+    const label = task ? (statusLabels[task.analysis_status] || task.analysis_status || '未知') : '尚未分析';
+    status.textContent = task?.analysis_error ? `${label}: ${task.analysis_error}` : label;
+  }
+  if (restart) {
+    restart.disabled = !currentVideoId || task?.analysis_status === 'analyzing';
+    restart.textContent = task ? '重启分析' : '开始分析';
+  }
+  if (send) send.disabled = !task || task.analysis_status === 'analyzing';
+  if (input) input.disabled = !task || task.analysis_status === 'analyzing';
+
+  if (list) {
+    const conversations = data.conversations || [];
+    list.innerHTML = conversations.length ? conversations.map(c => `
+      <div class="ai-message ai-message-${c.role}">
+        <div class="ai-message-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
+        <div class="ai-message-content">${escapeHtml(c.content)}</div>
+      </div>
+    `).join('') : '<div class="conv-empty">暂无 AI 对话</div>';
+    if (task?.analysis_status === 'analyzing') {
+      list.insertAdjacentHTML('beforeend', '<div class="conv-thinking"><span class="spinner-small"></span> Gemini 分析中...</div>');
+    }
+    if (preserveScroll) list.scrollTop = oldScrollTop;
+    else list.scrollTop = list.scrollHeight;
+  }
+
+  if (task && ['queued', 'analyzing'].includes(task.analysis_status)) {
+    inlineAiPollTimer = setTimeout(() => loadInlineAiPanel({ id: data.videoId }, true), 4000);
+  }
+}
+
+async function startOrRestartInlineAi() {
+  const id = parseInt(document.getElementById('form-id').value);
+  if (!id) { showToast('请先保存视频后再启动 AI 分析', 'error'); return; }
+
+  const btn = document.getElementById('btn-ai-restart');
+  const origText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '处理中...';
+
+  try {
+    if (inlineAiTaskId) {
+      const res = await fetch(`/api/import/tasks/${inlineAiTaskId}/restart-analysis`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ useTranscript: true }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || '重启分析失败');
+    } else {
+      const res = await fetch(`/api/videos/${id}/rewrite-script`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ useTranscript: true }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || '创建分析任务失败');
+      inlineAiTaskId = data.taskId;
+    }
+    showToast('AI 分析已启动');
+    loadInlineAiPanel({ id });
+  } catch (err) {
+    showToast('AI 分析失败: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = origText;
+  }
+}
+
+async function sendInlineAiMessage() {
+  const id = parseInt(document.getElementById('form-id').value);
+  const input = document.getElementById('ai-chat-input');
+  const message = input.value.trim();
+  if (!id) { showToast('请先保存视频后再发送', 'error'); return; }
+  if (!inlineAiTaskId) { showToast('请先启动 AI 分析', 'error'); return; }
+  if (!message) return;
+
+  input.value = '';
+  try {
+    const res = await fetch(`/api/import/tasks/${inlineAiTaskId}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '发送失败');
+    loadInlineAiPanel({ id });
+  } catch (err) {
+    showToast('发送失败: ' + err.message, 'error');
+  }
+}
+
+function copyInlineAiScript() {
+  const messages = document.querySelectorAll('.ai-message-assistant .ai-message-content');
+  const text = messages.length ? messages[messages.length - 1].textContent : '';
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => showToast('已复制脚本'));
+}
+
 async function saveVideo() {
   const id = document.getElementById('form-id').value;
   const name = document.getElementById('form-name').value.trim();
@@ -943,6 +2380,20 @@ async function deleteVideo() {
 }
 
 // ==================== 工具函数 ====================
+function extractYouTubeIdFromInput(input) {
+  if (!input) return '';
+  const s = input.trim();
+  if (!s) return '';
+  if (s.includes('youtube.com/shorts/')) return s.split('youtube.com/shorts/')[1].split(/[?&/]/)[0];
+  if (s.includes('youtu.be/')) return s.split('youtu.be/')[1].split(/[?&/]/)[0];
+  if (s.includes('youtube.com/watch')) {
+    const m = s.match(/[?&]v=([^?&/]+)/);
+    if (m) return m[1];
+  }
+  if (s.includes('youtube.com/embed/')) return s.split('youtube.com/embed/')[1].split(/[?&/]/)[0];
+  return s;
+}
+
 function escapeHtml(str) {
   if (!str) return '';
   const div = document.createElement('div');
@@ -950,16 +2401,18 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-function showToast(message, type = 'success') {
+function showToast(message, type = 'success', options = {}) {
   const existing = document.querySelector('.toast');
   if (existing) existing.remove();
 
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
   toast.textContent = message;
   document.body.appendChild(toast);
 
-  setTimeout(() => toast.remove(), 3000);
+  setTimeout(() => toast.remove(), options.duration || 3000);
 }
 
 // ==================== 备注功能 ====================
@@ -1018,7 +2471,7 @@ async function saveNotes(videoId) {
     const video = allVideos.find(v => v.id === videoId);
     if (video) video.notes = notes;
     closeNotes();
-    renderVideos(allVideos);
+    renderCurrentView();
     showToast('备注已保存');
   } catch (e) {
     showToast('保存失败: ' + e.message, 'error');
@@ -1026,10 +2479,10 @@ async function saveNotes(videoId) {
 }
 
 // 复制文本到剪贴板
-function copyToClipboard(text) {
+function copyToClipboard(text, message = '已复制标题') {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
-      showToast('已复制标题');
+      showToast(message);
     }).catch(err => {
       console.error('复制失败', err);
       showToast('复制失败', 'error');
@@ -1043,7 +2496,7 @@ function copyToClipboard(text) {
     ta.select();
     try {
       document.execCommand('copy');
-      showToast('已复制标题');
+      showToast(message);
     } catch (err) {
       showToast('复制失败', 'error');
     }

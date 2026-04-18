@@ -7,3 +7,6 @@ node_modules/
 database.db
 *.zip
 .env
+backups/
+transcripts/
+.tmp-downloads/
