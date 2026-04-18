@@ -216,6 +216,12 @@
               <form id="video-form">
                 <input type="hidden" id="form-id">
                 <input type="hidden" id="form-is-marked" value="0">
+                <!-- 故事结构 -->
+                <div class="form-section-title">🧩 故事结构</div>
+                <div class="form-group">
+                  <textarea id="form-story-structure" rows="12" placeholder="段落1 [核心悬念: xxx]&#10;1. 骨架事件1&#10;2. 骨架事件2&#10;与下一段关系: 负面发现&#10;&#10;段落2 [核心悬念: xxx]&#10;3. 骨架事件3&#10;4. 骨架事件4"></textarea>
+                </div>
+
                 <!-- 基础信息 -->
                 <div class="form-section-title">📋 基础信息</div>
                 <div class="form-row">
@@ -242,10 +248,6 @@
                 <div class="form-group">
                   <label for="form-hook">开头</label>
                   <input type="text" id="form-hook" placeholder="前1-3秒的视觉钩子">
-                </div>
-                <div class="form-group">
-                  <label for="form-story-structure">故事结构</label>
-                  <textarea id="form-story-structure" rows="6" placeholder="段落1 [核心悬念: xxx]&#10;  拍1→拍2→拍3&#10;段落关系: 负面发现&#10;段落2 [核心悬念: xxx]&#10;  拍1→拍2→收束"></textarea>
                 </div>
 
                 <!-- 视频标签与手法 -->
@@ -365,6 +367,7 @@
               </div>
               <div class="ai-panel-actions">
                 <button class="btn-small" id="btn-copy-ai-script" type="button">复制脚本</button>
+                <button class="btn-secondary btn-small" id="btn-gemini-key-modal" type="button">Key</button>
                 <button class="btn-secondary btn-small" id="btn-ai-restart" type="button">重启分析</button>
               </div>
             </div>

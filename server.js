@@ -15,10 +15,10 @@ const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || '';
 
 // Gemini 中转接口配置
 const GEMINI_API_BASE = process.env.GEMINI_API_BASE || 'https://yunwu.ai/v1beta';
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
+const GEMINI_API_KEY_ENV = process.env.GEMINI_API_KEY || '';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-pro-preview';
 const GEMINI_PROMPT_PATH = process.env.GEMINI_PROMPT_PATH ||
-  '/Users/renzengfei/短视频/垂直频道-资产/提示词/视频反推提示词.md';
+  path.join(__dirname, '提示词', '视频反推提示词.md');
 
 // Whisper 转写配置
 const WHISPER_MODEL = process.env.WHISPER_MODEL || 'large-v3-turbo';
@@ -650,7 +650,7 @@ app.post('/api/videos/batch-rewrite', (req, res) => {
       const ytId = extractYouTubeId(video.video_link);
       if (!ytId) { skipped.push({ id: video.id, name: video.name, reason: '无法提取 YouTube ID' }); continue; }
       const taskId = createRewriteTask(video.id, video, ytId);
-      if (GEMINI_API_KEY) enqueueAnalysis(taskId);
+      if (hasGeminiKeyConfigured()) enqueueAnalysis(taskId);
       taskIds.push(taskId);
     }
 
@@ -702,7 +702,7 @@ app.post('/api/videos/:id/rewrite-script', async (req, res) => {
       const taskId = createRewriteTask(videoId, video, youtubeId);
       task = db.prepare('SELECT * FROM import_tasks WHERE id = ?').get(taskId);
       console.log(`📝 创建重写任务 #${task.id} for video #${videoId} (${video.name})`);
-      if (shouldTrigger && GEMINI_API_KEY) {
+      if (shouldTrigger && hasGeminiKeyConfigured()) {
         if (useTranscript) enqueueAnalysis(task.id);
         else callGeminiForTask(task.id, null, { useTranscript: false }).catch(e => console.error('分析异常:', e.message));
         didTriggerGemini = true;
@@ -714,7 +714,7 @@ app.post('/api/videos/:id/rewrite-script', async (req, res) => {
       db.prepare("DELETE FROM import_conversations WHERE task_id = ?").run(task.id);
       db.prepare("UPDATE import_tasks SET analysis_status = 'queued', analysis_error = '' WHERE id = ?").run(task.id);
       console.log(`📝 重新触发重写任务 #${task.id} for video #${videoId}`);
-      if (shouldTrigger && GEMINI_API_KEY) {
+      if (shouldTrigger && hasGeminiKeyConfigured()) {
         if (useTranscript) enqueueAnalysis(task.id);
         else callGeminiForTask(task.id, null, { useTranscript: false }).catch(e => console.error('分析异常:', e.message));
         didTriggerGemini = true;
@@ -1242,6 +1242,112 @@ function setMonitorState(key, value) {
   db.prepare('INSERT OR REPLACE INTO monitor_state (key, value) VALUES (?, ?)').run(key, value);
 }
 
+const GEMINI_KEYS_STATE_KEY = 'gemini_keys';
+const GEMINI_ACTIVE_KEY_STATE_KEY = 'gemini_active_key_id';
+
+function parseJsonSafely(raw, fallback) {
+  try {
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function maskGeminiKey(key) {
+  const text = String(key || '').trim();
+  if (!text) return '';
+  if (text.length <= 12) return text;
+  return `${text.slice(0, 6)}...${text.slice(-4)}`;
+}
+
+function generateGeminiKeyId() {
+  return `gk_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function readGeminiKeys() {
+  const keys = parseJsonSafely(getMonitorState(GEMINI_KEYS_STATE_KEY), []);
+  return Array.isArray(keys) ? keys : [];
+}
+
+function writeGeminiKeys(keys) {
+  setMonitorState(GEMINI_KEYS_STATE_KEY, JSON.stringify(keys));
+}
+
+function getActiveGeminiKeyId() {
+  return getMonitorState(GEMINI_ACTIVE_KEY_STATE_KEY) || '';
+}
+
+function setActiveGeminiKeyId(keyId) {
+  setMonitorState(GEMINI_ACTIVE_KEY_STATE_KEY, keyId || '');
+}
+
+function ensureGeminiKeyConfig() {
+  let keys = readGeminiKeys();
+  let activeId = getActiveGeminiKeyId();
+  let changed = false;
+
+  if (GEMINI_API_KEY_ENV) {
+    const existing = keys.find(item => item && item.key === GEMINI_API_KEY_ENV);
+    if (!existing) {
+      const now = new Date().toISOString();
+      keys.unshift({
+        id: generateGeminiKeyId(),
+        name: '环境变量默认 Key',
+        key: GEMINI_API_KEY_ENV,
+        created_at: now,
+        updated_at: now,
+      });
+      changed = true;
+    }
+  }
+
+  if (!activeId || !keys.some(item => item.id === activeId)) {
+    activeId = keys[0]?.id || '';
+    changed = true;
+  }
+
+  if (changed) {
+    writeGeminiKeys(keys);
+    setActiveGeminiKeyId(activeId);
+  }
+}
+
+function getGeminiKeyConfig() {
+  ensureGeminiKeyConfig();
+  const keys = readGeminiKeys();
+  const activeId = getActiveGeminiKeyId();
+  return {
+    keys,
+    activeId,
+    activeKey: keys.find(item => item.id === activeId) || null,
+  };
+}
+
+function getActiveGeminiKey() {
+  return getGeminiKeyConfig().activeKey?.key || '';
+}
+
+function hasGeminiKeyConfigured() {
+  return !!getActiveGeminiKey();
+}
+
+function getGeminiKeysForClient() {
+  const { keys, activeId } = getGeminiKeyConfig();
+  return {
+    activeId,
+    keys: keys.map(item => ({
+      id: item.id,
+      name: item.name || '未命名 Key',
+      masked_key: maskGeminiKey(item.key),
+      created_at: item.created_at || '',
+      updated_at: item.updated_at || '',
+      is_active: item.id === activeId,
+    })),
+  };
+}
+
+ensureGeminiKeyConfig();
+
 // 将视频列表写入数据库，返回新增数量
 function insertMonitorVideos(videos, configId, keyword) {
   const insertVideo = db.prepare(`
@@ -1441,6 +1547,73 @@ app.get('/api/monitor/status', (req, res) => {
     runningNewCount: refreshState.totalNew,
     lastNewCount: refreshState.lastNewCount,
   });
+});
+
+// ==================== Gemini Key 配置 API ====================
+
+app.get('/api/system/gemini-keys', (req, res) => {
+  try {
+    res.json(getGeminiKeysForClient());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/system/gemini-keys', (req, res) => {
+  const key = String(req.body?.key || '').trim();
+  const name = String(req.body?.name || '').trim() || '未命名 Key';
+  const activate = req.body?.activate !== false;
+  if (!key) return res.status(400).json({ error: 'Key 不能为空' });
+
+  try {
+    const { keys } = getGeminiKeyConfig();
+    if (keys.some(item => item.key === key)) {
+      return res.status(400).json({ error: '这个 Key 已存在' });
+    }
+    const now = new Date().toISOString();
+    const newItem = {
+      id: generateGeminiKeyId(),
+      name,
+      key,
+      created_at: now,
+      updated_at: now,
+    };
+    const nextKeys = [newItem, ...keys];
+    writeGeminiKeys(nextKeys);
+    if (activate) setActiveGeminiKeyId(newItem.id);
+    res.status(201).json(getGeminiKeysForClient());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/system/gemini-keys/:id/activate', (req, res) => {
+  try {
+    const { keys } = getGeminiKeyConfig();
+    const target = keys.find(item => item.id === req.params.id);
+    if (!target) return res.status(404).json({ error: 'Key 不存在' });
+    setActiveGeminiKeyId(target.id);
+    res.json(getGeminiKeysForClient());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.delete('/api/system/gemini-keys/:id', (req, res) => {
+  try {
+    const { keys, activeId } = getGeminiKeyConfig();
+    const nextKeys = keys.filter(item => item.id !== req.params.id);
+    if (nextKeys.length === keys.length) {
+      return res.status(404).json({ error: 'Key 不存在' });
+    }
+    writeGeminiKeys(nextKeys);
+    if (activeId === req.params.id) {
+      setActiveGeminiKeyId(nextKeys[0]?.id || '');
+    }
+    res.json(getGeminiKeysForClient());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // 获取所有监控条件
@@ -1944,7 +2117,7 @@ function startPostDownloadTasks(taskId, localPath, filename) {
   if (!['ready', 'generating'].includes(task.preview_status || '')) {
     generateTaskPreview(taskId, localPath).catch(e => console.error('预览流程异常:', e.message));
   }
-  if (GEMINI_API_KEY && ['queued', 'failed', ''].includes(task.analysis_status || '')) {
+  if (hasGeminiKeyConfigured() && ['queued', 'failed', ''].includes(task.analysis_status || '')) {
     enqueueAnalysis(taskId);
   }
 }
@@ -2020,6 +2193,11 @@ async function runBackupImpl(taskId) {
 
 function geminiRequest(endpoint, body) {
   return new Promise((resolve, reject) => {
+    const activeKey = getActiveGeminiKey();
+    if (!activeKey) {
+      reject(new Error('未配置可用的 Gemini Key'));
+      return;
+    }
     const url = new URL(`${GEMINI_API_BASE}/${endpoint}`);
     const options = {
       hostname: url.hostname,
@@ -2027,7 +2205,7 @@ function geminiRequest(endpoint, body) {
       path: url.pathname + url.search,
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${GEMINI_API_KEY}`,
+        'Authorization': `Bearer ${activeKey}`,
         'Content-Type': 'application/json',
       },
     };
@@ -2077,7 +2255,10 @@ function processGeminiQueue() {
 // 读取提示词模板
 function getVideoAnalysisPrompt() {
   try {
-    return fs.readFileSync(GEMINI_PROMPT_PATH, 'utf8');
+    let text = fs.readFileSync(GEMINI_PROMPT_PATH, 'utf8');
+    text = text.replace(/^\s*```(?:\w+)?\s*\n/, '');
+    text = text.replace(/\n```\s*$/, '\n');
+    return text.trim();
   } catch (e) {
     console.error('读取提示词失败:', e.message);
     return '请对这条视频进行专业级影视拆解，包括视频元数据、故事骨架、全局设定和逐Clip分析。';
@@ -2208,7 +2389,10 @@ function formatTranscriptForPrompt(transcript) {
   if (!transcript || !transcript.segments || transcript.segments.length === 0) return null;
   const lines = [
     '【上游提供的字幕（Whisper 自动转写，带时间戳）】',
-    '🔴 这是 ground truth，请在各分镜的 `声音·台词` 字段中**逐句原样保留原文**（双引号包起）。',
+    '🔴 这些字幕只是辅助参考，不是绝对真相；请结合视频音轨、画面、口型、语境一起判断。',
+    '🔴 先按时间戳定位台词，再按实际说话的分镜落位；禁止把一句台词挪到相邻分镜。',
+    '🔴 如果一条字幕跨越多个剪切点，只把它放到真正说出这句台词的那个分镜；实在无法确认时，明确标注“未确认说话人”或“画外音”，不要硬猜。',
+    '🔴 只要某个分镜里有人说话，该分镜在【故事骨架】和【逐分镜详细分析】里都要保留对应台词（双引号包起）。',
     '',
   ];
   for (const s of transcript.segments) {
@@ -2238,7 +2422,10 @@ function buildGeminiRequest(task, conversations, initialVideoUrl, transcriptText
 
   // 首轮：视频 + 真实元数据 + 可选字幕 + 简短指令（抽帧率 10fps，对快剪短视频更友好）
   const firstTurnText = (transcriptText ? transcriptText + '\n\n' : '') + metaLines +
-    '\n\n请按照系统指令对这条视频进行专业级影视拆解。';
+    '\n\n请按照系统指令对这条视频进行专业级影视拆解。特别注意：' +
+    '1）有对白的分镜，在【故事骨架】对应行末尾必须带出原话；' +
+    '2）台词先对时间戳，再对分镜，不能因为语义顺手就挪到前后镜头；' +
+    '3）说话人不确定时不要硬猜。';
   contents.push({
     role: 'user',
     parts: [

@@ -12,6 +12,7 @@ let monitorFilterType = '1'; // 默认短视频
 let monitorFilterLink = '';
 let monitorLinkDebounceTimer = null;
 let isRefreshing = false;
+let geminiKeyConfig = { keys: [], activeId: '' };
 
 // ==================== 素材库状态 ====================
 let videos = [];
@@ -163,10 +164,170 @@ function initMonitor() {
   });
 
   // 加载数据
+  loadGeminiKeyConfig();
   loadMonitorConfigs();
   loadMonitorStatus();
   loadMonitorVideos();
 }
+
+async function loadGeminiKeyConfig() {
+  try {
+    const res = await fetch('/api/system/gemini-keys');
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '加载 Gemini Key 失败');
+    geminiKeyConfig = data;
+    renderGeminiKeyConfig();
+  } catch (err) {
+    console.error('加载 Gemini Key 失败:', err);
+  }
+}
+
+function renderGeminiKeyConfig() {
+  const activeItem = (geminiKeyConfig.keys || []).find(item => item.is_active);
+  const $btn = document.getElementById('btn-gemini-key-modal');
+  if ($btn) {
+    $btn.title = activeItem
+      ? `当前：${activeItem.name} · ${activeItem.masked_key}`
+      : '当前未配置可用 Key';
+  }
+  const $active = document.getElementById('gemini-key-active-label');
+  if ($active) {
+    $active.textContent = activeItem
+      ? `当前：${activeItem.name} · ${activeItem.masked_key}`
+      : '当前未配置可用 Key';
+  }
+  const $list = document.getElementById('gemini-key-list');
+  if (!$list) return;
+  if (!geminiKeyConfig.keys || geminiKeyConfig.keys.length === 0) {
+    $list.innerHTML = '<div class="config-empty">还没有 Gemini Key，请先添加</div>';
+    return;
+  }
+  $list.innerHTML = geminiKeyConfig.keys.map(item => `
+    <div class="gemini-key-item${item.is_active ? ' active' : ''}">
+      <div class="gemini-key-info">
+        <div class="gemini-key-name-row">
+          <span class="gemini-key-name">${escapeHtml(item.name)}</span>
+          ${item.is_active ? '<span class="config-status-badge status-ready">当前</span>' : ''}
+        </div>
+        <div class="gemini-key-meta">${escapeHtml(item.masked_key)}</div>
+      </div>
+      <div class="gemini-key-actions">
+        ${item.is_active ? '' : `<button class="btn-small btn-set-ready" onclick="activateGeminiKey('${item.id}')">切换</button>`}
+        <button class="btn-icon btn-icon-danger" onclick="deleteGeminiKey('${item.id}')" title="删除">×</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openGeminiKeyModal() {
+  if (!$modalOverlay) return;
+  $modalOverlay.innerHTML = `
+    <div class="modal gemini-key-modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Gemini Key</h2>
+        <button class="btn-close" type="button" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="gemini-key-panel">
+          <div class="gemini-key-panel-header">
+            <div>
+              <h3>当前通道</h3>
+              <p id="gemini-key-active-label">当前未配置可用 Key</p>
+            </div>
+          </div>
+          <div class="config-form-row gemini-key-form-row">
+            <div class="form-group">
+              <label>名称</label>
+              <input type="text" id="gemini-key-name" placeholder="如：官方 Key 1">
+            </div>
+            <div class="form-group flex-grow">
+              <label>Key</label>
+              <input type="password" id="gemini-key-value" placeholder="粘贴 Gemini Key">
+            </div>
+            <div class="form-group" style="align-self:flex-end">
+              <button class="btn-primary" id="btn-add-gemini-key">添加并切换</button>
+            </div>
+          </div>
+          <div class="gemini-key-list" id="gemini-key-list"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  $modalOverlay.style.display = 'flex';
+  const $addBtn = document.getElementById('btn-add-gemini-key');
+  const $value = document.getElementById('gemini-key-value');
+  if ($addBtn) $addBtn.addEventListener('click', addGeminiKey);
+  if ($value) {
+    $value.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addGeminiKey();
+      }
+    });
+  }
+  renderGeminiKeyConfig();
+}
+
+async function addGeminiKey() {
+  const $name = document.getElementById('gemini-key-name');
+  const $value = document.getElementById('gemini-key-value');
+  const $btn = document.getElementById('btn-add-gemini-key');
+  if (!$value || !$btn) return;
+  const name = $name.value.trim();
+  const key = $value.value.trim();
+  if (!key) {
+    showToast('请先粘贴 Gemini Key', 'error');
+    return;
+  }
+  $btn.disabled = true;
+  $btn.textContent = '添加中...';
+  try {
+    const res = await fetch('/api/system/gemini-keys', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, key, activate: true }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '添加失败');
+    geminiKeyConfig = data;
+    renderGeminiKeyConfig();
+    $name.value = '';
+    $value.value = '';
+    showToast('已添加并切换 Gemini Key');
+  } catch (err) {
+    showToast('添加失败: ' + err.message, 'error');
+  } finally {
+    $btn.disabled = false;
+    $btn.textContent = '添加并切换';
+  }
+}
+
+window.activateGeminiKey = async function(id) {
+  try {
+    const res = await fetch(`/api/system/gemini-keys/${id}/activate`, { method: 'POST' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '切换失败');
+    geminiKeyConfig = data;
+    renderGeminiKeyConfig();
+    showToast('已切换 Gemini Key');
+  } catch (err) {
+    showToast('切换失败: ' + err.message, 'error');
+  }
+};
+
+window.deleteGeminiKey = async function(id) {
+  if (!confirm('确定删除这个 Gemini Key 吗？')) return;
+  try {
+    const res = await fetch(`/api/system/gemini-keys/${id}`, { method: 'DELETE' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '删除失败');
+    geminiKeyConfig = data;
+    renderGeminiKeyConfig();
+    showToast('已删除 Gemini Key');
+  } catch (err) {
+    showToast('删除失败: ' + err.message, 'error');
+  }
+};
 
 async function loadMonitorConfigs() {
   try {
@@ -631,11 +792,14 @@ function renderTaskDetail(task, preserveInputs = false) {
       ${task.analysis_status === 'ready' || task.analysis_status === 'analyzing' ? `<button class="btn-small btn-restart" onclick="restartAnalysis(${task.id})">重启分析</button>` : ''}
     </div>
     <div class="conversation-list" id="conversation-list">
-      ${(task.conversations || []).map((c, idx) => {
-        const isLast = idx === task.conversations.length - 1 && c.role === 'assistant';
+      ${getVisibleConversations(task.conversations || []).map((c) => {
+        const isLast = c.role === 'assistant';
         return `
-          <div class="conv-msg conv-${c.role}">
-            <div class="conv-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
+          <div class="conv-msg conv-${c.role}${isLast ? ' conv-latest-assistant' : ''}">
+            <div class="conv-meta">
+              <div class="conv-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
+              ${formatConversationTime(c.created_at) ? `<div class="conv-time">${formatConversationTime(c.created_at)}</div>` : ''}
+            </div>
             ${isLast ? `
               <div class="conv-save-toolbar">
                 <span class="saved-badge">当前脚本：最后一条 Gemini 回复</span>
@@ -696,20 +860,10 @@ function renderTaskDetail(task, preserveInputs = false) {
       </div>
     </div>
   `;
-  // 首次打开滚到最后一条 AI 回复的顶部（没有则滚到底）
+  // 首次打开滚到最新一条 AI 回复的顶部（没有 AI 回复则回到顶部）
   const list = document.getElementById('conversation-list');
   if (list) {
-    requestAnimationFrame(() => {
-      const assistants = list.querySelectorAll('.conv-assistant');
-      const lastA = assistants[assistants.length - 1];
-      if (lastA) {
-        const listRect = list.getBoundingClientRect();
-        const lastRect = lastA.getBoundingClientRect();
-        list.scrollTop = list.scrollTop + (lastRect.top - listRect.top);
-      } else {
-        list.scrollTop = list.scrollHeight;
-      }
-    });
+    scrollListToLatestAssistantTop(list, '.conv-latest-assistant');
   }
 }
 
@@ -1107,7 +1261,10 @@ function formatDurationDisplay(seconds) {
 }
 
 function closeModal() {
-  if ($modalOverlay) $modalOverlay.style.display = 'none';
+  if ($modalOverlay) {
+    $modalOverlay.style.display = 'none';
+    $modalOverlay.innerHTML = '';
+  }
 }
 
 // ==================== 素材库事件绑定 ====================
@@ -1124,6 +1281,7 @@ function bindEvents() {
   document.getElementById('btn-ai-restart').addEventListener('click', startOrRestartInlineAi);
   document.getElementById('btn-ai-send').addEventListener('click', sendInlineAiMessage);
   document.getElementById('btn-copy-ai-script').addEventListener('click', copyInlineAiScript);
+  document.getElementById('btn-gemini-key-modal').addEventListener('click', openGeminiKeyModal);
 
   // 标记
   document.getElementById('btn-toggle-mark').addEventListener('click', () => {
@@ -2097,6 +2255,39 @@ function clearInlineAiPoll() {
   }
 }
 
+function getVisibleConversations(conversations = []) {
+  let latestAssistantIndex = -1;
+  for (let i = conversations.length - 1; i >= 0; i -= 1) {
+    if (conversations[i] && conversations[i].role === 'assistant') {
+      latestAssistantIndex = i;
+      break;
+    }
+  }
+  return conversations.filter((c, idx) => c?.role === 'user' || idx === latestAssistantIndex);
+}
+
+function formatConversationTime(value) {
+  if (!value) return '';
+  const match = String(value).match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}:\d{2})/);
+  if (!match) return String(value);
+  const [, year, month, day, hm] = match;
+  return `${year}-${month}-${day} ${hm}`;
+}
+
+function scrollListToLatestAssistantTop(list, selector) {
+  if (!list) return;
+  requestAnimationFrame(() => {
+    const latestAssistant = list.querySelector(selector);
+    if (!latestAssistant) {
+      list.scrollTop = 0;
+      return;
+    }
+    const listRect = list.getBoundingClientRect();
+    const assistantRect = latestAssistant.getBoundingClientRect();
+    list.scrollTop = list.scrollTop + (assistantRect.top - listRect.top);
+  });
+}
+
 function resetInlineAiPanel(message = '保存视频后可启动 AI 分析') {
   clearInlineAiPoll();
   inlineAiTaskId = null;
@@ -2162,10 +2353,13 @@ function renderInlineAiPanel(data, preserveScroll = false) {
   if (input) input.disabled = !task || task.analysis_status === 'analyzing';
 
   if (list) {
-    const conversations = data.conversations || [];
+    const conversations = getVisibleConversations(data.conversations || []);
     list.innerHTML = conversations.length ? conversations.map(c => `
-      <div class="ai-message ai-message-${c.role}">
-        <div class="ai-message-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
+      <div class="ai-message ai-message-${c.role}${c.role === 'assistant' ? ' ai-message-latest-assistant' : ''}">
+        <div class="ai-message-meta">
+          <div class="ai-message-role">${c.role === 'user' ? '我' : 'Gemini'}</div>
+          ${formatConversationTime(c.created_at) ? `<div class="ai-message-time">${formatConversationTime(c.created_at)}</div>` : ''}
+        </div>
         <div class="ai-message-content">${escapeHtml(c.content)}</div>
       </div>
     `).join('') : '<div class="conv-empty">暂无 AI 对话</div>';
@@ -2173,7 +2367,7 @@ function renderInlineAiPanel(data, preserveScroll = false) {
       list.insertAdjacentHTML('beforeend', '<div class="conv-thinking"><span class="spinner-small"></span> Gemini 分析中...</div>');
     }
     if (preserveScroll) list.scrollTop = oldScrollTop;
-    else list.scrollTop = list.scrollHeight;
+    else scrollListToLatestAssistantTop(list, '.ai-message-latest-assistant');
   }
 
   if (task && ['queued', 'analyzing'].includes(task.analysis_status)) {
