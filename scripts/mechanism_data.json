@@ -1,0 +1,8274 @@
+[
+  {
+    "id": 2,
+    "name": "辣椒成瘾",
+    "duration": "48",
+    "old_mechanism": "异常行为展示→多方阻止失败→真相揭晓→行为重新定义→情感升华",
+    "script_path": "scripts/辣椒成瘾.txt",
+    "story_beats": [],
+    "clips": [],
+    "error": "文件不存在: /Users/renzengfei/短视频/素材库/scripts/辣椒成瘾.txt"
+  },
+  {
+    "id": 3,
+    "name": "柠檬成瘾",
+    "duration": "35",
+    "old_mechanism": "异常行为展示→多方阻止失败→真相揭晓→行为重新定义→情感升华",
+    "script_path": "scripts/柠檬成瘾.txt",
+    "story_beats": [],
+    "clips": [],
+    "error": "文件不存在: /Users/renzengfei/短视频/素材库/scripts/柠檬成瘾.txt"
+  },
+  {
+    "id": 4,
+    "name": "冰块成瘾",
+    "duration": "36",
+    "old_mechanism": "异常行为展示→多方阻止失败→真相揭晓→行为重新定义→情感升华",
+    "script_path": "scripts/997冰块成瘾.txt",
+    "story_beats": [
+      "rumi在家里疯狂啃食一根巨大的工业冰柱满身泥污（实为进行抗寒特训）",
+      "jinu、mira和romance大惊失色上前制止并夺走冰柱",
+      "jinu端来一片刚烤好的正常吐司面包试图让rumi暖胃",
+      "rumi趁人不备将冰块夹在吐司里继续啃咬冻得面部扭曲众人崩溃",
+      "rumi看向桌上的相框照片里是她和zoey开心的合影揭示特训动机",
+      "场景转至精神病院rumi提着一袋正常零食来看望穿着病号服的zoey",
+      "zoey开心地拿出自己特制的“发光冰块三明治”递给rumi但动作突然停滞",
+      "（闪回段落）zoey回忆起曾经给rumi吃冰块三明治rumi被冻得极其痛苦流泪",
+      "（回到现实）zoey因回忆陷入强烈的内疚与自责眼含泪水想要退缩",
+      "rumi温柔地出言安抚毫不犹豫地就着zoey的手大口咬下冰块三明治",
+      "rumi强忍冰冷全程面带微笑并夸赞美味zoey破涕为笑完成双向救赎"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "0:00",
+        "endStr": "0:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "0:02",
+        "endStr": "0:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "0:05",
+        "endStr": "0:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "0:07",
+        "endStr": "0:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "0:09",
+        "endStr": "0:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "0:12",
+        "endStr": "0:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "0:15",
+        "endStr": "0:18"
+      },
+      {
+        "start": 18,
+        "end": 21,
+        "startStr": "0:18",
+        "endStr": "0:21"
+      },
+      {
+        "start": 21,
+        "end": 25,
+        "startStr": "0:21",
+        "endStr": "0:25"
+      },
+      {
+        "start": 25,
+        "end": 36,
+        "startStr": "0:25",
+        "endStr": "0:36"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "跳舞成瘾",
+    "duration": "40",
+    "old_mechanism": "异常行为展示→多方阻止失败→真相揭晓→行为重新定义→情感升华",
+    "script_path": "scripts/996跳舞成瘾",
+    "story_beats": [
+      "jinu在舞蹈室穿着粉色芭蕾裙和足尖鞋拼命练习芭蕾舞旋转",
+      "mira拿着篮球上前制止劝他打篮球不要做这种怪事",
+      "jinu拒绝并固执地继续练习结果因重心不稳痛苦地重重摔倒在地",
+      "场景转至家中jinu继续在客厅全神贯注地练习芭蕾手部动作",
+      "父亲愤怒地将一双篮球鞋砸向他呵斥他做一个\"正常的男孩\"",
+      "jinu看着篮球鞋委屈落泪随后坚定地放下篮球鞋拿起了地上的粉色芭蕾舞鞋",
+      "（时间线继续）jinu带着那双粉色芭蕾舞鞋来到医院探望双腿打着石膏坐在轮椅上的rumi",
+      "rumi看到舞鞋后被触及痛处绝望地扔掉舞鞋哭喊着自己再也不能跳舞了",
+      "面对崩溃的rumijinu默默蹲在地上将自己的运动鞋换成了那双粉色芭蕾足尖鞋",
+      "jinu站起身含着泪微笑着对轮椅上的rumi说：\"Let me be your legs\"（让我来做你的腿）",
+      "jinu在病房里踮起脚尖为rumi翩翩起舞身后隐约浮现出rumi穿着纯白天鹅湖芭蕾舞裙共舞的虚影",
+      "rumi被这笨拙却极其深情的舞蹈深深感动捂住嘴喜极而泣",
+      "门外mira、母亲和父亲看到这一幕红着眼眶感动地为jinu鼓掌"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "0:00",
+        "endStr": "0:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "0:02",
+        "endStr": "0:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "0:04",
+        "endStr": "0:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "0:07",
+        "endStr": "0:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "0:10",
+        "endStr": "0:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "0:13",
+        "endStr": "0:16"
+      },
+      {
+        "start": 16,
+        "end": 19,
+        "startStr": "0:16",
+        "endStr": "0:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "0:19",
+        "endStr": "0:21"
+      },
+      {
+        "start": 21,
+        "end": 25,
+        "startStr": "0:21",
+        "endStr": "0:25"
+      },
+      {
+        "start": 25,
+        "end": 29,
+        "startStr": "0:25",
+        "endStr": "0:29"
+      },
+      {
+        "start": 29,
+        "end": 31,
+        "startStr": "0:29",
+        "endStr": "0:31"
+      },
+      {
+        "start": 31,
+        "end": 34,
+        "startStr": "0:31",
+        "endStr": "0:34"
+      },
+      {
+        "start": 34,
+        "end": 37,
+        "startStr": "0:34",
+        "endStr": "0:37"
+      },
+      {
+        "start": 37,
+        "end": 40,
+        "startStr": "0:37",
+        "endStr": "0:40"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "谁偷吃了",
+    "duration": "46",
+    "old_mechanism": "干坏事→被质问→死不承认→重复干→升级惩罚",
+    "script_path": "scripts/995谁偷吃了",
+    "story_beats": [
+      "rumi发现火龙果被吃大声质问是谁吃的",
+      "mira和zoye摆手表示不是自己吃的",
+      "rumi质问满嘴红色汁液的jinu",
+      "jinu极力否认辩称自己脸上的红汁是吃小番茄留下的",
+      "rumi端来一盘曲奇饼干警告大家不要碰",
+      "rumi返回后发现饼干消失崩溃大喊",
+      "mira和zoye被吓到连连否认",
+      "满嘴饼干碎屑和红色汁液的jinu再次否认自己偷吃",
+      "rumi心生一计从猫砂盆里铲出一勺灰色的猫砂",
+      "rumi将猫砂倒入破壁机加水打成黑色糊状物",
+      "rumi端着打好的黑色糊状物声称这是黑芝麻糊并警告不准吃",
+      "rumi回头质问是谁吃了芝麻糊",
+      "满脸黑色糊状物的jinu强忍恶心坚决否认",
+      "jinu忍不住反胃打嗝强行咽下呕吐物并露出假笑",
+      "rumi坐在沙发上微笑着对着镜头比出噤声手势"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 23,
+        "startStr": "00:19",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      },
+      {
+        "start": 29,
+        "end": 31,
+        "startStr": "00:29",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 35,
+        "startStr": "00:31",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 46,
+        "startStr": "00:35",
+        "endStr": "00:46"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "谁偷吃了2",
+    "duration": "49",
+    "old_mechanism": "干坏事→被质问→死不承认→重复干→升级惩罚",
+    "script_path": "scripts/994谁偷吃了2",
+    "story_beats": [
+      "jinu发现汉堡被咬大声质问是谁吃的",
+      "zoye和romance连连摆手否认",
+      "jinu质问嘴里满是生菜的rumirumi狡辩",
+      "jinu端来泡面警告别碰随后转身倒数",
+      "回头发现泡面全空三人再次否认",
+      "jinu揭穿嘴里挂着面条的rumirumi强行否认",
+      "jinu端上榴莲再次转身倒数",
+      "回头抓到三人正合力掰开榴莲",
+      "jinu大喊榴莲里有炸弹",
+      "榴莲爆炸jinu趴地躲避三人被炸成黑炭",
+      "画面转至墓地jinu为死去的三人献上汉堡",
+      "jinu转身后察觉异样回头发现祭品汉堡已消失"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 8,
+        "startStr": "00:04",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 15,
+        "startStr": "00:08",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 20,
+        "startStr": "00:15",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 28,
+        "startStr": "00:20",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 32,
+        "startStr": "00:28",
+        "endStr": "00:32"
+      },
+      {
+        "start": 32,
+        "end": 36,
+        "startStr": "00:32",
+        "endStr": "00:36"
+      },
+      {
+        "start": 36,
+        "end": 41,
+        "startStr": "00:36",
+        "endStr": "00:41"
+      },
+      {
+        "start": 41,
+        "end": 49,
+        "startStr": "00:41",
+        "endStr": "00:49"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "谁关了音乐",
+    "duration": "38",
+    "old_mechanism": "干坏事→被质问→死不承认→重复干→升级惩罚",
+    "script_path": "scripts/993谁关了音乐",
+    "story_beats": [
+      "车内播放音乐一只半透明的全息手臂突然关掉了音乐",
+      "jinu转头质问副驾驶的rumi是不是她关的",
+      "rumi摆手否认",
+      "jinu回头质问后座的zoye",
+      "zoye震惊地摆手否认",
+      "音乐再次被全息手臂关掉jinu愤怒地咬牙切齿",
+      "jinu对着rumi大吼认定是她干的",
+      "rumi和zoye极力发誓否认",
+      "jinu将rumi和zoye用粗麻绳绑在汽车后座",
+      "jinu回到驾驶位重新播放音乐准备看看到底是谁在捣鬼",
+      "半透明的mira出现伸出手臂关掉了音乐",
+      "jinu看到悬浮在空中的半透明手臂吓得惊声尖叫",
+      "jinu打开车门落荒而逃",
+      "被绑在后座的rumi和zoye相视一笑mira的虚影也留在车内"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 14,
+        "startStr": "00:10",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 18,
+        "startStr": "00:14",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "00:18",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "startStr": "00:22",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 30,
+        "startStr": "00:26",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 38,
+        "startStr": "00:30",
+        "endStr": "00:38"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "谁偷吃了3",
+    "duration": "54",
+    "old_mechanism": "干坏事→被质问→死不承认→重复干→升级惩罚",
+    "script_path": "scripts/992谁偷吃了3",
+    "story_beats": [
+      "rumi吃火龙果时脑海中浮现出被jinu抓包质问的画面",
+      "rumi灵机一动想到了一个防止脸上沾染汁液的绝妙主意",
+      "rumi拿来一卷透明保鲜膜将其紧紧裹在自己脸上并用剪刀在嘴部剪开一个口子",
+      "rumi隔着保鲜膜疯狂吞咽火龙果保鲜膜嘴部周围沾满了刺眼的红色汁液",
+      "rumi撕下脏污的保鲜膜向镜头得意地展示自己干干净净、没有任何红汁的脸",
+      "jinu看着桌上只剩皮的空盘子愤怒地冲过来质问是不是rumi吃了火龙果",
+      "rumi得意地指着自己干净的脸庞坚决否认",
+      "jinu端来半个西瓜放在桌上随后转身离开",
+      "躲在墙后暗中观察的rumi露出狡黠的笑容",
+      "jinu回到桌前准备切西瓜rumi在一旁满怀期待地看着",
+      "jinu一刀下去发现手感不对举起西瓜发现其内部已经被完全掏空只剩一层外皮",
+      "jinu崩溃大吼rumi嘲笑他后转身跑开",
+      "rumi坐在桌前从一整盘排列整齐的方形巧克力中偷吃了一块",
+      "rumi利用几何拼图原理将剩下的巧克力块重新推拢拼接完美伪装成一盘未被动过的矩形",
+      "jinu赶来质问rumi是否偷吃了巧克力",
+      "jinu端起巧克力盘子仔细端详发现形状依然是完美的矩形陷入自我怀疑而rumi在一旁装无辜"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 3,
+        "startStr": "00:00",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 6,
+        "startStr": "00:03",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 9,
+        "startStr": "00:06",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 13,
+        "startStr": "00:09",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 20,
+        "startStr": "00:16",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 23,
+        "startStr": "00:20",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 27,
+        "startStr": "00:23",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 32,
+        "startStr": "00:27",
+        "endStr": "00:32"
+      },
+      {
+        "start": 32,
+        "end": 36,
+        "startStr": "00:32",
+        "endStr": "00:36"
+      },
+      {
+        "start": 36,
+        "end": 39,
+        "startStr": "00:36",
+        "endStr": "00:39"
+      },
+      {
+        "start": 39,
+        "end": 43,
+        "startStr": "00:39",
+        "endStr": "00:43"
+      },
+      {
+        "start": 43,
+        "end": 47,
+        "startStr": "00:43",
+        "endStr": "00:47"
+      },
+      {
+        "start": 47,
+        "end": 50,
+        "startStr": "00:47",
+        "endStr": "00:50"
+      },
+      {
+        "start": 50,
+        "end": 54,
+        "startStr": "00:50",
+        "endStr": "00:54"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "海底列车伪装",
+    "duration": "37",
+    "old_mechanism": "角色A伪装成角色B行动 → 各种行为暴露不合理 → 真正的B出现 → A原形毕露受罚",
+    "script_path": "scripts/981海底列车伪装.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 12,
+    "name": "脱毛膏误用",
+    "duration": "28",
+    "old_mechanism": "角色偷用/误用道具 → 发现异常 → 自救失败不断加码 → 他人好心帮忙反而引爆最惨后果",
+    "script_path": "scripts/983脱毛膏误用.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 13,
+    "name": "火鸡面灵魂",
+    "duration": "13",
+    "old_mechanism": "角色因意外失去行动力 → 美食出现 → 对食物的执念超越生死/物理限制 → 产生超自然反应",
+    "script_path": "scripts/984火鸡面灵魂.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 14,
+    "name": "真假Rumi",
+    "duration": "33",
+    "old_mechanism": "角色A伪装成角色B行动 → 各种行为暴露不合理 → 真正的B出现 → A原形毕露受罚",
+    "script_path": "scripts/985真假Rumi.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 15,
+    "name": "创可贴修水管",
+    "duration": "50",
+    "old_mechanism": "角色A用错误方式修复 → 更大压力导致失败 → 角色B带来专业方案 → 合力修复成功",
+    "script_path": "scripts/986创可贴修水管.md",
+    "story_beats": [
+      "rumi撕下爱心创可贴贴在水管漏水处表情专注且满意无台词情绪平静",
+      "rumi拍手起身微笑着说\"There, good as new.\"婴儿车和自行车安全碾过水管情绪得意",
+      "电动滑板车碾过导致水管爆裂喷水rumi表情震惊回头喊道\"Oh no! It's gonna flood!\"情绪惊慌",
+      "rumi焦急跑来试图徒手堵漏喊道\"What do I do? I'll fix it!\"动作慌乱情绪焦灼",
+      "mira（右臂戴石膏夹板）手持两块木板跑入画面表情坚毅无台词情绪果断",
+      "mira用嘴暴力撕开医疗绷带两人合力将木板像骨折夹板一样绑在破损水管上表情专注无台词情绪冷静",
+      "滑板车再次碾过修好的水管水管未破裂两人相视欢呼并对镜头竖起大拇指无台词情绪兴奋狂喜"
+    ],
+    "clips": []
+  },
+  {
+    "id": 16,
+    "name": "忍痛轮椅逃亡-汤版",
+    "duration": "21",
+    "old_mechanism": "意外伤害 → 荒诞的禁声限制 → 极速空间转移叠加压抑 → 忍耐到极限释放超自然破坏力",
+    "script_path": "scripts/987忍痛轮椅逃亡-汤版.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 17,
+    "name": "忍痛轮椅逃亡-蛋版",
+    "duration": "24",
+    "old_mechanism": "意外伤害 → 荒诞的禁声限制 → 极速空间转移叠加压抑 → 忍耐到极限释放超自然破坏力",
+    "script_path": "scripts/988忍痛轮椅逃亡-蛋版.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 18,
+    "name": "大小道具对决",
+    "duration": "50",
+    "old_mechanism": "呈现大小两个道具 → 角色凭直觉选大 → 精细任务中大道具必然翻车 → 多轮重复强化反讽",
+    "script_path": "scripts/989大小道具对决.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 19,
+    "name": "巨型榴莲追逐",
+    "duration": "8",
+    "old_mechanism": "角色化解小危机 → 得意享受 → 更大更荒诞的危机突然降临 → 从享受瞬间切换为逃命",
+    "script_path": "scripts/990巨型榴莲追逐.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 20,
+    "name": "Rumi的妈咪",
+    "duration": "9",
+    "old_mechanism": "正常称呼/身份 → 建立预期 → 实际登场者的外形与预期极端不符 → 旁观者震惊反应",
+    "script_path": "scripts/991Rumi的妈咪.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 21,
+    "name": "抢座陷阱",
+    "duration": "25",
+    "old_mechanism": "假装示弱/施恩 → 诱导目标暴露真面目 → 触发预设惩罚机关 → 群体围攻制裁",
+    "script_path": "scripts/976抢座陷阱.md",
+    "story_beats": [],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 9,
+        "startStr": "00:06",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "00:09",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "00:12",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 19,
+        "startStr": "00:15",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 25,
+        "startStr": "00:21",
+        "endStr": "00:25"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "拔箭插箭",
+    "duration": "13",
+    "old_mechanism": "角色受伤 → 救援者用错误常识施救 → 造成更大伤害 → 试图补救反而重复伤害 → 全程毫无自知",
+    "script_path": "scripts/977拔箭插箭.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 23,
+    "name": "脱毛膏与Xbox烤面包机",
+    "duration": "51",
+    "old_mechanism": "误用道具A造成灾难 → 因灾难引发新任务 → 新任务中再次误用道具B → 误用B意外揭露隐藏真相",
+    "script_path": "scripts/978脱毛膏与Xbox烤面包机.md",
+    "story_beats": [
+      "Rumi坐在沙发上向Jinu展示发光的紫发称其为魔法发膜Jinu前倾查看满脸惊奇",
+      "Rumi告知发膜在化妆柜Jinu兴奋转身跑过走廊",
+      "Jinu打开蓝绿色柜子在一堆瓶罐中找到红色软管（实为脱毛膏）",
+      "Jinu将大量绿色膏体挤在头上并疯狂揉搓表情狂喜",
+      "Jinu瞬间变光头惊恐地摸着头大声尖叫寻找头发",
+      "Rumi在化妆间嘲笑Jinu用错脱毛膏Jinu双眼冒火特效十分愤怒",
+      "Rumi笑着将一顶黑色假发扣在Jinu头上Jinu无奈",
+      "Jinu因光头决定不出门要求Rumi去工具房拿Xbox和HDMI线",
+      "Rumi拉开工具抽屉面对一堆外观相同的黑线崩溃抓狂随后随意拿起一根",
+      "Rumi将白色Xbox主机和黑线递给沙发上的Jinu",
+      "Jinu举起线缆愤怒指出这是烤面包机电源线而非HDMI线",
+      "Rumi耸肩表示线都一样随即将电源线插上Xbox并在顶部插槽放入吐司",
+      "伴随“叮”声烤好的吐司从Xbox弹出Jinu震惊质问Rumi拿走吐司大笑"
+    ],
+    "clips": []
+  },
+  {
+    "id": 24,
+    "name": "吃辣喷火",
+    "duration": "29",
+    "old_mechanism": "角色吹嘘/质疑 → 立即被打脸 → 自救失败不断升级 → 超自然灾难级后果 → 暗线伏笔完成首尾闭环",
+    "script_path": "scripts/979吃辣喷火.md",
+    "story_beats": [
+      "rumi在厨房满脸通红、大汗淋漓地吃着极辣的红色汤面",
+      "jinu走近吐槽rumi太夸张（\"Rumi, you are exaggerating\"）随后夺过她的筷子吃了一大口强装镇定地说一点都不辣（\"Not spicy at all\"）",
+      "jinu的脸瞬间憋成深红色嘴唇夸张肿胀惊恐中不受控制地仰头喷出烈火rumi震惊反讽（\"Jinu, you are exaggerating\"）",
+      "jinu冲向水槽狂饮整壶水无果趴在桌上继续喷火不慎将桌上的蔬菜全部烧成了爆米花并痛苦大喊（\"I can't feel my balls, Water!\"）",
+      "jinu一路狂奔至户外公园边跑边喷火寻找水源",
+      "终于跑到湖边jinu顶着巨大的香肠嘴看着湖水自语（\"This water should be enough\"）",
+      "jinu将整颗头猛然扎进湖水高温瞬间引发巨大的蒸汽爆炸水面上腾起直冲云霄的蘑菇云",
+      "rumi悠闲地站在高层阳台上端着jinu刚才喷火变出的爆米花边吃边望着远处的蘑菇云嘲讽（\"Who is the one exaggerating now, jinu?\"）"
+    ],
+    "clips": []
+  },
+  {
+    "id": 25,
+    "name": "真假Rumi2",
+    "duration": "28",
+    "old_mechanism": "角色A伪装成角色B行动 → 各种行为暴露不合理 → 真正的B出现 → A原形毕露受罚",
+    "script_path": "scripts/980真假Rumi2.md",
+    "story_beats": [],
+    "clips": []
+  },
+  {
+    "id": 26,
+    "name": "电梯盲盒",
+    "duration": "41",
+    "old_mechanism": "封闭空间+按键触发随机事件 → 前N次正向奖励建立期待 → 最后一次出现远超预期的负面结果 → 身份反转加倍惩罚",
+    "script_path": "scripts/972电梯盲盒.md",
+    "story_beats": [
+      "rumi、romance与mira同乘电梯正面朝镜头挥手打招呼",
+      "电梯开门mira步出天花板突然掉落大量纸币她欢呼跳跃高喊“全是我的”跑离画面",
+      "电梯门关部分钞票落在rumi和romance身上两人惊呆romance感叹“Holy crap”",
+      "rumi突发奇想伸手按下“3”层电梯按钮",
+      "门再次开启门外站着两名白背心肌肉男（abby）rumi捂嘴惊呼“他们太完美了”",
+      "两名abby进入电梯一左一右将rumi横向架起并抬出电梯rumi大笑挥手道别",
+      "独留电梯的romance双手合十对镜头许愿激动表示“富婆要来了”",
+      "门开一位穿豹纹裙、红皮草的大妈走入向他挑逗“Hey handsome”",
+      "两人对视后大惊失色互相认出对方是“妈妈”和“儿子”",
+      "妈妈暴怒质问儿子为何在此斥责他知不知道自己花多少钱买了这个盲盒",
+      "妈妈一把揪住romance左耳向外拉扯romance痛苦挣扎大喊“好痛我不知道是你”",
+      "妈妈怒骂其浪费钱揪着耳朵将哀嚎的romance一路拖出电梯画面回归空镜"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      },
+      {
+        "start": 29,
+        "end": 31,
+        "startStr": "00:29",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 41,
+        "startStr": "00:31",
+        "endStr": "00:41"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "金鸭盲盒",
+    "duration": "14",
+    "old_mechanism": "盲盒揭晓A看似好实际坏 → 盲盒揭晓B看似坏实际好 → A暗藏更高价值 → 角色为抢A放弃B → 旁人轻松获得B",
+    "script_path": "scripts/973金鸭盲盒.md",
+    "story_beats": [
+      "jinu和rumi坐在桌前两人面前各有一个用金色锡纸包裹的神秘物品rumi兴奋地撕开自己的锡纸露出一只外表呈金色的“烤鸭”",
+      "rumi满怀期待地抓起金色烤鸭用力咬下一口结果伴随着清脆的金属撞击声她痛苦地捂住嘴巴嘴角渗出“鲜血”（红色妆效）痛苦地大喊：“It is metal（这是金属）!”",
+      "接着jinu满脸疑惑地撕开自己面前的金色锡纸发现里面竟然是一个紫色的气球rumi见状忘记了疼痛指着jinu嘲笑：“You got a balloon（你拿到了一个气球）!”",
+      "jinu不服气用双手重重拍击气球气球瞬间爆炸里面竟然掉出了一只真正的、油光发亮的烤鸭",
+      "jinu惊喜地举起真正的烤鸭闭上眼睛凑近闻它的香味",
+      "此时画面中出现金币音效rumi突然意识到自己的金属烤鸭其实是纯金的她震惊地指着金色烤鸭大喊：“Look, it is gold（看这是金子）!”",
+      "jinu听到后立刻被金子吸引他激动地大喊“Give me the gold（把金子给我）!”并一把抢过rumi手里的纯金烤鸭张开大嘴试图去咬",
+      "趁着jinu抢走纯金烤鸭rumi迅速夺过jinu刚才掉落的真正烤鸭直接撕下一只鸭腿大口吃了起来最后露出满足的表情"
+    ],
+    "clips": []
+  },
+  {
+    "id": 28,
+    "name": "爬发怒剪",
+    "duration": "27",
+    "old_mechanism": "角色因错误动机发起行动 → 途中产生喜剧副产品 → 到达终点发现真相 → 用完全反套路的方式解决问题",
+    "script_path": "scripts/974爬发怒剪.md",
+    "story_beats": [
+      "rumi发现树上垂下巨大的紫色麻花辫怒斥其模仿自己发型跳上辫子向上攀爬",
+      "眼镜男孩在树下认出这是\"神圣头发\"为救rumi也跳上辫子攀爬",
+      "rumi在半空停下喝完一杯彩色饮料后将空杯扔下继续向上",
+      "下方的眼镜男孩刚好接住掉落的杯子空杯却神奇变成了满杯饮料男孩以为天降福利开心喝下",
+      "rumi爬到树顶发现紫发长在一个白发怪物（Wewe Gombel）的头上",
+      "rumi并未害怕反而嫉妒怪物头发更酷她掏出巨型剪刀剪断紫发大笑着仰面跳下树逃走"
+    ],
+    "clips": []
+  },
+  {
+    "id": 29,
+    "name": "学鸭走路",
+    "duration": "63",
+    "old_mechanism": "设定荒诞挑战规则 → 多角色依次表演 → 每轮穿插评委（动物）反应镜头 → 观众投票式开放结局",
+    "script_path": "scripts/975学鸭走路.md",
+    "story_beats": [
+      "粉发男生（romance）坐在公交车靠窗位置将一颗发光的金蛋抛出窗外",
+      "jinu走在纽约街头精准接住了掉落的金蛋并继续前行",
+      "jinu推开公寓门喊“我回来了”沙发上的rumi、mira和zoey惊奇地站起来围观金蛋",
+      "金蛋在众人注视下发光并碎裂孵化出一只小黄鸭",
+      "女孩们尖叫着扑上去抢夺jinu将鸭子护在怀里提出挑战：“谁学鸭子走路最像鸭子就归谁”rumi同意",
+      "rumi趴在地上学鸭子爬行随后画面切到jinu手中的小鸭子静静注视前方的呆萌反应",
+      "mira蹲在地上像青蛙一样跳跃结果失去平衡重重摔倒画面切回小鸭子它正从jinu的衬衫领口探出头张望",
+      "zoey半蹲着扭动身体双臂模拟翅膀快步前行最后对镜头抛了个媚眼画面再次切回小鸭子它张大嘴巴“嘎”地叫了一声",
+      "jinu看向镜头背后的三个女孩满怀期待他向观众发问：“所以谁有资格得到这只鸭子？”"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 7,
+        "startStr": "00:03",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 11,
+        "startStr": "00:07",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 18,
+        "startStr": "00:11",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 26,
+        "startStr": "00:18",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 34,
+        "startStr": "00:26",
+        "endStr": "00:34"
+      },
+      {
+        "start": 34,
+        "end": 35,
+        "startStr": "00:34",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 44,
+        "startStr": "00:35",
+        "endStr": "00:44"
+      },
+      {
+        "start": 44,
+        "end": 48,
+        "startStr": "00:44",
+        "endStr": "00:48"
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "startStr": "00:48",
+        "endStr": "00:54"
+      },
+      {
+        "start": 54,
+        "end": 58,
+        "startStr": "00:54",
+        "endStr": "00:58"
+      },
+      {
+        "start": 58,
+        "end": 63,
+        "startStr": "00:58",
+        "endStr": "00:63"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "巧克力灵魂",
+    "duration": "16",
+    "old_mechanism": "角色因意外失去行动力 → 美食出现 → 对食物的执念超越生死/物理限制 → 产生超自然反应",
+    "script_path": "scripts/968巧克力灵魂.md",
+    "story_beats": [
+      "Rumi站在厨房料理台上吃巧克力",
+      "画外Jinu大喊Rumi名字Rumi受惊被巧克力噎到失衡后仰摔落地板并昏迷",
+      "Jinu满脸笑容端着两盒泡面跑进厨房呼喊这是她最爱的面",
+      "Rumi的半透明幽灵从躯体升起悬空吸食泡面 Jinu全程注视幽灵吃完面并看着它返回躯体",
+      "幽灵消失后Jinu低头看着地上一动不动的躯体笑容消失发出悲伤的呜咽声"
+    ],
+    "clips": []
+  },
+  {
+    "id": 31,
+    "name": "婴儿认妈",
+    "duration": "7",
+    "old_mechanism": "角色A伪装成角色B行动 → 各种行为暴露不合理 → 真正的B出现 → A原形毕露受罚",
+    "script_path": "scripts/969婴儿认妈.md",
+    "story_beats": [
+      "视频开始jinu双手抱着一个留着紫色麻花辫的婴儿站在画面中央他面带微笑画面的左右两侧背对镜头站着两个一模一样、留着紫色双麻花辫的女生（看似都是rumi）",
+      "婴儿突然伸出右手指向左侧的女生背影并用稚嫩的声音喊了一声：“Mama”（妈妈）",
+      "左侧的女生听到声音后转过身来露出rumi的脸但她面无表情眼神显得冷漠且有些疲惫jinu看到后收起笑容好奇地将身体和头部前倾凑近观察左侧的rumi婴儿看着她情绪从期待瞬间转为委屈随后张大嘴巴开始大哭",
+      "听见婴儿的哭声jinu立刻抱着婴儿转向右侧此时右侧的女生也转过身来同样是rumi的脸但她面带灿烂温暖的微笑婴儿看到右侧的rumi后立刻破涕为笑发出开心的笑声jinu也跟着如释重负地大笑起来",
+      "突然画面发生瞬间的魔法切换原本抱着婴儿的jinu突然惊恐地跌坐在地上张大嘴巴瞪着双眼而右侧真实的rumi正单手抱着婴儿笑着看他；左侧那个冷漠的“rumi”则褪去伪装变回了mira原本的模样（红色双马尾）她摊开双手得意地看着地上的jinu伴随着画外音一句戏谑的“Gotcha”（抓到你了）jinu绝望地大喊出“Not again”（又来）揭示了这其实是mira联合rumi对jinu进行的一场恶作剧"
+    ],
+    "clips": []
+  },
+  {
+    "id": 32,
+    "name": "粉色蘑菇云",
+    "duration": "21",
+    "old_mechanism": "日常微小事件 → 产生持续性荒诞症状 → 症状在多场景中不断累积 → 累积量突破阈值引发灾难级后果 → 反噬追击",
+    "script_path": "scripts/970粉色蘑菇云.md",
+    "story_beats": [
+      "室内场景rumi正坐在房间里拿着粉扑给自己化妆脸上的散粉涂得非常夸张jinu从她身后凑近本意是开玩笑亲吻rumi的脸颊却意外吸入了rumi脸上大量的粉色散粉",
+      "jinu吸入散粉后表情瞬间惊恐身体后仰随后开始剧烈咳嗽并直接从嘴里咳出一大团粉色的烟雾他同时说道：“Honey there is a bit too much powder today”（亲爱的今天粉有点太多了）",
+      "jinu打开公寓房间的防盗门走出来此时他的嘴里还在不受控制地不断咳出粉色烟雾",
+      "jinu走在阳光明媚的城市街道上随着他正常的呼吸节奏嘴里持续喷出一条长长的粉色烟雾尾迹",
+      "jinu在健身房里练习杠铃硬拉随着他用力拉起杠铃并呼气嘴里猛烈喷出极为浓烈的粉色烟雾",
+      "jinu骑着一辆黄色共享单车在繁华的城市街道上穿行嘴里依然在向外喷射粉色烟雾烟雾在他身后弥漫开来",
+      "jinu在骑车时似乎察觉到了身后的异常转头向左后方看去回过头来时瞬间瞪大了眼睛眉头紧锁表情充满不可思议",
+      "jinu面部特写极度震惊地感叹：“Oh my god what have I done”（我的天哪我都干了些什么）",
+      "画面切到远景揭示了jinu身后的恐怖景象：他一路咳出的大量粉色烟雾并没有消散而是汇聚成了一朵极其巨大的、犹如核爆般的粉色蘑菇云正向着jinu的方向汹涌弥漫过来",
+      "面对追击而来的巨大粉色烟雾云jinu吓得大声凄厉尖叫身体前倾疯狂地踩踏黄色自行车的踏板向前逃命周围的街头行人也陷入恐慌四处逃窜"
+    ],
+    "clips": []
+  },
+  {
+    "id": 33,
+    "name": "发膜误食",
+    "duration": "13",
+    "old_mechanism": "物品A外观酷似食物B → 角色误食 → 享受后被揭示真相 → 产生夸张的超自然中毒后果",
+    "script_path": "scripts/971发膜误食.md",
+    "story_beats": [
+      "jinu在海边手捧装满绿色泥状物的玻璃罐用木勺搅拌",
+      "rumi的手突然伸入画面用手指挖走一块绿泥画外音说这是抹茶酱",
+      "jinu看着被挖走的绿泥面露震惊",
+      "rumi将沾着绿泥的手指放入口中品尝随后微笑着说味道不错",
+      "jinu焦急地大喊“不”并用勺子挖起一大坨绿泥直接拍在自己头顶",
+      "jinu举起罐子罐身上出现“绿茶控油发膜”字样他大声解释这是发膜",
+      "rumi整张脸变成绿色嘴里吐出绿色泡沫双手掐住自己的脖子痛苦仰头一个幽灵动画从她口中飞出升天"
+    ],
+    "clips": []
+  },
+  {
+    "id": 34,
+    "name": "丧尸爆发预言",
+    "duration": "59",
+    "old_mechanism": "真相持有→逐级求助→每一级以不同方式否定→绝望累积→孤立爆发",
+    "script_path": "scripts/0967-影视拆解报告：Zombie Outbreak.md",
+    "story_beats": [],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 5,
+        "end": 11,
+        "startStr": "00:05",
+        "endStr": "00:11"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "00:12",
+        "endStr": "00:15"
+      },
+      {
+        "start": 16,
+        "end": 22,
+        "startStr": "00:16",
+        "endStr": "00:22"
+      },
+      {
+        "start": 23,
+        "end": 31,
+        "startStr": "00:23",
+        "endStr": "00:31"
+      },
+      {
+        "start": 32,
+        "end": 40,
+        "startStr": "00:32",
+        "endStr": "00:40"
+      },
+      {
+        "start": 41,
+        "end": 50,
+        "startStr": "00:41",
+        "endStr": "00:50"
+      },
+      {
+        "start": 51,
+        "end": 59,
+        "startStr": "00:51",
+        "endStr": "00:59"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "抢座位忘恩负义",
+    "duration": "42",
+    "old_mechanism": "角色陷入困境→好心人出现施以援手→角色利用好心人→好心人愤怒惩罚",
+    "script_path": "scripts/0968-影视级深度拆解：Never feel sorry for a guy like Jinu!.md",
+    "story_beats": [
+      "抢位失败",
+      "被迫围观",
+      "凄惨独食",
+      "善意降临",
+      "背信弃义",
+      "得偿所愿",
+      "雷霆之怒",
+      "正义审判"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 15,
+        "startStr": "00:08",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 22,
+        "startStr": "00:15",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 30,
+        "startStr": "00:22",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 42,
+        "startStr": "00:30",
+        "endStr": "00:42"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "蔬菜变异减肥记",
+    "duration": "28",
+    "old_mechanism": "明确目标→尝试手段→结果与目标完全相反→更换手段→更离谱的反效果→循环升级",
+    "script_path": "scripts/0969-视频专业影视拆解分析报告(1).md",
+    "story_beats": [
+      "黄瓜变异",
+      "身高争执",
+      "西兰花尝试",
+      "绿色化身",
+      "胡萝卜奇效",
+      "爆炸发型",
+      "科学甜甜圈",
+      "终极进化",
+      "结局展示"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 2,
+        "startStr": "00:01",
+        "endStr": "00:02"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 12,
+        "end": 16,
+        "startStr": "00:12",
+        "endStr": "00:16"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 20,
+        "end": 24,
+        "startStr": "00:20",
+        "endStr": "00:24"
+      },
+      {
+        "start": 25,
+        "end": 28,
+        "startStr": "00:25",
+        "endStr": "00:28"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "长发公主爬塔选择",
+    "duration": "27",
+    "old_mechanism": "多选项呈现→角色基于错误假设选择→过程中暗示选错→揭晓结果天差地别",
+    "script_path": "scripts/0970-视频专业影视拆解分析报告(2).md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:02-00:05",
+      "00:05-00:08",
+      "00:08-00:11",
+      "00:11-00:13",
+      "00:13-00:15",
+      "00:15-00:18",
+      "00:18-00:21",
+      "00:21-00:24",
+      "00:24-00:27"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "00:02",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 8,
+        "startStr": "00:05",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 11,
+        "startStr": "00:08",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 21,
+        "startStr": "00:18",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 24,
+        "startStr": "00:21",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 27,
+        "startStr": "00:24",
+        "endStr": "00:27"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "丛林砸手大逃亡",
+    "duration": "43",
+    "old_mechanism": "痛苦触发→不能叫的理由→长距离压制→释放时的超现实爆发",
+    "script_path": "scripts/0971-视频专业影视拆解分析报告.md",
+    "story_beats": [
+      "丛林劳作",
+      "意外受伤",
+      "静默危机",
+      "猛兽威胁",
+      "急速大撤退",
+      "时空穿梭式奔逃",
+      "海滩终点与宣泄",
+      "超现实结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 2,
+        "end": 3,
+        "startStr": "00:02",
+        "endStr": "00:03"
+      },
+      {
+        "start": 4,
+        "end": 5,
+        "startStr": "00:04",
+        "endStr": "00:05"
+      },
+      {
+        "start": 6,
+        "end": 7,
+        "startStr": "00:06",
+        "endStr": "00:07"
+      },
+      {
+        "start": 8,
+        "end": 9,
+        "startStr": "00:08",
+        "endStr": "00:09"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "startStr": "00:13",
+        "endStr": "00:19"
+      },
+      {
+        "start": 20,
+        "end": 26,
+        "startStr": "00:20",
+        "endStr": "00:26"
+      },
+      {
+        "start": 27,
+        "end": 30,
+        "startStr": "00:27",
+        "endStr": "00:30"
+      },
+      {
+        "start": 31,
+        "end": 35,
+        "startStr": "00:31",
+        "endStr": "00:35"
+      },
+      {
+        "start": 36,
+        "end": 43,
+        "startStr": "00:36",
+        "endStr": "00:43"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "甜甜圈葬礼",
+    "duration": "39",
+    "old_mechanism": "微不足道的损失→用极端庄严的仪式处理（医院→教堂→墓地）→悲剧感登峰造极→一键复活逆转",
+    "script_path": "scripts/0972-视频专业影视拆解报告(1).md",
+    "story_beats": [
+      "意外发生",
+      "惨剧起始",
+      "紧急送医",
+      "宣告不治",
+      "痛失挚爱",
+      "教堂送别",
+      "墓地入土",
+      "终极绝望",
+      "温情闪回",
+      "奇迹逆转",
+      "神圣复活"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 2,
+        "startStr": "00:01",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "不公平竞赛三连",
+    "duration": "47",
+    "old_mechanism": "多轮竞赛→每轮角色自信选错工具→工具反噬导致失败→最终揭晓被暗算的真相",
+    "script_path": "scripts/0973-视频专业影视拆解报告(2).md",
+    "story_beats": [
+      "第一轮（进食比赛）",
+      "第二轮（清洁比赛）",
+      "决赛轮（负重爬楼）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "00:09",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "00:12",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 21,
+        "startStr": "00:18",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 24,
+        "startStr": "00:21",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 27,
+        "startStr": "00:24",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 31,
+        "startStr": "00:27",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 35,
+        "startStr": "00:31",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "startStr": "00:35",
+        "endStr": "00:40"
+      },
+      {
+        "start": 40,
+        "end": 47,
+        "startStr": "00:40",
+        "endStr": "00:47"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "点石成金的诅咒",
+    "duration": "22",
+    "old_mechanism": "获得超能力→小规模验证欣喜→能力失控扩大→侵蚀自身→美好变成诅咒",
+    "script_path": "scripts/0974-视频专业影视拆解报告(3).md",
+    "story_beats": [
+      "开场吻戏",
+      "异变与金苹果",
+      "沙发金化",
+      "暴富狂欢",
+      "能力失控",
+      "身体异化",
+      "全城崩坏",
+      "最终审判（黄金街）",
+      "绝望终局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "startStr": "00:19",
+        "endStr": "00:22"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "邋遢变美被骗",
+    "duration": "28",
+    "old_mechanism": "邋遢态暴露→外部刺激触发变美→极速变装完成→开门揭晓刺激是假的→愤怒惩罚",
+    "script_path": "scripts/0975-视频专业影视拆解报告.md",
+    "story_beats": [
+      "00:00 - 00:03",
+      "00:03 - 00:05",
+      "00:05 - 00:08",
+      "00:08 - 00:10",
+      "00:10 - 00:15",
+      "00:15 - 00:18",
+      "00:18 - 00:22",
+      "00:22 - 00:24",
+      "00:24 - 00:28"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 28,
+        "startStr": "00:25",
+        "endStr": "00:28"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "LEGO车人质博弈",
+    "duration": "19",
+    "old_mechanism": "双方各持对方软肋→威胁升级→一方过激操作→另一方以更高筹码止损→达成新平衡",
+    "script_path": "scripts/0976-视频专业影视拆解：Rumi与Jinu的LEGO博弈.md",
+    "story_beats": [
+      "冲突爆发",
+      "相互对峙",
+      "极限博弈",
+      "紧急撤退",
+      "疯狂搜寻",
+      "利益达成",
+      "情绪转折",
+      "结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 19,
+        "startStr": "00:16",
+        "endStr": "00:19"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "车内放错歌真香",
+    "duration": "21",
+    "old_mechanism": "公开出丑→极度尴尬→试图挽回→被阻止→意外发现好处→集体真香",
+    "script_path": "scripts/0977-视频专业拆解报告(1).md",
+    "story_beats": [
+      "开场与出发",
+      "音乐\"事故\"",
+      "全员震惊",
+      "尴尬时刻",
+      "反转发生",
+      "狂欢高潮"
+    ],
+    "clips": []
+  },
+  {
+    "id": 45,
+    "name": "木雕Mira生日礼物",
+    "duration": "21",
+    "old_mechanism": "神秘制作过程→旁观者好奇→逐步揭晓意图→共同参与→成品展示",
+    "script_path": "scripts/0978-视频专业拆解报告(10).md",
+    "story_beats": [
+      "场景开启（00:00-00:02）",
+      "精细加工（00:02-00:06）",
+      "发现与互动（00:06-00:10）",
+      "上色阶段（00:10-00:12）",
+      "揭晓意图（00:12-00:14）",
+      "共同参与（00:14-00:18）",
+      "最终展示（00:18-00:21）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 2,
+        "startStr": "00:01",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 21,
+        "startStr": "00:18",
+        "endStr": "00:21"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "人偶rumi被救赎",
+    "duration": "21",
+    "old_mechanism": "弱小角色求助→被冷漠伤害→英雄出现救助→修复创伤→重获新生",
+    "script_path": "scripts/0979-视频专业拆解报告(11).md",
+    "story_beats": [
+      "开场（00:00-00:03）",
+      "冲突（00:03-00:05）",
+      "转折（00:05-00:08）",
+      "救赎（00:08-00:11）",
+      "高潮/治愈（00:11-00:17）",
+      "结局（00:17-00:21）"
+    ],
+    "clips": []
+  },
+  {
+    "id": 47,
+    "name": "巧克力轮胎肌肉男",
+    "duration": "29",
+    "old_mechanism": "A将食物伪装成日用品→留给B→C误认为本来用途→暴力使用导致爆裂→A回来发现崩溃",
+    "script_path": "scripts/0980-视频专业拆解报告(2).md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:03-00:05",
+      "00:05-00:09",
+      "00:10-00:12",
+      "00:13-00:15",
+      "00:16-00:18",
+      "00:19-00:21",
+      "00:22-00:24",
+      "00:25-00:29"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "误会jinu画木偶",
+    "duration": "14",
+    "old_mechanism": "观察者看到疑似出轨画面→愤怒行动→物理接触揭晓真相（是假人）→情绪180度反转",
+    "script_path": "scripts/0981-视频专业拆解报告(3).md",
+    "story_beats": [
+      "00:00-00:01",
+      "00:01-00:02",
+      "00:02-00:03",
+      "00:04-00:05",
+      "00:05-00:07",
+      "00:07-00:08",
+      "00:08-00:10",
+      "00:10-00:11",
+      "00:11-00:12",
+      "00:12-00:14"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 14,
+        "startStr": "00:11",
+        "endStr": "00:14"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "抢钥匙选错车",
+    "duration": "16",
+    "old_mechanism": "多选项呈现→贪心者抢先选择→过程中展示自信→结果揭晓完全反转→赢家变输家",
+    "script_path": "scripts/0982-视频专业拆解报告(4).md",
+    "story_beats": [
+      "开场选择",
+      "抢夺瞬间",
+      "反转发现",
+      "自信离开",
+      "残酷现实",
+      "胜者现身",
+      "结局追逐"
+    ],
+    "clips": []
+  },
+  {
+    "id": 50,
+    "name": "人偶rumi被霸凌的救赎",
+    "duration": "42",
+    "old_mechanism": "弱者被A伤害→被B再伤害→被C错误救助（二次伤害）→被D真正理解并治愈→重生",
+    "script_path": "scripts/0983-视频专业拆解报告(5).md",
+    "story_beats": [
+      "开篇遭遇",
+      "二次伤害",
+      "错误的善意",
+      "心理崩溃",
+      "真正的救赎",
+      "温馨结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 4,
+        "end": 5,
+        "startStr": "00:04",
+        "endStr": "00:05"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 24,
+        "end": 27,
+        "startStr": "00:24",
+        "endStr": "00:27"
+      },
+      {
+        "start": 28,
+        "end": 31,
+        "startStr": "00:28",
+        "endStr": "00:31"
+      },
+      {
+        "start": 32,
+        "end": 34,
+        "startStr": "00:32",
+        "endStr": "00:34"
+      },
+      {
+        "start": 35,
+        "end": 38,
+        "startStr": "00:35",
+        "endStr": "00:38"
+      },
+      {
+        "start": 39,
+        "end": 42,
+        "startStr": "00:39",
+        "endStr": "00:42"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "秃头变男神骗rumi",
+    "duration": "",
+    "old_mechanism": "真实丑态暴露→突发访客→疯狂掩饰过程→不可思议的变身完成→对方完全被骗",
+    "script_path": "scripts/0985-视频专业拆解报告(7).md",
+    "story_beats": [
+      "**开场（0-3s）：**",
+      "**危机出现（3-5s）：**",
+      "**角色独白（5-10s）：**",
+      "**混乱清理（10-15s）：**",
+      "**极限掩饰（15-18s）：**",
+      "**极速改造（18-28s）：** \\* jinu冲进浴室洗脸",
+      "**男神降临（28-33s）：**",
+      "**结局（33-38s）：**"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 3,
+        "startStr": "00:00",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 10,
+        "startStr": "00:05",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 15,
+        "startStr": "00:10",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 28,
+        "startStr": "00:18",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 33,
+        "startStr": "00:28",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 38,
+        "startStr": "00:33",
+        "endStr": "00:38"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "头发钓鱼扣锅",
+    "duration": "13",
+    "old_mechanism": "规则限制→质疑不公平→用超常手段绕过规则→碾压式成功→顺手欺负正常人",
+    "script_path": "scripts/0986-视频专业拆解报告(8).md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:02-00:04",
+      "00:04-00:06",
+      "00:06-00:08",
+      "00:08-00:10",
+      "00:10-00:13"
+    ],
+    "clips": []
+  },
+  {
+    "id": 54,
+    "name": "红袜子洗衣灾难",
+    "duration": "48",
+    "old_mechanism": "犯错者极力讨好掩饰→审问者逐步试探→故意摧毁犯错者心爱之物观察反应→确认有更大错误→最终揭晓灾难",
+    "script_path": "scripts/0987-视频专业拆解报告(9).md",
+    "story_beats": [
+      "开篇（00:00-00:05）",
+      "献殷勤（00:06-00:10）",
+      "怀疑（00:11-00:15）",
+      "伏笔揭示（00:16-00:20）",
+      "心理博弈与损毁（00:21-00:25）",
+      "情绪崩溃（00:26-00:33）",
+      "真相指向（00:34-00:43）",
+      "结局（00:44-00:48）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "00:02",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 8,
+        "startStr": "00:05",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 11,
+        "startStr": "00:08",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 19,
+        "startStr": "00:16",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "startStr": "00:19",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "startStr": "00:22",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 28,
+        "startStr": "00:25",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 31,
+        "startStr": "00:28",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 33,
+        "startStr": "00:31",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 35,
+        "startStr": "00:33",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 38,
+        "startStr": "00:35",
+        "endStr": "00:38"
+      },
+      {
+        "start": 38,
+        "end": 43,
+        "startStr": "00:38",
+        "endStr": "00:43"
+      },
+      {
+        "start": 43,
+        "end": 48,
+        "startStr": "00:43",
+        "endStr": "00:48"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "name": "苹果换钱传送门",
+    "duration": "24",
+    "old_mechanism": "意外发现漏洞→小额试探成功→加大投入→贪婪失控→陷阱反噬→毁灭",
+    "script_path": "scripts/0988-视频专业拆解报告.md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:03-00:06",
+      "00:07-00:11",
+      "00:12-00:17",
+      "00:18-00:20",
+      "00:21-00:24"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 3,
+        "end": 6,
+        "startStr": "00:03",
+        "endStr": "00:06"
+      },
+      {
+        "start": 7,
+        "end": 11,
+        "startStr": "00:07",
+        "endStr": "00:11"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 21,
+        "end": 24,
+        "startStr": "00:21",
+        "endStr": "00:24"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "谁是真正的Rumi",
+    "duration": "28",
+    "old_mechanism": "真人被吸入虚拟世界→救援者追踪线索→发现的目标是AI伪装→警告揭露真相→现实与虚拟全部沦陷",
+    "script_path": "scripts/0989-视频专业级影视拆解(1).md",
+    "story_beats": [
+      "吸入危机（00:00-00:03）",
+      "果断营救（00:03-00:05）",
+      "隧道追踪（00:05-00:11）",
+      "陷阱显现（00:11-00:18）",
+      "异维警告（00:18-00:23）",
+      "恐怖终局（00:23-00:28）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 23,
+        "startStr": "00:20",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "startStr": "00:23",
+        "endStr": "00:28"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "脚底泥雪糕恶作剧",
+    "duration": "7",
+    "old_mechanism": "先给结果（信任→误食→喷射）→再揭过程（脚底搓雪糕）→观众产生延迟恶心的认知失调",
+    "script_path": "scripts/0990-视频专业级影视拆解(2).md",
+    "story_beats": [
+      "故事前置（恶作剧准备）",
+      "恶作剧实施（递送）",
+      "情绪高峰（误食）",
+      "结局（爆发）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Rumi和Mira的秘密大餐",
+    "duration": "30",
+    "old_mechanism": "搜查者认真排查→所有位置clear→多出一个可疑人物→质疑身份→揭露伪装→真正秘密在另一处",
+    "script_path": "scripts/0991-视频专业级影视拆解.md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:04 -",
+      "00:09 - 00:15",
+      "00:16 - 00:20",
+      "00:21 - 00:24",
+      "00:25 - 00:30"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 20,
+        "startStr": "00:15",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 30,
+        "startStr": "00:20",
+        "endStr": "00:30"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "没人爱Rumi玩偶",
+    "duration": "51",
+    "old_mechanism": "弱者求助→被物理伤害→被虚假关怀（涂鸦）→被流量消费→被自然灾害→只剩观众是朋友",
+    "script_path": "scripts/0992-视频专业级影视拆解分析.md",
+    "story_beats": [
+      "开场与示好",
+      "意外碰撞",
+      "再次尝试",
+      "虚假的关怀",
+      "恶作剧与羞辱",
+      "二次伤害",
+      "流量的牺牲品",
+      "接连的灾难",
+      "逃离与崩溃",
+      "最终结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 15,
+        "startStr": "00:09",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 20,
+        "startStr": "00:15",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 23,
+        "startStr": "00:20",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 28,
+        "startStr": "00:23",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 32,
+        "startStr": "00:28",
+        "endStr": "00:32"
+      },
+      {
+        "start": 32,
+        "end": 35,
+        "startStr": "00:32",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 39,
+        "startStr": "00:35",
+        "endStr": "00:39"
+      },
+      {
+        "start": 39,
+        "end": 43,
+        "startStr": "00:39",
+        "endStr": "00:43"
+      },
+      {
+        "start": 44,
+        "end": 51,
+        "startStr": "00:44",
+        "endStr": "00:51"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "芒果偷吃鬼rumi",
+    "duration": "50",
+    "old_mechanism": "偷吃被发现→否认→设陷阱验证→再偷吃→终极惩罚（毒死）→死后仍偷吃（灵异闭环）",
+    "script_path": "scripts/0993-视频专业级影视拆解分析报告.md",
+    "story_beats": [
+      "芒果失踪案",
+      "第一轮指控",
+      "锁定嫌疑人",
+      "薯条诱饵",
+      "瞬间消失",
+      "再次对峙",
+      "终极惩罚",
+      "惨剧发生",
+      "葬礼追思",
+      "灵异结尾"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 11,
+        "startStr": "00:07",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 17,
+        "startStr": "00:13",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 21,
+        "startStr": "00:17",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 27,
+        "startStr": "00:21",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 33,
+        "startStr": "00:27",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 37,
+        "startStr": "00:33",
+        "endStr": "00:37"
+      },
+      {
+        "start": 37,
+        "end": 43,
+        "startStr": "00:37",
+        "endStr": "00:43"
+      },
+      {
+        "start": 43,
+        "end": 50,
+        "startStr": "00:43",
+        "endStr": "00:50"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "name": "拉游艇拽货轮怪力",
+    "duration": "12",
+    "old_mechanism": "看似在做大事→揭露只是假象→受嘲笑→认真发力→不可思议的真实超能力展示→众人跪服",
+    "script_path": "scripts/0994-视频专业级影视拆解报告(1).md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:02-00:04",
+      "00:04-00:06",
+      "00:06-00:08",
+      "00:08-00:10",
+      "00:10-00:12"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "吃火山木炭挑战",
+    "duration": "16",
+    "old_mechanism": "第一人尝试失败→第二人逞强也失败→第三人轻松完成→揭示能力差距",
+    "script_path": "scripts/0995-视频专业级影视拆解报告(10).md",
+    "story_beats": [
+      "00:00-00:03",
+      "00:03-00:05",
+      "00:05-00:08",
+      "00:08-00:16"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 8,
+        "startStr": "00:05",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "假犯人真骗局",
+    "duration": "59",
+    "old_mechanism": "看似被抓→利用路人无心之举脱逃→二次被抓→利用润滑脱逃→最终揭示抓捕本身就是骗局",
+    "script_path": "scripts/0996-视频专业级影视拆解报告(11).md",
+    "story_beats": [
+      "街道禁锢",
+      "极限自救",
+      "高度瓶颈",
+      "单纯的关怀",
+      "意外助攻",
+      "警官折返",
+      "公园二度被捕",
+      "护手霜计策",
+      "滑溜脱逃",
+      "再度扑空",
+      "真相大白",
+      "结局揭秘"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "00:09",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "00:12",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 20,
+        "startStr": "00:15",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 25,
+        "startStr": "00:20",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "startStr": "00:25",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "startStr": "00:30",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 41,
+        "startStr": "00:35",
+        "endStr": "00:41"
+      },
+      {
+        "start": 41,
+        "end": 48,
+        "startStr": "00:41",
+        "endStr": "00:48"
+      },
+      {
+        "start": 48,
+        "end": 59,
+        "startStr": "00:48",
+        "endStr": "00:59"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "婚礼蛋糕藏蛇英雄救美",
+    "duration": "39",
+    "old_mechanism": "英雄做出看似破坏的行为→被误解制服→揭示真正危险→英雄反杀→回忆对比强化选择→最终出逃",
+    "script_path": "scripts/0997-视频专业级影视拆解报告(12).md",
+    "story_beats": [
+      "破坏仪式",
+      "冲突爆发",
+      "揭示真相",
+      "惊恐一幕",
+      "英勇反杀",
+      "物质诱惑（回忆/对比）",
+      "精神契合（回忆/对比）",
+      "最终出逃"
+    ],
+    "clips": []
+  },
+  {
+    "id": 65,
+    "name": "Birkin包包葬礼",
+    "duration": "50",
+    "old_mechanism": "核心物品被毁→将物品拟人化举办葬礼→极致悲伤→揭示物品完好→荒诞大团圆",
+    "script_path": "scripts/0998-视频专业级影视拆解报告(13).md",
+    "story_beats": [
+      "冲突爆发",
+      "毁灭现场",
+      "现场调查",
+      "确认\"死亡\"",
+      "追思回忆",
+      "葬礼告白",
+      "反转时刻",
+      "真相大白",
+      "大团圆结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 24,
+        "startStr": "00:22",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 26,
+        "startStr": "00:24",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 28,
+        "startStr": "00:26",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 30,
+        "startStr": "00:28",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 32,
+        "startStr": "00:30",
+        "endStr": "00:32"
+      },
+      {
+        "start": 32,
+        "end": 34,
+        "startStr": "00:32",
+        "endStr": "00:34"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "救兔子求点赞",
+    "duration": "40",
+    "old_mechanism": "反派冷酷弃伤→正面角色善良救助→紧张医疗→宗教祈祷→突然打破第四面墙将剧情悬念转化为营销互动",
+    "script_path": "scripts/0999-视频专业级影视拆解报告(14).md",
+    "story_beats": [
+      "疯狂驾驶",
+      "肇事现场",
+      "冷酷抉择",
+      "街头偶遇",
+      "发现伤兔",
+      "紧急救援",
+      "手术决定",
+      "虔诚祈祷",
+      "神迹出现"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "00:02",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 8,
+        "startStr": "00:05",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 12,
+        "startStr": "00:08",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 17,
+        "startStr": "00:12",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 22,
+        "startStr": "00:17",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 27,
+        "startStr": "00:22",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 35,
+        "startStr": "00:27",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "startStr": "00:35",
+        "endStr": "00:40"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "金色魔镜之战",
+    "duration": "69",
+    "old_mechanism": "华丽外表（金镜）导致坏结果→破碎外表（黑镜）带来好结果→抢夺者自食其果→失去者发现内在价值获救赎",
+    "script_path": "scripts/1000-视频专业级影视拆解报告(15).md",
+    "story_beats": [
+      "**序幕：争夺魔镜（00:00 - 00:06）**\\",
+      "**转折：破碎的希望（00:06 - 00:17）**\\",
+      "**异变：镜中的神迹（00:17 - 00:30）**\\",
+      "**商机：青春买卖（00:30 - 00:42）**\\",
+      "**拯救：变废为宝（00:42 - 00:55）**\\",
+      "**结局：报应与神话（00:55 - 01:09）**\\"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 13,
+        "startStr": "00:07",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "startStr": "00:13",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 25,
+        "startStr": "00:19",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "startStr": "00:25",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "startStr": "00:30",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "startStr": "00:35",
+        "endStr": "00:40"
+      },
+      {
+        "start": 40,
+        "end": 45,
+        "startStr": "00:40",
+        "endStr": "00:45"
+      },
+      {
+        "start": 45,
+        "end": 50,
+        "startStr": "00:45",
+        "endStr": "00:50"
+      },
+      {
+        "start": 50,
+        "end": 55,
+        "startStr": "00:50",
+        "endStr": "00:55"
+      },
+      {
+        "start": 55,
+        "end": 60,
+        "startStr": "00:55",
+        "endStr": "01:00"
+      },
+      {
+        "start": 60,
+        "end": 69,
+        "startStr": "01:00",
+        "endStr": "01:09"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "我要Rumi不要钱",
+    "duration": "22",
+    "old_mechanism": "依次展示食物→展示金钱→全部被拒→指向真正目标→揭晓人比物质更有价值",
+    "script_path": "scripts/1001-视频专业级影视拆解报告(16).md",
+    "story_beats": [
+      "00:00-00:01",
+      "00:01-00:03",
+      "00:03-00:05",
+      "00:05-00:07",
+      "00:07-00:09",
+      "00:09-00:11",
+      "00:11-00:13",
+      "00:13-00:15",
+      "00:15-00:17",
+      "00:17-00:19",
+      "00:19-00:22"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "startStr": "00:19",
+        "endStr": "00:22"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "Rumi电梯飞踢复仇",
+    "duration": "24",
+    "old_mechanism": "假弱者博取同情→善良者上当让位→假弱者翻脸嘲讽→愤怒追击→以超凡体能完成复仇",
+    "script_path": "scripts/1002-视频专业级影视拆解报告(17).md",
+    "story_beats": [
+      "开端",
+      "冲突",
+      "反转（伪善）",
+      "背叛",
+      "愤怒与追击",
+      "伏笔",
+      "高潮（终结）",
+      "结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 24,
+        "startStr": "00:21",
+        "endStr": "00:24"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "人体颜料画笔",
+    "duration": "43",
+    "old_mechanism": "从受害者身上逐步提取各种材料（头发→衣服→脸部→手掌→眼泪）→每次提取都是一次新的荒诞升级→最终产出精美作品",
+    "script_path": "scripts/1003-视频专业级影视拆解报告(18).md",
+    "story_beats": [
+      "开场与危机触发",
+      "强制采集画笔",
+      "破坏性采集紫色颜料",
+      "超现实采集黄色颜料",
+      "钻木取火式采集黑色颜料",
+      "采集清洗用水（接眼泪）",
+      "结局：杰作诞生"
+    ],
+    "clips": []
+  },
+  {
+    "id": 71,
+    "name": "高空抉择善恶报应",
+    "duration": "36",
+    "old_mechanism": "极端困境二选一→闪回负面记忆（伤害行为）→闪回正面记忆（善良行为）→基于过往善恶做出生死裁决",
+    "script_path": "scripts/1004-视频专业级影视拆解报告(19).md",
+    "story_beats": [
+      "高空危机",
+      "第一段负面回忆（与zoye）",
+      "第二段正面回忆（与mira）",
+      "结局抉择"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      },
+      {
+        "start": 29,
+        "end": 31,
+        "startStr": "00:29",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 33,
+        "startStr": "00:31",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 36,
+        "startStr": "00:33",
+        "endStr": "00:36"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "染发恶作剧意外惊喜",
+    "duration": "24",
+    "old_mechanism": "恶作剧者偷偷实施→焦虑等待→脑内假想最坏结果（尖叫崩溃）→现实结果与假想完全相反（惊喜欢呼）→恶作剧者反而懵住",
+    "script_path": "scripts/1005-视频专业级影视拆解报告(2).md",
+    "story_beats": [
+      "开场意外 (00:00-00:02)",
+      "寻求救助 (00:02-00:04)",
+      "恶意干扰 (00:04-00:08)",
+      "强制\"补救\" (00:08-00:12)",
+      "Mira 的忐忑 (00:12-00:14)",
+      "假想剧场 (00:14-00:18)"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 2,
+        "startStr": "00:01",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 24,
+        "startStr": "00:20",
+        "endStr": "00:24"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "name": "肥皂巧克力整蛊",
+    "duration": "26",
+    "old_mechanism": "第一层：观众+mira以为是肥皂（实际是巧克力）→第二层：jinu以为是肥皂去洗手（但它还是巧克力）→同一物品两次误认产生双重笑点",
+    "script_path": "scripts/1006-视频专业级影视拆解报告(20).md",
+    "story_beats": [
+      "00:00 - 00:01",
+      "00:01 - 00:03",
+      "00:03 - 00:05",
+      "00:05 - 00:07",
+      "00:07 - 00:09",
+      "00:09 - 00:11",
+      "00:11 - 00:13",
+      "00:13 - 00:16",
+      "00:16 - 00:19",
+      "00:19 - 00:26"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "startStr": "00:21",
+        "endStr": "00:26"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "name": "四轮竞技全败王",
+    "duration": "67",
+    "old_mechanism": "选大失败→吸取教训选小→又失败→全部都要→再失败→反向让利→依然失败→策略越精明结果越惨",
+    "script_path": "scripts/1007-视频专业级影视拆解报告(21).md",
+    "story_beats": [
+      "**开场 (00:00 -",
+      "第一轮：吹蜡烛 (00:04 - 00:17)",
+      "第二轮：点燃木堆 (00:18 - 00:32)",
+      "第三轮：钻管道 (00:33 - 00:47)",
+      "第四轮：取蜂窝 (00:48 - 01:04)"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 3,
+        "startStr": "00:00",
+        "endStr": "00:03"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 8,
+        "end": 17,
+        "startStr": "00:08",
+        "endStr": "00:17"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "00:18",
+        "endStr": "00:22"
+      },
+      {
+        "start": 23,
+        "end": 32,
+        "startStr": "00:23",
+        "endStr": "00:32"
+      },
+      {
+        "start": 33,
+        "end": 35,
+        "startStr": "00:33",
+        "endStr": "00:35"
+      },
+      {
+        "start": 36,
+        "end": 47,
+        "startStr": "00:36",
+        "endStr": "00:47"
+      },
+      {
+        "start": 48,
+        "end": 52,
+        "startStr": "00:48",
+        "endStr": "00:52"
+      },
+      {
+        "start": 53,
+        "end": 64,
+        "startStr": "00:53",
+        "endStr": "01:04"
+      },
+      {
+        "start": 65,
+        "end": 67,
+        "startStr": "01:05",
+        "endStr": "01:07"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "粉色月亮猫爪枪",
+    "duration": "16",
+    "old_mechanism": "捣蛋行为→被惩罚驱逐→孤独场景→用捣蛋工具创造超现实奇迹→负面转正面",
+    "script_path": "scripts/1008-视频专业级影视拆解报告(22).md",
+    "story_beats": [
+      "**\\[00:00-00:01\\]**",
+      "**\\[00:01-00:03\\]** 镜头迅速切换至 **romance**",
+      "**\\[00:03-00:05\\]** 镜头转回 **rumi** 的背影随着 **romance**",
+      "**\\[00:05-00:07\\]** **rumi**",
+      "**\\[00:08-00:10\\]** 场景跨越至夜晚天台**romance**",
+      "**\\[00:10-00:12\\]** 虽然困倦**romance**",
+      "**\\[00:12-00:14\\]**",
+      "**\\[00:14-00:16\\]**"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "疯狂牙医掏烤鸡",
+    "duration": "27",
+    "old_mechanism": "物品意外落入→从口腔中逐步掏出越来越荒诞的物品→找到原始物品→以为结束→更荒诞的终极物品自行跳出",
+    "script_path": "scripts/1009-视频专业级影视拆解报告(23).md",
+    "story_beats": [
+      "开端",
+      "触发",
+      "超现实探索",
+      "递进冲突",
+      "高潮前奏",
+      "转折",
+      "惊人结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 11,
+        "startStr": "00:07",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 17,
+        "startStr": "00:13",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "startStr": "00:19",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 27,
+        "startStr": "00:22",
+        "endStr": "00:27"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "化妆复仇连环整",
+    "duration": "10",
+    "old_mechanism": "A嘲笑B→B整A→C嘲笑A→C也被整→A嘲笑C完成复仇闭环",
+    "script_path": "scripts/1010-视频专业级影视拆解报告(24).md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:02 -",
+      "00:03 - 00:05",
+      "00:05 - 00:07",
+      "00:07 - 00:09",
+      "00:09 - 00:10"
+    ],
+    "clips": []
+  },
+  {
+    "id": 78,
+    "name": "丧尸恶作剧反噬",
+    "duration": "30",
+    "old_mechanism": "角色A在安全环境内嚣张→B和C用假危险吓A→假危险揭秘→真实危险降临→恶作剧策划者自食其果",
+    "script_path": "scripts/1011-视频专业级影视拆解报告(25).md",
+    "story_beats": [
+      "**00:00 -",
+      "00:02 - 00:04",
+      "**00:04 -",
+      "00:06 - 00:08",
+      "00:08 - 00:10",
+      "00:10 - 00:12",
+      "00:12 - 00:14",
+      "00:14 - 00:16",
+      "00:16 - 00:18",
+      "00:18 - 00:21",
+      "00:21 - 00:24",
+      "00:24 - 00:26",
+      "00:26 - 00:28",
+      "00:28 - 00:30"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 22,
+        "end": 24,
+        "startStr": "00:22",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 26,
+        "startStr": "00:24",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 28,
+        "startStr": "00:26",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 30,
+        "startStr": "00:28",
+        "endStr": "00:30"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "好人被冤枉井盖",
+    "duration": "30",
+    "old_mechanism": "反派制造危险→正派反复补救→反派反复破坏→正派最后一次补救时被反派反诬为施害者→受害者误会正派",
+    "script_path": "scripts/1012-视频专业级影视拆解报告(26).md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:02-00:04",
+      "00:04-00:06",
+      "00:06-00:08",
+      "00:08-00:10",
+      "00:10-00:13",
+      "00:13-00:16",
+      "00:16-00:19",
+      "00:19-00:23",
+      "00:23-00:26",
+      "00:26-00:30"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 19,
+        "startStr": "00:16",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 23,
+        "startStr": "00:19",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 26,
+        "startStr": "00:23",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 30,
+        "startStr": "00:26",
+        "endStr": "00:30"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "可乐作弊比赛",
+    "duration": "14",
+    "old_mechanism": "公平比赛假象→一方轻松获胜→揭示隐藏在视觉盲区的第三方帮手→被骗者愤怒→作弊者嘲讽",
+    "script_path": "scripts/1013-视频专业级影视拆解报告(3).md",
+    "story_beats": [
+      "00:00 - 00:01",
+      "00:01 - 00:03",
+      "**00:04 -",
+      "00:06 - 00:08",
+      "00:09 - 00:11",
+      "00:12 - 00:14"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 14,
+        "startStr": "00:10",
+        "endStr": "00:14"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "音响卡车逆袭复仇",
+    "duration": "47",
+    "old_mechanism": "被羞辱拒绝→悲伤→觉醒宣言→硬核DIY改造→华丽登场碾压→反派嫉妒破坏→打破第四面墙求助观众",
+    "script_path": "scripts/1014-视频专业级影视拆解报告(4).md",
+    "story_beats": [
+      "乞求与拒绝",
+      "冷酷回应",
+      "卑微请求",
+      "决裂出发",
+      "悲愤交加",
+      "复仇誓言",
+      "硬核改造",
+      "华丽逆袭",
+      "反派震惊",
+      "嫉妒爆发",
+      "冲突升级",
+      "绝望呼救",
+      "恶毒终场"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 20,
+        "startStr": "00:17",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 24,
+        "startStr": "00:20",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 30,
+        "startStr": "00:24",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 33,
+        "startStr": "00:30",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 35,
+        "startStr": "00:33",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 38,
+        "startStr": "00:35",
+        "endStr": "00:38"
+      },
+      {
+        "start": 38,
+        "end": 42,
+        "startStr": "00:38",
+        "endStr": "00:42"
+      },
+      {
+        "start": 42,
+        "end": 47,
+        "startStr": "00:42",
+        "endStr": "00:47"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "狮子头套整蛊jinu",
+    "duration": "15",
+    "old_mechanism": "用逼真头套把宠物伪装成猛兽→制造极端恐惧→异常细节暴露真相（舔舐行为）→摘下头套揭示真身→恐惧转为尴尬",
+    "script_path": "scripts/1015-视频专业级影视拆解报告(5).md",
+    "story_beats": [
+      "专注时刻",
+      "惊人登场",
+      "惊恐爆发",
+      "野兽扑袭",
+      "滑稽转折",
+      "真相大白",
+      "嘲讽收场"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "撒泼打滚买东西",
+    "duration": "35",
+    "old_mechanism": "角色A撒泼成功获奖励→角色B模仿A撒泼也成功→角色C模仿但将撒泼目标转向观众→打破第四面墙将需求转化为订阅/点赞",
+    "script_path": "scripts/1016-视频专业级影视拆解报告(6).md",
+    "story_beats": [
+      "场景一（玩偶店）",
+      "转折一",
+      "结果一",
+      "场景二（奢侈品店）",
+      "冲突二",
+      "转折二",
+      "结果二",
+      "场景三（直播间/工作室）",
+      "结尾"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "00:02",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 18,
+        "startStr": "00:13",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "00:18",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "startStr": "00:22",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "startStr": "00:25",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "startStr": "00:30",
+        "endStr": "00:35"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "牛油果汁魔法喷射",
+    "duration": "16",
+    "old_mechanism": "A对B做出动作→效果却魔法般传递到C身上→C从惊恐到品尝发现好吃→A困惑→B揭晓真相",
+    "script_path": "scripts/1017-视频专业级影视拆解报告(7).md",
+    "story_beats": [
+      "**准备阶段 (00:00 -",
+      "触发冲突 (00:02 - 00:03)",
+      "空间转场/魔法效果 (00:03 - 00:05)",
+      "触觉反馈 (00:05 - 00:08)",
+      "反转与情绪切换 (00:08 - 00:11)",
+      "后续反转 (00:11 - 00:13)",
+      "真相揭晓 (00:13 - 00:16)"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 3,
+        "startStr": "00:02",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "扔掉布偶送玩偶盒",
+    "duration": "16",
+    "old_mechanism": "珍贵物品被权威夺走销毁→受害者崩溃→施害者送出远超原物品的高级替代品→揭示善意动机",
+    "script_path": "scripts/1018-视频专业级影视拆解报告(8).md",
+    "story_beats": [
+      "开场阶段",
+      "冲突爆发",
+      "角色辩解",
+      "矛盾升级",
+      "残酷转折",
+      "伏笔呈现",
+      "惊艳反转",
+      "情感升华",
+      "大圆满结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "吹气球扎针作弊",
+    "duration": "7",
+    "old_mechanism": "公平比赛假象→隐蔽破坏对手→自己轻松取胜→物理毁灭式收尾",
+    "script_path": "scripts/1019-视频专业级影视拆解报告(9).md",
+    "story_beats": [
+      "**00:00 -",
+      "00:01 - 00:02",
+      "00:02 - 00:04",
+      "00:04 - 00:06",
+      "00:06 - 00:07"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "番茄酱软糖反击战",
+    "duration": "21",
+    "old_mechanism": "A用假危险整B→B发现是假的→C嘲笑B→B用真危险反击C→A和B结盟",
+    "script_path": "scripts/1020-视频专业级影视拆解报告.md",
+    "story_beats": [
+      "恶作剧开始",
+      "惊喜（惊吓）降临",
+      "极度惊恐",
+      "真相大白",
+      "旁观者的嘲笑",
+      "情绪逆转",
+      "反击行动",
+      "结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 21,
+        "startStr": "00:17",
+        "endStr": "00:21"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "name": "辣椒三明治探病",
+    "duration": "60",
+    "old_mechanism": "角色执拗做异常行为→被反复阻止→揭示行为背后是为了重现与病中亲人的共同记忆→用味觉唤醒情感",
+    "script_path": "scripts/1021-视频专业级影视拆解：Lily Meow - Spicy Treat.md",
+    "story_beats": [
+      "教室场景（序幕）",
+      "关怀冲突",
+      "打包转场",
+      "家里场景",
+      "温情诱导",
+      "隐瞒行为",
+      "前往医院",
+      "探望与开启",
+      "情感触动",
+      "回忆杀（灰调）",
+      "现实共鸣",
+      "最终定格"
+    ],
+    "clips": [
+      {
+        "start": 1080,
+        "end": 1260,
+        "startStr": "18:00",
+        "endStr": "21:00"
+      },
+      {
+        "start": 1260,
+        "end": 1560,
+        "startStr": "21:00",
+        "endStr": "26:00"
+      },
+      {
+        "start": 1560,
+        "end": 1800,
+        "startStr": "26:00",
+        "endStr": "30:00"
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Abby女装混入人头清点",
+    "duration": "",
+    "old_mechanism": "搜查者清点人数→伪装者混入清点队列自报平安→数字逻辑欺骗搜查者→差点暴露→用话术化解→得逞",
+    "script_path": "scripts/1022-视频专业级影视拆解：One two three_.md",
+    "story_beats": [
+      "**突发搜查：**",
+      "**空间对峙：** **rumi** 站在床尾语气坚定地对躺在被子里的",
+      "**开始清点：** **rumi** 并不相信下令进行\"人头清点\"（Head",
+      "**地毯式搜索：** \\* **mira**",
+      "**逻辑混淆：** **rumi**",
+      "**暂时蒙混：** **rumi** 被这种看似合理的清点结果迷惑了松了一口气对",
+      "**产生怀疑：** 当四人准备离开时**rumi**",
+      "**机智回应：** 伪装成女孩的",
+      "**危机解除：** **rumi** 似乎接受了这个解释带着人马撤离了房间",
+      "**真相大白：** 门关上后**abby**",
+      "**结局：**"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 24,
+        "startStr": "00:22",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 26,
+        "startStr": "00:24",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 28,
+        "startStr": "00:26",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 30,
+        "startStr": "00:28",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 33,
+        "startStr": "00:30",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 35,
+        "startStr": "00:33",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 38,
+        "startStr": "00:35",
+        "endStr": "00:38"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "耳朵里掏出披萨和怪兽",
+    "duration": "26",
+    "old_mechanism": "物品意外落入身体孔洞→逐步掏出荒诞物品→终于取回原物→以为结束→恐怖生物从孔洞中跳出",
+    "script_path": "scripts/1023-视频专业级影视拆解：The Mad Ear-Master.md",
+    "story_beats": [
+      "意外发生",
+      "初步清理",
+      "荒诞升级",
+      "最后手术",
+      "温馨与惊悚"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "00:18",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "startStr": "00:22",
+        "endStr": "00:26"
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "name": "Abby要的是Rumi不是钱",
+    "duration": "22",
+    "old_mechanism": "依次展示食物→展示金钱→全部被拒→指向真正目标→揭晓人比物质更有价值",
+    "script_path": "scripts/1024-视频专业级影视拆解：What exactly does Abby want.md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:02 -",
+      "00:04 - 00:06",
+      "00:06 - 00:08",
+      "00:08 - 00:10",
+      "00:10 - 00:13",
+      "00:13 - 00:16",
+      "00:16 - 00:19",
+      "00:19 - 00:22"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 7,
+        "startStr": "00:02",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 19,
+        "startStr": "00:16",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "startStr": "00:19",
+        "endStr": "00:22"
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "name": "辣味救赎受伤的Jinu",
+    "duration": "60",
+    "old_mechanism": "角色做出不可理解的自残行为→被反复制止→揭示行为是为了帮助受伤亲人→通过重现共同记忆治愈对方→旁观者理解落泪",
+    "script_path": "scripts/1025-视频专业级拆解报告(1).md",
+    "story_beats": [
+      "教室中的执拗",
+      "银杏大道的冲突",
+      "轮椅上的jinu与礼物",
+      "强行的耳语救赎",
+      "温馨而辛酸的回忆",
+      "相信我：现实中的挑战",
+      "情感宣泄与理解"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 12,
+        "startStr": "00:08",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "00:12",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "00:18",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "startStr": "00:22",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 30,
+        "startStr": "00:26",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "startStr": "00:30",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "startStr": "00:35",
+        "endStr": "00:40"
+      },
+      {
+        "start": 40,
+        "end": 48,
+        "startStr": "00:40",
+        "endStr": "00:48"
+      },
+      {
+        "start": 48,
+        "end": 55,
+        "startStr": "00:48",
+        "endStr": "00:55"
+      },
+      {
+        "start": 55,
+        "end": 60,
+        "startStr": "00:55",
+        "endStr": "01:00"
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "name": "被追逐的噩梦早安",
+    "duration": "33",
+    "old_mechanism": "被群体疯狂追逐→无论怎么逃都被包围→极端压迫→突然惊醒是噩梦→但噩梦中的人就在床边→梦境照进现实",
+    "script_path": "scripts/1026-视频专业级拆解报告(2).md",
+    "story_beats": [
+      "0-2s",
+      "3-5s",
+      "6-10s",
+      "11-15s",
+      "16-20s",
+      "21-25s",
+      "26-33s"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "00:02",
+        "endStr": "00:05"
+      },
+      {
+        "start": 6,
+        "end": 10,
+        "startStr": "00:06",
+        "endStr": "00:10"
+      },
+      {
+        "start": 11,
+        "end": 15,
+        "startStr": "00:11",
+        "endStr": "00:15"
+      },
+      {
+        "start": 16,
+        "end": 20,
+        "startStr": "00:16",
+        "endStr": "00:20"
+      },
+      {
+        "start": 21,
+        "end": 25,
+        "startStr": "00:21",
+        "endStr": "00:25"
+      },
+      {
+        "start": 26,
+        "end": 33,
+        "startStr": "00:26",
+        "endStr": "00:33"
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "name": "La Mer空瓶重塑奇迹",
+    "duration": "20",
+    "old_mechanism": "角色要丢弃贵重物品→另一角色阻止并展示隐藏价值→专业级修复过程→物品重生",
+    "script_path": "scripts/1027-视频专业级拆解报告.md",
+    "story_beats": [
+      "00:00-00:02",
+      "00:02-00:04",
+      "00:04-00:06",
+      "00:06-00:08",
+      "00:08-00:10",
+      "00:10-00:12",
+      "00:12-00:14",
+      "00:14-00:16",
+      "00:16-00:18",
+      "00:18-00:20"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 4,
+        "startStr": "00:03",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "name": "街头小孩救赎冷漠jinu",
+    "duration": "29",
+    "old_mechanism": "角色A冷漠忽视弱者→角色B主动帮助弱者→A因因果报应受伤→弱者反过来帮助A→A心态转变",
+    "script_path": "scripts/1028-视频专业级拆解报告（修正版）.md",
+    "story_beats": [
+      "赶路意外",
+      "惊愕瞬间",
+      "自然分离",
+      "弥补与感激",
+      "jinu的惩罚",
+      "狼狈摔倒",
+      "温情救赎",
+      "角色转变"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 24,
+        "end": 29,
+        "startStr": "00:24",
+        "endStr": "00:29"
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "三轮挑战贪心全败",
+    "duration": "53",
+    "old_mechanism": "选大失败→吸取教训选小→又失败→两个都要→背了一山石头→策略越精明结果越惨",
+    "script_path": "scripts/1029-视频分析报告：Jinu vs. Rumi 挑战赛.md",
+    "story_beats": [
+      "**第一轮：餐具挑战**",
+      "**第二轮：清扫挑战**",
+      "**第三轮：登山挑战**"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 14,
+        "startStr": "00:10",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 18,
+        "startStr": "00:14",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "00:18",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "startStr": "00:22",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 30,
+        "startStr": "00:26",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 34,
+        "startStr": "00:30",
+        "endStr": "00:34"
+      },
+      {
+        "start": 34,
+        "end": 38,
+        "startStr": "00:34",
+        "endStr": "00:38"
+      },
+      {
+        "start": 38,
+        "end": 42,
+        "startStr": "00:38",
+        "endStr": "00:42"
+      },
+      {
+        "start": 42,
+        "end": 46,
+        "startStr": "00:42",
+        "endStr": "00:46"
+      },
+      {
+        "start": 46,
+        "end": 53,
+        "startStr": "00:46",
+        "endStr": "00:53"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "肌肉猛男妈咪来了",
+    "duration": "9",
+    "old_mechanism": "温馨铺垫→悬念提问(谁是妈咪)→揭示答案与预期极端相反→角色崩溃",
+    "script_path": "scripts/1030-视频分析：妈咪？的荒诞喜剧.md",
+    "story_beats": [
+      "\\[[[00:00]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=0)\\]",
+      "\\[[[00:01]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=1)\\]",
+      "\\[[[00:02]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=2)\\]",
+      "\\[[[00:03]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=3)\\]",
+      "\\[[[00:04]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=4)\\]",
+      "\\[[[00:05]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=5)\\]",
+      "\\[[[00:07]{.underline}](http://www.youtube.com/watch?v=4U7qRkR_9I0&t=7)\\]"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 4,
+        "startStr": "00:03",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "吃辣椒喷火救冰封jinu",
+    "duration": "23",
+    "old_mechanism": "常规方法1失败→升级方法2失败→极端方法(吃辣椒)→触发超能力变身→一击解决",
+    "script_path": "scripts/1031-视频影视拆解报告(1).md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:01 -",
+      "**00:02 -",
+      "00:03 - 00:05",
+      "**00:05 -",
+      "**00:07 -",
+      "00:09 - 00:11",
+      "**00:11 -",
+      "**00:13 -",
+      "**00:15 -",
+      "**00:17 -",
+      "**00:20 -"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 11,
+        "startStr": "00:08",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "水泵作弊喝饮料比赛",
+    "duration": "15",
+    "old_mechanism": "公平比赛假象→一方轻松获胜→揭示隐藏在视觉盲区的第三方帮手→被骗者崩溃→作弊者庆祝",
+    "script_path": "scripts/1032-视频影视拆解报告.md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:02 -",
+      "**00:05 -",
+      "**00:08 -",
+      "**00:10 -",
+      "00:13 - 00:15"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "三轮竞技冰块叉子石头",
+    "duration": "40",
+    "old_mechanism": "选大失败→选小又失败→两个都要→背了一楼道石头→贪心越重惩罚越大",
+    "script_path": "scripts/1033-视频拆解分析报告.md",
+    "story_beats": [
+      "开场（00:00-00:03）",
+      "第一轮反转（00:03-00:06）",
+      "颁奖（00:06-00:09）",
+      "草莓挑战（00:09-00:16）",
+      "Jinu的失败（00:16-01:19）",
+      "第三轮预告（01:19-01:25）",
+      "爬楼比赛（01:25-01:33）",
+      "结局（01:33-01:40）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "00:09",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 17,
+        "startStr": "00:14",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 23,
+        "startStr": "00:19",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 26,
+        "startStr": "00:23",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 30,
+        "startStr": "00:26",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 34,
+        "startStr": "00:30",
+        "endStr": "00:34"
+      },
+      {
+        "start": 34,
+        "end": 37,
+        "startStr": "00:34",
+        "endStr": "00:37"
+      },
+      {
+        "start": 37,
+        "end": 40,
+        "startStr": "00:37",
+        "endStr": "00:40"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "僵尸整蛊洗碗惩罚",
+    "duration": "44",
+    "old_mechanism": "段落A整蛊→段落B反转整蛊→段落C现实惩罚→打破第四面墙将解决方案交给观众",
+    "script_path": "scripts/1034-视频拆解报告(1).md",
+    "story_beats": [
+      "高空惊魂（00:00 - 00:07）",
+      "僵尸反转（00:07 - 00:14）",
+      "满足与意外（00:14 - 00:22）",
+      "赎罪条件（00:22 - 00:35）",
+      "厨房洗碗惩罚（00:35 - 00:44）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 30,
+        "startStr": "00:27",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "startStr": "00:30",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "startStr": "00:35",
+        "endStr": "00:40"
+      },
+      {
+        "start": 40,
+        "end": 44,
+        "startStr": "00:40",
+        "endStr": "00:44"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "name": "宠物诊所巨嘴示范",
+    "duration": "16",
+    "old_mechanism": "要求对方做动作→对方做得不够→示范者用超现实的极端方式示范→对方被惊吓后做出同样极端的反应→目标达成",
+    "script_path": "scripts/1035-视频拆解报告(10).md",
+    "story_beats": [
+      "引导阶段",
+      "要求升级",
+      "示范时刻",
+      "最终反应",
+      "结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "柔术女王越狱挑战",
+    "duration": "32",
+    "old_mechanism": "简单关卡展示基础能力→中等关卡展示进阶技巧→极限关卡看似不可能→分步骤完成→观众惊叹",
+    "script_path": "scripts/1036-视频拆解报告(11).md",
+    "story_beats": [
+      "开场与关卡1挑战",
+      "通过关卡1",
+      "关卡2挑战（网格状）",
+      "最终关卡（极限安全监狱）",
+      "极限逃脱"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      },
+      {
+        "start": 29,
+        "end": 32,
+        "startStr": "00:29",
+        "endStr": "00:32"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "name": "蓝色液体跨次元互喷",
+    "duration": "24",
+    "old_mechanism": "屏幕内角色破维互动→屏幕外角色反击→双向喷射升级→第三方误判为恐怖→过激反应毁坏物品",
+    "script_path": "scripts/1037-视频拆解报告(2).md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:02 -",
+      "**00:04 -",
+      "**00:06 -",
+      "00:08 - 00:10",
+      "**00:10 -",
+      "00:12 - 00:14",
+      "**00:14 -",
+      "**00:16 -",
+      "**00:18 -"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 24,
+        "startStr": "00:22",
+        "endStr": "00:24"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "name": "僵尸整蛊披萨店揉面",
+    "duration": "49",
+    "old_mechanism": "A嘲笑B胆小→B反过来整蛊A变僵尸→A落荒而逃→B赢了但面临新危机→打破第四面墙求观众帮忙",
+    "script_path": "scripts/1038-视频拆解报告(3).md",
+    "story_beats": [
+      "街道惊魂",
+      "嘲笑与反转",
+      "披萨店晚餐",
+      "僵尸变身",
+      "二次反转",
+      "买单危机",
+      "互动惩罚"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 25,
+        "startStr": "00:20",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 35,
+        "startStr": "00:25",
+        "endStr": "00:35"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "冰封rumi化冰为金",
+    "duration": "47",
+    "old_mechanism": "冰封病房醒来(4s)→海滩冰体自带降温(10s)→触碰拉面冻成冰(6s)→冻湖开滑冰场商业变现(8s)→暴富享受(4s)→SPA金液解冻重生(8s)→海滩打排球大团圆(7s)",
+    "script_path": "scripts/1039-视频拆解报告(4).md",
+    "story_beats": [
+      "医院惊魂",
+      "海滩奇遇",
+      "拉面悲剧",
+      "化冰为金",
+      "商业奇才",
+      "暴富享受",
+      "SPA重生",
+      "回归平凡",
+      "快乐结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 14,
+        "startStr": "00:10",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 20,
+        "startStr": "00:14",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 24,
+        "startStr": "00:20",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 28,
+        "startStr": "00:24",
+        "endStr": "00:28"
+      },
+      {
+        "start": 32,
+        "end": 36,
+        "startStr": "00:32",
+        "endStr": "00:36"
+      },
+      {
+        "start": 36,
+        "end": 40,
+        "startStr": "00:36",
+        "endStr": "00:40"
+      },
+      {
+        "start": 40,
+        "end": 47,
+        "startStr": "00:40",
+        "endStr": "00:47"
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "name": "三扇小门老虎破墙",
+    "duration": "14",
+    "old_mechanism": "左门危险→右门也危险→中间门安全→以为安全时→危险从意想不到的维度(上方)出现",
+    "script_path": "scripts/1040-视频拆解报告(5).md",
+    "story_beats": [
+      "开端",
+      "第一次尝试",
+      "第二次尝试",
+      "第三次尝试",
+      "反转与高潮",
+      "结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 60,
+        "startStr": "00:00",
+        "endStr": "01:00"
+      },
+      {
+        "start": 60,
+        "end": 180,
+        "startStr": "01:00",
+        "endStr": "03:00"
+      },
+      {
+        "start": 180,
+        "end": 300,
+        "startStr": "03:00",
+        "endStr": "05:00"
+      },
+      {
+        "start": 300,
+        "end": 420,
+        "startStr": "05:00",
+        "endStr": "07:00"
+      },
+      {
+        "start": 420,
+        "end": 540,
+        "startStr": "07:00",
+        "endStr": "09:00"
+      },
+      {
+        "start": 540,
+        "end": 660,
+        "startStr": "09:00",
+        "endStr": "11:00"
+      },
+      {
+        "start": 660,
+        "end": 840,
+        "startStr": "11:00",
+        "endStr": "14:00"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "爆米花触发八臂英雄",
+    "duration": "22",
+    "old_mechanism": "搞笑触发→被迫憋住→能量在体内变异→极速穿越积蓄→最终在危机时刻释放保护弱者",
+    "script_path": "scripts/1041-视频拆解报告(6).md",
+    "story_beats": [
+      "穿过夜间霓虹闪烁的街道轮椅车轮摩擦出火花",
+      "冲过摆满薯片的超市货架薯片漫天飞舞",
+      "掠过烟雾缭绕的夜市小吃摊",
+      "在悬崖间的玻璃栈道上狂奔",
+      "甚至在陡峭的山脊和云海之上穿梭"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 60,
+        "startStr": "00:00",
+        "endStr": "01:00"
+      },
+      {
+        "start": 60,
+        "end": 180,
+        "startStr": "01:00",
+        "endStr": "03:00"
+      },
+      {
+        "start": 180,
+        "end": 300,
+        "startStr": "03:00",
+        "endStr": "05:00"
+      },
+      {
+        "start": 300,
+        "end": 420,
+        "startStr": "05:00",
+        "endStr": "07:00"
+      },
+      {
+        "start": 420,
+        "end": 540,
+        "startStr": "07:00",
+        "endStr": "09:00"
+      },
+      {
+        "start": 540,
+        "end": 900,
+        "startStr": "09:00",
+        "endStr": "15:00"
+      },
+      {
+        "start": 900,
+        "end": 1320,
+        "startStr": "15:00",
+        "endStr": "22:00"
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "name": "咬披萨盘擦脏手",
+    "duration": "22",
+    "old_mechanism": "第一人用错误方式帮忙(喷酱)→第二人也用错误方式(喷可乐)→第三人用正确但荒诞的方式(咬盘擦手)解决问题",
+    "script_path": "scripts/1042-视频拆解报告(7).md",
+    "story_beats": [
+      "00:00-00:01",
+      "00:01-00:03",
+      "00:03-00:05",
+      "00:05-00:09",
+      "00:09-00:12",
+      "00:12-00:14",
+      "00:14-00:18",
+      "00:18-00:22"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 9,
+        "startStr": "00:05",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "startStr": "00:19",
+        "endStr": "00:22"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "name": "Mira栽赃rumi偷戒指",
+    "duration": "49",
+    "old_mechanism": "伪造证据→栽植物证→制造事件→表演受害→引导发现物证→受害者百口莫辩→施害者对镜头炫耀",
+    "script_path": "scripts/1043-视频拆解报告(8).md",
+    "story_beats": [
+      "心机铺垫（00:00-00:05）",
+      "秘密部署（00:05-00:07）",
+      "虚伪迎接（00:07-00:10）",
+      "矛盾激化（00:10-00:15）",
+      "惊悚陷阱（00:15-00:20）",
+      "制造意外（00:20-00:23）",
+      "悲情表演（00:23-00:28）",
+      "物证\"坐实\"（00:28-00:35）",
+      "决裂（00:35-00:43）",
+      "胜利谢幕（00:43-00:49）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 24,
+        "startStr": "00:22",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 26,
+        "startStr": "00:24",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 28,
+        "startStr": "00:26",
+        "endStr": "00:28"
+      },
+      {
+        "start": 28,
+        "end": 30,
+        "startStr": "00:28",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 33,
+        "startStr": "00:30",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 36,
+        "startStr": "00:33",
+        "endStr": "00:36"
+      },
+      {
+        "start": 36,
+        "end": 43,
+        "startStr": "00:36",
+        "endStr": "00:43"
+      },
+      {
+        "start": 43,
+        "end": 49,
+        "startStr": "00:43",
+        "endStr": "00:49"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "name": "工地女总裁微服私访",
+    "duration": "26",
+    "old_mechanism": "高位者以底层身份出现→善人帮助→恶人欺辱→高位者揭示真身→恶人被惩罚→善人被奖励",
+    "script_path": "scripts/1044-视频拆解报告(9).md",
+    "story_beats": [
+      "**00:00 -",
+      "00:03 - 00:06",
+      "**00:06 -",
+      "00:09 - 00:15",
+      "00:15 - 00:18",
+      "00:18 - 00:23",
+      "00:23 - 00:26"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 8,
+        "startStr": "00:05",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 13,
+        "startStr": "00:08",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 18,
+        "startStr": "00:13",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 26,
+        "startStr": "00:18",
+        "endStr": "00:26"
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "name": "三轮竞赛卡丁车铁球",
+    "duration": "43",
+    "old_mechanism": "选大失败→学聪明选小→又失败→索性全要→包里装铁球差点溺水→越努力越惨",
+    "script_path": "scripts/1045-视频拆解报告.md",
+    "story_beats": [
+      "开局选车",
+      "规则宣布",
+      "第一轮反转",
+      "第一轮结果",
+      "第二轮道具选择",
+      "第二轮规则",
+      "第二轮过程",
+      "决赛选择",
+      "终极规则与悲剧",
+      "结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      },
+      {
+        "start": 29,
+        "end": 31,
+        "startStr": "00:29",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 33,
+        "startStr": "00:31",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 35,
+        "startStr": "00:33",
+        "endStr": "00:35"
+      },
+      {
+        "start": 35,
+        "end": 37,
+        "startStr": "00:35",
+        "endStr": "00:37"
+      },
+      {
+        "start": 37,
+        "end": 39,
+        "startStr": "00:37",
+        "endStr": "00:39"
+      },
+      {
+        "start": 39,
+        "end": 43,
+        "startStr": "00:39",
+        "endStr": "00:43"
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "name": "紫色拖把头寻主记",
+    "duration": "52",
+    "old_mechanism": "捡到神秘物品→误判归属1被否认→误判物种被惩罚→误判归属2被否认→真正主人出现→揭示荒诞真相(拖把头)",
+    "script_path": "scripts/1046-视频拆解报告：OMG Mira.md",
+    "story_beats": [
+      "发现\"证物\"",
+      "锁定制疑人",
+      "现场对质",
+      "物种误判",
+      "放生水母",
+      "人鱼反击",
+      "再次寻找主人",
+      "强行\"植发\"",
+      "真相大白一",
+      "最终归属",
+      "真凶现身",
+      "完美契合",
+      "欢快收尾"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "0:00",
+        "endStr": "0:02"
+      },
+      {
+        "start": 2,
+        "end": 5,
+        "startStr": "0:02",
+        "endStr": "0:05"
+      },
+      {
+        "start": 5,
+        "end": 9,
+        "startStr": "0:05",
+        "endStr": "0:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "0:09",
+        "endStr": "0:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "0:12",
+        "endStr": "0:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "0:15",
+        "endStr": "0:18"
+      },
+      {
+        "start": 18,
+        "end": 22,
+        "startStr": "0:18",
+        "endStr": "0:22"
+      },
+      {
+        "start": 22,
+        "end": 28,
+        "startStr": "0:22",
+        "endStr": "0:28"
+      },
+      {
+        "start": 28,
+        "end": 32,
+        "startStr": "0:28",
+        "endStr": "0:32"
+      },
+      {
+        "start": 32,
+        "end": 35,
+        "startStr": "0:32",
+        "endStr": "0:35"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "startStr": "0:35",
+        "endStr": "0:40"
+      },
+      {
+        "start": 40,
+        "end": 45,
+        "startStr": "0:40",
+        "endStr": "0:45"
+      },
+      {
+        "start": 45,
+        "end": 52,
+        "startStr": "0:45",
+        "endStr": "0:52"
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "name": "婚纱店女总裁微服私访",
+    "duration": "35",
+    "old_mechanism": "高位者以底层身份出现→善人帮助→恶人欺辱→高位者揭示真身→恶人被惩罚→善人被奖励",
+    "script_path": "scripts/1047-视频拆解报告：Wusdom Lab 短剧.md",
+    "story_beats": [
+      "乞求期",
+      "施救期",
+      "冲突触发",
+      "激烈对峙",
+      "身份反转",
+      "结局宣判",
+      "新任任命"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 21,
+        "startStr": "00:19",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 27,
+        "startStr": "00:25",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "startStr": "00:27",
+        "endStr": "00:29"
+      },
+      {
+        "start": 29,
+        "end": 31,
+        "startStr": "00:29",
+        "endStr": "00:31"
+      },
+      {
+        "start": 31,
+        "end": 35,
+        "startStr": "00:31",
+        "endStr": "00:35"
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "name": "嗜辣者偷吃辣椒循环",
+    "duration": "27",
+    "old_mechanism": "角色偷做被禁止的事→被强者阻止并强塞替代品→想办法处理掉替代品→最终又回到偷做禁忌的循环",
+    "script_path": "scripts/1048-视频拆解报告：二毛的辣椒与鸡腿(1).md",
+    "story_beats": [
+      "**第一幕：自虐的嗜辣者 (00:00-00:03)**",
+      "**第二幕：被发现的恐慌 (00:03-00:05)**",
+      "**第三幕：厌恶的奖赏 (00:05-00:08)**",
+      "**第四幕：力量的审视 (00:08-00:10)**",
+      "**第五幕：寻找机会的丢弃 (00:10-00:16)**",
+      "**第六幕：宿命的归宿 (00:16-00:27)**"
+    ],
+    "clips": [
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 10,
+        "end": 14,
+        "startStr": "00:10",
+        "endStr": "00:14"
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "name": "魔力红盆棒棒糖变钱",
+    "duration": "46",
+    "old_mechanism": "偶然发现魔力道具→小物品复制验证→投入更大价值→贪婪吞噬善良→抛弃朋友独占→欲望失控",
+    "script_path": "scripts/1050-视频拆解报告：魔力红盆与欲望的轮回.md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:02 -",
+      "**00:04 -",
+      "**00:06 -",
+      "**00:08 -",
+      "**00:10 -",
+      "**00:14 -",
+      "**00:22 -",
+      "**00:30 -",
+      "**00:36 -",
+      "**00:41 -"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 17,
+        "end": 21,
+        "startStr": "00:17",
+        "endStr": "00:21"
+      },
+      {
+        "start": 22,
+        "end": 29,
+        "startStr": "00:22",
+        "endStr": "00:29"
+      },
+      {
+        "start": 30,
+        "end": 35,
+        "startStr": "00:30",
+        "endStr": "00:35"
+      },
+      {
+        "start": 36,
+        "end": 40,
+        "startStr": "00:36",
+        "endStr": "00:40"
+      },
+      {
+        "start": 41,
+        "end": 43,
+        "startStr": "00:41",
+        "endStr": "00:43"
+      },
+      {
+        "start": 44,
+        "end": 46,
+        "startStr": "00:44",
+        "endStr": "00:46"
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "name": "小丑神医黑洞取子弹",
+    "duration": "28",
+    "old_mechanism": "搞笑意外触发→发现异常病灶→常规医疗无效→天才以非常规极端方式(徒手)解决→奇迹康复",
+    "script_path": "scripts/1051-视频拆解：Jinu is Clown Miracle Doctor.md",
+    "story_beats": [
+      "开场准备",
+      "糖果入洞",
+      "第一次打捞（子弹）",
+      "第二次打捞（糖果）",
+      "净化与食用",
+      "团队干预",
+      "徒手大手术",
+      "终极异物",
+      "奇迹康复"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 24,
+        "startStr": "00:22",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 26,
+        "startStr": "00:24",
+        "endStr": "00:26"
+      },
+      {
+        "start": 26,
+        "end": 27,
+        "startStr": "00:26",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 28,
+        "startStr": "00:27",
+        "endStr": "00:28"
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "name": "万圣节丧尸追逐噩梦",
+    "duration": "19",
+    "old_mechanism": "恐怖追逐不断升级→被围堵绝望→猛然醒来是梦→现实中追逐者以友好身份出现→恐怖变温馨",
+    "script_path": "scripts/1052-视频拆解：Rumi怎么了？.md",
+    "story_beats": [
+      "海滩惊变",
+      "丧尸追逐",
+      "丛林捉迷藏",
+      "室内围堵",
+      "最后的绝望",
+      "梦境觉醒",
+      "现实的反转"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 7,
+        "startStr": "00:05",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 11,
+        "startStr": "00:09",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 15,
+        "startStr": "00:13",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 17,
+        "startStr": "00:15",
+        "endStr": "00:17"
+      },
+      {
+        "start": 17,
+        "end": 19,
+        "startStr": "00:17",
+        "endStr": "00:19"
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "name": "憋笑到南极分贝挑战",
+    "duration": "35",
+    "old_mechanism": "因强力压制不许笑→压抑到极限→逃往地球最远处→找到释放场所→积攒的情绪以毁天灭地的方式爆发",
+    "script_path": "scripts/1053-视频拆解：Where did Jinu go_.md",
+    "story_beats": [
+      "**00:00 -",
+      "**00:01 -",
+      "**00:02 -",
+      "**00:04 -",
+      "**00:06 -",
+      "**00:09 -",
+      "**00:11 -",
+      "00:13 - 00:16",
+      "**00:16 -",
+      "**00:18 -",
+      "00:20 - 00:22",
+      "**00:22 -",
+      "**00:25 -",
+      "**00:30 -",
+      "**00:32 -",
+      "**00:33 -"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 2,
+        "startStr": "00:01",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "startStr": "00:04",
+        "endStr": "00:06"
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "startStr": "00:06",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 12,
+        "startStr": "00:10",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 14,
+        "startStr": "00:12",
+        "endStr": "00:14"
+      },
+      {
+        "start": 14,
+        "end": 16,
+        "startStr": "00:14",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 20,
+        "startStr": "00:18",
+        "endStr": "00:20"
+      },
+      {
+        "start": 20,
+        "end": 22,
+        "startStr": "00:20",
+        "endStr": "00:22"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "startStr": "00:22",
+        "endStr": "00:25"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "startStr": "00:25",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 33,
+        "startStr": "00:30",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 35,
+        "startStr": "00:33",
+        "endStr": "00:35"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "name": "魔法火车许愿三连",
+    "duration": "53",
+    "old_mechanism": "发现魔法机制→第一愿物质满足→第二愿财富满足→第三愿感情→结果不如预期→但命运强制成真→嫌弃变甜蜜",
+    "script_path": "scripts/1054-视频深度影视拆解报告.md",
+    "story_beats": [
+      "**开端（00:00 -",
+      "第一次魔法（00:06 - 00:15）",
+      "第二次魔法（00:15 - 00:30）",
+      "第三次魔法与反转（00:30 - 00:44）",
+      "**结局（00:44 -"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 9,
+        "startStr": "00:07",
+        "endStr": "00:09"
+      },
+      {
+        "start": 9,
+        "end": 12,
+        "startStr": "00:09",
+        "endStr": "00:12"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "startStr": "00:12",
+        "endStr": "00:15"
+      },
+      {
+        "start": 15,
+        "end": 18,
+        "startStr": "00:15",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 21,
+        "startStr": "00:18",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 24,
+        "startStr": "00:21",
+        "endStr": "00:24"
+      },
+      {
+        "start": 24,
+        "end": 27,
+        "startStr": "00:24",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 30,
+        "startStr": "00:27",
+        "endStr": "00:30"
+      },
+      {
+        "start": 30,
+        "end": 33,
+        "startStr": "00:30",
+        "endStr": "00:33"
+      },
+      {
+        "start": 33,
+        "end": 36,
+        "startStr": "00:33",
+        "endStr": "00:36"
+      },
+      {
+        "start": 36,
+        "end": 39,
+        "startStr": "00:36",
+        "endStr": "00:39"
+      },
+      {
+        "start": 39,
+        "end": 43,
+        "startStr": "00:39",
+        "endStr": "00:43"
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "name": "假蜘蛛英雄骗局揭穿",
+    "duration": "25",
+    "old_mechanism": "角色A自导自演危机→角色A英雄救美→受害者被骗→真相被第三方偶然发现→骗子被公开羞辱双重暴露(秃头+放屁)",
+    "script_path": "scripts/1055-视频深度拆解报告(1).md",
+    "story_beats": [
+      "开场（00:00-00:01）",
+      "干扰（00:01-00:03）",
+      "危机（00:03-00:05）",
+      "反应（00:05-00:08）",
+      "英雄登场（00:08-00:11）",
+      "驱逐（00:11-00:13）",
+      "反转（00:13-00:16）",
+      "揭秘（00:16-00:20）",
+      "结局（00:20-00:25）"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 1,
+        "end": 3,
+        "startStr": "00:01",
+        "endStr": "00:03"
+      },
+      {
+        "start": 3,
+        "end": 5,
+        "startStr": "00:03",
+        "endStr": "00:05"
+      },
+      {
+        "start": 5,
+        "end": 8,
+        "startStr": "00:05",
+        "endStr": "00:08"
+      },
+      {
+        "start": 8,
+        "end": 11,
+        "startStr": "00:08",
+        "endStr": "00:11"
+      },
+      {
+        "start": 11,
+        "end": 13,
+        "startStr": "00:11",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 18,
+        "startStr": "00:16",
+        "endStr": "00:18"
+      },
+      {
+        "start": 18,
+        "end": 21,
+        "startStr": "00:18",
+        "endStr": "00:21"
+      },
+      {
+        "start": 21,
+        "end": 23,
+        "startStr": "00:21",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 25,
+        "startStr": "00:23",
+        "endStr": "00:25"
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "name": "触物成冰蝴蝶诅咒",
+    "duration": "69",
+    "old_mechanism": "蝴蝶入口获得冰冻诅咒(4s)→触物成冰逐级验证:水果→炸鸡→水流→火焰(15s)→社交隔绝:手机冰刺→玻璃爆裂→跑车冻白(17s)→医院求救误冻医生成冰雕(12s)→zoye实验室配药(9s)→喝药假性康复(8s)→握手诅咒进化为火(4s)",
+    "script_path": "scripts/1056-视频深度拆解报告.md",
+    "story_beats": [
+      "寒蝉效应与起源",
+      "触物成冰（食欲）",
+      "连环冰封（生存）",
+      "火之凋零",
+      "社交隔绝与物理破坏",
+      "医院悲剧",
+      "药剂研发",
+      "反转结局"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 2,
+        "startStr": "00:00",
+        "endStr": "00:02"
+      },
+      {
+        "start": 2,
+        "end": 4,
+        "startStr": "00:02",
+        "endStr": "00:04"
+      },
+      {
+        "start": 4,
+        "end": 7,
+        "startStr": "00:04",
+        "endStr": "00:07"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "startStr": "00:07",
+        "endStr": "00:10"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "startStr": "00:10",
+        "endStr": "00:13"
+      },
+      {
+        "start": 13,
+        "end": 16,
+        "startStr": "00:13",
+        "endStr": "00:16"
+      },
+      {
+        "start": 16,
+        "end": 19,
+        "startStr": "00:16",
+        "endStr": "00:19"
+      },
+      {
+        "start": 19,
+        "end": 23,
+        "startStr": "00:19",
+        "endStr": "00:23"
+      },
+      {
+        "start": 23,
+        "end": 27,
+        "startStr": "00:23",
+        "endStr": "00:27"
+      },
+      {
+        "start": 27,
+        "end": 32,
+        "startStr": "00:27",
+        "endStr": "00:32"
+      },
+      {
+        "start": 32,
+        "end": 36,
+        "startStr": "00:32",
+        "endStr": "00:36"
+      },
+      {
+        "start": 36,
+        "end": 41,
+        "startStr": "00:36",
+        "endStr": "00:41"
+      },
+      {
+        "start": 41,
+        "end": 45,
+        "startStr": "00:41",
+        "endStr": "00:45"
+      },
+      {
+        "start": 45,
+        "end": 48,
+        "startStr": "00:45",
+        "endStr": "00:48"
+      },
+      {
+        "start": 48,
+        "end": 52,
+        "startStr": "00:48",
+        "endStr": "00:52"
+      },
+      {
+        "start": 52,
+        "end": 57,
+        "startStr": "00:52",
+        "endStr": "00:57"
+      },
+      {
+        "start": 57,
+        "end": 62,
+        "startStr": "00:57",
+        "endStr": "01:02"
+      },
+      {
+        "start": 62,
+        "end": 65,
+        "startStr": "01:02",
+        "endStr": "01:05"
+      },
+      {
+        "start": 65,
+        "end": 69,
+        "startStr": "01:05",
+        "endStr": "01:09"
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "name": "Buy IT三段递进",
+    "duration": "46",
+    "old_mechanism": "A撒泼，A女友无奈同意，A高兴；B看到了，B撒泼，B女友生气但只能同意，B高兴；C看到，C撒泼，C女友假装同意，C高兴，C女友打C",
+    "script_path": "scripts/0984-视频专业拆解报告(6).md",
+    "story_beats": [
+      "**第一幕：卡皮巴拉的诱惑 (Mystery & Zoye)**",
+      "**第二幕：PS5的执念 (Jinu & Rumi)**",
+      "**第三幕：跑车的终局 (Abby & Mira)**"
+    ],
+    "clips": [
+      {
+        "start": 0,
+        "end": 1,
+        "startStr": "00:00",
+        "endStr": "00:01"
+      },
+      {
+        "start": 2,
+        "end": 3,
+        "startStr": "00:02",
+        "endStr": "00:03"
+      },
+      {
+        "start": 4,
+        "end": 5,
+        "startStr": "00:04",
+        "endStr": "00:05"
+      },
+      {
+        "start": 6,
+        "end": 7,
+        "startStr": "00:06",
+        "endStr": "00:07"
+      },
+      {
+        "start": 8,
+        "end": 10,
+        "startStr": "00:08",
+        "endStr": "00:10"
+      },
+      {
+        "start": 11,
+        "end": 15,
+        "startStr": "00:11",
+        "endStr": "00:15"
+      },
+      {
+        "start": 16,
+        "end": 20,
+        "startStr": "00:16",
+        "endStr": "00:20"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "startStr": "00:21",
+        "endStr": "00:26"
+      },
+      {
+        "start": 27,
+        "end": 30,
+        "startStr": "00:27",
+        "endStr": "00:30"
+      },
+      {
+        "start": 31,
+        "end": 33,
+        "startStr": "00:31",
+        "endStr": "00:33"
+      },
+      {
+        "start": 34,
+        "end": 35,
+        "startStr": "00:34",
+        "endStr": "00:35"
+      },
+      {
+        "start": 36,
+        "end": 38,
+        "startStr": "00:36",
+        "endStr": "00:38"
+      },
+      {
+        "start": 39,
+        "end": 43,
+        "startStr": "00:39",
+        "endStr": "00:43"
+      },
+      {
+        "start": 44,
+        "end": 46,
+        "startStr": "00:44",
+        "endStr": "00:46"
+      }
+    ]
+  }
+]

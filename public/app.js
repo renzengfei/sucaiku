@@ -12,7 +12,6 @@ let monitorFilterType = '1'; // 默认短视频
 let monitorFilterLink = '';
 let monitorLinkDebounceTimer = null;
 let isRefreshing = false;
-let geminiKeyConfig = { keys: [], activeId: '' };
 
 // ==================== 素材库状态 ====================
 let videos = [];
@@ -25,6 +24,8 @@ let seriesSortMode = window.localStorage ? (localStorage.getItem('seriesSortMode
 let isInitialLoad = true;
 let allHookTags = new Set(); // 全局开头标签集合（供编辑器使用）
 let savedScrollY = 0; // 进入编辑页面前的滚动位置
+let savedListVideoId = null; // 进入编辑页面前点击的视频卡片
+let isStoryFocusMode = false;
 let inlineAiTaskId = null;
 let inlineAiPollTimer = null;
 const itemsPerPage = 10; // 每页显示系列组数量
@@ -164,170 +165,10 @@ function initMonitor() {
   });
 
   // 加载数据
-  loadGeminiKeyConfig();
   loadMonitorConfigs();
   loadMonitorStatus();
   loadMonitorVideos();
 }
-
-async function loadGeminiKeyConfig() {
-  try {
-    const res = await fetch('/api/system/gemini-keys');
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || '加载 Gemini Key 失败');
-    geminiKeyConfig = data;
-    renderGeminiKeyConfig();
-  } catch (err) {
-    console.error('加载 Gemini Key 失败:', err);
-  }
-}
-
-function renderGeminiKeyConfig() {
-  const activeItem = (geminiKeyConfig.keys || []).find(item => item.is_active);
-  const $btn = document.getElementById('btn-gemini-key-modal');
-  if ($btn) {
-    $btn.title = activeItem
-      ? `当前：${activeItem.name} · ${activeItem.masked_key}`
-      : '当前未配置可用 Key';
-  }
-  const $active = document.getElementById('gemini-key-active-label');
-  if ($active) {
-    $active.textContent = activeItem
-      ? `当前：${activeItem.name} · ${activeItem.masked_key}`
-      : '当前未配置可用 Key';
-  }
-  const $list = document.getElementById('gemini-key-list');
-  if (!$list) return;
-  if (!geminiKeyConfig.keys || geminiKeyConfig.keys.length === 0) {
-    $list.innerHTML = '<div class="config-empty">还没有 Gemini Key，请先添加</div>';
-    return;
-  }
-  $list.innerHTML = geminiKeyConfig.keys.map(item => `
-    <div class="gemini-key-item${item.is_active ? ' active' : ''}">
-      <div class="gemini-key-info">
-        <div class="gemini-key-name-row">
-          <span class="gemini-key-name">${escapeHtml(item.name)}</span>
-          ${item.is_active ? '<span class="config-status-badge status-ready">当前</span>' : ''}
-        </div>
-        <div class="gemini-key-meta">${escapeHtml(item.masked_key)}</div>
-      </div>
-      <div class="gemini-key-actions">
-        ${item.is_active ? '' : `<button class="btn-small btn-set-ready" onclick="activateGeminiKey('${item.id}')">切换</button>`}
-        <button class="btn-icon btn-icon-danger" onclick="deleteGeminiKey('${item.id}')" title="删除">×</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function openGeminiKeyModal() {
-  if (!$modalOverlay) return;
-  $modalOverlay.innerHTML = `
-    <div class="modal gemini-key-modal" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h2>Gemini Key</h2>
-        <button class="btn-close" type="button" onclick="closeModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="gemini-key-panel">
-          <div class="gemini-key-panel-header">
-            <div>
-              <h3>当前通道</h3>
-              <p id="gemini-key-active-label">当前未配置可用 Key</p>
-            </div>
-          </div>
-          <div class="config-form-row gemini-key-form-row">
-            <div class="form-group">
-              <label>名称</label>
-              <input type="text" id="gemini-key-name" placeholder="如：官方 Key 1">
-            </div>
-            <div class="form-group flex-grow">
-              <label>Key</label>
-              <input type="password" id="gemini-key-value" placeholder="粘贴 Gemini Key">
-            </div>
-            <div class="form-group" style="align-self:flex-end">
-              <button class="btn-primary" id="btn-add-gemini-key">添加并切换</button>
-            </div>
-          </div>
-          <div class="gemini-key-list" id="gemini-key-list"></div>
-        </div>
-      </div>
-    </div>
-  `;
-  $modalOverlay.style.display = 'flex';
-  const $addBtn = document.getElementById('btn-add-gemini-key');
-  const $value = document.getElementById('gemini-key-value');
-  if ($addBtn) $addBtn.addEventListener('click', addGeminiKey);
-  if ($value) {
-    $value.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        addGeminiKey();
-      }
-    });
-  }
-  renderGeminiKeyConfig();
-}
-
-async function addGeminiKey() {
-  const $name = document.getElementById('gemini-key-name');
-  const $value = document.getElementById('gemini-key-value');
-  const $btn = document.getElementById('btn-add-gemini-key');
-  if (!$value || !$btn) return;
-  const name = $name.value.trim();
-  const key = $value.value.trim();
-  if (!key) {
-    showToast('请先粘贴 Gemini Key', 'error');
-    return;
-  }
-  $btn.disabled = true;
-  $btn.textContent = '添加中...';
-  try {
-    const res = await fetch('/api/system/gemini-keys', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, key, activate: true }),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || '添加失败');
-    geminiKeyConfig = data;
-    renderGeminiKeyConfig();
-    $name.value = '';
-    $value.value = '';
-    showToast('已添加并切换 Gemini Key');
-  } catch (err) {
-    showToast('添加失败: ' + err.message, 'error');
-  } finally {
-    $btn.disabled = false;
-    $btn.textContent = '添加并切换';
-  }
-}
-
-window.activateGeminiKey = async function(id) {
-  try {
-    const res = await fetch(`/api/system/gemini-keys/${id}/activate`, { method: 'POST' });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || '切换失败');
-    geminiKeyConfig = data;
-    renderGeminiKeyConfig();
-    showToast('已切换 Gemini Key');
-  } catch (err) {
-    showToast('切换失败: ' + err.message, 'error');
-  }
-};
-
-window.deleteGeminiKey = async function(id) {
-  if (!confirm('确定删除这个 Gemini Key 吗？')) return;
-  try {
-    const res = await fetch(`/api/system/gemini-keys/${id}`, { method: 'DELETE' });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || '删除失败');
-    geminiKeyConfig = data;
-    renderGeminiKeyConfig();
-    showToast('已删除 Gemini Key');
-  } catch (err) {
-    showToast('删除失败: ' + err.message, 'error');
-  }
-};
 
 async function loadMonitorConfigs() {
   try {
@@ -1278,24 +1119,65 @@ function bindEvents() {
   // 保存 & 删除
   document.getElementById('btn-save-inline').addEventListener('click', saveVideo);
   document.getElementById('btn-delete-inline').addEventListener('click', deleteVideo);
+  document.getElementById('btn-story-focus').addEventListener('click', () => setStoryFocusMode(!isStoryFocusMode));
+  document.getElementById('btn-toggle-story-replace').addEventListener('click', toggleStoryReplacePanel);
+  document.getElementById('btn-story-replace-apply').addEventListener('click', applyStoryReplace);
+  document.getElementById('story-replace-find').addEventListener('input', updateStoryReplaceMeta);
+  document.getElementById('story-replace-with').addEventListener('input', updateStoryReplaceMeta);
+  bindStoryTextareaWheel();
   document.getElementById('btn-ai-restart').addEventListener('click', startOrRestartInlineAi);
   document.getElementById('btn-ai-send').addEventListener('click', sendInlineAiMessage);
   document.getElementById('btn-copy-ai-script').addEventListener('click', copyInlineAiScript);
-  document.getElementById('btn-gemini-key-modal').addEventListener('click', openGeminiKeyModal);
 
-  // 标记
-  document.getElementById('btn-toggle-mark').addEventListener('click', () => {
-    const input = document.getElementById('form-is-marked');
-    const btn = document.getElementById('btn-toggle-mark');
-    if (input.value === '1') {
-      input.value = '0';
-      btn.innerHTML = '☆ 标记';
-      btn.className = 'btn-secondary';
-    } else {
-      input.value = '1';
-      btn.innerHTML = '★ 已标记';
-      btn.className = 'btn-primary';
-    }
+  // AI 对话 / Whisper 字幕 tab 切换
+  document.querySelectorAll('.ai-panel-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchInlinePanelTab(tab.dataset.pane));
+  });
+  // 字幕行点击复制
+  document.getElementById('transcript-grid')?.addEventListener('click', (e) => {
+    const cell = e.target.closest('.transcript-cell');
+    if (!cell || cell.classList.contains('transcript-cell-empty')) return;
+    const t = cell.querySelector('.transcript-line-text');
+    const text = (t?.textContent || '').trim();
+    if (!text) return;
+    const copyText = `"${text}"`;
+    navigator.clipboard.writeText(copyText).then(() => {
+      cell.classList.add('transcript-cell-copied');
+      showToast('已复制该行');
+      setTimeout(() => cell.classList.remove('transcript-cell-copied'), 700);
+    });
+  });
+  // 第二列 Whisper / YouTube 切换
+  document.querySelectorAll('.transcript-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentTranscriptSecondary = btn.dataset.col;
+      syncTranscriptToggleButtons();
+      if (lastTranscriptPayload) renderInlineTranscript(lastTranscriptPayload);
+    });
+  });
+
+  // 有用 / 无用
+  document.querySelectorAll('.btn-mark-state').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const input = document.getElementById('form-is-marked');
+      const prev = normalizeMarkValue(input?.value);
+      const next = prev === btn.dataset.mark ? '0' : btn.dataset.mark;
+      updateMarkButtons(next);
+      if (window._currentEditVideo) window._currentEditVideo.is_marked = next;
+
+      if (!currentVideoId) {
+        const markInfo = getVideoMarkInfo(next);
+        showToast(markInfo ? `保存视频后会标为${markInfo.text}` : '已取消状态');
+        return;
+      }
+      try {
+        await saveVideoMarkState(currentVideoId, next);
+      } catch (err) {
+        updateMarkButtons(prev);
+        if (window._currentEditVideo) window._currentEditVideo.is_marked = prev;
+        showToast('状态保存失败: ' + err.message, 'error');
+      }
+    });
   });
 
   // 搜索
@@ -1326,6 +1208,7 @@ function bindEvents() {
   document.getElementById('filter-video-tag').addEventListener('change', applyFilters);
   document.getElementById('filter-hook-tag').addEventListener('change', applyFilters);
   document.getElementById('filter-mechanism').addEventListener('change', applyFilters);
+  document.getElementById('filter-mark-status').addEventListener('change', applyFilters);
   bindLibraryDisplayControls();
 
   // 动态添加行
@@ -1348,6 +1231,107 @@ function bindEvents() {
       closeDetail();
     }
   });
+}
+
+function bindStoryTextareaWheel() {
+  const textarea = document.getElementById('form-story-structure');
+  const container = document.getElementById('inline-detail-content');
+  if (!textarea || !container) return;
+  textarea.addEventListener('wheel', (e) => {
+    if (isStoryFocusMode) return;
+    const canScrollInside = textarea.scrollHeight > textarea.clientHeight + 1;
+    if (!canScrollInside) return;
+    const atTop = textarea.scrollTop <= 0;
+    const atBottom = textarea.scrollTop + textarea.clientHeight >= textarea.scrollHeight - 1;
+    if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) {
+      container.scrollTop += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
+}
+
+function toggleStoryReplacePanel(forceOpen = null) {
+  const panel = document.getElementById('story-replace-panel');
+  const btn = document.getElementById('btn-toggle-story-replace');
+  if (!panel || !btn) return;
+  const shouldOpen = forceOpen == null ? panel.classList.contains('story-replace-panel-hidden') : !!forceOpen;
+  panel.classList.toggle('story-replace-panel-hidden', !shouldOpen);
+  btn.classList.toggle('is-open', shouldOpen);
+  btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+  if (shouldOpen) {
+    document.getElementById('story-replace-find')?.focus();
+  }
+  updateStoryReplaceMeta();
+}
+
+function resetStoryReplacePanel() {
+  const findInput = document.getElementById('story-replace-find');
+  const replaceInput = document.getElementById('story-replace-with');
+  if (findInput) findInput.value = '';
+  if (replaceInput) replaceInput.value = '';
+  toggleStoryReplacePanel(false);
+}
+
+function countLiteralMatches(text, keyword) {
+  const source = String(text || '');
+  const needle = String(keyword || '');
+  if (!needle) return 0;
+  let count = 0;
+  let fromIndex = 0;
+  while (fromIndex <= source.length - needle.length) {
+    const idx = source.indexOf(needle, fromIndex);
+    if (idx === -1) break;
+    count += 1;
+    fromIndex = idx + needle.length;
+  }
+  return count;
+}
+
+function updateStoryReplaceMeta() {
+  const meta = document.getElementById('story-replace-meta');
+  const textarea = document.getElementById('form-story-structure');
+  const findInput = document.getElementById('story-replace-find');
+  const replaceInput = document.getElementById('story-replace-with');
+  if (!meta || !textarea || !findInput || !replaceInput) return;
+  const findText = findInput.value;
+  const replaceText = replaceInput.value;
+  if (!findText) {
+    meta.textContent = '输入查找内容后，会显示命中数量';
+    return;
+  }
+  const count = countLiteralMatches(textarea.value, findText);
+  if (!count) {
+    meta.textContent = '当前故事结构里没有找到这段内容';
+    return;
+  }
+  meta.textContent = `当前会替换 ${count} 处：${findText} -> ${replaceText || '(空)'}`;
+}
+
+function applyStoryReplace() {
+  const textarea = document.getElementById('form-story-structure');
+  const findInput = document.getElementById('story-replace-find');
+  const replaceInput = document.getElementById('story-replace-with');
+  if (!textarea || !findInput || !replaceInput) return;
+  const findText = findInput.value;
+  if (!findText) {
+    showToast('请先输入要查找的内容', 'error');
+    return;
+  }
+
+  const count = countLiteralMatches(textarea.value, findText);
+  if (!count) {
+    showToast('没有找到可替换的内容', 'error');
+    updateStoryReplaceMeta();
+    return;
+  }
+
+  const scrollTop = textarea.scrollTop;
+  textarea.value = textarea.value.split(findText).join(replaceInput.value);
+  textarea.scrollTop = scrollTop;
+  textarea.dispatchEvent(new Event('input', { bubbles: true }));
+  textarea.focus();
+  updateStoryReplaceMeta();
+  showToast(`已替换 ${count} 处`);
 }
 
 function bindLibraryDisplayControls() {
@@ -1461,12 +1445,14 @@ function applyFilters(keepPage = false) {
   const fVideoTag = document.getElementById('filter-video-tag').value;
   const fHookTag = document.getElementById('filter-hook-tag').value;
   const fMechanism = document.getElementById('filter-mechanism').value;
+  const fMarkStatus = document.getElementById('filter-mark-status').value;
 
   // 筛选
   let filtered = allVideos.filter(v => {
     if (fVideoTag && !(v.video_tags || '').split(',').map(t => t.trim()).includes(fVideoTag)) return false;
     if (fHookTag && !(v.hook_tags || '').split(',').map(t => t.trim()).includes(fHookTag)) return false;
     if (fMechanism && window.getVideoSeriesName(v) !== fMechanism) return false;
+    if (fMarkStatus && normalizeMarkValue(v.is_marked) !== fMarkStatus) return false;
     return true;
   });
 
@@ -1616,6 +1602,22 @@ window.tagsHtml = (str, cls) => (str || '').split(',').filter(t => t.trim())
 
 window.formatViewsNum = formatViewsNum;
 
+function normalizeMarkValue(value) {
+  const raw = String(value ?? '').trim();
+  if (raw === '1') return '1';
+  if (raw === '-1') return '-1';
+  if (raw === '2') return '2';
+  return '0';
+}
+
+function getVideoMarkInfo(value) {
+  const mark = normalizeMarkValue(value);
+  if (mark === '1') return { text: '有用', cls: 'mark-useful', cardClass: 'card-mark-useful' };
+  if (mark === '-1') return { text: '无用', cls: 'mark-useless', cardClass: 'card-mark-useless' };
+  if (mark === '2') return { text: '重复', cls: 'mark-duplicate', cardClass: 'card-mark-duplicate' };
+  return null;
+}
+
 function getVideoCardStatus(v) {
   const task = v.ai_task;
   if (!task) return null;
@@ -1641,8 +1643,9 @@ window.renderGlobalCard = v => {
   const thumbSrc = v.thumb_url || '';
   const thumbLink = v.preview_path ? ('/' + v.preview_path) : (v.video_link || v.video_path || '');
   const cardStatus = getVideoCardStatus(v);
+  const markInfo = getVideoMarkInfo(v.is_marked);
   return `
-  <div class="video-card" data-id="${v.id}">
+  <div class="video-card ${markInfo ? markInfo.cardClass : ''}" data-id="${v.id}">
     <div class="card-thumb" id="thumb-container-${v.id}">
       ${thumbSrc
         ? `<div class="card-thumb-link" onclick="event.stopPropagation(); playVideoInline(${v.id}, '${escapeHtml(thumbLink)}')">
@@ -1652,10 +1655,11 @@ window.renderGlobalCard = v => {
         : '<div class="card-thumb-empty">无封面</div>'}
       ${v.duration ? `<span class="card-duration">${v.duration}s</span>` : ''}
       ${cardStatus ? `<span class="card-task-status ${cardStatus.cls}">${escapeHtml(cardStatus.text)}</span>` : ''}
+      ${markInfo ? `<span class="card-mark-badge ${markInfo.cls}">${markInfo.text}</span>` : ''}
     </div>
     <div class="card-info">
       <div class="card-header">
-        <div class="card-title" title="${escapeHtml(window.formatVideoLabel(v))}">${v.is_marked == '1' ? '<span style="color:#f59e0b; margin-right:4px;">★</span>' : ''}${escapeHtml(window.formatVideoLabel(v))}</div>
+        <div class="card-title" title="${escapeHtml(window.formatVideoLabel(v))}">${escapeHtml(window.formatVideoLabel(v))}</div>
         <button class="btn-copy-title" onclick="event.stopPropagation(); copyToClipboard('${escapeHtml(window.formatVideoLabel(v)).replace(/'/g, "\\'")}')" title="复制标题">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
         </button>
@@ -2014,13 +2018,21 @@ function showDetail(id) {
   openInlineEditor(video);
 }
 
-function openInlineEditor(video = null) {
+function openInlineEditor(video = null, options = {}) {
+  const preserveVideoSource = !!options.preserveVideoSource;
+  const isListVisible = $listViewContainer && $listViewContainer.style.display !== 'none';
+  if (isListVisible) {
+    savedScrollY = window.scrollY;
+    savedListVideoId = video ? video.id : null;
+  }
+
   window._currentEditVideo = video;
   currentVideoId = video ? video.id : null;
+  setStoryFocusMode(true);
+  resetStoryReplacePanel();
   const $copyBtn = document.getElementById('btn-copy-video-id');
   if (video) {
-    const paddedId = String(video.id).padStart(3, '0');
-    const idTitle = `${paddedId}-${video.name}`;
+    const idTitle = window.formatVideoLabel(video);
     $inlineDetailTitle.textContent = idTitle;
     $copyBtn.style.display = '';
     $copyBtn.onclick = () => {
@@ -2037,18 +2049,21 @@ function openInlineEditor(video = null) {
   // 1. ===== 渲染左侧视频播放器 =====
   // 判断是否同时拥有两个数据源
   const hasYouTube = video && video.video_link && (video.video_link.includes('youtube.com') || video.video_link.includes('youtu.be'));
-  const hasAliyun = video && video.video_path && video.video_path.includes('.mp4');
+  const aliyunVideoUrl = getAliyunVideoUrl(video);
+  const hasAliyun = !!aliyunVideoUrl;
   const hasBothSources = hasYouTube && hasAliyun;
 
   // 默认使用 YouTube；如果没有则用阿里云
-  if (!window._videoSourcePref) window._videoSourcePref = 'youtube';
+  if (!preserveVideoSource || !window._videoSourcePref) {
+    window._videoSourcePref = 'youtube';
+  }
   let activeSource = window._videoSourcePref;
   if (activeSource === 'youtube' && !hasYouTube) activeSource = 'aliyun';
   if (activeSource === 'aliyun' && !hasAliyun) activeSource = 'youtube';
 
   let embedHtml = '';
   if (video) {
-    let url = activeSource === 'youtube' ? (video.video_link || video.video_path) : (video.video_path || video.video_link);
+    let url = activeSource === 'youtube' ? (video.video_link || aliyunVideoUrl) : (aliyunVideoUrl || video.video_link);
     if (url) {
       if (url.includes('youtube.com') || url.includes('youtu.be')) {
         let ytId = '';
@@ -2060,10 +2075,10 @@ function openInlineEditor(video = null) {
           ytId = url.split('youtu.be/')[1].split('?')[0];
         }
         if (ytId) {
-          embedHtml = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}?autoplay=1&mute=0&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:12px; background:#000;"></iframe>`;
+          embedHtml = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}?rel=0" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:12px; background:#000;"></iframe>`;
         }
-      } else if (url.includes('.mp4')) {
-        embedHtml = `<video width="100%" height="100%" src="${escapeHtml(url)}" autoplay controls loop style="border-radius:12px; object-fit:contain; background:#000;"></video>`;
+      } else if (isVideoFileUrl(url)) {
+        embedHtml = `<video width="100%" height="100%" src="${escapeHtml(url)}" controls loop style="border-radius:12px; object-fit:contain; background:#000;"></video>`;
       }
     }
 
@@ -2079,7 +2094,7 @@ function openInlineEditor(video = null) {
   // 切换按钮（仅当两个源都有时显示）
   if (hasBothSources) {
     const otherLabel = activeSource === 'youtube' ? '阿里云' : 'YouTube';
-    embedHtml += `<button class="video-source-toggle" onclick="window._videoSourcePref = window._videoSourcePref === 'youtube' ? 'aliyun' : 'youtube'; openInlineEditor(window._currentEditVideo);">${otherLabel}</button>`;
+    embedHtml += `<button class="video-source-toggle" onclick="window._videoSourcePref = window._videoSourcePref === 'youtube' ? 'aliyun' : 'youtube'; openInlineEditor(window._currentEditVideo, { preserveVideoSource: true });">${otherLabel}</button>`;
   }
 
   $inlineVideoPlayer.innerHTML = embedHtml;
@@ -2097,18 +2112,7 @@ function openInlineEditor(video = null) {
     }
   }
 
-  // 初始化标记按钮状态
-  const markedInput = document.getElementById('form-is-marked');
-  const markBtn = document.getElementById('btn-toggle-mark');
-  if (markedInput.value === '1' || markedInput.value == 1) {
-    markedInput.value = '1';
-    markBtn.innerHTML = '★ 已标记';
-    markBtn.className = 'btn-primary';
-  } else {
-    markedInput.value = '0';
-    markBtn.innerHTML = '☆ 标记';
-    markBtn.className = 'btn-secondary';
-  }
+  updateMarkButtons(video ? video.is_marked : '0');
 
   // 动态行 (场景/道具/角色/视频标签组合)
   ['scenes', 'props', 'characters', 'video_tags_rel'].forEach(type => {
@@ -2135,6 +2139,18 @@ function openInlineEditor(video = null) {
   }
 
   loadInlineAiPanel(video);
+  // 切换视频时让字幕面板下次激活再拉取
+  lastLoadedTranscriptVideoId = null;
+  currentTranscriptSecondary = 'youtube';
+  syncTranscriptToggleButtons();
+  if (currentInlinePanelPane === 'transcript' && currentVideoId) {
+    loadInlineTranscript(currentVideoId);
+  } else {
+    const meta = document.getElementById('transcript-meta');
+    const list = document.getElementById('transcript-list');
+    if (meta) meta.textContent = '未加载';
+    if (list) list.innerHTML = '<div class="conv-empty">点击"Whisper 字幕"查看</div>';
+  }
 
   // 3. ===== 切换视图层次 =====
   // 隐藏主列表视图及所有导航/筛选
@@ -2146,14 +2162,44 @@ function openInlineEditor(video = null) {
   const $pagination = document.getElementById('pagination');
   if ($pagination) $pagination.style.display = 'none';
 
-  // 记住当前滚动位置
-  savedScrollY = window.scrollY;
-
   // 显示内嵌详情
-  $inlineDetailView.style.display = 'block';
+  $inlineDetailView.classList.add('detail-workspace');
+  $inlineDetailView.style.display = 'flex';
+  document.body.classList.add('inline-detail-active');
 
   // 自动滚回顶部
   window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+function isVideoFileUrl(url = '') {
+  return /\.(mp4|mov|webm|m4v)(?:[?#]|$)/i.test(String(url));
+}
+
+function getAliyunVideoUrl(video) {
+  if (!video) return '';
+  const candidates = [
+    video.video_path,
+    video.ai_task && video.ai_task.oss_video_url,
+  ];
+  return candidates.find(url => url && isVideoFileUrl(url)) || '';
+}
+
+function setStoryFocusMode(enabled) {
+  isStoryFocusMode = !!enabled;
+  document.body.classList.toggle('story-focus-mode', isStoryFocusMode);
+  const btn = document.getElementById('btn-story-focus');
+  if (btn) {
+    btn.textContent = isStoryFocusMode ? '退出专注' : '专注编辑';
+    btn.classList.toggle('btn-primary', isStoryFocusMode);
+    btn.classList.toggle('btn-secondary', !isStoryFocusMode);
+  }
+  if (isStoryFocusMode) {
+    requestAnimationFrame(() => {
+      const content = document.getElementById('inline-detail-content');
+      if (content) content.scrollTop = 0;
+      document.getElementById('form-story-structure')?.focus({ preventScroll: true });
+    });
+  }
 }
 
 // 表单字段映射：form元素id → 数据库列名
@@ -2178,6 +2224,67 @@ const FORM_FIELDS = {
   'form-antagonist-goal': 'antagonist_goal',
   'form-is-marked': 'is_marked'
 };
+
+function updateMarkButtons(value) {
+  const mark = normalizeMarkValue(value);
+  const input = document.getElementById('form-is-marked');
+  if (input) input.value = mark;
+  document.querySelectorAll('.btn-mark-state').forEach(btn => {
+    const active = btn.dataset.mark === mark;
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+
+function syncVideoMarkState(videoId, value) {
+  const mark = normalizeMarkValue(value);
+  const numericId = Number(videoId);
+  videos = videos.map(video => Number(video.id) === numericId ? { ...video, is_marked: mark } : video);
+  if (window._currentEditVideo && Number(window._currentEditVideo.id) === numericId) {
+    window._currentEditVideo = { ...window._currentEditVideo, is_marked: mark };
+  }
+  updateCardMarkBadge(videoId, mark);
+}
+
+function updateCardMarkBadge(videoId, value) {
+  const card = document.querySelector(`.video-card[data-id="${videoId}"]`);
+  if (!card) return;
+  const markInfo = getVideoMarkInfo(value);
+  const mark = normalizeMarkValue(value);
+  card.classList.toggle('card-mark-useful', mark === '1');
+  card.classList.toggle('card-mark-useless', mark === '-1');
+  card.classList.toggle('card-mark-duplicate', mark === '2');
+
+  const thumb = card.querySelector('.card-thumb');
+  if (!thumb) return;
+  let badge = thumb.querySelector('.card-mark-badge');
+  if (!markInfo) {
+    if (badge) badge.remove();
+    return;
+  }
+  if (!badge) {
+    badge = document.createElement('span');
+    thumb.appendChild(badge);
+  }
+  badge.className = `card-mark-badge ${markInfo.cls}`;
+  badge.textContent = markInfo.text;
+}
+
+async function saveVideoMarkState(videoId, value) {
+  const mark = normalizeMarkValue(value);
+  const res = await fetch(`/api/videos/${videoId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ is_marked: mark }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || '保存失败');
+  const savedMark = normalizeMarkValue(data.is_marked ?? mark);
+  updateMarkButtons(savedMark);
+  syncVideoMarkState(videoId, savedMark);
+  showToast(savedMark === '0' ? '已取消状态' : `已标为${getVideoMarkInfo(savedMark).text}`);
+  return data;
+}
 
 function addDynamicRow(type, data = null) {
   const container = document.getElementById(`${type}-container`);
@@ -2222,10 +2329,14 @@ function addDynamicRow(type, data = null) {
 
 function closeDetail() {
   clearInlineAiPoll();
+  setStoryFocusMode(false);
+  resetStoryReplacePanel();
+  document.body.classList.remove('inline-detail-active');
   // 清除 hash
   history.replaceState(null, '', location.pathname + location.search);
   // 隐藏详情
   $inlineDetailView.style.display = 'none';
+  $inlineDetailView.classList.remove('detail-workspace');
   // 销毁视频播放器，避免后台声音
   $inlineVideoPlayer.innerHTML = ''; 
 
@@ -2245,7 +2356,19 @@ function closeDetail() {
 
   currentVideoId = null;
   // 所有 DOM 操作完成后恢复滚动位置
-  setTimeout(() => window.scrollTo(0, savedScrollY), 0);
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: savedScrollY, behavior: 'auto' });
+    if (savedListVideoId) {
+      const card = document.querySelector(`.video-card[data-id="${savedListVideoId}"]`);
+      if (card) {
+        const rect = card.getBoundingClientRect();
+        const headerOffset = 96;
+        if (rect.top < headerOffset || rect.top > window.innerHeight - 120) {
+          card.scrollIntoView({ block: 'center', behavior: 'auto' });
+        }
+      }
+    }
+  });
 }
 
 function clearInlineAiPoll() {
@@ -2443,15 +2566,243 @@ function copyInlineAiScript() {
   navigator.clipboard.writeText(text).then(() => showToast('已复制脚本'));
 }
 
-async function saveVideo() {
-  const id = document.getElementById('form-id').value;
-  const name = document.getElementById('form-name').value.trim();
-  const date = document.getElementById('form-date').value;
+let currentInlinePanelPane = 'transcript';
+let lastLoadedTranscriptVideoId = null;
+let currentTranscriptSecondary = 'youtube'; // 第二列默认 YouTube
+let lastTranscriptPayload = null;
 
-  if (!name) {
-    showToast('请填写视频名称', 'error');
+function syncTranscriptToggleButtons() {
+  document.querySelectorAll('.transcript-toggle-btn').forEach(btn => {
+    btn.classList.toggle('is-active', btn.dataset.col === currentTranscriptSecondary);
+  });
+}
+
+function switchInlinePanelTab(pane) {
+  if (!pane) return;
+  currentInlinePanelPane = pane;
+  document.querySelectorAll('.ai-panel-tab').forEach(tab => {
+    const active = tab.dataset.pane === pane;
+    tab.classList.toggle('is-active', active);
+    tab.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+  const paneAi = document.getElementById('pane-ai');
+  const paneTranscript = document.getElementById('pane-transcript');
+  if (paneAi) paneAi.classList.toggle('ai-pane-hidden', pane !== 'ai');
+  if (paneTranscript) paneTranscript.classList.toggle('ai-pane-hidden', pane !== 'transcript');
+
+  if (pane === 'transcript' && currentVideoId && lastLoadedTranscriptVideoId !== currentVideoId) {
+    loadInlineTranscript(currentVideoId);
+  }
+}
+
+async function loadInlineTranscript(videoId, { refreshYoutube = false } = {}) {
+  const meta = document.getElementById('transcript-meta');
+  const grid = document.getElementById('transcript-grid');
+  if (!grid) return;
+  if (!videoId) {
+    if (meta) meta.textContent = '未加载';
+    grid.innerHTML = '<div class="conv-empty">请先选择视频</div>';
     return;
   }
+  if (meta) meta.textContent = refreshYoutube ? '刷新 YouTube 字幕中...' : '加载中...';
+  grid.innerHTML = '<div class="conv-empty">加载中...</div>';
+  try {
+    const url = `/api/videos/${videoId}/transcript${refreshYoutube ? '?refresh=youtube' : ''}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '加载字幕失败');
+    lastLoadedTranscriptVideoId = videoId;
+    renderInlineTranscript(data);
+  } catch (err) {
+    if (meta) meta.textContent = '加载失败';
+    grid.innerHTML = `<div class="conv-empty">加载失败：${escapeHtml(err.message)}</div>`;
+  }
+}
+
+// 多路 segments 按时间对齐。以段数最多的一路为锚点，其他路按"最大时间重叠"贪心配对到锚点行。
+// columns 是 {key: segments[]} 的对象；返回 {rows: [{[key]: seg | null, ...}]}
+function alignTranscriptsMulti(columns) {
+  const keys = Object.keys(columns).filter(k => Array.isArray(columns[k]) && columns[k].length);
+  if (keys.length === 0) return { keys: [], rows: [] };
+  // 把段数最多的一路作为锚
+  keys.sort((a, b) => columns[b].length - columns[a].length);
+  const anchorKey = keys[0];
+  const anchor = columns[anchorKey].slice().sort((a, b) => a.start - b.start);
+
+  // 每个非锚路：按贪心最大重叠配对到锚的第 i 行
+  const rowsMap = anchor.map(a => ({ [anchorKey]: a }));
+  const orphans = []; // 非锚里没配上的段（要按时间插回）
+
+  for (const k of keys) {
+    if (k === anchorKey) continue;
+    const secs = columns[k].slice().sort((a, b) => a.start - b.start);
+    const pairs = [];
+    for (let i = 0; i < anchor.length; i++) {
+      for (let j = 0; j < secs.length; j++) {
+        const ov = Math.min(anchor[i].end, secs[j].end) - Math.max(anchor[i].start, secs[j].start);
+        if (ov > 0) pairs.push({ i, j, ov });
+      }
+    }
+    pairs.sort((a, b) => b.ov - a.ov);
+    const rowUsed = new Set(); // 锚行已被本路占用
+    const secUsed = new Set();
+    for (const p of pairs) {
+      if (rowUsed.has(p.i) || secUsed.has(p.j)) continue;
+      rowUsed.add(p.i);
+      secUsed.add(p.j);
+      rowsMap[p.i][k] = secs[p.j];
+    }
+    for (let j = 0; j < secs.length; j++) {
+      if (!secUsed.has(j)) orphans.push({ col: k, seg: secs[j] });
+    }
+  }
+
+  // 把孤儿插回时间顺序
+  const items = rowsMap.map(r => ({
+    start: Math.min(...keys.map(k => r[k]?.start).filter(x => x != null)),
+    cells: r,
+  }));
+  for (const { col, seg } of orphans) {
+    items.push({ start: seg.start, cells: { [col]: seg } });
+  }
+  items.sort((a, b) => a.start - b.start);
+  return { keys, rows: items.map(x => x.cells) };
+}
+
+function splitMergedSubtitleText(text = '') {
+  const normalized = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!normalized) return [];
+  const matches = normalized.match(/[^.!?。！？]+[.!?。！？]+(?:["'”’])?|[^.!?。！？]+$/g);
+  return (matches || [normalized]).map(s => s.trim()).filter(Boolean);
+}
+
+function roundTranscriptTime(sec) {
+  return Math.round((Number(sec) || 0) * 100) / 100;
+}
+
+function splitMergedSegments(segments = []) {
+  const result = [];
+  (segments || []).forEach((seg) => {
+    const sentences = splitMergedSubtitleText(seg?.text);
+    if (sentences.length <= 1) {
+      if ((seg?.text || '').trim()) result.push(seg);
+      return;
+    }
+
+    const start = Number(seg.start) || 0;
+    const end = Number(seg.end);
+    const duration = Number.isFinite(end) && end > start ? end - start : 0;
+    const weights = sentences.map(sentence => Math.max(sentence.replace(/\s+/g, '').length, 1));
+    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0) || sentences.length;
+    let cursor = start;
+
+    sentences.forEach((sentence, index) => {
+      const next = index === sentences.length - 1
+        ? (duration ? end : cursor)
+        : (duration ? cursor + (duration * weights[index] / totalWeight) : cursor);
+      result.push({
+        ...seg,
+        start: roundTranscriptTime(cursor),
+        end: roundTranscriptTime(next),
+        text: sentence,
+      });
+      cursor = next;
+    });
+  });
+  return result;
+}
+
+function renderTranscriptText(text) {
+  return escapeHtml((text || '').trim());
+}
+
+function renderCell(seg, key = '') {
+  if (!seg) return '<div class="transcript-cell transcript-cell-empty"></div>';
+  return `<div class="transcript-cell">
+    <span class="transcript-line-time">${formatTranscriptTime(seg.start)}-${formatTranscriptTime(seg.end)}</span>
+    <span class="transcript-line-text">${renderTranscriptText(seg.text)}</span>
+  </div>`;
+}
+
+function renderInlineTranscript(data) {
+  lastTranscriptPayload = data;
+  const meta = document.getElementById('transcript-meta');
+  const grid = document.getElementById('transcript-grid');
+  const header = document.getElementById('transcript-grid-header');
+  if (!grid || !header) return;
+
+  const sources = {
+    merged: data?.merged,
+    youtube: data?.youtube,
+    whisper: data?.whisper,
+  };
+  const mergedRawSegs = sources.merged?.available ? sources.merged.segments : [];
+  const mergedSegs = splitMergedSegments(mergedRawSegs);
+  const ySegs = sources.youtube?.available ? sources.youtube.segments : [];
+  const wSegs = sources.whisper?.available ? sources.whisper.segments : [];
+
+  if (meta) {
+    const parts = [];
+    if (mergedSegs.length) parts.push(`合并: ${mergedSegs.length} 条`);
+    parts.push(`YouTube: ${ySegs.length ? ySegs.length + ' 条' : '—'}`);
+    parts.push(`Whisper: ${wSegs.length ? wSegs.length + ' 条' : '—'}`);
+    meta.textContent = parts.join(' · ');
+  }
+
+  // 第二列按 toggle 选的那路渲染，如果该路空就自动切到另一路
+  const secondarySegs = currentTranscriptSecondary === 'whisper' ? wSegs : ySegs;
+  const secondaryKey = currentTranscriptSecondary;
+  const secondaryEmpty = secondarySegs.length === 0;
+  if (secondaryEmpty && currentTranscriptSecondary === 'youtube' && wSegs.length) {
+    currentTranscriptSecondary = 'whisper';
+    syncTranscriptToggleButtons();
+    return renderInlineTranscript(data);
+  }
+  if (secondaryEmpty && currentTranscriptSecondary === 'whisper' && ySegs.length) {
+    currentTranscriptSecondary = 'youtube';
+    syncTranscriptToggleButtons();
+    return renderInlineTranscript(data);
+  }
+
+  // 两路都没有任何字幕
+  if (!mergedSegs.length && !ySegs.length && !wSegs.length) {
+    const reason = sources.youtube?.error ? `YouTube 不可用：${sources.youtube.error}` : '暂无字幕';
+    grid.innerHTML = `<div class="conv-empty">${escapeHtml(reason)}</div>`;
+    return;
+  }
+
+  // 组装两列对齐
+  const cols = {};
+  if (mergedSegs.length) cols.merged = mergedSegs;
+  if (secondarySegs.length) cols[secondaryKey] = secondarySegs;
+
+  // 只剩一列时单列显示
+  const keys = Object.keys(cols);
+  if (keys.length === 1) {
+    const onlyKey = keys[0];
+    const only = cols[onlyKey];
+    grid.innerHTML = only.map(seg => `<div class="transcript-row" style="grid-template-columns: 1fr;">${renderCell(seg, onlyKey)}</div>`).join('');
+    return;
+  }
+
+  const aligned = alignTranscriptsMulti(cols);
+  grid.innerHTML = aligned.rows.map(row => {
+    const cellsHtml = ['merged', secondaryKey].map(k => renderCell(row[k] || null, k)).join('');
+    return `<div class="transcript-row">${cellsHtml}</div>`;
+  }).join('');
+}
+
+function formatTranscriptTime(sec) {
+  const n = Number(sec) || 0;
+  const mm = Math.floor(n / 60).toString().padStart(2, '0');
+  const ss = (n % 60).toFixed(2).padStart(5, '0');
+  return `${mm}:${ss}`;
+}
+
+async function saveVideo() {
+  const id = document.getElementById('form-id').value;
+  const date = document.getElementById('form-date').value;
+
   if (!date) {
     showToast('请填写录入日期', 'error');
     return;
@@ -2484,9 +2835,25 @@ async function saveVideo() {
       throw new Error(err.error || '保存失败');
     }
 
-    closeDetail();
+    const saved = await res.json();
     showToast(id ? '已更新' : '已添加', 'success');
-    loadVideos(true);
+    if (saved?.id) {
+      const numericId = Number(saved.id);
+      const existingIndex = videos.findIndex(video => Number(video.id) === numericId);
+      if (existingIndex >= 0) {
+        videos[existingIndex] = { ...videos[existingIndex], ...saved };
+      } else {
+        videos.unshift(saved);
+      }
+      window._currentEditVideo = { ...(window._currentEditVideo || {}), ...saved };
+      syncVideoMarkState(saved.id, saved.is_marked);
+    }
+    if (!id && saved?.id) {
+      // 新增保存后保留在编辑页，挂上新 id
+      document.getElementById('form-id').value = saved.id;
+      currentVideoId = saved.id;
+      loadInlineAiPanel({ id: saved.id });
+    }
   } catch (err) {
     showToast('保存失败: ' + err.message, 'error');
   }

@@ -13,15 +13,15 @@ try { OSS = require('ali-oss'); } catch (e) { /* 未安装也可 */ }
 
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || '';
 
-// Gemini 中转接口配置
-const GEMINI_API_BASE = process.env.GEMINI_API_BASE || 'https://yunwu.ai/v1beta';
+// Gemini 官方接口配置
+const GEMINI_API_BASE = process.env.GEMINI_API_BASE || 'https://generativelanguage.googleapis.com/v1beta';
 const GEMINI_API_KEY_ENV = process.env.GEMINI_API_KEY || '';
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-pro-preview';
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite-preview';
 const GEMINI_PROMPT_PATH = process.env.GEMINI_PROMPT_PATH ||
   path.join(__dirname, '提示词', '视频反推提示词.md');
 
 // Whisper 转写配置
-const WHISPER_MODEL = process.env.WHISPER_MODEL || 'large-v3-turbo';
+const WHISPER_MODEL = process.env.WHISPER_MODEL || 'large-v3';
 const WHISPER_PYTHON = process.env.WHISPER_PYTHON || path.join(__dirname, 'scripts_tool/whisper_venv/bin/python');
 const WHISPER_SCRIPT = path.join(__dirname, 'scripts_tool/transcribe.py');
 const TRANSCRIPT_CACHE_DIR = process.env.TRANSCRIPT_CACHE_DIR || path.join(__dirname, 'transcripts');
@@ -669,6 +669,8 @@ app.post('/api/videos/batch-rewrite', (req, res) => {
       remaining,
       inFlight: geminiInFlight,
       queuedInMemory: geminiQueue.length,
+      transcriptInFlight,
+      transcriptQueuedInMemory: transcriptQueue.length,
     });
   } catch (err) {
     console.error('批量重写失败:', err);
@@ -704,7 +706,7 @@ app.post('/api/videos/:id/rewrite-script', async (req, res) => {
       console.log(`📝 创建重写任务 #${task.id} for video #${videoId} (${video.name})`);
       if (shouldTrigger && hasGeminiKeyConfigured()) {
         if (useTranscript) enqueueAnalysis(task.id);
-        else callGeminiForTask(task.id, null, { useTranscript: false }).catch(e => console.error('分析异常:', e.message));
+        else enqueueGeminiAnalysis(task.id, { useTranscript: false });
         didTriggerGemini = true;
       }
     } else if (task.analysis_status === 'failed' ||
@@ -716,7 +718,7 @@ app.post('/api/videos/:id/rewrite-script', async (req, res) => {
       console.log(`📝 重新触发重写任务 #${task.id} for video #${videoId}`);
       if (shouldTrigger && hasGeminiKeyConfigured()) {
         if (useTranscript) enqueueAnalysis(task.id);
-        else callGeminiForTask(task.id, null, { useTranscript: false }).catch(e => console.error('分析异常:', e.message));
+        else enqueueGeminiAnalysis(task.id, { useTranscript: false });
         didTriggerGemini = true;
       }
     } else {
@@ -779,6 +781,199 @@ app.get('/api/videos/:id/ai-script', (req, res) => {
 
     const task = findAiTaskForVideo(video);
     res.json(buildAiTaskPayload(task, { videoId, video }));
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+function loadWhisperCache(videoId, youtubeVideoId) {
+  const candidates = [`${videoId}`];
+  if (youtubeVideoId) candidates.push(`yt-${youtubeVideoId}`);
+  for (const key of candidates) {
+    const jsonPath = path.join(TRANSCRIPT_CACHE_DIR, `${key}.json`);
+    if (fs.existsSync(jsonPath)) {
+      try {
+        const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+        return { cacheKey: key, data };
+      } catch (e) {}
+    }
+  }
+  return null;
+}
+
+function parseYoutubeJson3(raw) {
+  const events = Array.isArray(raw?.events) ? raw.events : [];
+  const nonEmpty = events
+    .map(e => {
+      const text = (e.segs || [])
+        .map(s => s.utf8 || '')
+        .join('')
+        .replace(/\n/g, ' ')
+        .replace(/^>>\s*/, '')
+        .trim();
+      return text ? { start: (e.tStartMs || 0) / 1000, durMs: e.dDurationMs || 0, text } : null;
+    })
+    .filter(Boolean);
+
+  // YouTube 的自动字幕经常整段重复（滚动窗口里上一行还会再出现一次），去重
+  const seen = new Set();
+  const segments = [];
+  for (let i = 0; i < nonEmpty.length; i++) {
+    const cur = nonEmpty[i];
+    const key = cur.text.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const nextStart = nonEmpty.slice(i + 1).find(n => !seen.has(n.text.toLowerCase()))?.start ?? (cur.start + cur.durMs / 1000);
+    segments.push({ start: +cur.start.toFixed(2), end: +Math.max(cur.start + 0.5, nextStart).toFixed(2), text: cur.text });
+  }
+  return segments;
+}
+
+function fetchYoutubeSubs(youtubeVideoId, { force = false } = {}) {
+  return new Promise((resolve) => {
+    if (!youtubeVideoId) return resolve(null);
+    if (!fs.existsSync(TRANSCRIPT_CACHE_DIR)) fs.mkdirSync(TRANSCRIPT_CACHE_DIR, { recursive: true });
+    const cachePath = path.join(TRANSCRIPT_CACHE_DIR, `yt-${youtubeVideoId}-youtube.json`);
+    if (!force && fs.existsSync(cachePath)) {
+      try { return resolve(JSON.parse(fs.readFileSync(cachePath, 'utf-8'))); } catch (e) {}
+    }
+    const tmpPrefix = path.join(TRANSCRIPT_CACHE_DIR, `.tmp-${youtubeVideoId}`);
+    // 清理旧的临时文件，防串台
+    try { for (const f of fs.readdirSync(TRANSCRIPT_CACHE_DIR)) if (f.startsWith(`.tmp-${youtubeVideoId}`)) fs.unlinkSync(path.join(TRANSCRIPT_CACHE_DIR, f)); } catch (e) {}
+
+    const args = [
+      '--write-auto-sub', '--sub-lang', 'en.*', '--sub-format', 'json3',
+      '--skip-download', '-o', tmpPrefix,
+      `https://www.youtube.com/watch?v=${youtubeVideoId}`,
+    ];
+    const env = { ...process.env };
+    if (process.env.YTDLP_COOKIES_FROM_BROWSER) {
+      args.unshift('--cookies-from-browser', process.env.YTDLP_COOKIES_FROM_BROWSER);
+    }
+    const proc = spawn('yt-dlp', args, { env });
+    let stderr = '';
+    proc.stderr.on('data', d => { stderr += d.toString(); });
+    proc.on('error', () => resolve(null));
+    proc.on('close', () => {
+      // 找 .en*.json3 命名的那个（en、en-orig、en-US 都可能）
+      const dir = TRANSCRIPT_CACHE_DIR;
+      let found = null;
+      try {
+        for (const f of fs.readdirSync(dir)) {
+          if (f.startsWith(`.tmp-${youtubeVideoId}`) && f.endsWith('.json3')) { found = path.join(dir, f); break; }
+        }
+      } catch (e) {}
+      if (!found) {
+        fs.writeFileSync(cachePath, JSON.stringify({ source: 'youtube', available: false, error: stderr.slice(-300), segments: [] }, null, 2));
+        return resolve({ source: 'youtube', available: false, segments: [] });
+      }
+      try {
+        const raw = JSON.parse(fs.readFileSync(found, 'utf-8'));
+        const segments = parseYoutubeJson3(raw);
+        const result = {
+          source: 'youtube',
+          available: true,
+          language: 'en',
+          duration: segments.length ? segments[segments.length - 1].end : 0,
+          fetchedAt: new Date().toISOString(),
+          segments,
+        };
+        fs.writeFileSync(cachePath, JSON.stringify(result, null, 2));
+        try { fs.unlinkSync(found); } catch (e) {}
+        resolve(result);
+      } catch (e) {
+        resolve({ source: 'youtube', available: false, error: e.message, segments: [] });
+      }
+    });
+  });
+}
+
+function loadMergedCache(youtubeVideoId) {
+  if (!youtubeVideoId) return null;
+  const mergedPath = path.join(TRANSCRIPT_CACHE_DIR, `yt-${youtubeVideoId}-merged.json`);
+  if (!fs.existsSync(mergedPath)) return null;
+  try { return JSON.parse(fs.readFileSync(mergedPath, 'utf-8')); } catch (e) { return null; }
+}
+
+// 读取当前视频的合并 + YouTube + Whisper 三路字幕
+app.get('/api/videos/:id/transcript', async (req, res) => {
+  try {
+    const videoId = parseInt(req.params.id);
+    const video = db.prepare('SELECT * FROM videos WHERE id = ?').get(videoId);
+    if (!video) return res.status(404).json({ error: '视频不存在' });
+
+    const task = findAiTaskForVideo(video);
+    const youtubeVideoId = task?.youtube_video_id || extractYouTubeId(video.video_link || '');
+
+    // Whisper 缓存
+    const whisperHit = loadWhisperCache(videoId, youtubeVideoId);
+    const whisper = whisperHit ? {
+      source: 'whisper',
+      available: true,
+      cacheKey: whisperHit.cacheKey,
+      model: whisperHit.data.model || '',
+      language: whisperHit.data.language || '',
+      duration: whisperHit.data.duration || null,
+      segments: whisperHit.data.segments || [],
+    } : {
+      source: 'whisper',
+      available: false,
+      status: task?.transcript_status || '',
+      error: task?.transcript_error || '',
+      segments: [],
+    };
+
+    // YouTube 自动字幕
+    let youtube = { source: 'youtube', available: false, segments: [] };
+    if (youtubeVideoId) {
+      youtube = await fetchYoutubeSubs(youtubeVideoId, { force: req.query.refresh === 'youtube' });
+    }
+
+    // 合并字幕（手工或 AI 修订后的最终稿）
+    const mergedData = loadMergedCache(youtubeVideoId);
+    const merged = mergedData ? {
+      source: 'merged',
+      available: Array.isArray(mergedData.segments) && mergedData.segments.length > 0,
+      language: mergedData.language || '',
+      duration: mergedData.duration || null,
+      revisedAt: mergedData.revisedAt || '',
+      revisionNote: mergedData.revisionNote || '',
+      segments: mergedData.segments || [],
+    } : { source: 'merged', available: false, segments: [] };
+
+    res.json({ videoId, youtubeVideoId, merged, youtube, whisper });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// 写入/覆盖合并字幕缓存
+app.put('/api/videos/:id/transcript/merged', (req, res) => {
+  try {
+    const videoId = parseInt(req.params.id);
+    const video = db.prepare('SELECT * FROM videos WHERE id = ?').get(videoId);
+    if (!video) return res.status(404).json({ error: '视频不存在' });
+
+    const task = findAiTaskForVideo(video);
+    const youtubeVideoId = task?.youtube_video_id || extractYouTubeId(video.video_link || '');
+    if (!youtubeVideoId) return res.status(400).json({ error: '该视频没有 YouTube ID，无法存合并字幕' });
+
+    const segments = Array.isArray(req.body?.segments) ? req.body.segments : null;
+    if (!segments) return res.status(400).json({ error: '缺少 segments' });
+
+    const payload = {
+      source: 'merged',
+      available: segments.length > 0,
+      language: req.body.language || 'en',
+      duration: req.body.duration || (segments[segments.length - 1]?.end ?? 0),
+      revisedAt: new Date().toISOString(),
+      revisionNote: req.body.revisionNote || '',
+      segments,
+    };
+    if (!fs.existsSync(TRANSCRIPT_CACHE_DIR)) fs.mkdirSync(TRANSCRIPT_CACHE_DIR, { recursive: true });
+    const mergedPath = path.join(TRANSCRIPT_CACHE_DIR, `yt-${youtubeVideoId}-merged.json`);
+    fs.writeFileSync(mergedPath, JSON.stringify(payload, null, 2));
+    res.json({ ok: true, path: mergedPath, count: segments.length });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -1327,8 +1522,21 @@ function getActiveGeminiKey() {
   return getGeminiKeyConfig().activeKey?.key || '';
 }
 
+function getGeminiKeyPool() {
+  const { keys, activeId } = getGeminiKeyConfig();
+  if (!Array.isArray(keys) || keys.length === 0) return [];
+  const preferred = [];
+  const others = [];
+  for (const item of keys) {
+    if (!item?.key) continue;
+    if (item.id === activeId) preferred.push(item);
+    else others.push(item);
+  }
+  return [...preferred, ...others];
+}
+
 function hasGeminiKeyConfigured() {
-  return !!getActiveGeminiKey();
+  return getGeminiKeyPool().length > 0;
 }
 
 function getGeminiKeysForClient() {
@@ -2191,59 +2399,160 @@ async function runBackupImpl(taskId) {
 
 // ==================== Gemini 视频理解 ====================
 
-function geminiRequest(endpoint, body) {
-  return new Promise((resolve, reject) => {
-    const activeKey = getActiveGeminiKey();
-    if (!activeKey) {
-      reject(new Error('未配置可用的 Gemini Key'));
-      return;
+const GEMINI_PER_KEY_LIMIT = 2;
+const GEMINI_PER_KEY_WINDOW_MS = 60 * 1000;
+const geminiKeyUsage = new Map();
+let geminiKeyCursor = 0;
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function pruneGeminiKeyUsage(now = Date.now()) {
+  for (const [keyId, timestamps] of geminiKeyUsage.entries()) {
+    const recent = Array.isArray(timestamps)
+      ? timestamps.filter(ts => now - ts < GEMINI_PER_KEY_WINDOW_MS)
+      : [];
+    if (recent.length > 0) geminiKeyUsage.set(keyId, recent);
+    else geminiKeyUsage.delete(keyId);
+  }
+}
+
+function tryReserveGeminiKey() {
+  const now = Date.now();
+  pruneGeminiKeyUsage(now);
+  const pool = getGeminiKeyPool();
+  if (pool.length === 0) {
+    throw new Error('未配置可用的 Gemini Key');
+  }
+
+  for (let step = 0; step < pool.length; step++) {
+    const index = (geminiKeyCursor + step) % pool.length;
+    const item = pool[index];
+    const timestamps = geminiKeyUsage.get(item.id) || [];
+    if (timestamps.length < GEMINI_PER_KEY_LIMIT) {
+      timestamps.push(now);
+      geminiKeyUsage.set(item.id, timestamps);
+      geminiKeyCursor = (index + 1) % pool.length;
+      return { keyItem: item, waitMs: 0 };
     }
-    const url = new URL(`${GEMINI_API_BASE}/${endpoint}`);
-    const options = {
-      hostname: url.hostname,
-      port: 443,
-      path: url.pathname + url.search,
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${activeKey}`,
-        'Content-Type': 'application/json',
-      },
-    };
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          const json = JSON.parse(data);
-          if (json.error) reject(new Error(json.error.message || JSON.stringify(json.error)));
-          else resolve(json);
-        } catch (e) { reject(e); }
+  }
+
+  let earliestReadyAt = now + GEMINI_PER_KEY_WINDOW_MS;
+  for (const item of pool) {
+    const timestamps = geminiKeyUsage.get(item.id) || [];
+    if (timestamps.length === 0) return { keyItem: item, waitMs: 0 };
+    earliestReadyAt = Math.min(earliestReadyAt, timestamps[0] + GEMINI_PER_KEY_WINDOW_MS);
+  }
+
+  return { keyItem: null, waitMs: Math.max(earliestReadyAt - now, 200) };
+}
+
+async function acquireGeminiKey() {
+  while (true) {
+    const { keyItem, waitMs } = tryReserveGeminiKey();
+    if (keyItem) return keyItem;
+    await delay(waitMs + 50);
+  }
+}
+
+function geminiRequest(endpoint, body) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const keyItem = await acquireGeminiKey();
+      const url = new URL(`${GEMINI_API_BASE}/${endpoint}`);
+      const options = {
+        hostname: url.hostname,
+        port: 443,
+        path: url.pathname + url.search,
+        method: 'POST',
+        headers: {
+          'x-goog-api-key': keyItem.key,
+          'Content-Type': 'application/json',
+        },
+      };
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', chunk => data += chunk);
+        res.on('end', () => {
+          try {
+            const json = JSON.parse(data);
+            if (json.error) reject(new Error(json.error.message || JSON.stringify(json.error)));
+            else resolve(json);
+          } catch (e) { reject(e); }
+        });
       });
-    });
-    req.on('error', reject);
-    req.setTimeout(10 * 60 * 1000, () => {
-      req.destroy(new Error('Gemini 请求超时'));
-    });
-    req.write(JSON.stringify(body));
-    req.end();
+      req.on('error', reject);
+      req.setTimeout(10 * 60 * 1000, () => {
+        req.destroy(new Error('Gemini 请求超时'));
+      });
+      req.write(JSON.stringify(body));
+      req.end();
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
 // ==================== Gemini 分析并发队列（批量场景用） ====================
+const transcriptQueue = [];
+let transcriptInFlight = 0;
+const TRANSCRIPT_MAX_PARALLEL = 1;
+
 const geminiQueue = [];
 let geminiInFlight = 0;
-const GEMINI_MAX_PARALLEL = 10;
+const GEMINI_MAX_PARALLEL = 2;
 
-function enqueueAnalysis(taskId) {
-  if (!geminiQueue.includes(taskId)) geminiQueue.push(taskId);
+function isFirstAnalysisTurn(taskId) {
+  const row = db.prepare('SELECT COUNT(*) as c FROM import_conversations WHERE task_id = ?').get(taskId);
+  return (row?.c || 0) === 0;
+}
+
+function enqueueAnalysis(taskId, options = {}) {
+  const normalizedTaskId = Number(taskId);
+  const needsTranscript = options.useTranscript !== false && isFirstAnalysisTurn(normalizedTaskId);
+  if (needsTranscript) {
+    enqueueTranscriptThenAnalysis(normalizedTaskId, options);
+  } else {
+    enqueueGeminiAnalysis(normalizedTaskId, { ...options, useTranscript: false });
+  }
+}
+
+function enqueueTranscriptThenAnalysis(taskId, options = {}) {
+  if (!transcriptQueue.some(item => item.taskId === taskId)) {
+    transcriptQueue.push({ taskId, options });
+  }
+  processTranscriptQueue();
+}
+
+function processTranscriptQueue() {
+  while (transcriptInFlight < TRANSCRIPT_MAX_PARALLEL && transcriptQueue.length > 0) {
+    const item = transcriptQueue.shift();
+    transcriptInFlight++;
+    prepareTranscriptTextForTask(item.taskId, item.options)
+      .then(transcriptText => {
+        enqueueGeminiAnalysis(item.taskId, { ...item.options, useTranscript: false, transcriptText });
+      })
+      .catch(e => console.error('字幕队列异常:', e.message))
+      .finally(() => {
+        transcriptInFlight--;
+        processTranscriptQueue();
+      });
+  }
+}
+
+function enqueueGeminiAnalysis(taskId, options = {}) {
+  if (!geminiQueue.some(item => item.taskId === taskId)) {
+    geminiQueue.push({ taskId, options });
+  }
   processGeminiQueue();
 }
 
 function processGeminiQueue() {
   while (geminiInFlight < GEMINI_MAX_PARALLEL && geminiQueue.length > 0) {
-    const taskId = geminiQueue.shift();
+    const item = geminiQueue.shift();
     geminiInFlight++;
-    callGeminiForTask(taskId)
+    callGeminiForTask(item.taskId, null, item.options)
       .catch(e => console.error('分析队列异常:', e.message))
       .finally(() => {
         geminiInFlight--;
@@ -2279,11 +2588,12 @@ function formatTranscriptCacheText(transcript) {
     .join('\n');
 }
 
-function runWhisper(localVideoPath) {
+function runWhisper(localVideoPath, { initialPrompt = '', language = '' } = {}) {
   return new Promise((resolve, reject) => {
-    const proc = spawn(WHISPER_PYTHON, [WHISPER_SCRIPT, localVideoPath, WHISPER_MODEL], {
-      env: { ...process.env, HF_ENDPOINT: process.env.HF_ENDPOINT || 'https://hf-mirror.com' },
-    });
+    const env = { ...process.env, HF_ENDPOINT: process.env.HF_ENDPOINT || 'https://hf-mirror.com' };
+    if (initialPrompt) env.WHISPER_PROMPT = initialPrompt;
+    if (language) env.WHISPER_LANG = language;
+    const proc = spawn(WHISPER_PYTHON, [WHISPER_SCRIPT, localVideoPath, WHISPER_MODEL], { env });
     let stdout = '', stderr = '';
     proc.stdout.on('data', d => { stdout += d.toString(); });
     proc.stderr.on('data', d => { stderr += d.toString(); });
@@ -2301,11 +2611,17 @@ function runWhisper(localVideoPath) {
 
 function downloadOssToLocal(ossUrl, localPath) {
   return new Promise((resolve, reject) => {
+    let downloadUrl = ossUrl;
+    try {
+      downloadUrl = new URL(ossUrl).toString();
+    } catch (e) {
+      downloadUrl = encodeURI(ossUrl);
+    }
     const args = [
       '-sL', '--fail',
       '--retry', '6', '--retry-delay', '10', '--retry-all-errors',
       '--max-time', '300', '--connect-timeout', '30',
-      '-o', localPath, ossUrl,
+      '-o', localPath, downloadUrl,
     ];
     const proc = spawn('curl', args);
     let stderr = '';
@@ -2318,7 +2634,16 @@ function downloadOssToLocal(ossUrl, localPath) {
   });
 }
 
-async function getTranscriptForVideo(videoId, ossUrl) {
+function buildWhisperPromptFromTitle(title) {
+  if (!title) return '';
+  // 从 YouTube 标题 + 话题标签里提取专有名词/关键词，作为 Whisper hotwords（空格分隔）
+  const clean = String(title).replace(/[|｜·]/g, ' ');
+  const hashtags = Array.from(clean.matchAll(/#([\p{L}\p{N}_-]+)/gu)).map(m => m[1]);
+  const names = Array.from(new Set(hashtags.filter(h => h.length >= 2 && h.length <= 20)));
+  return names.join(' ').slice(0, 240);
+}
+
+async function getTranscriptForVideo(videoId, ossUrl, { initialPrompt = '' } = {}) {
   if (!ossUrl) return null;
   if (!fs.existsSync(WHISPER_VIDEO_CACHE_DIR)) fs.mkdirSync(WHISPER_VIDEO_CACHE_DIR, { recursive: true });
   if (!fs.existsSync(TRANSCRIPT_CACHE_DIR)) fs.mkdirSync(TRANSCRIPT_CACHE_DIR, { recursive: true });
@@ -2341,9 +2666,9 @@ async function getTranscriptForVideo(videoId, ossUrl) {
     await downloadOssToLocal(ossUrl, localVideo);
   }
 
-  console.log(`  🎤 Whisper 转写 video=${videoId} (model=${WHISPER_MODEL})`);
+  console.log(`  🎤 Whisper 转写 video=${videoId} (model=${WHISPER_MODEL})${initialPrompt ? ' [prompt: ' + initialPrompt.slice(0, 80) + ']' : ''}`);
   const t0 = Date.now();
-  const result = await runWhisper(localVideo);
+  const result = await runWhisper(localVideo, { initialPrompt });
   console.log(`  🎤 转写完成 ${((Date.now() - t0) / 1000).toFixed(1)}s, ${result.segments?.length || 0} 段`);
   fs.writeFileSync(cachePath, JSON.stringify(result, null, 2));
   fs.writeFileSync(textCachePath, formatTranscriptCacheText(result), 'utf8');
@@ -2357,7 +2682,7 @@ function safeTranscriptCacheKey(key) {
     .slice(0, 100);
 }
 
-async function getTranscriptForLocalVideo(cacheKey, localVideoPath) {
+async function getTranscriptForLocalVideo(cacheKey, localVideoPath, { initialPrompt = '' } = {}) {
   if (!localVideoPath || !fs.existsSync(localVideoPath) || fs.statSync(localVideoPath).size < 1024) return null;
   if (!fs.existsSync(TRANSCRIPT_CACHE_DIR)) fs.mkdirSync(TRANSCRIPT_CACHE_DIR, { recursive: true });
 
@@ -2375,9 +2700,9 @@ async function getTranscriptForLocalVideo(cacheKey, localVideoPath) {
     } catch (e) {}
   }
 
-  console.log(`  🎤 Whisper 转写 cache=${safeKey} (model=${WHISPER_MODEL})`);
+  console.log(`  🎤 Whisper 转写 cache=${safeKey} (model=${WHISPER_MODEL})${initialPrompt ? ' [prompt: ' + initialPrompt.slice(0, 80) + ']' : ''}`);
   const t0 = Date.now();
-  const result = await runWhisper(localVideoPath);
+  const result = await runWhisper(localVideoPath, { initialPrompt });
   console.log(`  🎤 转写完成 ${((Date.now() - t0) / 1000).toFixed(1)}s, ${result.segments?.length || 0} 段`);
   fs.writeFileSync(cachePath, JSON.stringify(result, null, 2));
   fs.writeFileSync(textCachePath, formatTranscriptCacheText(result), 'utf8');
@@ -2401,27 +2726,65 @@ function formatTranscriptForPrompt(transcript) {
   return lines.join('\n');
 }
 
+async function prepareTranscriptTextForTask(taskId, options = {}) {
+  const task = db.prepare('SELECT * FROM import_tasks WHERE id = ?').get(taskId);
+  if (!task) return null;
+  if (options.useTranscript === false || !isFirstAnalysisTurn(taskId)) return null;
+
+  try {
+    const localVideoPath = options.localVideoPath || task.local_file_path;
+    if (localVideoPath && fs.existsSync(localVideoPath)) {
+      updateTaskStatus(taskId, task.status, { transcript_status: 'transcribing', transcript_error: '' });
+      const cacheKey = task.youtube_video_id ? `yt-${task.youtube_video_id}` : `task-${task.id}`;
+      const initialPrompt = buildWhisperPromptFromTitle(task.title);
+      const transcript = await getTranscriptForLocalVideo(cacheKey, localVideoPath, { initialPrompt });
+      const transcriptText = formatTranscriptForPrompt(transcript);
+      updateTaskStatus(taskId, task.status, {
+        transcript_status: transcriptText ? 'ready' : 'skipped',
+        transcript_error: ''
+      });
+      return transcriptText;
+    }
+
+    if (task.source_video_id) {
+      const video = db.prepare('SELECT video_path FROM videos WHERE id = ?').get(task.source_video_id);
+      if (video?.video_path) {
+        updateTaskStatus(taskId, task.status, { transcript_status: 'transcribing', transcript_error: '' });
+        const initialPrompt = buildWhisperPromptFromTitle(task.title);
+        const transcript = await getTranscriptForVideo(task.source_video_id, video.video_path, { initialPrompt });
+        const transcriptText = formatTranscriptForPrompt(transcript);
+        updateTaskStatus(taskId, task.status, {
+          transcript_status: transcriptText ? 'ready' : 'skipped',
+          transcript_error: ''
+        });
+        return transcriptText;
+      }
+    }
+
+    updateTaskStatus(taskId, task.status, { transcript_status: 'skipped', transcript_error: '' });
+    return null;
+  } catch (e) {
+    const message = 'Whisper 字幕失败: ' + e.message;
+    console.warn(`  ⚠️ transcript 失败: ${e.message}`);
+    updateTaskStatus(taskId, task.status, {
+      transcript_status: 'failed',
+      transcript_error: e.message,
+      analysis_status: 'failed',
+      analysis_error: message,
+    });
+    throw new Error(message);
+  }
+}
+
 // 构造 Gemini 请求（拆分 systemInstruction + contents，更高优先级跟随提示词）
 function buildGeminiRequest(task, conversations, initialVideoUrl, transcriptText = null) {
   // 建议视频名规则已在 prompt 文件的【输出要求】第 8 条内，这里不再追加
   const systemText = getVideoAnalysisPrompt();
 
-  // 真实元数据（来自本地数据库），告诉模型"用我提供的这些，不要编"
-  const metaLines = [
-    '【我提供的视频元数据（请原样照抄到【视频元数据】段，禁止编造）】',
-    `视频标题：${task.title || '未知'}`,
-    `视频链接：${task.video_url || '未知'}`,
-    `发布日期：${task.publish_date || '未知'}`,
-    `视频时长：${task.duration_seconds ? task.duration_seconds + '秒' : '未知'}`,
-    `播放量：${task.views != null ? task.views : '未知'}`,
-    `点赞量：${task.likes != null ? task.likes : '未知'}`,
-    `频道：${task.channel_title || '未知'}`,
-  ].join('\n');
-
   const contents = [];
 
-  // 首轮：视频 + 真实元数据 + 可选字幕 + 简短指令（抽帧率 10fps，对快剪短视频更友好）
-  const firstTurnText = (transcriptText ? transcriptText + '\n\n' : '') + metaLines +
+  // 首轮：视频 + 可选字幕 + 简短指令（抽帧率 10fps，对快剪短视频更友好）
+  const firstTurnText = (transcriptText ? transcriptText + '\n\n' : '') +
     '\n\n请按照系统指令对这条视频进行专业级影视拆解。特别注意：' +
     '1）有对白的分镜，在【故事骨架】对应行末尾必须带出原话；' +
     '2）台词先对时间戳，再对分镜，不能因为语义顺手就挪到前后镜头；' +
@@ -2473,37 +2836,10 @@ async function callGeminiForTask(taskId, userMessage = null, options = {}) {
   }
 
   // 首轮：优先使用本地已下载视频做 Whisper 字幕；素材库重分析再回退到 OSS 视频。
-  let transcriptText = null;
+  let transcriptText = options.transcriptText || null;
   const isFirstTurn = prevConversations.length === 0;
-  if (options.useTranscript !== false && isFirstTurn) {
-    try {
-      const localVideoPath = options.localVideoPath || task.local_file_path;
-      if (localVideoPath && fs.existsSync(localVideoPath)) {
-        updateTaskStatus(taskId, task.status, { transcript_status: 'transcribing', transcript_error: '' });
-        const cacheKey = task.youtube_video_id ? `yt-${task.youtube_video_id}` : `task-${task.id}`;
-        const transcript = await getTranscriptForLocalVideo(cacheKey, localVideoPath);
-        transcriptText = formatTranscriptForPrompt(transcript);
-        updateTaskStatus(taskId, task.status, {
-          transcript_status: transcriptText ? 'ready' : 'skipped',
-          transcript_error: ''
-        });
-      } else if (task.source_video_id) {
-        const video = db.prepare('SELECT video_path FROM videos WHERE id = ?').get(task.source_video_id);
-        if (video?.video_path) {
-          updateTaskStatus(taskId, task.status, { transcript_status: 'transcribing', transcript_error: '' });
-          const transcript = await getTranscriptForVideo(task.source_video_id, video.video_path);
-          transcriptText = formatTranscriptForPrompt(transcript);
-          updateTaskStatus(taskId, task.status, {
-            transcript_status: transcriptText ? 'ready' : 'skipped',
-            transcript_error: ''
-          });
-        }
-      }
-    } catch (e) {
-      console.warn(`  ⚠️ transcript 失败: ${e.message}`);
-      updateTaskStatus(taskId, task.status, { transcript_status: 'failed', transcript_error: e.message });
-      throw new Error('Whisper 字幕失败: ' + e.message);
-    }
+  if (!transcriptText && options.useTranscript !== false && isFirstTurn) {
+    transcriptText = await prepareTranscriptTextForTask(taskId, options);
   }
 
   const { systemInstruction, contents } = buildGeminiRequest(task, prevConversations, task.video_url, transcriptText);
@@ -2516,7 +2852,7 @@ async function callGeminiForTask(taskId, userMessage = null, options = {}) {
         mediaResolution: 'MEDIA_RESOLUTION_HIGH',
         temperature: 0.2,
         thinkingConfig: {
-          thinkingLevel: 'high',   // Gemini 3 专用，最高思考强度；flash-lite 默认是 minimal
+          thinkingLevel: 'high',   // 提高思考深度
           includeThoughts: true,   // 打印思考摘要到日志便于诊断
         },
       },
@@ -2616,6 +2952,10 @@ app.get('/api/import/queue-status', (req, res) => {
     phaseElapsedMs: queueState.phaseStartedAt ? now - queueState.phaseStartedAt : 0,
     nextResumeInMs: queueState.nextResumeAt > now ? queueState.nextResumeAt - now : 0,
     queueLength: downloadQueue.length,
+    transcriptInFlight,
+    transcriptQueueLength: transcriptQueue.length,
+    geminiInFlight,
+    geminiQueueLength: geminiQueue.length,
     queuedCountInDb: queuedCount,
     failedCount,
   });
@@ -2809,7 +3149,8 @@ app.post('/api/import/tasks/:id/retry-analysis', (req, res) => {
     const task = db.prepare('SELECT * FROM import_tasks WHERE id = ?').get(req.params.id);
     if (!task) return res.status(404).json({ error: '任务不存在' });
 
-    callGeminiForTask(req.params.id, null, { useTranscript }).catch(e => console.error('分析异常:', e.message));
+    if (useTranscript) enqueueAnalysis(req.params.id, { useTranscript: true });
+    else enqueueGeminiAnalysis(Number(req.params.id), { useTranscript: false });
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -2826,7 +3167,8 @@ app.post('/api/import/tasks/:id/restart-analysis', (req, res) => {
     db.prepare('DELETE FROM import_conversations WHERE task_id = ?').run(req.params.id);
     updateTaskStatus(req.params.id, task.status, { analysis_status: 'queued', analysis_error: '', suggested_name: '' });
 
-    callGeminiForTask(req.params.id, null, { useTranscript }).catch(e => console.error('分析异常:', e.message));
+    if (useTranscript) enqueueAnalysis(req.params.id, { useTranscript: true });
+    else enqueueGeminiAnalysis(Number(req.params.id), { useTranscript: false });
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -2913,15 +3255,15 @@ function resumeBackupQueueOnStartup() {
     for (const row of queued) enqueueBackup(row.id);
   }
 
-  // 已经下载但后续子任务未完成的，直接恢复分叉任务。
+  // 已经下载但后续子任务还在排队的，直接恢复分叉任务；失败任务等用户手动重试。
   const postDownload = db.prepare(`
     SELECT id, youtube_video_id, local_file_path FROM import_tasks
     WHERE local_file_path IS NOT NULL AND local_file_path != ''
       AND COALESCE(NULLIF(download_status, ''), backup_status) = 'downloaded'
-      AND (COALESCE(upload_status, '') IN ('queued', 'failed')
-        OR COALESCE(transcript_status, '') IN ('queued', 'failed')
-        OR COALESCE(preview_status, '') IN ('queued', 'failed')
-        OR COALESCE(analysis_status, '') IN ('queued', 'failed'))
+      AND (COALESCE(upload_status, '') = 'queued'
+        OR COALESCE(transcript_status, '') = 'queued'
+        OR COALESCE(preview_status, '') = 'queued'
+        OR COALESCE(analysis_status, '') = 'queued')
       AND (NULLIF(task_type, '') = 'import' OR monitor_video_id IS NOT NULL)
   `).all();
   for (const row of postDownload) {

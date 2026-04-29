@@ -1,0 +1,12 @@
+{
+  "filled": 1,
+  "skippedNoAi": 1,
+  "skippedNoSkeleton": 0,
+  "missing": [
+    {
+      "id": 15,
+      "name": "创可贴修水管",
+      "reason": "没有可用的 Gemini 回复"
+    }
+  ]
+}
