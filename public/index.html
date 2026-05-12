@@ -215,7 +215,6 @@
                 </button>
               </div>
               <div class="action-buttons">
-                <button class="btn-secondary" id="btn-story-focus" type="button">专注编辑</button>
                 <div class="mark-buttons" id="mark-buttons" aria-label="素材状态">
                   <button class="btn-mark-state mark-useless" data-mark="-1" type="button" title="标为无用">
                     <span class="mark-icon" aria-hidden="true">
@@ -243,6 +242,15 @@
               <form id="video-form">
                 <input type="hidden" id="form-id">
                 <input type="hidden" id="form-is-marked" value="0">
+                <!-- 视频标签与手法 -->
+                <div class="dynamic-section">
+                  <div class="section-header">
+                    <h3>🏷️ 视频标签与手法</h3>
+                    <button type="button" class="btn-add-row" data-target="video_tags_rel">+ 添加标签策略</button>
+                  </div>
+                  <div id="video_tags_rel-container"></div>
+                </div>
+
                 <!-- 故事结构 -->
                 <div class="story-structure-section">
                   <div class="story-structure-header">
@@ -297,15 +305,6 @@
                 <div class="form-group">
                   <label for="form-hook">开头</label>
                   <input type="text" id="form-hook" placeholder="前1-3秒的视觉钩子">
-                </div>
-
-                <!-- 视频标签与手法 -->
-                <div class="dynamic-section">
-                  <div class="section-header">
-                    <h3>🏷️ 视频标签与手法</h3>
-                    <button type="button" class="btn-add-row" data-target="video_tags_rel">+ 添加标签策略</button>
-                  </div>
-                  <div id="video_tags_rel-container"></div>
                 </div>
 
                 <!-- 角色立场 -->

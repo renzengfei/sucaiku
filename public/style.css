@@ -2412,35 +2412,6 @@ body.inline-detail-active .inline-detail-ai {
   padding-left: 2px;
 }
 
-body.story-focus-mode #video-form {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-body.story-focus-mode #video-form > :not(.story-structure-section):not(input[type="hidden"]) {
-  display: none;
-}
-
-body.story-focus-mode .story-structure-section,
-body.story-focus-mode .story-structure-section .form-group {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-body.story-focus-mode .story-replace-panel {
-  flex: 0 0 auto;
-}
-
-body.story-focus-mode #form-story-structure {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: 100%;
-  resize: none;
-}
 
 .inline-detail-ai {
   position: sticky;

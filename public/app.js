@@ -25,7 +25,6 @@ let isInitialLoad = true;
 let allHookTags = new Set(); // 全局开头标签集合（供编辑器使用）
 let savedScrollY = 0; // 进入编辑页面前的滚动位置
 let savedListVideoId = null; // 进入编辑页面前点击的视频卡片
-let isStoryFocusMode = false;
 let inlineAiTaskId = null;
 let inlineAiPollTimer = null;
 const itemsPerPage = 10; // 每页显示系列组数量
@@ -1119,7 +1118,6 @@ function bindEvents() {
   // 保存 & 删除
   document.getElementById('btn-save-inline').addEventListener('click', saveVideo);
   document.getElementById('btn-delete-inline').addEventListener('click', deleteVideo);
-  document.getElementById('btn-story-focus').addEventListener('click', () => setStoryFocusMode(!isStoryFocusMode));
   document.getElementById('btn-toggle-story-replace').addEventListener('click', toggleStoryReplacePanel);
   document.getElementById('btn-story-replace-apply').addEventListener('click', applyStoryReplace);
   document.getElementById('story-replace-find').addEventListener('input', updateStoryReplaceMeta);
@@ -1238,7 +1236,6 @@ function bindStoryTextareaWheel() {
   const container = document.getElementById('inline-detail-content');
   if (!textarea || !container) return;
   textarea.addEventListener('wheel', (e) => {
-    if (isStoryFocusMode) return;
     const canScrollInside = textarea.scrollHeight > textarea.clientHeight + 1;
     if (!canScrollInside) return;
     const atTop = textarea.scrollTop <= 0;
@@ -2028,7 +2025,6 @@ function openInlineEditor(video = null, options = {}) {
 
   window._currentEditVideo = video;
   currentVideoId = video ? video.id : null;
-  setStoryFocusMode(true);
   resetStoryReplacePanel();
   const $copyBtn = document.getElementById('btn-copy-video-id');
   if (video) {
@@ -2184,23 +2180,6 @@ function getAliyunVideoUrl(video) {
   return candidates.find(url => url && isVideoFileUrl(url)) || '';
 }
 
-function setStoryFocusMode(enabled) {
-  isStoryFocusMode = !!enabled;
-  document.body.classList.toggle('story-focus-mode', isStoryFocusMode);
-  const btn = document.getElementById('btn-story-focus');
-  if (btn) {
-    btn.textContent = isStoryFocusMode ? '退出专注' : '专注编辑';
-    btn.classList.toggle('btn-primary', isStoryFocusMode);
-    btn.classList.toggle('btn-secondary', !isStoryFocusMode);
-  }
-  if (isStoryFocusMode) {
-    requestAnimationFrame(() => {
-      const content = document.getElementById('inline-detail-content');
-      if (content) content.scrollTop = 0;
-      document.getElementById('form-story-structure')?.focus({ preventScroll: true });
-    });
-  }
-}
 
 // 表单字段映射：form元素id → 数据库列名
 const FORM_FIELDS = {
@@ -2329,7 +2308,6 @@ function addDynamicRow(type, data = null) {
 
 function closeDetail() {
   clearInlineAiPoll();
-  setStoryFocusMode(false);
   resetStoryReplacePanel();
   document.body.classList.remove('inline-detail-active');
   // 清除 hash
