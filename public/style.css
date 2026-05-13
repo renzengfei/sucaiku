@@ -1392,6 +1392,233 @@ body {
   background: rgba(255, 59, 48, 0.08);
 }
 
+/* ==================== Story Lines — 卡片显示 ==================== */
+.card-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  background: rgba(0, 113, 227, 0.05);
+  border-left: 2px solid rgba(0, 113, 227, 0.35);
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.card-line .protagonist {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-line .protagonist-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.card-line .supporting {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.card-line .trunks {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.card-line .trunk-chip {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 980px;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--tag-video-bg);
+  color: var(--tag-video-color);
+}
+
+.card-line .trunk-arrow {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* 分组配色（轻度差异化，避免视觉过载） */
+.trunk-group-A { background: rgba(52, 199, 89, 0.12);  color: #1e7a3a; }
+.trunk-group-B { background: rgba(255, 59, 48, 0.10);  color: #b3271d; }
+.trunk-group-C { background: rgba(255, 204, 0, 0.18);  color: #8a6500; }
+.trunk-group-D { background: rgba(255, 105, 180, 0.12); color: #b03470; }
+.trunk-group-E { background: rgba(175, 82, 222, 0.12); color: #6a3a9a; }
+.trunk-group-F { background: rgba(0, 122, 255, 0.10);  color: #0a4ea2; }
+.trunk-group-G { background: rgba(142, 142, 147, 0.18); color: #4b4b50; }
+
+/* ==================== Story Lines — 编辑器 ==================== */
+.lines-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line-block {
+  position: relative;
+  border: 1px solid var(--separator);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: var(--bg-secondary, #fafafa);
+  animation: fadeIn 0.2s ease;
+}
+
+.line-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.line-block-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+}
+
+.line-block-num {
+  color: var(--accent, var(--primary-color));
+}
+
+.btn-remove-line {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.btn-remove-line:hover {
+  color: var(--danger);
+  background: rgba(255, 59, 48, 0.08);
+}
+
+.line-block-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.line-field > label {
+  flex: 0 0 50px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.line-field > input[type="text"] {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 13px;
+  border: 1px solid var(--separator);
+  border-radius: 6px;
+  background: #fff;
+  font-family: inherit;
+}
+
+.line-field > input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent, var(--primary-color));
+}
+
+.line-field-trunks {
+  align-items: flex-start;
+}
+
+.line-field-trunks > label {
+  padding-top: 6px;
+}
+
+.trunk-list {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  min-height: 28px;
+}
+
+.trunk-chip-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 4px 2px 9px;
+  border-radius: 980px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--tag-video-bg);
+  color: var(--tag-video-color);
+}
+
+.trunk-chip-edit .trunk-chip-remove {
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 4px;
+  border-radius: 50%;
+}
+
+.trunk-chip-edit .trunk-chip-remove:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.trunk-add-wrap {
+  margin-left: 4px;
+}
+
+.trunk-add-select {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1px dashed var(--separator);
+  border-radius: 980px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  max-width: 160px;
+}
+
+.trunk-add-select:hover {
+  border-color: var(--accent, var(--primary-color));
+  color: var(--accent, var(--primary-color));
+}
+
 /* ==================== Detail View ==================== */
 .detail-meta {
   display: flex;

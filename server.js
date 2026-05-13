@@ -321,6 +321,12 @@ safeAddColumn('props', 'type', 'TEXT');
 safeAddColumn('characters', 'abilities', 'TEXT');
 safeAddColumn('characters', 'states', 'TEXT');
 
+// 子表 video_tags_rel：新增"故事线"4 列（主角/配角/线号/线内主干顺序）
+safeAddColumn('video_tags_rel', 'protagonist', 'TEXT');
+safeAddColumn('video_tags_rel', 'supporting', 'TEXT');
+safeAddColumn('video_tags_rel', 'line_id', 'INTEGER');
+safeAddColumn('video_tags_rel', 'trunk_order', 'INTEGER');
+
 backfillSeries();
 
 console.log('✅ 数据库迁移完成');
@@ -392,7 +398,7 @@ function videoRelationStatements() {
     getScenes: db.prepare('SELECT * FROM scenes WHERE video_id = ?'),
     getProps: db.prepare('SELECT * FROM props WHERE video_id = ?'),
     getCharacters: db.prepare('SELECT * FROM characters WHERE video_id = ?'),
-    getTags: db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ?'),
+    getTags: db.prepare('SELECT * FROM video_tags_rel WHERE video_id = ? ORDER BY line_id ASC, trunk_order ASC, id ASC'),
     getSeries: db.prepare('SELECT * FROM series WHERE id = ?')
   };
 }
@@ -429,9 +435,12 @@ app.post('/api/videos', (req, res) => {
   const { scenes, props, characters, video_tags_rel } = req.body;
 
   try {
-    // 兼容：将第一条 tag 写回旧文本域便于搜索
+    // 兼容：将所有 tag 按 line_id/trunk_order 排序后写回旧文本域便于搜索
     if (video_tags_rel && video_tags_rel.length > 0) {
-      req.body.video_tags = video_tags_rel.map(t => t.name).join(', ');
+      const sorted = [...video_tags_rel].sort((a, b) =>
+        (a.line_id || 0) - (b.line_id || 0) || (a.trunk_order || 0) - (b.trunk_order || 0)
+      );
+      req.body.video_tags = sorted.map(t => t.name).join(', ');
       req.body.technique = video_tags_rel[0].technique || '';
     }
     req.body.series_id = getOrCreateSeries(req.body.mechanism_name, req.body.mechanism);
@@ -443,7 +452,7 @@ app.post('/api/videos', (req, res) => {
     const insertScene = db.prepare('INSERT INTO scenes (video_id, name, function) VALUES (?, ?, ?)');
     const insertProp = db.prepare('INSERT INTO props (video_id, name, type, function) VALUES (?, ?, ?, ?)');
     const insertChar = db.prepare('INSERT INTO characters (video_id, name, persona, abilities, states) VALUES (?, ?, ?, ?, ?)');
-    const insertTag = db.prepare('INSERT INTO video_tags_rel (video_id, name, technique) VALUES (?, ?, ?)');
+    const insertTag = db.prepare('INSERT INTO video_tags_rel (video_id, name, technique, protagonist, supporting, line_id, trunk_order) VALUES (?, ?, ?, ?, ?, ?, ?)');
 
     const transaction = db.transaction(() => {
       const values = VIDEO_FIELDS.map(f => req.body[f] || '');
@@ -467,7 +476,17 @@ app.post('/api/videos', (req, res) => {
       }
       if (video_tags_rel && video_tags_rel.length > 0) {
         for (const t of video_tags_rel) {
-          if (t.name && t.name.trim()) insertTag.run(videoId, t.name.trim(), t.technique || '');
+          if (t.name && t.name.trim()) {
+            insertTag.run(
+              videoId,
+              t.name.trim(),
+              t.technique || '',
+              t.protagonist || '',
+              t.supporting || '',
+              t.line_id || 0,
+              t.trunk_order || 0
+            );
+          }
         }
       }
 
@@ -491,10 +510,13 @@ app.put('/api/videos/:id', (req, res) => {
     const existing = db.prepare('SELECT * FROM videos WHERE id = ?').get(videoId);
     if (!existing) return res.status(404).json({ error: '视频不存在' });
 
-    // 兼容：写回主表
+    // 兼容：写回主表（按 line_id/trunk_order 排序后拼接）
     if (req.body.hasOwnProperty('video_tags_rel')) {
        if (video_tags_rel && video_tags_rel.length > 0) {
-         req.body.video_tags = video_tags_rel.map(t => t.name).join(', ');
+         const sorted = [...video_tags_rel].sort((a, b) =>
+           (a.line_id || 0) - (b.line_id || 0) || (a.trunk_order || 0) - (b.trunk_order || 0)
+         );
+         req.body.video_tags = sorted.map(t => t.name).join(', ');
          req.body.technique = video_tags_rel[0].technique || '';
        } else {
          req.body.video_tags = '';
@@ -548,10 +570,20 @@ app.put('/api/videos/:id', (req, res) => {
       }
       if (req.body.hasOwnProperty('video_tags_rel')) {
         db.prepare('DELETE FROM video_tags_rel WHERE video_id = ?').run(videoId);
-        const insertTag = db.prepare('INSERT INTO video_tags_rel (video_id, name, technique) VALUES (?, ?, ?)');
+        const insertTag = db.prepare('INSERT INTO video_tags_rel (video_id, name, technique, protagonist, supporting, line_id, trunk_order) VALUES (?, ?, ?, ?, ?, ?, ?)');
         if (video_tags_rel && video_tags_rel.length > 0) {
           for (const t of video_tags_rel) {
-            if (t.name && t.name.trim()) insertTag.run(videoId, t.name.trim(), t.technique || '');
+            if (t.name && t.name.trim()) {
+              insertTag.run(
+                videoId,
+                t.name.trim(),
+                t.technique || '',
+                t.protagonist || '',
+                t.supporting || '',
+                t.line_id || 0,
+                t.trunk_order || 0
+              );
+            }
           }
         }
       }

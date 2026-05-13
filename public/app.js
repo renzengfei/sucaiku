@@ -1,3 +1,52 @@
+// ==================== 故事主干（31 条）====================
+// 每条主干带分组前缀（A-G），用于下拉显示与归类
+const STORY_TRUNKS = [
+  // A 组 (弱者翻身)
+  { group: 'A', name: '努力逆袭' },
+  { group: 'A', name: '灰姑娘奇遇' },
+  { group: 'A', name: '复仇' },
+  { group: 'A', name: '洗冤平反' },
+  { group: 'A', name: '重生' },
+  { group: 'A', name: '扮猪吃老虎' },
+  { group: 'A', name: '愚者凯旋' },
+  { group: 'A', name: '战胜怪物' },
+  { group: 'A', name: '义贼' },
+  // B 组 (结局变坏)
+  { group: 'B', name: '沉沦自毁' },
+  { group: 'B', name: '反派翻车' },
+  { group: 'B', name: '坏事翻车' },
+  { group: 'B', name: '高位坠落' },
+  // C 组 (喜剧情境)
+  { group: 'C', name: '误会终消' },
+  { group: 'C', name: '信息差炸弹' },
+  { group: 'C', name: '损友互坑' },
+  // D 组 (情感)
+  { group: 'D', name: '爱情' },
+  { group: 'D', name: '牺牲' },
+  { group: 'D', name: '禁忌之恋' },
+  // E 组 (奇遇)
+  { group: 'E', name: '魔法降临' },
+  { group: 'E', name: '冒险' },
+  { group: 'E', name: '追寻' },
+  { group: 'E', name: '怪物入侵' },
+  { group: 'E', name: '灵异奇遇' },
+  { group: 'E', name: '科幻奇遇' },
+  // F 组 (动作场景)
+  { group: 'F', name: '追逐' },
+  { group: 'F', name: '对抗' },
+  { group: 'F', name: '逃脱' },
+  { group: 'F', name: '营救' },
+  // G 组 (悬疑)
+  { group: 'G', name: '意外发现' },
+  { group: 'G', name: '谜题' }
+];
+
+// name -> 'A' 等分组映射，便于卡片显示分组前缀
+const STORY_TRUNK_GROUP_MAP = STORY_TRUNKS.reduce((acc, t) => {
+  acc[t.name] = t.group;
+  return acc;
+}, {});
+
 // ==================== 顶级 Tab 状态 ====================
 let currentSection = 'youtube'; // youtube | import | library
 
@@ -1211,7 +1260,11 @@ function bindEvents() {
 
   // 动态添加行
   document.querySelectorAll('.btn-add-row').forEach(btn => {
-    btn.addEventListener('click', () => addDynamicRow(btn.dataset.target));
+    if (btn.id === 'btn-add-line') {
+      btn.addEventListener('click', () => addLineBlock());
+    } else if (btn.dataset.target) {
+      btn.addEventListener('click', () => addDynamicRow(btn.dataset.target));
+    }
   });
 
   // 点击蒙层关闭
@@ -1597,6 +1650,64 @@ window.buildSeriesGroups = function(videoList, sortMode = seriesSortMode) {
 window.tagsHtml = (str, cls) => (str || '').split(',').filter(t => t.trim())
   .map(t => `<span class="tag ${cls}">${escapeHtml(t.trim())}</span>`).join('');
 
+// 将 v.video_tags_rel（按 line_id/trunk_order 排好序）按 line_id 分组渲染成"故事线"。
+// 若没有 video_tags_rel 数据，则回退到旧字符串渲染。
+window.renderVideoLines = function(v) {
+  const rel = Array.isArray(v && v.video_tags_rel) ? v.video_tags_rel : [];
+  if (rel.length === 0) {
+    return window.tagsHtml(v && v.video_tags, 'tag-video') || '';
+  }
+
+  // 按 line_id 分组（line_id=0 或缺失时，每行独立成线，保留顺序）
+  const lines = [];
+  const byLineId = new Map();
+  rel.forEach((row, idx) => {
+    const lid = Number(row.line_id) || 0;
+    if (lid > 0) {
+      if (!byLineId.has(lid)) {
+        const line = { line_id: lid, protagonist: row.protagonist || '', supporting: row.supporting || '', trunks: [] };
+        byLineId.set(lid, line);
+        lines.push(line);
+      }
+      byLineId.get(lid).trunks.push(row.name || '');
+    } else {
+      // 历史数据：line_id=0 / null，每行独立成线
+      lines.push({
+        line_id: 0,
+        protagonist: row.protagonist || '',
+        supporting: row.supporting || '',
+        trunks: [row.name || ''],
+        _legacyIdx: idx
+      });
+    }
+  });
+
+  if (lines.length === 0) {
+    return window.tagsHtml(v && v.video_tags, 'tag-video') || '';
+  }
+
+  const lineBlocks = lines.map(line => {
+    const protaText = line.protagonist || '未标主角';
+    const protaCls = line.protagonist ? 'protagonist' : 'protagonist protagonist-empty';
+    const supportHtml = line.supporting ? `<span class="supporting">(配角: ${escapeHtml(line.supporting)})</span>` : '';
+    const trunkChips = line.trunks
+      .filter(t => t && t.trim())
+      .map(t => {
+        const g = STORY_TRUNK_GROUP_MAP[t] || '';
+        const cls = g ? `trunk-chip trunk-group-${g}` : 'trunk-chip';
+        return `<span class="${cls}">${escapeHtml(t)}</span>`;
+      })
+      .join('<span class="trunk-arrow">→</span>');
+    return `<div class="card-line">
+      <span class="${protaCls}">${escapeHtml(protaText)}</span>
+      ${supportHtml}
+      <span class="trunks">${trunkChips}</span>
+    </div>`;
+  }).join('');
+
+  return `<div class="card-lines">${lineBlocks}</div>`;
+};
+
 window.formatViewsNum = formatViewsNum;
 
 function normalizeMarkValue(value) {
@@ -1662,7 +1773,7 @@ window.renderGlobalCard = v => {
         </button>
       </div>
 
-      <div class="card-tags">${window.tagsHtml(v.video_tags, 'tag-video') || ''}</div>
+      <div class="card-tags">${window.renderVideoLines(v)}</div>
       <div class="card-hook-section">
         <div class="card-hook-tags-wrapper" id="hook-tags-${v.id}">
           <div class="card-hook-tags">${window.tagsHtml(v.hook_tags, 'tag-hook') || '<span class="hook-tag-empty">—</span>'}</div>
@@ -2110,23 +2221,21 @@ function openInlineEditor(video = null, options = {}) {
 
   updateMarkButtons(video ? video.is_marked : '0');
 
-  // 动态行 (场景/道具/角色/视频标签组合)
-  ['scenes', 'props', 'characters', 'video_tags_rel'].forEach(type => {
+  // 动态行 (场景/道具/角色)
+  ['scenes', 'props', 'characters'].forEach(type => {
     const container = document.getElementById(`${type}-container`);
     if (!container) return; // 新表单区域如果没加载到也不报错
     container.innerHTML = '';
     const items = video ? (video[type] || []) : [];
     if (items.length === 0) {
-      if (type === 'video_tags_rel') {
-        addDynamicRow(type);
-        addDynamicRow(type); // 默认给两行
-      } else {
-        addDynamicRow(type);
-      }
+      addDynamicRow(type);
     } else {
       items.forEach(item => addDynamicRow(type, item));
     }
   });
+
+  // 视频标签 — 故事线编辑器
+  populateLineEditor(video ? (video.video_tags_rel || []) : []);
 
   // 控制底部署名删除按钮的显示/隐藏（新增模式不显示删除）
   const btnDelete = document.getElementById('btn-delete-inline');
@@ -2304,6 +2413,158 @@ function addDynamicRow(type, data = null) {
   });
 
   container.appendChild(row);
+}
+
+// ==================== 故事线编辑器（video_tags_rel） ====================
+// 将后端返回的扁平 video_tags_rel（按 line_id/trunk_order 排好序）转换为线分组并渲染编辑块。
+function populateLineEditor(rel) {
+  const container = document.getElementById('video_tags_rel-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  // 按 line_id 分组；line_id=0 / 缺失 时每行单独成线（兼容历史数据）
+  const lines = [];
+  const byLineId = new Map();
+  (rel || []).forEach(row => {
+    const lid = Number(row.line_id) || 0;
+    const name = (row.name || '').trim();
+    if (lid > 0) {
+      if (!byLineId.has(lid)) {
+        const line = { protagonist: row.protagonist || '', supporting: row.supporting || '', trunks: [] };
+        byLineId.set(lid, line);
+        lines.push(line);
+      }
+      const line = byLineId.get(lid);
+      // 同一线内主角/配角以最早记录为准，仅当当前为空时补全
+      if (!line.protagonist && row.protagonist) line.protagonist = row.protagonist;
+      if (!line.supporting && row.supporting) line.supporting = row.supporting;
+      if (name) line.trunks.push(name);
+    } else {
+      lines.push({
+        protagonist: row.protagonist || '',
+        supporting: row.supporting || '',
+        trunks: name ? [name] : []
+      });
+    }
+  });
+
+  if (lines.length === 0) {
+    // 空数据时默认给一个空线，方便用户开始编辑
+    addLineBlock();
+    return;
+  }
+  lines.forEach(line => addLineBlock(line));
+}
+
+// 添加一个"线"编辑块
+function addLineBlock(data = null) {
+  const container = document.getElementById('video_tags_rel-container');
+  if (!container) return;
+  const protagonist = (data && data.protagonist) || '';
+  const supporting = (data && data.supporting) || '';
+  const trunks = (data && Array.isArray(data.trunks)) ? data.trunks.filter(Boolean) : [];
+
+  const block = document.createElement('div');
+  block.className = 'line-block';
+  block.innerHTML = `
+    <div class="line-block-header">
+      <span class="line-block-title">线 <span class="line-block-num"></span></span>
+      <button type="button" class="btn-remove-line" title="删除该线">×</button>
+    </div>
+    <div class="line-block-body">
+      <div class="line-field">
+        <label>主角</label>
+        <input type="text" class="line-protagonist" placeholder="如：Mira / Mira+Rumi" value="${escapeHtml(protagonist)}">
+      </div>
+      <div class="line-field">
+        <label>配角</label>
+        <input type="text" class="line-supporting" placeholder="如：Mystery（可空）" value="${escapeHtml(supporting)}">
+      </div>
+      <div class="line-field line-field-trunks">
+        <label>主干</label>
+        <div class="trunk-list"></div>
+        <div class="trunk-add-wrap">
+          <select class="trunk-add-select">
+            <option value="">+ 添加主干</option>
+            ${STORY_TRUNKS.map(t => `<option value="${escapeHtml(t.name)}">${escapeHtml(t.group + '. ' + t.name)}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // 渲染已选 trunks
+  const trunkList = block.querySelector('.trunk-list');
+  trunks.forEach(name => trunkList.appendChild(makeTrunkChip(name)));
+
+  // 添加主干（下拉选择后立即插入）
+  const select = block.querySelector('.trunk-add-select');
+  select.addEventListener('change', () => {
+    const val = select.value;
+    if (!val) return;
+    trunkList.appendChild(makeTrunkChip(val));
+    select.value = '';
+  });
+
+  // 删除线
+  block.querySelector('.btn-remove-line').addEventListener('click', () => {
+    block.remove();
+    renumberLineBlocks();
+  });
+
+  container.appendChild(block);
+  renumberLineBlocks();
+}
+
+// 创建一个主干 chip（可移除）
+function makeTrunkChip(name) {
+  const chip = document.createElement('span');
+  const grp = STORY_TRUNK_GROUP_MAP[name] || '';
+  chip.className = grp ? `trunk-chip trunk-chip-edit trunk-group-${grp}` : 'trunk-chip trunk-chip-edit';
+  chip.dataset.name = name;
+  chip.innerHTML = `<span class="trunk-chip-name">${escapeHtml(name)}</span><button type="button" class="trunk-chip-remove" title="移除">×</button>`;
+  chip.querySelector('.trunk-chip-remove').addEventListener('click', () => chip.remove());
+  return chip;
+}
+
+// 给所有线块按当前 DOM 顺序重新编号（仅做显示用）
+function renumberLineBlocks() {
+  const container = document.getElementById('video_tags_rel-container');
+  if (!container) return;
+  container.querySelectorAll('.line-block').forEach((b, i) => {
+    const numEl = b.querySelector('.line-block-num');
+    if (numEl) numEl.textContent = String(i + 1);
+  });
+}
+
+// 序列化：把所有线块转成 video_tags_rel 扁平数组
+function collectLineEditor() {
+  const container = document.getElementById('video_tags_rel-container');
+  if (!container) return [];
+  const result = [];
+  const blocks = container.querySelectorAll('.line-block');
+  let lineCounter = 0;
+  blocks.forEach(block => {
+    const protagonist = (block.querySelector('.line-protagonist')?.value || '').trim();
+    const supporting = (block.querySelector('.line-supporting')?.value || '').trim();
+    const chips = block.querySelectorAll('.trunk-list .trunk-chip-edit');
+    const trunks = Array.from(chips).map(c => c.dataset.name).filter(Boolean);
+    // 跳过：没有 trunks 的线（即使有主角也无法落表，因为一行至少要有一个 trunk）
+    if (trunks.length === 0) return;
+    // 同时跳过既无主角又无 trunks 的（已被上面排除）；仅有主角无主干也跳过（无法落库）
+    lineCounter += 1;
+    trunks.forEach((name, idx) => {
+      result.push({
+        name,
+        protagonist,
+        supporting,
+        line_id: lineCounter,
+        trunk_order: idx + 1,
+        technique: ''
+      });
+    });
+  });
+  return result;
 }
 
 function closeDetail() {
@@ -2797,7 +3058,7 @@ async function saveVideo() {
   body.scenes = collectDynamicRows('scenes', ['name', 'function']);
   body.props = collectDynamicRows('props', ['name', 'type', 'function']);
   body.characters = collectDynamicRows('characters', ['name', 'persona']);
-  body.video_tags_rel = collectDynamicRows('video_tags_rel', ['name', 'technique']);
+  body.video_tags_rel = collectLineEditor();
 
   try {
     const url = id ? `/api/videos/${id}` : '/api/videos';
